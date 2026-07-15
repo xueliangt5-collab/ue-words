@@ -24,8 +24,9 @@ export function isCloudConfigured() {
 
 export async function getCloudUser() {
   if (!client) return null;
-  const { data } = await client.auth.getUser();
-  return data.user || null;
+  const { data, error } = await client.auth.getSession();
+  if (error) throw error;
+  return data.session?.user || null;
 }
 
 export async function sendLoginLink(email) {

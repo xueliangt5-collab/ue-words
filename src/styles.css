@@ -455,6 +455,11 @@ strong {
   padding: 28px;
 }
 
+.mobile-term-nav,
+.mobile-term-picker {
+  display: none;
+}
+
 .term-detail-header {
   display: flex;
   align-items: flex-start;
@@ -933,6 +938,40 @@ strong {
   gap: 8px;
 }
 
+.install-help {
+  display: grid;
+  gap: 18px;
+}
+
+.install-help-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.install-help-step > svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--primary);
+}
+
+.install-help-step strong,
+.install-help-step small {
+  display: block;
+}
+
+.install-help-step small {
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.installed-button:disabled {
+  opacity: 1;
+  color: var(--primary-strong);
+  background: var(--primary-soft);
+}
+
 dialog {
   width: min(650px, calc(100% - 32px));
   max-height: calc(100vh - 32px);
@@ -1124,28 +1163,136 @@ dialog::backdrop {
   .library-layout {
     grid-template-columns: 1fr;
     min-height: 0;
+    overflow: visible;
   }
 
   .term-list-panel {
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .term-list {
-    max-height: 330px;
-    overflow-y: auto;
+    display: none;
   }
 
   .term-detail {
-    padding: 20px;
+    min-height: min(650px, calc(100dvh - 92px));
+    padding: 0 24px 28px;
+    touch-action: pan-y;
   }
 
   .term-detail h2 {
-    font-size: 23px;
+    font-size: 29px;
   }
 
   .term-detail-header {
     align-items: center;
+    margin-top: 24px;
+  }
+
+  .mobile-term-nav {
+    position: sticky;
+    top: 58px;
+    z-index: 12;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 8px;
+    min-height: 58px;
+    margin: 0 -24px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-term-position {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 0;
+    min-height: 40px;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--surface-muted);
+    color: var(--text);
+  }
+
+  .mobile-term-position span,
+  .mobile-term-position strong,
+  .mobile-term-position small {
+    display: block;
+  }
+
+  .mobile-term-position span {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .mobile-term-position strong {
+    font-size: 13px;
+  }
+
+  .mobile-term-position small {
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .mobile-term-picker:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .mobile-picker-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    border-radius: 0;
+    background: rgba(16, 20, 17, 0.56);
+  }
+
+  .mobile-picker-sheet {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    width: 100%;
+    max-height: min(78dvh, 680px);
+    padding-bottom: env(safe-area-inset-bottom);
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px;
+    padding: 10px 14px 10px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-picker-header strong,
+  .mobile-picker-header small {
+    display: block;
+  }
+
+  .mobile-picker-header small {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .mobile-picker-list {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  body.picker-open {
+    overflow: hidden;
   }
 
   .review-card {

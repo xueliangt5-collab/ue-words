@@ -68,7 +68,10 @@ const state = {
   reviewSession: null,
   reviewRevealed: false,
   installPrompt: null,
+  installedApp: false,
+  installChecked: false,
   cloudUser: null,
+  cloudRestoring: true,
   syncing: false,
   lastSpokenTermId: '',
 };
@@ -171,6 +174,7 @@ function showToast(message, type = 'success') {
 
 function cloudLabel() {
   if (!isCloudConfigured()) return '本机模式';
+  if (state.cloudRestoring) return '正在恢复登录';
   if (state.syncing) return '正在同步';
   if (state.cloudUser) return '云端已连接';
   return '等待登录';
@@ -198,6 +202,7 @@ function renderShell() {
       <main class="app-main" id="view-root"></main>
       <div class="toast-region" aria-live="polite"></div>
       ${termDialogMarkup()}
+      ${installDialogMarkup()}
       <input class="sr-only" id="backup-file" type="file" accept="application/json,.json">
     </div>
   `;
@@ -205,6 +210,7 @@ function renderShell() {
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => setView(button.dataset.view)));
   document.getElementById('install-button').addEventListener('click', installApp);
   bindTermDialog();
+  bindInstallDialog();
   updateChrome();
 }
 
@@ -218,7 +224,77 @@ function updateChrome() {
     indicator.querySelector('span:last-child').textContent = cloudLabel();
   }
   const installButton = document.getElementById('install-button');
-  if (installButton) installButton.hidden = !state.installPrompt;
+  if (installButton) {
+    const status = installStatus();
+    installButton.hidden = status === 'installed' || status === 'checking';
+    installButton.setAttribute('aria-label', status === 'prompt-ready' ? '安装到设备' : '查看安装方法');
+    installButton.innerHTML = `${icon(status === 'prompt-ready' ? 'download' : 'smartphone')}<span>${status === 'prompt-ready' ? '安装' : '安装方法'}</span>`;
+  }
+  hydrateIcons();
+}
+
+function isStandalone() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function installStatus() {
+  if (isStandalone() || state.installedApp) return 'installed';
+  if (state.installPrompt) return 'prompt-ready';
+  if (!state.installChecked) return 'checking';
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ? 'manual-ios' : 'manual-browser';
+}
+
+async function refreshInstallStatus() {
+  state.installedApp = isStandalone();
+  const recordedInstall = localStorage.getItem('ue-words-installed') === 'true';
+  if (!state.installedApp && 'getInstalledRelatedApps' in navigator) {
+    try {
+      const relatedApps = await navigator.getInstalledRelatedApps();
+      state.installedApp = relatedApps.length > 0 || recordedInstall;
+    } catch {
+      // Some browsers expose the API but do not allow it for every install source.
+      state.installedApp = recordedInstall;
+    }
+  } else if (!state.installedApp) {
+    state.installedApp = recordedInstall;
+  }
+  state.installChecked = true;
+  updateChrome();
+  if (state.view === 'settings') renderSettings();
+}
+
+function installDialogMarkup() {
+  return `
+    <dialog id="install-dialog">
+      <div class="dialog-header">
+        <h2 id="install-dialog-title">添加到设备</h2>
+        <button class="icon-button" id="close-install-dialog" type="button" aria-label="关闭">${icon('x')}</button>
+      </div>
+      <div class="dialog-body install-help" id="install-dialog-body"></div>
+      <div class="dialog-footer"><button class="button primary" id="confirm-install-help" type="button">知道了</button></div>
+    </dialog>
+  `;
+}
+
+function bindInstallDialog() {
+  const dialog = document.getElementById('install-dialog');
+  document.getElementById('close-install-dialog').addEventListener('click', () => dialog.close());
+  document.getElementById('confirm-install-help').addEventListener('click', () => dialog.close());
+}
+
+function showInstallHelp() {
+  const dialog = document.getElementById('install-dialog');
+  const body = document.getElementById('install-dialog-body');
+  const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isAndroid = /Android/.test(navigator.userAgent);
+  if (isIos) {
+    body.innerHTML = `<div class="install-help-step">${icon('share-2')}<span><strong>1. 点击浏览器底部的分享按钮</strong><small>请使用 Safari 打开当前页面。</small></span></div><div class="install-help-step">${icon('square-plus')}<span><strong>2. 选择“添加到主屏幕”</strong><small>确认名称后点击“添加”。</small></span></div>`;
+  } else if (isAndroid) {
+    body.innerHTML = `<div class="install-help-step">${icon('ellipsis-vertical')}<span><strong>1. 打开浏览器菜单</strong><small>通常位于浏览器右上角。</small></span></div><div class="install-help-step">${icon('square-plus')}<span><strong>2. 选择“安装应用”或“添加到主屏幕”</strong><small>不同浏览器的名称可能略有不同。</small></span></div>`;
+  } else {
+    body.innerHTML = `<div class="install-help-step">${icon('monitor-down')}<span><strong>在地址栏或浏览器菜单中选择安装</strong><small>Chrome 和 Edge 通常会显示“安装应用”入口。若没有入口，请确认当前页面使用 HTTPS 打开。</small></span></div>`;
+  }
+  dialog.showModal();
   hydrateIcons();
 }
 
@@ -271,7 +347,7 @@ function filteredTerms() {
 function renderLibrary() {
   const results = filteredTerms();
   if (!results.some(term => term.id === state.selectedId)) state.selectedId = results[0]?.id || '';
-  const selected = state.terms.find(term => term.id === state.selectedId);
+  const selected = results.find(term => term.id === state.selectedId);
   const root = document.getElementById('view-root');
   root.innerHTML = `
     <div class="view-header">
@@ -313,7 +389,19 @@ function renderLibrary() {
         </div>
       </section>
       <section class="term-detail" id="term-detail" aria-live="polite">
-        ${selected ? termDetailMarkup(selected) : '<div class="empty-list">从左侧选择一个术语</div>'}
+        ${selected ? `${mobileTermNavMarkup(results, selected)}${termDetailMarkup(selected)}` : '<div class="empty-list">没有匹配的术语</div>'}
+      </section>
+    </div>
+    <div class="mobile-term-picker" id="mobile-term-picker" hidden>
+      <button class="mobile-picker-backdrop" id="close-term-picker-backdrop" type="button" aria-label="关闭词表"></button>
+      <section class="mobile-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="mobile-picker-title">
+        <div class="mobile-picker-header">
+          <span><strong id="mobile-picker-title">选择术语</strong><small>${results.length} 个结果</small></span>
+          <button class="icon-button" id="close-term-picker" type="button" aria-label="关闭词表">${icon('x')}</button>
+        </div>
+        <div class="mobile-picker-list">
+          ${results.length ? results.map(term => termListItem(term)).join('') : '<div class="empty-list">没有匹配的术语</div>'}
+        </div>
       </section>
     </div>
   `;
@@ -342,12 +430,77 @@ function renderLibrary() {
     renderLibrary();
   }));
   document.querySelectorAll('[data-term-id]').forEach(button => button.addEventListener('click', () => {
+    document.body.classList.remove('picker-open');
     state.selectedId = button.dataset.termId;
     renderLibrary();
-    if (window.innerWidth <= 720) document.getElementById('term-detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }));
+  document.getElementById('previous-term')?.addEventListener('click', () => navigateLibraryTerm(-1));
+  document.getElementById('next-term')?.addEventListener('click', () => navigateLibraryTerm(1));
+  document.getElementById('open-term-picker')?.addEventListener('click', openMobileTermPicker);
+  document.getElementById('close-term-picker')?.addEventListener('click', closeMobileTermPicker);
+  document.getElementById('close-term-picker-backdrop')?.addEventListener('click', closeMobileTermPicker);
   bindTermDetail(selected);
+  bindMobileTermSwipe();
   hydrateIcons();
+}
+
+function mobileTermNavMarkup(results, selected) {
+  const index = results.findIndex(term => term.id === selected.id);
+  return `
+    <nav class="mobile-term-nav" aria-label="切换术语">
+      <button class="icon-button" id="previous-term" type="button" aria-label="上一个术语" ${index <= 0 ? 'disabled' : ''}>${icon('chevron-left')}</button>
+      <button class="mobile-term-position" id="open-term-picker" type="button" aria-label="打开术语列表">
+        ${icon('list')}<span><strong>${index + 1} / ${results.length}</strong><small>选择术语</small></span>
+      </button>
+      <button class="icon-button" id="next-term" type="button" aria-label="下一个术语" ${index >= results.length - 1 ? 'disabled' : ''}>${icon('chevron-right')}</button>
+    </nav>
+  `;
+}
+
+function navigateLibraryTerm(offset) {
+  const results = filteredTerms();
+  const currentIndex = results.findIndex(term => term.id === state.selectedId);
+  const nextIndex = Math.min(results.length - 1, Math.max(0, currentIndex + offset));
+  if (nextIndex === currentIndex || nextIndex < 0) return;
+  state.selectedId = results[nextIndex].id;
+  renderLibrary();
+}
+
+function openMobileTermPicker() {
+  const picker = document.getElementById('mobile-term-picker');
+  picker.hidden = false;
+  document.body.classList.add('picker-open');
+  document.getElementById('close-term-picker').focus();
+}
+
+function closeMobileTermPicker() {
+  document.getElementById('mobile-term-picker').hidden = true;
+  document.body.classList.remove('picker-open');
+  document.getElementById('open-term-picker')?.focus();
+}
+
+function bindMobileTermSwipe() {
+  const detail = document.getElementById('term-detail');
+  if (!detail) return;
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+  detail.addEventListener('touchstart', event => {
+    if (event.target.closest('button, input, select, textarea, a')) return;
+    const touch = event.changedTouches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    tracking = true;
+  }, { passive: true });
+  detail.addEventListener('touchend', event => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+    if (Math.abs(deltaX) < 60 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) return;
+    navigateLibraryTerm(deltaX < 0 ? 1 : -1);
+  }, { passive: true });
 }
 
 function termListItem(term) {
@@ -648,7 +801,6 @@ function recentActivityMarkup() {
 }
 
 function renderSettings() {
-  const standalone = window.matchMedia('(display-mode: standalone)').matches;
   const root = document.getElementById('view-root');
   root.innerHTML = `
     <div class="view-header"><div><h1>设置</h1><p>学习节奏、安装、同步与备份</p></div></div>
@@ -679,7 +831,7 @@ function renderSettings() {
           </div>
           ${cloudControlsMarkup()}
           <div class="inline-actions" style="margin-top:12px">
-            <button class="button" id="settings-install" type="button" ${standalone || !state.installPrompt ? 'disabled' : ''}>${icon(standalone ? 'badge-check' : 'download')}${standalone ? '已安装' : '安装到设备'}</button>
+            ${settingsInstallMarkup()}
           </div>
         </section>
         <section class="section-panel">
@@ -710,12 +862,14 @@ function renderSettings() {
 
 function cloudStatusTitle() {
   if (!isCloudConfigured()) return '本机离线模式';
+  if (state.cloudRestoring) return '正在恢复登录';
   if (state.cloudUser) return state.cloudUser.email || '云端已连接';
   return '登录后跨设备同步';
 }
 
 function cloudStatusSubtitle() {
   if (!isCloudConfigured()) return '部署时连接 Supabase 后启用账号同步';
+  if (state.cloudRestoring) return '正在读取此设备保存的登录状态';
   if (state.syncing) return '正在合并本机与云端记录';
   if (state.cloudUser) return '词条、收藏与复习进度已纳入同步';
   return '使用邮箱验证码登录';
@@ -723,6 +877,7 @@ function cloudStatusSubtitle() {
 
 function cloudControlsMarkup() {
   if (!isCloudConfigured()) return '<span class="status-badge">云端未配置</span>';
+  if (state.cloudRestoring) return '<span class="status-badge">请稍候</span>';
   if (state.cloudUser) {
     return `<div class="inline-actions"><button class="button primary" id="sync-now" type="button" ${state.syncing ? 'disabled' : ''}>${icon('refresh-cw')}立即同步</button><button class="button" id="cloud-signout" type="button">退出登录</button></div>`;
   }
@@ -732,6 +887,14 @@ function cloudControlsMarkup() {
       <button class="button primary" type="submit">发送登录链接</button>
     </form>
   `;
+}
+
+function settingsInstallMarkup() {
+  const status = installStatus();
+  if (status === 'installed') return `<button class="button installed-button" id="settings-install" type="button" disabled>${icon('badge-check')}已安装到此设备</button>`;
+  if (status === 'checking') return `<button class="button" id="settings-install" type="button" disabled>${icon('loader-circle')}正在检测</button>`;
+  if (status === 'prompt-ready') return `<button class="button" id="settings-install" type="button">${icon('download')}安装到设备</button>`;
+  return `<button class="button" id="settings-install" type="button">${icon('smartphone')}查看安装方法</button>`;
 }
 
 async function updateSetting(key, value) {
@@ -949,10 +1112,26 @@ async function resetLearning() {
 }
 
 async function installApp() {
-  if (!state.installPrompt) return;
-  state.installPrompt.prompt();
-  await state.installPrompt.userChoice;
+  const status = installStatus();
+  if (status === 'installed') {
+    showToast('此设备已安装应用');
+    return;
+  }
+  if (!state.installPrompt) {
+    showInstallHelp();
+    return;
+  }
+  const prompt = state.installPrompt;
+  prompt.prompt();
+  const choice = await prompt.userChoice;
   state.installPrompt = null;
+  if (choice.outcome === 'accepted') {
+    state.installedApp = true;
+    localStorage.setItem('ue-words-installed', 'true');
+    showToast('应用已安装');
+  } else {
+    showToast('已取消安装');
+  }
   updateChrome();
   if (state.view === 'settings') renderSettings();
 }
@@ -1009,30 +1188,46 @@ function registerPwaEvents() {
     if (state.view === 'settings') renderSettings();
   });
   window.addEventListener('appinstalled', () => {
+    const newlyInstalled = !state.installedApp;
     state.installPrompt = null;
+    state.installedApp = true;
+    state.installChecked = true;
+    localStorage.setItem('ue-words-installed', 'true');
     updateChrome();
-    showToast('应用已安装');
+    if (state.view === 'settings') renderSettings();
+    if (newlyInstalled) showToast('应用已安装');
   });
+  window.matchMedia('(display-mode: standalone)').addEventListener?.('change', refreshInstallStatus);
   if ('serviceWorker' in navigator && import.meta.env.PROD) {
     navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => showToast('离线缓存初始化失败', 'error'));
   }
 }
 
 async function initializeCloud() {
-  state.cloudUser = await getCloudUser();
   onCloudAuthChange(async user => {
     const changed = user?.id !== state.cloudUser?.id;
     state.cloudUser = user;
+    state.cloudRestoring = false;
     updateChrome();
     if (changed && user) await performCloudSync({ quiet: true });
     else if (state.view === 'settings') renderSettings();
   });
+  try {
+    state.cloudUser = await getCloudUser();
+  } catch {
+    state.cloudUser = null;
+  } finally {
+    state.cloudRestoring = false;
+    updateChrome();
+    if (state.view === 'settings') renderSettings();
+  }
   if (state.cloudUser) await performCloudSync({ quiet: true });
 }
 
 async function initialize() {
   renderShell();
   registerPwaEvents();
+  await refreshInstallStatus();
   await hydrate();
   await initializeCloud();
 }
