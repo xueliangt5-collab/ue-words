@@ -44,6 +44,7 @@ const baseCategories = [
   '故障与性能',
   '构建与网络',
   '游戏开发',
+  '性能分析',
   '软件工程',
   '图形与渲染',
   'AI 与数据',
@@ -62,6 +63,7 @@ const state = {
   selectedId: 'actor',
   search: '',
   category: '',
+  threadCategory: '',
   listMode: 'all',
   reviewSession: null,
   reviewRevealed: false,
@@ -83,6 +85,53 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function textList(value) {
+  if (Array.isArray(value)) return value.map(item => String(item || '').trim()).filter(Boolean);
+  const item = String(value || '').trim();
+  return item ? [item] : [];
+}
+
+function identityKey(value) {
+  return String(value || '').normalize('NFKC').toLocaleLowerCase().replace(/[\s:._/\\()[\]{}-]+/g, '');
+}
+
+function termIdentityKeys(term) {
+  return [term.term, term.spokenForm, ...textList(term.aliases)].map(identityKey).filter(Boolean);
+}
+
+function relatedTermRecords(term) {
+  return Array.isArray(term.relatedTerms)
+    ? term.relatedTerms.filter(item => item && typeof item === 'object' && String(item.term || '').trim())
+    : [];
+}
+
+function contextRecords(term) {
+  return Array.isArray(term.contexts)
+    ? term.contexts.filter(item => item && typeof item === 'object' && String(item.phrase || '').trim())
+    : [];
+}
+
+function searchableTermText(term) {
+  const related = relatedTermRecords(term).flatMap(item => [item.term, item.relation, item.explanation]);
+  const contexts = contextRecords(term).flatMap(item => [item.phrase, item.explanation, item.experience]);
+  return [
+    term.term,
+    ...textList(term.aliases),
+    term.spokenForm,
+    term.threadCategory,
+    term.ipa,
+    term.zh,
+    term.definition,
+    term.example,
+    term.exampleZh,
+    term.tags,
+    term.source,
+    ...textList(term.usageNotes),
+    ...related,
+    ...contexts,
+  ].join(' ').toLocaleLowerCase();
+}
+
 function icon(name) {
   return `<i data-lucide="${name}" aria-hidden="true"></i>`;
 }
@@ -93,6 +142,10 @@ function hydrateIcons() {
 
 function allCategories() {
   return [...new Set([...baseCategories, ...state.terms.map(term => term.category).filter(Boolean)])];
+}
+
+function allThreadCategories() {
+  return [...new Set(state.terms.map(term => term.threadCategory).filter(Boolean))].sort((left, right) => left.localeCompare(right, 'en'));
 }
 
 function formatTime(value) {
@@ -209,8 +262,9 @@ function filteredTerms() {
       || (state.listMode === 'favorites' && progress?.favorite)
       || (state.listMode === 'custom' && term.custom);
     const matchesCategory = !state.category || term.category === state.category;
-    const haystack = [term.term, term.ipa, term.zh, term.definition, term.example, term.exampleZh, term.tags].join(' ').toLocaleLowerCase();
-    return matchesMode && matchesCategory && (!query || haystack.includes(query));
+    const matchesThread = !state.threadCategory || term.threadCategory === state.threadCategory;
+    const haystack = searchableTermText(term);
+    return matchesMode && matchesCategory && matchesThread && (!query || haystack.includes(query));
   });
 }
 
@@ -238,6 +292,13 @@ function renderLibrary() {
         <select class="select" id="category-filter">
           <option value="">全部分类</option>
           ${allCategories().map(category => `<option value="${escapeHtml(category)}" ${category === state.category ? 'selected' : ''}>${escapeHtml(category)}</option>`).join('')}
+        </select>
+      </label>
+      <label>
+        <span class="sr-only">线程分类</span>
+        <select class="select" id="thread-filter">
+          <option value="">全部线程</option>
+          ${allThreadCategories().map(category => `<option value="${escapeHtml(category)}" ${category === state.threadCategory ? 'selected' : ''}>${escapeHtml(category)}</option>`).join('')}
         </select>
       </label>
       <div class="segmented-control" aria-label="词条范围">
@@ -272,6 +333,10 @@ function renderLibrary() {
     state.category = event.target.value;
     renderLibrary();
   });
+  document.getElementById('thread-filter').addEventListener('change', event => {
+    state.threadCategory = event.target.value;
+    renderLibrary();
+  });
   document.querySelectorAll('[data-list-mode]').forEach(button => button.addEventListener('click', () => {
     state.listMode = button.dataset.listMode;
     renderLibrary();
@@ -298,18 +363,60 @@ function termListItem(term) {
 
 function termDetailMarkup(term) {
   const progress = state.progressMap.get(term.id);
+  const aliases = textList(term.aliases);
+  const relatedTerms = relatedTermRecords(term);
+  const contexts = contextRecords(term);
+  const usageNotes = textList(term.usageNotes);
   return `
     <div class="term-detail-header">
-      <div><h2>${escapeHtml(term.term)}</h2><p class="term-ipa">${escapeHtml(term.ipa || '暂无音标')}</p></div>
+      <div>
+        <h2>${escapeHtml(term.term)}</h2>
+        <p class="term-ipa">${escapeHtml(term.ipa || (term.spokenForm ? '代码标识符' : '暂无音标'))}</p>
+        ${term.spokenForm ? `<p class="term-spoken">读法：${escapeHtml(term.spokenForm)}</p>` : ''}
+      </div>
       <div class="inline-actions">
         <button class="icon-button ${progress?.favorite ? 'is-active' : ''}" id="favorite-term" type="button" aria-label="${progress?.favorite ? '取消收藏' : '收藏术语'}">${icon('star')}</button>
         <button class="icon-button" id="speak-term" type="button" aria-label="朗读术语">${icon('volume-2')}</button>
       </div>
     </div>
-    <div class="term-meta-row"><span class="term-category">${escapeHtml(term.category)}</span>${term.custom ? '<span class="status-badge">个人词条</span>' : ''}${progress?.reviewCount ? `<span class="status-badge">已复习 ${progress.reviewCount} 次</span>` : '<span class="status-badge">未学习</span>'}</div>
+    <div class="term-meta-row"><span class="term-category">${escapeHtml(term.category)}</span>${term.threadCategory ? `<span class="status-badge">${icon('cpu')}线程：${escapeHtml(term.threadCategory)}</span>` : ''}${term.custom ? '<span class="status-badge">个人词条</span>' : ''}${progress?.reviewCount ? `<span class="status-badge">已复习 ${progress.reviewCount} 次</span>` : '<span class="status-badge">未学习</span>'}</div>
+    ${aliases.length ? `<div class="alias-row"><span>别名</span>${aliases.map(alias => `<code>${escapeHtml(alias)}</code>`).join('')}</div>` : ''}
     <p class="term-meaning">${escapeHtml(term.zh)}</p>
     <p class="term-definition">${escapeHtml(term.definition)}</p>
     ${term.example ? `<div class="example"><p lang="en">${escapeHtml(term.example)}</p>${term.exampleZh ? `<p>${escapeHtml(term.exampleZh)}</p>` : ''}</div>` : ''}
+    ${contexts.length ? `
+      <section class="knowledge-section" aria-label="场景与经验">
+        <h3>${icon('scan-search')}场景与经验</h3>
+        <div class="context-list">
+          ${contexts.map(context => `
+            <article class="context-item">
+              <code class="context-phrase">${escapeHtml(context.phrase)}</code>
+              ${context.explanation ? `<p>${escapeHtml(context.explanation)}</p>` : ''}
+              ${context.experience ? `<p class="experience-note">${icon('lightbulb')}<span>${escapeHtml(context.experience)}</span></p>` : ''}
+            </article>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
+    ${usageNotes.length ? `
+      <section class="knowledge-section" aria-label="使用提示">
+        <h3>${icon('lightbulb')}使用提示</h3>
+        <ul class="usage-note-list">${usageNotes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul>
+      </section>
+    ` : ''}
+    ${relatedTerms.length ? `
+      <section class="knowledge-section" aria-label="关联术语">
+        <h3>${icon('network')}关联术语</h3>
+        <div class="relation-list">
+          ${relatedTerms.map(item => `
+            <button class="relation-button" type="button" data-related-term="${escapeHtml(item.term)}">
+              <span><strong>${escapeHtml(item.term)}</strong>${item.relation ? `<span>${escapeHtml(item.relation)}</span>` : ''}</span>
+              ${item.explanation ? `<small>${escapeHtml(item.explanation)}</small>` : ''}
+            </button>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
     <div class="inline-actions">
       <button class="button primary" id="study-term" type="button">${icon('graduation-cap')}练习这个术语</button>
       ${term.example ? `<button class="button" id="speak-example" type="button">${icon('audio-lines')}朗读例句</button>` : ''}
@@ -320,7 +427,7 @@ function termDetailMarkup(term) {
 
 function bindTermDetail(term) {
   if (!term) return;
-  document.getElementById('speak-term').addEventListener('click', () => speak(term.term));
+  document.getElementById('speak-term').addEventListener('click', () => speak(term.spokenForm || term.term));
   document.getElementById('favorite-term').addEventListener('click', () => toggleFavorite(term));
   document.getElementById('study-term').addEventListener('click', () => {
     state.view = 'review';
@@ -331,6 +438,16 @@ function bindTermDetail(term) {
   document.getElementById('speak-example')?.addEventListener('click', () => speak(term.example));
   document.getElementById('edit-term')?.addEventListener('click', () => openTermDialog(term));
   document.getElementById('delete-term')?.addEventListener('click', () => removeCustomTerm(term));
+  document.querySelectorAll('[data-related-term]').forEach(button => button.addEventListener('click', () => {
+    const targetKey = identityKey(button.dataset.relatedTerm);
+    const target = state.terms.find(item => termIdentityKeys(item).includes(targetKey));
+    state.search = target ? '' : button.dataset.relatedTerm;
+    state.category = '';
+    state.threadCategory = '';
+    state.listMode = 'all';
+    if (target) state.selectedId = target.id;
+    renderLibrary();
+  }));
 }
 
 async function toggleFavorite(term) {
@@ -687,7 +804,9 @@ async function submitTerm(event) {
     document.getElementById('term-form-error').textContent = `“${duplicate.term}” 已存在于词库中。`;
     return;
   }
+  const existing = id ? state.customTerms.find(term => term.id === id) : null;
   const saved = await saveCustomTerm({
+    ...existing,
     id: id || `custom-${crypto.randomUUID()}`,
     term: name,
     zh: document.getElementById('term-zh').value.trim(),
@@ -765,7 +884,10 @@ async function importBackup(event) {
 }
 
 async function importGlossaryTerms(terms) {
-  const knownTerms = new Map(state.terms.map(term => [term.term.toLocaleLowerCase(), term]));
+  const knownTerms = new Map();
+  for (const term of state.terms) {
+    for (const key of termIdentityKeys(term)) knownTerms.set(key, term);
+  }
   let saved = 0;
   let skipped = 0;
 
@@ -776,7 +898,8 @@ async function importGlossaryTerms(terms) {
     const definition = String(rawTerm.definition || '').trim();
     if (!term || !zh || !definition) throw new Error(`第 ${index + 1} 个术语缺少英文、中文或解释`);
 
-    const duplicate = knownTerms.get(term.toLocaleLowerCase());
+    const aliases = textList(rawTerm.aliases);
+    const duplicate = [term, ...aliases].map(identityKey).map(key => knownTerms.get(key)).find(Boolean);
     if (duplicate && !duplicate.custom) {
       skipped += 1;
       continue;
@@ -792,9 +915,24 @@ async function importGlossaryTerms(terms) {
       example: String(rawTerm.example || '').trim(),
       exampleZh: String(rawTerm.exampleZh || '').trim(),
       tags: Array.isArray(rawTerm.tags) ? rawTerm.tags.join(' ') : String(rawTerm.tags || '').trim(),
+      spokenForm: String(rawTerm.spokenForm || '').trim(),
+      threadCategory: String(rawTerm.threadCategory || '').trim(),
+      source: String(rawTerm.source || '').trim(),
+      aliases,
+      relatedTerms: relatedTermRecords(rawTerm).map(item => ({
+        term: String(item.term || '').trim(),
+        relation: String(item.relation || '').trim(),
+        explanation: String(item.explanation || '').trim(),
+      })),
+      contexts: contextRecords(rawTerm).map(item => ({
+        phrase: String(item.phrase || '').trim(),
+        explanation: String(item.explanation || '').trim(),
+        experience: String(item.experience || '').trim(),
+      })),
+      usageNotes: textList(rawTerm.usageNotes),
     };
     const stored = await saveCustomTerm(record);
-    knownTerms.set(term.toLocaleLowerCase(), stored);
+    for (const key of termIdentityKeys(stored)) knownTerms.set(key, stored);
     saved += 1;
   }
 

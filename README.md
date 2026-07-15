@@ -7,6 +7,7 @@
 ## 已实现
 
 - 69 条 UE、蓝图、渲染、动画、游戏测试、性能与网络基础术语
+- 73 条 Unreal Insights 计时项，保留线程分类、读法、分析经验和关联术语
 - 中英文全文搜索、分类筛选、收藏和个人词条
 - 系统英语语音、可调语速、术语与例句朗读
 - FSRS 间隔重复、英中/中英双向复习、每日新词数量
@@ -44,4 +45,5 @@ pnpm run preview
 
 - 单个词：在“词库”中选择“添加术语”。
 - 批量私人导入：使用“设置 -> 导入词库或备份”，选择 `ue-game-glossary` JSON 文件。
-- Codex 自动收录：使用项目附带的 `$collect-terms` 技能。公开模式会更新 `src/imported-terms.json` 并触发网站部署；私人模式只生成导入包。
+- Codex 自动收录：使用项目附带的 `$collect-terms` 技能。普通技术术语默认自动完善并发布；私人模式只生成导入包。
+- Insights CSV：支持 `TimerName / Category / Explanation_CN` 三列结构；`Category` 保存为线程分类，不会误拆成第二个词条。

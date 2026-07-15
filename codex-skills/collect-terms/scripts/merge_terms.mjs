@@ -33,6 +33,38 @@ function text(value) {
   return String(value ?? '').trim();
 }
 
+function textList(value) {
+  if (Array.isArray(value)) return value.map(text).filter(Boolean);
+  const item = text(value);
+  return item ? [item] : [];
+}
+
+function identityKey(value) {
+  return text(value).normalize('NFKC').toLocaleLowerCase().replace(/[\s:._/\\()[\]{}-]+/g, '');
+}
+
+function termIdentityKeys(term) {
+  return [term.term, term.spokenForm, ...textList(term.aliases)].map(identityKey).filter(Boolean);
+}
+
+function normalizeRelatedTerms(value) {
+  return Array.isArray(value) ? value
+    .filter(item => item && typeof item === 'object' && text(item.term))
+    .map(item => ({ term: text(item.term), relation: text(item.relation), explanation: text(item.explanation) })) : [];
+}
+
+function normalizeContexts(value) {
+  return Array.isArray(value) ? value
+    .filter(item => item && typeof item === 'object' && text(item.phrase))
+    .map(item => ({ phrase: text(item.phrase), explanation: text(item.explanation), experience: text(item.experience) })) : [];
+}
+
+function uniqueBy(values, keyFor) {
+  const result = new Map();
+  for (const value of values) result.set(keyFor(value), value);
+  return [...result.values()];
+}
+
 function normalizeId(value, term) {
   const candidate = text(value).toLowerCase();
   return /^[a-z0-9][a-z0-9-]*$/.test(candidate) ? candidate : slugify(term);
@@ -58,6 +90,13 @@ function normalizeTerm(raw, index) {
     example: text(raw.example),
     exampleZh: text(raw.exampleZh),
     tags: Array.isArray(raw.tags) ? raw.tags.map(text).filter(Boolean).join(' ') : text(raw.tags),
+    spokenForm: text(raw.spokenForm),
+    threadCategory: text(raw.threadCategory),
+    source: text(raw.source),
+    aliases: textList(raw.aliases),
+    relatedTerms: normalizeRelatedTerms(raw.relatedTerms),
+    contexts: normalizeContexts(raw.contexts),
+    usageNotes: textList(raw.usageNotes),
   };
 }
 
@@ -108,31 +147,50 @@ if (args['package-output']) {
   const coreSource = await readFile(corePath, 'utf8');
   const coreNames = new Set(
     [...coreSource.matchAll(/term:'((?:\\'|[^'])+)'/g)]
-      .map(match => match[1].replace(/\\'/g, "'").toLocaleLowerCase()),
+      .map(match => identityKey(match[1].replace(/\\'/g, "'"))),
   );
-  const byName = new Map(existing.map(term => [text(term.term).toLocaleLowerCase(), normalizeTerm(term, 0)]));
+  const records = new Map(existing.map(term => {
+    const normalized = normalizeTerm(term, 0);
+    return [normalized.id, normalized];
+  }));
+  const identityIndex = new Map();
+  for (const record of records.values()) {
+    for (const key of termIdentityKeys(record)) identityIndex.set(key, record);
+  }
   const usedIds = new Set(existing.map(term => text(term.id)).filter(Boolean));
   let added = 0;
   let updated = 0;
   let skipped = 0;
 
   for (const term of incoming) {
-    const key = term.term.toLocaleLowerCase();
-    if (coreNames.has(key)) {
+    const keys = termIdentityKeys(term);
+    if (keys.some(key => coreNames.has(key))) {
       skipped += 1;
       continue;
     }
-    const current = byName.get(key);
+    const current = keys.map(key => identityIndex.get(key)).find(Boolean);
     if (current) {
-      byName.set(key, { ...term, id: current.id });
+      const merged = {
+        ...current,
+        ...term,
+        id: current.id,
+        aliases: uniqueBy([...current.aliases, ...term.aliases], identityKey),
+        relatedTerms: uniqueBy([...current.relatedTerms, ...term.relatedTerms], item => `${identityKey(item.term)}|${identityKey(item.relation)}`),
+        contexts: uniqueBy([...current.contexts, ...term.contexts], item => identityKey(item.phrase)),
+        usageNotes: uniqueBy([...current.usageNotes, ...term.usageNotes], identityKey),
+      };
+      records.set(current.id, merged);
+      for (const key of termIdentityKeys(merged)) identityIndex.set(key, merged);
       updated += 1;
       continue;
     }
-    byName.set(key, { ...term, id: uniqueId(term.id, usedIds) });
+    const addedTerm = { ...term, id: uniqueId(term.id, usedIds) };
+    records.set(addedTerm.id, addedTerm);
+    for (const key of termIdentityKeys(addedTerm)) identityIndex.set(key, addedTerm);
     added += 1;
   }
 
-  const merged = [...byName.values()].sort((left, right) => left.term.localeCompare(right.term, 'en'));
+  const merged = [...records.values()].sort((left, right) => left.term.localeCompare(right.term, 'en'));
   await writeJson(targetPath, merged, args.dryRun);
   console.log(JSON.stringify({ mode: 'published', target: targetPath, added, updated, skipped, total: merged.length, dryRun: Boolean(args.dryRun) }));
 }

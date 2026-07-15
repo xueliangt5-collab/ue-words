@@ -1,1 +1,2115 @@
-[]
+[
+  {
+    "id": "imported-akaudiodevice",
+    "term": "AkAudioDevice",
+    "ipa": "",
+    "zh": "Wwise 音频设备",
+    "category": "性能分析",
+    "definition": "Wwise 音频设备管理。",
+    "example": "Inspect AkAudioDevice in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 AkAudioDevice。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Ak Audio Device",
+    "spokenForm": "Ak Audio Device",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 AkAudioDevice 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-akcomponent-tickcomponent",
+    "term": "AkComponent::TickComponent",
+    "ipa": "",
+    "zh": "Wwise 组件 Tick",
+    "category": "性能分析",
+    "definition": "Wwise 音频组件 Tick。",
+    "example": "Inspect AkComponent::TickComponent in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 AkComponent::TickComponent。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Ak Component Tick Component",
+    "spokenForm": "Ak Component Tick Component",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "AkComponent::TickComponent 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 AkComponent::TickComponent 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-basepass",
+    "term": "Basepass",
+    "ipa": "/beɪs pæs/",
+    "zh": "基础通道",
+    "category": "性能分析",
+    "definition": "主渲染通道。",
+    "example": "Inspect Basepass on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Basepass。",
+    "tags": "Unreal Insights timer 性能分析 GPU Basepass",
+    "spokenForm": "Basepass",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Base Pass"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Basepass 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "画几何体的颜色/法线/材质。"
+    ]
+  },
+  {
+    "id": "imported-beginframe-endframe",
+    "term": "BeginFrame + EndFrame",
+    "ipa": "",
+    "zh": "帧起止标记",
+    "category": "性能分析",
+    "definition": "帧开始和结束的标记。",
+    "example": "Inspect BeginFrame + EndFrame in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 BeginFrame + EndFrame。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Begin Frame End Frame",
+    "spokenForm": "Begin Frame End Frame",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 BeginFrame + EndFrame 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "CSV 中 FrameTime 从这算。"
+    ]
+  },
+  {
+    "id": "imported-charactermovement",
+    "term": "CharacterMovement",
+    "ipa": "/ˈkærəktər ˈmuːvmənt/",
+    "zh": "角色移动",
+    "category": "性能分析",
+    "definition": "角色移动组件。",
+    "example": "Inspect CharacterMovement in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 CharacterMovement。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Character Movement",
+    "spokenForm": "Character Movement",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Character Movement"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 CharacterMovement 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "MoveComponent 在这里。"
+    ]
+  },
+  {
+    "id": "imported-computelightgrid",
+    "term": "ComputeLightGrid",
+    "ipa": "",
+    "zh": "光照网格计算",
+    "category": "性能分析",
+    "definition": "计算光照网格。",
+    "example": "Inspect ComputeLightGrid when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 ComputeLightGrid。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Compute Light Grid",
+    "spokenForm": "Compute Light Grid",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 ComputeLightGrid 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "Forward+ 渲染用。"
+    ]
+  },
+  {
+    "id": "imported-conditionalfinishloading",
+    "term": "ConditionalFinishLoading",
+    "ipa": "",
+    "zh": "条件性完成加载",
+    "category": "性能分析",
+    "definition": "条件性等待加载完成。",
+    "example": "Inspect ConditionalFinishLoading in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ConditionalFinishLoading。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Conditional Finish Loading",
+    "spokenForm": "Conditional Finish Loading",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 ConditionalFinishLoading 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-d3d12-allocatepoolresource",
+    "term": "D3D12_AllocatePoolResource",
+    "ipa": "",
+    "zh": "分配 D3D12 池资源",
+    "category": "性能分析",
+    "definition": "从 GPU 资源池分配（D3D12）。",
+    "example": "Inspect D3D12_AllocatePoolResource when the RHI Thread stalls.",
+    "exampleZh": "当 RHI 线程发生阻塞时，检查 D3D12_AllocatePoolResource。",
+    "tags": "Unreal Insights timer 性能分析 RHIThread D3 D12 Allocate Pool Resource",
+    "spokenForm": "D3 D12 Allocate Pool Resource",
+    "threadCategory": "RHIThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RHIThread",
+        "explanation": "CSV 将 D3D12_AllocatePoolResource 归入 RHIThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-d3d12-createbuffer",
+    "term": "D3D12_CreateBuffer",
+    "ipa": "",
+    "zh": "创建 D3D12 缓冲区",
+    "category": "性能分析",
+    "definition": "创建 GPU Buffer（D3D12 后端）。",
+    "example": "Inspect D3D12_CreateBuffer when the RHI Thread stalls.",
+    "exampleZh": "当 RHI 线程发生阻塞时，检查 D3D12_CreateBuffer。",
+    "tags": "Unreal Insights timer 性能分析 RHIThread D3 D12 Create Buffer",
+    "spokenForm": "D3 D12 Create Buffer",
+    "threadCategory": "RHIThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RHIThread",
+        "explanation": "CSV 将 D3D12_CreateBuffer 归入 RHIThread 线程或轨道分类。",
+        "experience": "帧内频繁创建 GPU Buffer 容易产生尖峰，优先复用、池化或提前创建资源。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-event-deferredpostload",
+    "term": "Event_DeferredPostLoad",
+    "ipa": "",
+    "zh": "延迟后加载初始化",
+    "category": "性能分析",
+    "definition": "资产加载后的初始化。",
+    "example": "Inspect Event_DeferredPostLoad in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Event_DeferredPostLoad。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Event Deferred Post Load",
+    "spokenForm": "Event Deferred Post Load",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Event_DeferredPostLoad 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "CDO 构建等。"
+    ]
+  },
+  {
+    "id": "imported-fasyncloadingthread",
+    "term": "FAsyncLoadingThread",
+    "ipa": "",
+    "zh": "异步加载线程",
+    "category": "性能分析",
+    "definition": "异步加载线程。",
+    "example": "Inspect FAsyncLoadingThread in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FAsyncLoadingThread。",
+    "tags": "Unreal Insights timer 性能分析 AsyncLoading F Async Loading Thread",
+    "spokenForm": "F Async Loading Thread",
+    "threadCategory": "AsyncLoading",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "ProcessAsyncLoading",
+        "relation": "性能分析关联",
+        "explanation": "FAsyncLoadingThread 与 ProcessAsyncLoading 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "IoDispatcher",
+        "relation": "性能分析关联",
+        "explanation": "FAsyncLoadingThread 与 IoDispatcher 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · AsyncLoading",
+        "explanation": "CSV 将 FAsyncLoadingThread 归入 AsyncLoading 线程或轨道分类。",
+        "experience": "持续偏高时，检查磁盘读取、解压、资源依赖和加载完成后的主线程工作。"
+      }
+    ],
+    "usageNotes": [
+      "读磁盘/解压资产。"
+    ]
+  },
+  {
+    "id": "imported-fasynctask-synccompletion",
+    "term": "FAsyncTask::SyncCompletion",
+    "ipa": "",
+    "zh": "异步任务同步完成",
+    "category": "性能分析",
+    "definition": "等待异步任务完成的同步点。",
+    "example": "Inspect FAsyncTask::SyncCompletion when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 FAsyncTask::SyncCompletion。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread F Async Task Sync Completion",
+    "spokenForm": "F Async Task Sync Completion",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 FAsyncTask::SyncCompletion 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-fengineloop-tick",
+    "term": "FEngineLoop::Tick",
+    "ipa": "",
+    "zh": "引擎主循环 Tick",
+    "category": "性能分析",
+    "definition": "引擎主循环，每帧执行一次。",
+    "example": "Inspect FEngineLoop::Tick in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FEngineLoop::Tick。",
+    "tags": "Unreal Insights timer 性能分析 GameThread F Engine Loop Tick",
+    "spokenForm": "F Engine Loop Tick",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "FEngineLoop::Tick 与 Tick 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "WorldTick",
+        "relation": "性能分析关联",
+        "explanation": "FEngineLoop::Tick 与 WorldTick 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "TickActors",
+        "relation": "性能分析关联",
+        "explanation": "FEngineLoop::Tick 与 TickActors 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 FEngineLoop::Tick 归入 GameThread 线程或轨道分类。",
+        "experience": "卡顿时先用它定位游戏线程慢帧，再展开子事件；顶层耗时高不代表主循环本身就是根因。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-fileio",
+    "term": "FileIO",
+    "ipa": "",
+    "zh": "文件 I/O",
+    "category": "性能分析",
+    "definition": "文件 IO 统计。",
+    "example": "Inspect FileIO in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FileIO。",
+    "tags": "Unreal Insights timer 性能分析 IO File I O",
+    "spokenForm": "File I O",
+    "threadCategory": "IO",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "File I/O"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · IO",
+        "explanation": "CSV 将 FileIO 归入 IO 线程或轨道分类。",
+        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-flushasyncloading",
+    "term": "FlushAsyncLoading",
+    "ipa": "",
+    "zh": "等待异步加载完成",
+    "category": "性能分析",
+    "definition": "等待所有异步加载完成。",
+    "example": "Inspect FlushAsyncLoading in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FlushAsyncLoading。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Flush Async Loading",
+    "spokenForm": "Flush Async Loading",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "ProcessAsyncLoading",
+        "relation": "性能分析关联",
+        "explanation": "FlushAsyncLoading 与 ProcessAsyncLoading 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "ConditionalFinishLoading",
+        "relation": "性能分析关联",
+        "explanation": "FlushAsyncLoading 与 ConditionalFinishLoading 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 FlushAsyncLoading 归入 GameThread 线程或轨道分类。",
+        "experience": "显式等待会把异步工作重新变成同步阻塞，应追查调用位置和触发条件。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-foreachobjectofclass",
+    "term": "ForEachObjectOfClass",
+    "ipa": "",
+    "zh": "遍历类实例",
+    "category": "性能分析",
+    "definition": "遍历某类所有实例。",
+    "example": "Inspect ForEachObjectOfClass in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ForEachObjectOfClass。",
+    "tags": "Unreal Insights timer 性能分析 GameThread For Each Object Of Class",
+    "spokenForm": "For Each Object Of Class",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 ForEachObjectOfClass 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "GC/验证用。"
+    ]
+  },
+  {
+    "id": "imported-frendercommandfence-beginfence",
+    "term": "FRenderCommandFence::BeginFence",
+    "ipa": "",
+    "zh": "插入渲染命令栅栏",
+    "category": "性能分析",
+    "definition": "插入渲染命令栅栏。",
+    "example": "Inspect FRenderCommandFence::BeginFence in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandFence::BeginFence。",
+    "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Fence Begin Fence",
+    "spokenForm": "F Render Command Fence Begin Fence",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 FRenderCommandFence::BeginFence 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "确保顺序。"
+    ]
+  },
+  {
+    "id": "imported-frendercommandpipe-startrecording",
+    "term": "FRenderCommandPipe_StartRecording",
+    "ipa": "",
+    "zh": "开始记录渲染命令",
+    "category": "性能分析",
+    "definition": "开始记录渲染命令管道。",
+    "example": "Inspect FRenderCommandPipe_StartRecording in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandPipe_StartRecording。",
+    "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Pipe Start Recording",
+    "spokenForm": "F Render Command Pipe Start Recording",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 FRenderCommandPipe_StartRecording 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-frendercommandpipe-stoprecording",
+    "term": "FRenderCommandPipe_StopRecording",
+    "ipa": "",
+    "zh": "停止记录渲染命令",
+    "category": "性能分析",
+    "definition": "停止记录渲染命令管道。",
+    "example": "Inspect FRenderCommandPipe_StopRecording in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandPipe_StopRecording。",
+    "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Pipe Stop Recording",
+    "spokenForm": "F Render Command Pipe Stop Recording",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 FRenderCommandPipe_StopRecording 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-fxsystem",
+    "term": "FXSystem",
+    "ipa": "",
+    "zh": "特效系统",
+    "category": "性能分析",
+    "definition": "特效系统提交 Cascade/Niagara。",
+    "example": "Inspect FXSystem when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 FXSystem。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread F X System",
+    "spokenForm": "F X System",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 FXSystem 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-gamethreadwaitfortask",
+    "term": "GameThreadWaitForTask",
+    "ipa": "",
+    "zh": "游戏线程等待任务",
+    "category": "性能分析",
+    "definition": "游戏线程等待异步任务。",
+    "example": "Inspect GameThreadWaitForTask in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 GameThreadWaitForTask。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Game Thread Wait For Task",
+    "spokenForm": "Game Thread Wait For Task",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "WaitForTasks",
+        "relation": "性能分析关联",
+        "explanation": "GameThreadWaitForTask 与 WaitForTasks 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "TaskGraph",
+        "relation": "性能分析关联",
+        "explanation": "GameThreadWaitForTask 与 TaskGraph 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 GameThreadWaitForTask 归入 GameThread 线程或轨道分类。",
+        "experience": "这里高通常代表游戏线程在等其他任务，不要只优化等待函数本身，要追踪被等待的任务。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-gc",
+    "term": "GC",
+    "ipa": "",
+    "zh": "垃圾回收",
+    "category": "性能分析",
+    "definition": "垃圾回收。",
+    "example": "Inspect GC in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 GC。",
+    "tags": "Unreal Insights timer 性能分析 GameThread G C",
+    "spokenForm": "G C",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 GC 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "标记-清除-销毁循环。"
+    ]
+  },
+  {
+    "id": "imported-initviews",
+    "term": "InitViews",
+    "ipa": "",
+    "zh": "视图初始化",
+    "category": "性能分析",
+    "definition": "初始化视图。",
+    "example": "Inspect InitViews when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 InitViews。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Init Views",
+    "spokenForm": "Init Views",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 InitViews 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "剔除/可见性/LOD 计算。"
+    ]
+  },
+  {
+    "id": "imported-iodispatcher",
+    "term": "IoDispatcher",
+    "ipa": "",
+    "zh": "I/O 调度器",
+    "category": "性能分析",
+    "definition": "文件 IO 调度线程。",
+    "example": "Inspect IoDispatcher in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 IoDispatcher。",
+    "tags": "Unreal Insights timer 性能分析 IO Io Dispatcher",
+    "spokenForm": "Io Dispatcher",
+    "threadCategory": "IO",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "IO Dispatcher"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · IO",
+        "explanation": "CSV 将 IoDispatcher 归入 IO 线程或轨道分类。",
+        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+      }
+    ],
+    "usageNotes": [
+      "管理读取请求。"
+    ]
+  },
+  {
+    "id": "imported-ioservice",
+    "term": "IoService",
+    "ipa": "",
+    "zh": "I/O 服务",
+    "category": "性能分析",
+    "definition": "文件 IO 执行线程。",
+    "example": "Inspect IoService in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 IoService。",
+    "tags": "Unreal Insights timer 性能分析 IO Io Service",
+    "spokenForm": "Io Service",
+    "threadCategory": "IO",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "IO Service"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · IO",
+        "explanation": "CSV 将 IoService 归入 IO 线程或轨道分类。",
+        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+      }
+    ],
+    "usageNotes": [
+      "实际读磁盘。"
+    ]
+  },
+  {
+    "id": "imported-latentaction",
+    "term": "LatentAction",
+    "ipa": "",
+    "zh": "潜在动作管理器",
+    "category": "性能分析",
+    "definition": "Latent Action 管理器。",
+    "example": "Inspect LatentAction in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LatentAction。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Latent Action",
+    "spokenForm": "Latent Action",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 LatentAction 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "Delay 节点等。"
+    ]
+  },
+  {
+    "id": "imported-levelstreaming",
+    "term": "LevelStreaming",
+    "ipa": "/ˈlevəl ˈstriːmɪŋ/",
+    "zh": "关卡流送",
+    "category": "性能分析",
+    "definition": "关卡流送。",
+    "example": "Inspect LevelStreaming in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LevelStreaming。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Level Streaming",
+    "spokenForm": "Level Streaming",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Level Streaming"
+    ],
+    "relatedTerms": [
+      {
+        "term": "StreamableManager",
+        "relation": "性能分析关联",
+        "explanation": "LevelStreaming 与 StreamableManager 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "LoadPackage",
+        "relation": "性能分析关联",
+        "explanation": "LevelStreaming 与 LoadPackage 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 LevelStreaming 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "LoadStreamLevel/UnloadStreamLevel。"
+    ]
+  },
+  {
+    "id": "imported-loadobject",
+    "term": "LoadObject",
+    "ipa": "",
+    "zh": "加载对象",
+    "category": "性能分析",
+    "definition": "加载 UObject 资产。",
+    "example": "Inspect LoadObject in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LoadObject。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Load Object",
+    "spokenForm": "Load Object",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 LoadObject 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "同步加载。"
+    ]
+  },
+  {
+    "id": "imported-loadpackage",
+    "term": "LoadPackage",
+    "ipa": "",
+    "zh": "同步加载资源包",
+    "category": "性能分析",
+    "definition": "同步加载 Package（关卡/资产）。",
+    "example": "Inspect LoadPackage in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LoadPackage。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Load Package",
+    "spokenForm": "Load Package",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "LoadObject",
+        "relation": "性能分析关联",
+        "explanation": "LoadPackage 与 LoadObject 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "ProcessAsyncLoading",
+        "relation": "性能分析关联",
+        "explanation": "LoadPackage 与 ProcessAsyncLoading 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "FlushAsyncLoading",
+        "relation": "性能分析关联",
+        "explanation": "LoadPackage 与 FlushAsyncLoading 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 LoadPackage 归入 GameThread 线程或轨道分类。",
+        "experience": "出现尖峰时检查是否在游戏线程进行了同步加载；优先改为异步加载或提前预热。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-lumen",
+    "term": "Lumen",
+    "ipa": "/ˈluːmən/",
+    "zh": "动态全局光照",
+    "category": "性能分析",
+    "definition": "动态全局光照 Lumen。",
+    "example": "Inspect Lumen on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Lumen。",
+    "tags": "Unreal Insights timer 性能分析 GPU Lumen",
+    "spokenForm": "Lumen",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Lumen 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-mediatextureresource",
+    "term": "MediaTextureResource",
+    "ipa": "",
+    "zh": "媒体纹理资源",
+    "category": "性能分析",
+    "definition": "视频/媒体纹理更新。",
+    "example": "Inspect MediaTextureResource on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 MediaTextureResource。",
+    "tags": "Unreal Insights timer 性能分析 GPU Media Texture Resource",
+    "spokenForm": "Media Texture Resource",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Media Texture Resource"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 MediaTextureResource 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-mergeintolocalqueue",
+    "term": "MergeIntoLocalQueue",
+    "ipa": "",
+    "zh": "合并到本地队列",
+    "category": "性能分析",
+    "definition": "RenderCommand 通道。",
+    "example": "Inspect MergeIntoLocalQueue in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 MergeIntoLocalQueue。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Merge Into Local Queue",
+    "spokenForm": "Merge Into Local Queue",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 MergeIntoLocalQueue 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "游戏线程提交渲染命令。"
+    ]
+  },
+  {
+    "id": "imported-nanite",
+    "term": "Nanite",
+    "ipa": "",
+    "zh": "虚拟几何体",
+    "category": "性能分析",
+    "definition": "虚拟几何体 Nanite。",
+    "example": "Inspect Nanite on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Nanite。",
+    "tags": "Unreal Insights timer 性能分析 GPU Nanite",
+    "spokenForm": "Nanite",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Nanite 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "自动 LOD 替代。"
+    ]
+  },
+  {
+    "id": "imported-pakprecacher",
+    "term": "PakPrecacher",
+    "ipa": "",
+    "zh": "Pak 预缓存器",
+    "category": "性能分析",
+    "definition": ".pak 文件预缓存。",
+    "example": "Inspect PakPrecacher in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 PakPrecacher。",
+    "tags": "Unreal Insights timer 性能分析 IO Pak Precacher",
+    "spokenForm": "Pak Precacher",
+    "threadCategory": "IO",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · IO",
+        "explanation": "CSV 将 PakPrecacher 归入 IO 线程或轨道分类。",
+        "experience": "命中率低或 Seek 频繁时，检查资源布局、预取范围和磁盘读取模式。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-parallelfor",
+    "term": "ParallelFor",
+    "ipa": "/ˈpærəlel fɔːr/",
+    "zh": "并行 For 循环",
+    "category": "性能分析",
+    "definition": "并行 for 循环。",
+    "example": "Inspect ParallelFor in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ParallelFor。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Parallel For",
+    "spokenForm": "Parallel For",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 ParallelFor 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "多个 worker 同时干活。"
+    ]
+  },
+  {
+    "id": "imported-physics",
+    "term": "Physics",
+    "ipa": "/ˈfɪzɪks/",
+    "zh": "物理模拟",
+    "category": "性能分析",
+    "definition": "物理模拟。",
+    "example": "Inspect Physics in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Physics。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Physics",
+    "spokenForm": "Physics",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Physics 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "Chaos Physics 计算在这里。"
+    ]
+  },
+  {
+    "id": "imported-postprocessing",
+    "term": "PostProcessing",
+    "ipa": "/poʊst ˈprɑːsesɪŋ/",
+    "zh": "后处理",
+    "category": "性能分析",
+    "definition": "后处理。",
+    "example": "Inspect PostProcessing on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 PostProcessing。",
+    "tags": "Unreal Insights timer 性能分析 GPU Post Processing",
+    "spokenForm": "Post Processing",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Post Processing"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 PostProcessing 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "Bloom/DOF/Tonemapping/TAA。"
+    ]
+  },
+  {
+    "id": "imported-preparedistancefield",
+    "term": "PrepareDistanceField",
+    "ipa": "",
+    "zh": "准备距离场",
+    "category": "性能分析",
+    "definition": "准备距离场数据。",
+    "example": "Inspect PrepareDistanceField when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 PrepareDistanceField。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Prepare Distance Field",
+    "spokenForm": "Prepare Distance Field",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 PrepareDistanceField 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "DFAO/DFShadow 用。"
+    ]
+  },
+  {
+    "id": "imported-prepass",
+    "term": "Prepass",
+    "ipa": "/ˈpriːpæs/",
+    "zh": "深度预通道",
+    "category": "性能分析",
+    "definition": "深度预通道。",
+    "example": "Inspect Prepass on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Prepass。",
+    "tags": "Unreal Insights timer 性能分析 GPU Prepass",
+    "spokenForm": "Prepass",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Pre Pass"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Prepass 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "先画深度再画颜色减少 overdraw。"
+    ]
+  },
+  {
+    "id": "imported-processasyncloading",
+    "term": "ProcessAsyncLoading",
+    "ipa": "",
+    "zh": "异步加载完成处理",
+    "category": "性能分析",
+    "definition": "处理异步加载完成的资产。",
+    "example": "Inspect ProcessAsyncLoading in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ProcessAsyncLoading。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Process Async Loading",
+    "spokenForm": "Process Async Loading",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "FAsyncLoadingThread",
+        "relation": "性能分析关联",
+        "explanation": "ProcessAsyncLoading 与 FAsyncLoadingThread 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "StreamableManager",
+        "relation": "性能分析关联",
+        "explanation": "ProcessAsyncLoading 与 StreamableManager 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 ProcessAsyncLoading 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-psoprecompilepool",
+    "term": "PSOPrecompilePool",
+    "ipa": "",
+    "zh": "PSO 预编译池",
+    "category": "性能分析",
+    "definition": "PSO 预编译线程池。",
+    "example": "Inspect PSOPrecompilePool in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 PSOPrecompilePool。",
+    "tags": "Unreal Insights timer 性能分析 AsyncWorker P S O Precompile Pool",
+    "spokenForm": "P S O Precompile Pool",
+    "threadCategory": "AsyncWorker",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · AsyncWorker",
+        "explanation": "CSV 将 PSOPrecompilePool 归入 AsyncWorker 线程或轨道分类。",
+        "experience": "检查任务是否过多、粒度是否过小，以及是否最终造成主线程等待。"
+      }
+    ],
+    "usageNotes": [
+      "首次运行预编译 PSO。"
+    ]
+  },
+  {
+    "id": "imported-rdg-execute",
+    "term": "RDG_Execute",
+    "ipa": "",
+    "zh": "执行渲染依赖图",
+    "category": "性能分析",
+    "definition": "执行渲染依赖图 RDG。",
+    "example": "Inspect RDG_Execute when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 RDG_Execute。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread R D G Execute",
+    "spokenForm": "R D G Execute",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Renderer_RDG",
+        "relation": "性能分析关联",
+        "explanation": "RDG_Execute 与 Renderer_RDG 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "InitViews",
+        "relation": "性能分析关联",
+        "explanation": "RDG_Execute 与 InitViews 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 RDG_Execute 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "所有 GPU Pass 在 RDG 里调度。"
+    ]
+  },
+  {
+    "id": "imported-renderer-rdg",
+    "term": "Renderer_RDG",
+    "ipa": "",
+    "zh": "RDG 渲染器",
+    "category": "性能分析",
+    "definition": "RDG 核心。",
+    "example": "Inspect Renderer_RDG when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 Renderer_RDG。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Renderer R D G",
+    "spokenForm": "Renderer R D G",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "RDG_Execute",
+        "relation": "性能分析关联",
+        "explanation": "Renderer_RDG 与 RDG_Execute 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 Renderer_RDG 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "所有渲染 Pass 在这之下。"
+    ]
+  },
+  {
+    "id": "imported-rhicmdlist-flush",
+    "term": "RHICmdList_Flush",
+    "ipa": "",
+    "zh": "刷新 RHI 命令列表",
+    "category": "性能分析",
+    "definition": "刷新渲染命令队列。",
+    "example": "Inspect RHICmdList_Flush when the RHI Thread stalls.",
+    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHICmdList_Flush。",
+    "tags": "Unreal Insights timer 性能分析 RHIThread R H I Cmd List Flush",
+    "spokenForm": "R H I Cmd List Flush",
+    "threadCategory": "RHIThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "RHICmdList_Submit",
+        "relation": "性能分析关联",
+        "explanation": "RHICmdList_Flush 与 RHICmdList_Submit 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "RHIThread_Submit",
+        "relation": "性能分析关联",
+        "explanation": "RHICmdList_Flush 与 RHIThread_Submit 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RHIThread",
+        "explanation": "CSV 将 RHICmdList_Flush 归入 RHIThread 线程或轨道分类。",
+        "experience": "频繁 Flush 会减少并行度；检查资源创建、读回或显式同步是否发生在帧内。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-rhicmdlist-submit",
+    "term": "RHICmdList_Submit",
+    "ipa": "",
+    "zh": "提交 RHI 命令列表",
+    "category": "性能分析",
+    "definition": "提交一批渲染命令给驱动。",
+    "example": "Inspect RHICmdList_Submit when the RHI Thread stalls.",
+    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHICmdList_Submit。",
+    "tags": "Unreal Insights timer 性能分析 RHIThread R H I Cmd List Submit",
+    "spokenForm": "R H I Cmd List Submit",
+    "threadCategory": "RHIThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "RHIThread_Submit",
+        "relation": "性能分析关联",
+        "explanation": "RHICmdList_Submit 与 RHIThread_Submit 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "RHICmdList_Flush",
+        "relation": "性能分析关联",
+        "explanation": "RHICmdList_Submit 与 RHICmdList_Flush 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RHIThread",
+        "explanation": "CSV 将 RHICmdList_Submit 归入 RHIThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-rhithread-submit",
+    "term": "RHIThread_Submit",
+    "ipa": "",
+    "zh": "RHI 线程提交",
+    "category": "性能分析",
+    "definition": "提交渲染命令到 GPU 驱动。",
+    "example": "Inspect RHIThread_Submit when the RHI Thread stalls.",
+    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHIThread_Submit。",
+    "tags": "Unreal Insights timer 性能分析 RHIThread R H I Thread Submit",
+    "spokenForm": "R H I Thread Submit",
+    "threadCategory": "RHIThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "RHICmdList_Submit",
+        "relation": "性能分析关联",
+        "explanation": "RHIThread_Submit 与 RHICmdList_Submit 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "RHICmdList_Flush",
+        "relation": "性能分析关联",
+        "explanation": "RHIThread_Submit 与 RHICmdList_Flush 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RHIThread",
+        "explanation": "CSV 将 RHIThread_Submit 归入 RHIThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sconstraintcanvas",
+    "term": "SConstraintCanvas",
+    "ipa": "",
+    "zh": "Slate 约束画布",
+    "category": "性能分析",
+    "definition": "Slate 约束布局计算。",
+    "example": "Inspect SConstraintCanvas in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SConstraintCanvas。",
+    "tags": "Unreal Insights timer 性能分析 GameThread S Constraint Canvas",
+    "spokenForm": "S Constraint Canvas",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 SConstraintCanvas 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-screenspacereflections",
+    "term": "ScreenSpaceReflections",
+    "ipa": "/skriːn speɪs rɪˈflekʃənz/",
+    "zh": "屏幕空间反射",
+    "category": "性能分析",
+    "definition": "屏幕空间反射 SSR。",
+    "example": "Inspect ScreenSpaceReflections on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 ScreenSpaceReflections。",
+    "tags": "Unreal Insights timer 性能分析 GPU Screen Space Reflections",
+    "spokenForm": "Screen Space Reflections",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Screen Space Reflections",
+      "SSR"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 ScreenSpaceReflections 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-shadows",
+    "term": "Shadows",
+    "ipa": "/ˈʃædoʊz/",
+    "zh": "阴影渲染",
+    "category": "性能分析",
+    "definition": "阴影渲染。",
+    "example": "Inspect Shadows on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Shadows。",
+    "tags": "Unreal Insights timer 性能分析 GPU Shadows",
+    "spokenForm": "Shadows",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Shadows 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "ShadowDepths/ShadowProjection 的总称。"
+    ]
+  },
+  {
+    "id": "imported-slateloadingthread",
+    "term": "SlateLoadingThread",
+    "ipa": "",
+    "zh": "Slate 加载线程",
+    "category": "性能分析",
+    "definition": "Slate 加载线程。",
+    "example": "Inspect SlateLoadingThread in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SlateLoadingThread。",
+    "tags": "Unreal Insights timer 性能分析 Loading Slate Loading Thread",
+    "spokenForm": "Slate Loading Thread",
+    "threadCategory": "Loading",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · Loading",
+        "explanation": "CSV 将 SlateLoadingThread 归入 Loading 线程或轨道分类。",
+        "experience": "检查加载线程工作是否影响交互响应，以及是否存在与主线程的同步点。"
+      }
+    ],
+    "usageNotes": [
+      "加载时更新 UI。"
+    ]
+  },
+  {
+    "id": "imported-slateui-gpu",
+    "term": "SlateUI_GPU",
+    "ipa": "",
+    "zh": "Slate UI GPU 渲染",
+    "category": "性能分析",
+    "definition": "UI 渲染。",
+    "example": "Inspect SlateUI_GPU on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 SlateUI_GPU。",
+    "tags": "Unreal Insights timer 性能分析 GPU Slate U I G P U",
+    "spokenForm": "Slate U I G P U",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 SlateUI_GPU 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "UMG/Slate 的 GPU 绘制。"
+    ]
+  },
+  {
+    "id": "imported-staticloadobject",
+    "term": "StaticLoadObject",
+    "ipa": "",
+    "zh": "静态加载对象",
+    "category": "性能分析",
+    "definition": "同步加载单个 UObject。",
+    "example": "Inspect StaticLoadObject in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 StaticLoadObject。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Static Load Object",
+    "spokenForm": "Static Load Object",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 StaticLoadObject 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-streamablemanager",
+    "term": "StreamableManager",
+    "ipa": "",
+    "zh": "可流送资源管理器",
+    "category": "性能分析",
+    "definition": "可流送资产管理器。",
+    "example": "Inspect StreamableManager in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 StreamableManager。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Streamable Manager",
+    "spokenForm": "Streamable Manager",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "LevelStreaming",
+        "relation": "性能分析关联",
+        "explanation": "StreamableManager 与 LevelStreaming 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "ProcessAsyncLoading",
+        "relation": "性能分析关联",
+        "explanation": "StreamableManager 与 ProcessAsyncLoading 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 StreamableManager 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-swidget-invalidate",
+    "term": "SWidget::Invalidate",
+    "ipa": "",
+    "zh": "Slate 控件失效",
+    "category": "性能分析",
+    "definition": "Slate Widget 标记重绘。",
+    "example": "Inspect SWidget::Invalidate in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SWidget::Invalidate。",
+    "tags": "Unreal Insights timer 性能分析 GameThread S Widget Invalidate",
+    "spokenForm": "S Widget Invalidate",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 SWidget::Invalidate 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sync-renderingthread",
+    "term": "Sync_RenderingThread",
+    "ipa": "",
+    "zh": "同步渲染线程",
+    "category": "性能分析",
+    "definition": "游戏线程等待渲染线程。",
+    "example": "Inspect Sync_RenderingThread in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Sync_RenderingThread。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Sync Rendering Thread",
+    "spokenForm": "Sync Rendering Thread",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "RDG_Execute",
+        "relation": "性能分析关联",
+        "explanation": "Sync_RenderingThread 与 RDG_Execute 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "RHIThread_Submit",
+        "relation": "性能分析关联",
+        "explanation": "Sync_RenderingThread 与 RHIThread_Submit 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Sync_RenderingThread 归入 GameThread 线程或轨道分类。",
+        "experience": "这里高说明游戏线程在等待渲染线程，继续对照 RenderThread 轨道寻找阻塞源。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-taskgraph",
+    "term": "TaskGraph",
+    "ipa": "/tæsk ɡræf/",
+    "zh": "任务图系统",
+    "category": "性能分析",
+    "definition": "任务图系统。",
+    "example": "Inspect TaskGraph in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TaskGraph。",
+    "tags": "Unreal Insights timer 性能分析 AllThreads Task Graph",
+    "spokenForm": "Task Graph",
+    "threadCategory": "AllThreads",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · AllThreads",
+        "explanation": "CSV 将 TaskGraph 归入 AllThreads 线程或轨道分类。",
+        "experience": "从调用者和子任务两端分析，不要把跨线程聚合耗时直接归因于单一线程。"
+      }
+    ],
+    "usageNotes": [
+      "调度所有异步任务。"
+    ]
+  },
+  {
+    "id": "imported-tick-animation",
+    "term": "Tick_Animation",
+    "ipa": "",
+    "zh": "动画 Tick",
+    "category": "性能分析",
+    "definition": "动画蓝图更新。",
+    "example": "Inspect Tick_Animation in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_Animation。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Animation",
+    "spokenForm": "Tick Animation",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "Tick_Animation 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Tick_Animation 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "骨骼混合/IK 在这里。"
+    ]
+  },
+  {
+    "id": "imported-tick-duringphysics",
+    "term": "Tick_DuringPhysics",
+    "ipa": "",
+    "zh": "物理期间 Tick",
+    "category": "性能分析",
+    "definition": "物理模拟期间的 Tick。",
+    "example": "Inspect Tick_DuringPhysics in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_DuringPhysics。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick During Physics",
+    "spokenForm": "Tick During Physics",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick_PrePhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_DuringPhysics 与 Tick_PrePhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick_PostPhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_DuringPhysics 与 Tick_PostPhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "Tick_DuringPhysics 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Tick_DuringPhysics 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "布料/破碎等。"
+    ]
+  },
+  {
+    "id": "imported-tick-particle",
+    "term": "Tick_Particle",
+    "ipa": "",
+    "zh": "粒子系统 Tick",
+    "category": "性能分析",
+    "definition": "粒子系统 Tick。",
+    "example": "Inspect Tick_Particle in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_Particle。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Particle",
+    "spokenForm": "Tick Particle",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "Tick_Particle 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Tick_Particle 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-tick-postphysics",
+    "term": "Tick_PostPhysics",
+    "ipa": "",
+    "zh": "物理后 Tick",
+    "category": "性能分析",
+    "definition": "物理模拟之后的 Tick。",
+    "example": "Inspect Tick_PostPhysics in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_PostPhysics。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Post Physics",
+    "spokenForm": "Tick Post Physics",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick_PrePhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PostPhysics 与 Tick_PrePhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick_DuringPhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PostPhysics 与 Tick_DuringPhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PostPhysics 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Tick_PostPhysics 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "相机跟随等。"
+    ]
+  },
+  {
+    "id": "imported-tick-prephysics",
+    "term": "Tick_PrePhysics",
+    "ipa": "",
+    "zh": "物理前 Tick",
+    "category": "性能分析",
+    "definition": "物理模拟之前的所有 Tick。",
+    "example": "Inspect Tick_PrePhysics in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_PrePhysics。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Pre Physics",
+    "spokenForm": "Tick Pre Physics",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick_DuringPhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PrePhysics 与 Tick_DuringPhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick_PostPhysics",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PrePhysics 与 Tick_PostPhysics 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "Tick_PrePhysics 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Tick_PrePhysics 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "动画/移动依赖这个阶段。"
+    ]
+  },
+  {
+    "id": "imported-tickactors",
+    "term": "TickActors",
+    "ipa": "",
+    "zh": "Actor Tick 遍历",
+    "category": "性能分析",
+    "definition": "遍历所有 Actor 执行 Tick。",
+    "example": "Inspect TickActors in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TickActors。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Actors",
+    "spokenForm": "Tick Actors",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "TickActors 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 TickActors 归入 GameThread 线程或轨道分类。",
+        "experience": "Actor 数量和启用 Tick 的比例都会放大这里的耗时，优先查找不必要的每帧 Tick。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-tickcomponents",
+    "term": "TickComponents",
+    "ipa": "",
+    "zh": "组件 Tick 遍历",
+    "category": "性能分析",
+    "definition": "遍历所有 Component 执行 TickComponent。",
+    "example": "Inspect TickComponents in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TickComponents。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Tick Components",
+    "spokenForm": "Tick Components",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "TickComponents 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 TickComponents 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-timer-postrender",
+    "term": "Timer_PostRender",
+    "ipa": "",
+    "zh": "渲染后计时",
+    "category": "性能分析",
+    "definition": "每帧渲染后的收尾工作。",
+    "example": "Inspect Timer_PostRender in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Timer_PostRender。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Timer Post Render",
+    "spokenForm": "Timer Post Render",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Timer_PostRender 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-timer-prerender",
+    "term": "Timer_PreRender",
+    "ipa": "",
+    "zh": "渲染前计时",
+    "category": "性能分析",
+    "definition": "每帧渲染前的准备工作。",
+    "example": "Inspect Timer_PreRender in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Timer_PreRender。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Timer Pre Render",
+    "spokenForm": "Timer Pre Render",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 Timer_PreRender 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-timermanager",
+    "term": "TimerManager",
+    "ipa": "",
+    "zh": "定时器管理器",
+    "category": "性能分析",
+    "definition": "定时器管理器。",
+    "example": "Inspect TimerManager in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TimerManager。",
+    "tags": "Unreal Insights timer 性能分析 GameThread Timer Manager",
+    "spokenForm": "Timer Manager",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 TimerManager 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": [
+      "SetTimer 的回调在这里执行。"
+    ]
+  },
+  {
+    "id": "imported-translucency",
+    "term": "Translucency",
+    "ipa": "/trænzˈluːsənsi/",
+    "zh": "半透明渲染",
+    "category": "性能分析",
+    "definition": "半透明渲染通道。",
+    "example": "Inspect Translucency on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Translucency。",
+    "tags": "Unreal Insights timer 性能分析 GPU Translucency",
+    "spokenForm": "Translucency",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 Translucency 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "玻璃/粒子/UI。"
+    ]
+  },
+  {
+    "id": "imported-uinputcomponent-conditionalbuildkeymap",
+    "term": "UInputComponent_ConditionalBuildKeyMap",
+    "ipa": "",
+    "zh": "重建输入键映射",
+    "category": "性能分析",
+    "definition": "重建输入映射。",
+    "example": "Inspect UInputComponent_ConditionalBuildKeyMap in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 UInputComponent_ConditionalBuildKeyMap。",
+    "tags": "Unreal Insights timer 性能分析 GameThread U Input Component Conditional Build Key Map",
+    "spokenForm": "U Input Component Conditional Build Key Map",
+    "threadCategory": "GameThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread",
+        "explanation": "CSV 将 UInputComponent_ConditionalBuildKeyMap 归入 GameThread 线程或轨道分类。",
+        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-updategpuscene",
+    "term": "UpdateGPUScene",
+    "ipa": "",
+    "zh": "更新 GPU 场景",
+    "category": "性能分析",
+    "definition": "更新 GPU 上的场景数据。",
+    "example": "Inspect UpdateGPUScene when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 UpdateGPUScene。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Update G P U Scene",
+    "spokenForm": "Update G P U Scene",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 UpdateGPUScene 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "Instance 变换等。"
+    ]
+  },
+  {
+    "id": "imported-virtualtexturesystem",
+    "term": "VirtualTextureSystem",
+    "ipa": "",
+    "zh": "虚拟纹理系统",
+    "category": "性能分析",
+    "definition": "虚拟纹理系统更新。",
+    "example": "Inspect VirtualTextureSystem when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 VirtualTextureSystem。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Virtual Texture System",
+    "spokenForm": "Virtual Texture System",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [
+      "Virtual Texture System"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 VirtualTextureSystem 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": [
+      "地形/贴花 VT。"
+    ]
+  },
+  {
+    "id": "imported-waitfortasks",
+    "term": "WaitForTasks",
+    "ipa": "",
+    "zh": "等待任务",
+    "category": "性能分析",
+    "definition": "等待任务图完成。",
+    "example": "Inspect WaitForTasks when the Render Thread exceeds its frame budget.",
+    "exampleZh": "当渲染线程超过帧预算时，检查 WaitForTasks。",
+    "tags": "Unreal Insights timer 性能分析 RenderThread Wait For Tasks",
+    "spokenForm": "Wait For Tasks",
+    "threadCategory": "RenderThread",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "TaskGraph",
+        "relation": "性能分析关联",
+        "explanation": "WaitForTasks 与 TaskGraph 位于相同流程或存在上下级分析关系。"
+      },
+      {
+        "term": "GameThreadWaitForTask",
+        "relation": "性能分析关联",
+        "explanation": "WaitForTasks 与 GameThreadWaitForTask 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · RenderThread",
+        "explanation": "CSV 将 WaitForTasks 归入 RenderThread 线程或轨道分类。",
+        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-worldtick",
+    "term": "WorldTick",
+    "ipa": "",
+    "zh": "世界 Tick",
+    "category": "性能分析",
+    "definition": "关卡世界 Tick。",
+    "example": "Inspect WorldTick in Unreal Insights when profiling a slow frame.",
+    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 WorldTick。",
+    "tags": "Unreal Insights timer 性能分析 GameThread/GPU World Tick",
+    "spokenForm": "World Tick",
+    "threadCategory": "GameThread/GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "WorldTick 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GameThread/GPU",
+        "explanation": "CSV 将 WorldTick 归入 GameThread/GPU 线程或轨道分类。",
+        "experience": "同时对照 GameThread 与 GPU 轨道，先判断瓶颈究竟位于 CPU 还是 GPU。"
+      }
+    ],
+    "usageNotes": [
+      "包含流送/AI/粒子等。"
+    ]
+  },
+  {
+    "id": "imported-worldtick-gpu",
+    "term": "WorldTick_GPU",
+    "ipa": "",
+    "zh": "GPU 世界更新",
+    "category": "性能分析",
+    "definition": "GPU 上的世界计算。",
+    "example": "Inspect WorldTick_GPU on the GPU track when the frame is GPU-bound.",
+    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 WorldTick_GPU。",
+    "tags": "Unreal Insights timer 性能分析 GPU World Tick G P U",
+    "spokenForm": "World Tick G P U",
+    "threadCategory": "GPU",
+    "source": "UE5_Timer_Glossary.csv",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Tick",
+        "relation": "性能分析关联",
+        "explanation": "WorldTick_GPU 与 Tick 位于相同流程或存在上下级分析关系。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Unreal Insights · GPU",
+        "explanation": "CSV 将 WorldTick_GPU 归入 GPU 线程或轨道分类。",
+        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+      }
+    ],
+    "usageNotes": [
+      "GPU Scene 更新等。"
+    ]
+  }
+]

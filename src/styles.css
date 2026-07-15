@@ -309,7 +309,7 @@ strong {
 
 .library-toolbar {
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) minmax(150px, 220px) auto;
+  grid-template-columns: minmax(220px, 1fr) minmax(140px, 200px) minmax(140px, 190px) auto;
   gap: 10px;
   margin-bottom: 14px;
 }
@@ -474,6 +474,12 @@ strong {
   color: var(--muted);
 }
 
+.term-spoken {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .term-category,
 .status-badge {
   display: inline-flex;
@@ -518,6 +524,119 @@ strong {
   align-items: center;
   gap: 8px;
   margin-bottom: 18px;
+}
+
+.alias-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: -7px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.alias-row code,
+.context-phrase {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.alias-row code {
+  padding: 2px 6px;
+}
+
+.knowledge-section {
+  max-width: 720px;
+  margin-bottom: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.knowledge-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.context-list,
+.relation-list {
+  display: grid;
+  gap: 10px;
+}
+
+.context-item {
+  padding-left: 13px;
+  border-left: 3px solid var(--primary);
+}
+
+.context-item p {
+  margin: 9px 0 0;
+}
+
+.context-phrase {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 7px;
+  overflow-wrap: anywhere;
+}
+
+.experience-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: color-mix(in srgb, var(--text) 82%, var(--primary));
+}
+
+.experience-note svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--primary);
+}
+
+.usage-note-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.relation-button {
+  display: grid;
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+
+.relation-button:hover {
+  border-color: var(--primary);
+  background: var(--surface-muted);
+}
+
+.relation-button > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.relation-button > span span,
+.relation-button small {
+  color: var(--muted);
+}
+
+.relation-button small {
+  margin-top: 4px;
 }
 
 .review-layout {
@@ -985,6 +1104,8 @@ dialog::backdrop {
 
   .header-actions .button {
     flex: 1;
+    min-width: 0;
+    white-space: normal;
   }
 
   .library-toolbar {
@@ -1020,7 +1141,7 @@ dialog::backdrop {
   }
 
   .term-detail h2 {
-    font-size: 26px;
+    font-size: 23px;
   }
 
   .term-detail-header {

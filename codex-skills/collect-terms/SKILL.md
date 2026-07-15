@@ -1,6 +1,6 @@
 ---
 name: collect-terms
-description: Collect, explain, classify, deduplicate, and import English words or technical terms into the user's UE terminology learning PWA. Use when the user asks to add, collect, save, import, organize, or publish vocabulary, including phrases such as "加入词库", "收录这个词", "导入术语", or "把这些词分类". Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
+description: Automatically decompose, explain, classify, relate, deduplicate, and publish English words, technical terms, profiler markers, or Unreal Insights CSV rows into the user's terminology learning PWA. Use when the user asks to add, collect, save, import, organize, enrich, or publish vocabulary, including "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
 ---
 
 # Collect Terms
@@ -9,9 +9,25 @@ Use the glossary repository at `C:\Users\tianxueliang\Documents\UE学习`. Locat
 
 ## Choose the destination
 
-- Use **published mode** when the user asks to publish, deploy, or make the terms available automatically on every device. Explain before the first write that published entries become visible in the public GitHub repository.
+- Default to **published mode** for non-sensitive technical vocabulary because the owner has authorized automatic enrichment and publication to this repository. Do not pause to request approval for each unambiguous batch.
 - Use **private package mode** when the user says the terms are private, should not be public, or only need to enter their personal synced library.
-- If the destination is ambiguous and the distinction matters, ask whether the terms may be public. Do not put personal notes or confidential vocabulary in the public repository.
+- Switch to private package mode when the source contains personal, confidential, or project-sensitive details. Do not put those details in the public repository.
+
+## Decompose automatically
+
+Treat structured columns as authoritative. Do not infer field meaning from commas when headers or a schema are available.
+
+For Unreal Insights CSV exports with `TimerName`, `Category`, and `Explanation_CN`:
+
+1. Map `TimerName` to the term exactly as exported.
+2. Map `Category` to `threadCategory`; it is a thread or track classification, not a second term.
+3. Use `Explanation_CN` as source knowledge. Separate the basic definition from diagnostic advice without deleting the original meaning.
+4. Use `category: 性能分析` for the learning topic.
+5. Generate `spokenForm` for code identifiers. Use IPA only for ordinary English with a reliable pronunciation.
+6. Generate aliases, examples, translations, tags, analysis experience, and only defensible semantic relations.
+7. Use the spreadsheet skill and `@oai/artifact-tool` to extract CSV rows into `{ headers, rows }` JSON, then run `scripts/enrich_insights_rows.mjs` to produce term records.
+
+For unstructured text, identify symbols, ordinary terms, context, and experience from meaning rather than delimiter position. Keep one learnable concept per record and preserve useful combinations in `contexts`.
 
 ## Prepare each term
 
@@ -23,9 +39,12 @@ Read [references/schema.md](references/schema.md) before producing records. For 
 4. Add one natural English example and Chinese translation.
 5. Add useful Chinese and English search tags.
 6. Add IPA only when confident or verified. Leave it empty instead of inventing pronunciation.
-7. Search `src/terms.js` and `src/imported-terms.json` case-insensitively for duplicates and variants. Update an imported record when the user is refining it; do not duplicate a core record.
+7. Generate `spokenForm` for code symbols so pronunciation remains available without fake IPA.
+8. Add `threadCategory` when the source identifies an execution thread or profiler track.
+9. Add `relatedTerms`, `contexts`, and `usageNotes` only when their relationship or experience is supported by the source or strong domain knowledge.
+10. Search `src/terms.js` and `src/imported-terms.json` using compact, case-insensitive identities across names, spoken forms, and aliases. Update an imported record when refining it; do not duplicate a core record.
 
-Show the proposed term, Chinese meaning, and category before importing when the user's spelling or intended meaning is ambiguous.
+Proceed automatically when the source is unambiguous. Ask only when spelling, column meaning, or intended sense would materially change the record.
 
 ## Published mode
 
