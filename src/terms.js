@@ -1,4 +1,6 @@
-export const BUILTIN_TERMS = [
+import IMPORTED_TERMS from './imported-terms.json';
+
+const CORE_TERMS = [
     {id:'actor',term:'Actor',ipa:'/ˈæktər/',zh:'场景对象',category:'UE 基础',definition:'能被放入关卡中的基础对象。灯光、摄像机和角色都属于 Actor。',example:'Place the Actor in the level.',exampleZh:'把这个对象放进关卡。',tags:'对象 场景 object'},
     {id:'pawn',term:'Pawn',ipa:'/pɔːn/',zh:'可控制对象',category:'UE 基础',definition:'可以被玩家控制器或 AI 控制器占用并控制的 Actor。',example:'The player controller possesses this Pawn.',exampleZh:'玩家控制器控制了这个 Pawn。',tags:'控制 玩家 AI possess'},
     {id:'character',term:'Character',ipa:'/ˈkærəktər/',zh:'角色',category:'UE 基础',definition:'带有胶囊体、骨骼模型和角色移动组件的 Pawn。',example:'The Character can jump and crouch.',exampleZh:'这个角色可以跳跃和蹲下。',tags:'玩家 移动 pawn'},
@@ -69,3 +71,5 @@ export const BUILTIN_TERMS = [
     {id:'client',term:'Client',ipa:'/ˈklaɪənt/',zh:'客户端',category:'构建与网络',definition:'连接服务器、接收状态并提交玩家输入的一端。',example:'The Client sends input to the Server.',exampleZh:'客户端把输入发送给服务器。',tags:'网络 玩家'},
     {id:'server',term:'Server',ipa:'/ˈsɜːrvər/',zh:'服务器',category:'构建与网络',definition:'管理权威游戏状态、处理规则并向客户端同步结果的一端。',example:'The Server validates the hit.',exampleZh:'服务器验证这次命中。',tags:'网络 authority'}
   ];
+
+export const BUILTIN_TERMS = [...CORE_TERMS, ...IMPORTED_TERMS];

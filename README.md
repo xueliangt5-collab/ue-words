@@ -12,6 +12,7 @@
 - FSRS 间隔重复、英中/中英双向复习、每日新词数量
 - 学习进度、连续学习天数和最近复习记录
 - IndexedDB 本机持久化、JSON 导入导出
+- 支持 `ue-game-glossary` 术语包，可批量导入 UE、游戏开发或其他英语主题
 - Service Worker 离线启动和 PWA 安装
 - 可选 Supabase 邮箱登录和多设备同步
 
@@ -38,3 +39,9 @@ pnpm run preview
 5. 重新构建并部署 `dist` 目录。
 
 数据库已启用 Row Level Security，每个登录账号只能访问自己的词条、复习进度、设置和活动记录。
+
+## 后续添加术语
+
+- 单个词：在“词库”中选择“添加术语”。
+- 批量私人导入：使用“设置 -> 导入词库或备份”，选择 `ue-game-glossary` JSON 文件。
+- Codex 自动收录：使用项目附带的 `$collect-terms` 技能。公开模式会更新 `src/imported-terms.json` 并触发网站部署；私人模式只生成导入包。

@@ -35,7 +35,21 @@ import {
 } from './sync.js';
 
 const app = document.getElementById('app');
-const baseCategories = ['UE 基础', '蓝图逻辑', '资源与渲染', '动画与碰撞', '游戏测试', '故障与性能', '构建与网络'];
+const baseCategories = [
+  'UE 基础',
+  '蓝图逻辑',
+  '资源与渲染',
+  '动画与碰撞',
+  '游戏测试',
+  '故障与性能',
+  '构建与网络',
+  '游戏开发',
+  '软件工程',
+  '图形与渲染',
+  'AI 与数据',
+  '项目管理',
+  '通用英语',
+];
 
 const state = {
   view: 'library',
@@ -78,7 +92,7 @@ function hydrateIcons() {
 }
 
 function allCategories() {
-  return [...new Set([...baseCategories, ...state.customTerms.map(term => term.category).filter(Boolean)])];
+  return [...new Set([...baseCategories, ...state.terms.map(term => term.category).filter(Boolean)])];
 }
 
 function formatTime(value) {
@@ -555,7 +569,7 @@ function renderSettings() {
           <h2>数据</h2>
           <div class="inline-actions">
             <button class="button" id="export-backup" type="button">${icon('download')}导出备份</button>
-            <button class="button" id="import-backup" type="button">${icon('upload')}导入备份</button>
+            <button class="button" id="import-backup" type="button">${icon('upload')}导入词库或备份</button>
             <button class="button danger" id="reset-learning" type="button">${icon('rotate-ccw')}重置进度</button>
           </div>
         </section>
@@ -733,18 +747,58 @@ async function importBackup(event) {
   try {
     const data = JSON.parse(await file.text());
     if (data.format === 'ue-game-glossary' && Array.isArray(data.terms)) {
-      for (const term of data.terms) await saveCustomTerm(term);
+      const result = await importGlossaryTerms(data.terms);
+      await hydrate();
+      const skipped = result.skipped ? `，跳过 ${result.skipped} 个已有词条` : '';
+      showToast(`已导入 ${result.saved} 个术语${skipped}`);
     } else {
       await importDatabase(data);
+      await hydrate();
+      showToast('备份已导入');
     }
-    await hydrate();
-    showToast('备份已导入');
     queueCloudSync();
   } catch (error) {
     showToast(error.message || '导入失败', 'error');
   } finally {
     event.target.value = '';
   }
+}
+
+async function importGlossaryTerms(terms) {
+  const knownTerms = new Map(state.terms.map(term => [term.term.toLocaleLowerCase(), term]));
+  let saved = 0;
+  let skipped = 0;
+
+  for (const [index, rawTerm] of terms.entries()) {
+    if (!rawTerm || typeof rawTerm !== 'object') throw new Error(`第 ${index + 1} 个术语格式不正确`);
+    const term = String(rawTerm.term || '').trim();
+    const zh = String(rawTerm.zh || '').trim();
+    const definition = String(rawTerm.definition || '').trim();
+    if (!term || !zh || !definition) throw new Error(`第 ${index + 1} 个术语缺少英文、中文或解释`);
+
+    const duplicate = knownTerms.get(term.toLocaleLowerCase());
+    if (duplicate && !duplicate.custom) {
+      skipped += 1;
+      continue;
+    }
+
+    const record = {
+      id: duplicate?.id || String(rawTerm.id || `custom-${crypto.randomUUID()}`).trim(),
+      term,
+      zh,
+      ipa: String(rawTerm.ipa || '').trim(),
+      category: String(rawTerm.category || '其他').trim(),
+      definition,
+      example: String(rawTerm.example || '').trim(),
+      exampleZh: String(rawTerm.exampleZh || '').trim(),
+      tags: Array.isArray(rawTerm.tags) ? rawTerm.tags.join(' ') : String(rawTerm.tags || '').trim(),
+    };
+    const stored = await saveCustomTerm(record);
+    knownTerms.set(term.toLocaleLowerCase(), stored);
+    saved += 1;
+  }
+
+  return { saved, skipped };
 }
 
 async function resetLearning() {
