@@ -246,6 +246,7 @@ function installStatus() {
 
 async function refreshInstallStatus() {
   state.installedApp = isStandalone();
+  if (state.installedApp) localStorage.setItem('ue-words-installed', 'true');
   const recordedInstall = localStorage.getItem('ue-words-installed') === 'true';
   if (!state.installedApp && 'getInstalledRelatedApps' in navigator) {
     try {
