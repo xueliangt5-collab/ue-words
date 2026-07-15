@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">UE 术语随身学</title>
+  <desc id="desc">深色方形图标，中间是 UE 字母与书页形状</desc>
+  <rect width="512" height="512" rx="96" fill="#18181b"/>
+  <path d="M104 112h128c35 0 64 29 64 64v224c-17-19-42-30-72-30H104V112Z" fill="#f7f7f5"/>
+  <path d="M408 112H280c-35 0-64 29-64 64v224c17-19 42-30 72-30h120V112Z" fill="#d9f99d"/>
+  <path d="M150 184v89c0 38 20 58 55 58 36 0 56-20 56-58v-89h-33v87c0 22-7 31-22 31-16 0-23-9-23-31v-87h-33Zm133 0v147h89v-29h-56v-32h48v-28h-48v-29h54v-29h-87Z" fill="#18181b"/>
+</svg>

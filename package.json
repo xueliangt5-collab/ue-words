@@ -1,0 +1,21 @@
+{
+  "name": "ue-words-pwa",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --configLoader native",
+    "build": "vite build --configLoader native",
+    "preview": "vite preview --configLoader native",
+    "check": "node --check src/main.js && node --check src/db.js && node --check src/review.js && node --check src/sync.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.52.0",
+    "idb": "^8.0.3",
+    "lucide": "^0.468.0",
+    "ts-fsrs": "^5.2.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
