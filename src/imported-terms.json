@@ -95,6 +95,26 @@
     ]
   },
   {
+    "id": "imported-asset-audit",
+    "term": "Asset Audit",
+    "ipa": "",
+    "zh": "资源审计",
+    "category": "资源与渲染",
+    "definition": "Unreal Editor 中查看资产类型、磁盘大小、内存成本和其他资源信息的分析工具。",
+    "example": "Use Asset Audit to compare the size of several textures.",
+    "exampleZh": "使用资源审计比较多张纹理的大小。",
+    "tags": "UE 资源 分析 size memory Content Browser",
+    "spokenForm": "Asset Audit",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Asset Audit Window"
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-async-action",
     "term": "Async Action",
     "ipa": "",
@@ -205,6 +225,68 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-breakpoint",
+    "term": "Breakpoint",
+    "ipa": "",
+    "zh": "断点",
+    "category": "软件工程",
+    "definition": "调试器中让程序在指定代码或蓝图节点处暂停，以检查变量、对象状态和调用栈的位置。",
+    "example": "Set a Breakpoint in the damage calculation.",
+    "exampleZh": "在伤害计算处设置断点。",
+    "tags": "调试 debugger pause watch call stack Blueprint",
+    "spokenForm": "Breakpoint",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Debug Breakpoint"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Call Stack",
+        "relation": "暂停时检查",
+        "explanation": "断点命中后可以查看导致当前位置执行的调用栈。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "hit a breakpoint",
+        "explanation": "程序执行到断点并暂停。",
+        "experience": "在功能链的关键边界设置少量断点，比在大量文件中盲目单步更有效。"
+      }
+    ],
+    "usageNotes": [
+      "在英文调试语境中，hit a breakpoint 表示命中断点，不是发生碰撞。"
+    ]
+  },
+  {
+    "id": "imported-call-stack",
+    "term": "Call Stack",
+    "ipa": "",
+    "zh": "调用栈",
+    "category": "软件工程",
+    "definition": "调试器中显示当前函数由哪些函数逐层调用而来的执行路径。",
+    "example": "Inspect the Call Stack when the damage breakpoint is hit.",
+    "exampleZh": "伤害断点命中时检查调用栈。",
+    "tags": "调试器 函数调用 stack breakpoint trace",
+    "spokenForm": "Call Stack",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Stack Trace"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Breakpoint",
+        "relation": "查看时机",
+        "explanation": "程序在断点暂停后可以检查当时的调用栈。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "异步消息和跨帧回调可能打断原始调用栈，需要结合日志和消息关系继续追踪。"
+    ]
   },
   {
     "id": "imported-callback",
@@ -335,6 +417,61 @@
     "usageNotes": []
   },
   {
+    "id": "imported-configuration",
+    "term": "Configuration",
+    "ipa": "",
+    "zh": "配置",
+    "category": "软件工程",
+    "definition": "控制程序行为但通常不直接写在业务执行代码中的设置和值，UE 项目常通过 Config 目录中的 ini 文件保存。",
+    "example": "The damage threshold is stored in the Configuration.",
+    "exampleZh": "伤害阈值保存在配置中。",
+    "tags": "配置 Config ini settings DeveloperSettings",
+    "spokenForm": "Configuration",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Config",
+      "Settings"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Config/DefaultGame.ini",
+        "explanation": "UE 项目常见的游戏默认配置文件。",
+        "experience": "查找阈值、默认类或功能开关时，应同时搜索源码和 Config 目录。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-content-folder",
+    "term": "Content Folder",
+    "ipa": "",
+    "zh": "内容目录",
+    "category": "UE 基础",
+    "definition": "UE 项目或插件中存放蓝图、地图、材质、模型和声音等资产的目录。",
+    "example": "The map asset is stored in the Content Folder.",
+    "exampleZh": "地图资源存放在 Content 目录中。",
+    "tags": "UE Content uasset 资源 蓝图 地图",
+    "spokenForm": "Content Folder",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Content Directory"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Reference Viewer",
+        "relation": "资源分析工具",
+        "explanation": "Content 中的资产引用更适合使用编辑器工具查看。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      ".uasset 不是普通文本文件，不能只靠文本搜索理解其内部引用。"
+    ]
+  },
+  {
     "id": "imported-d3d12-allocatepoolresource",
     "term": "D3D12_AllocatePoolResource",
     "ipa": "",
@@ -407,6 +544,122 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-data-flow",
+    "term": "Data Flow",
+    "ipa": "",
+    "zh": "数据流",
+    "category": "软件工程",
+    "definition": "数据在输入、处理、存储、广播和显示等系统之间传递与变化的路径。",
+    "example": "Trace the Data Flow from the damage event to the UI.",
+    "exampleZh": "追踪从伤害事件到 UI 的数据流。",
+    "tags": "数据流 pipeline input output message state",
+    "spokenForm": "Data Flow",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Data Pipeline"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Call Stack",
+        "relation": "互补视角",
+        "explanation": "Data Flow 关注数据如何移动，Call Stack 关注函数如何嵌套调用。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "input -> damage -> message -> UI",
+        "explanation": "一条典型玩法功能数据链。",
+        "experience": "记录每一步的输入、输出和拥有者，可以快速发现数据在哪一段丢失。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-dependency",
+    "term": "Dependency",
+    "ipa": "",
+    "zh": "依赖",
+    "category": "软件工程",
+    "definition": "一个模块、系统或资源为了工作而需要使用的另一个模块、系统或资源。",
+    "example": "Add the required Module as a Dependency.",
+    "exampleZh": "把所需模块添加为依赖。",
+    "tags": "依赖关系 Module Build.cs reference coupling",
+    "spokenForm": "Dependency",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Dependency Relationship"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Module",
+        "relation": "依赖主体",
+        "explanation": "UE 模块在 Build.cs 中声明代码依赖。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "module dependency graph",
+        "explanation": "用箭头表示模块之间的依赖方向。",
+        "experience": "理解依赖方向可以判断某个类型为什么可见，以及修改可能影响哪些模块。"
+      }
+    ],
+    "usageNotes": [
+      "依赖过多或方向混乱会增加耦合和编译成本。"
+    ]
+  },
+  {
+    "id": "imported-directory",
+    "term": "Directory",
+    "ipa": "",
+    "zh": "目录",
+    "category": "软件工程",
+    "definition": "文件系统中用于分组和组织文件的容器，在日常交流中也常称为 Folder。",
+    "example": "The Config directory contains project settings.",
+    "exampleZh": "Config 目录包含项目配置。",
+    "tags": "文件夹 路径 folder path 文件系统",
+    "spokenForm": "Directory",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Folder"
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Directory 更偏技术表达，Folder 更常见于图形界面。"
+    ]
+  },
+  {
+    "id": "imported-entry-point",
+    "term": "Entry Point",
+    "ipa": "",
+    "zh": "入口点",
+    "category": "软件工程",
+    "definition": "一条功能链路开始执行或最适合开始追踪的位置，例如输入事件、BeginPlay、日志或消息广播。",
+    "example": "Use the input event as the Entry Point for tracing the firing flow.",
+    "exampleZh": "以输入事件作为追踪开火流程的入口点。",
+    "tags": "入口 tracing event function startup 调试",
+    "spokenForm": "Entry Point",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Execution Entry Point"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Data Flow",
+        "relation": "追踪起点",
+        "explanation": "从入口点沿数据和调用关系向下追踪。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "陌生项目不必从启动代码通读；选择与问题最接近的入口点通常更高效。"
+    ]
   },
   {
     "id": "imported-event-beginplay",
@@ -624,6 +877,66 @@
         "phrase": "Unreal Insights · IO",
         "explanation": "CSV 将 FileIO 归入 IO 线程或轨道分类。",
         "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-find-in-blueprints",
+    "term": "Find in Blueprints",
+    "ipa": "",
+    "zh": "在蓝图中查找",
+    "category": "蓝图逻辑",
+    "definition": "Unreal Editor 中跨蓝图搜索节点、变量、函数、文本和其他蓝图内容的工具。",
+    "example": "Use Find in Blueprints to locate every use of the Gameplay Tag.",
+    "exampleZh": "使用在蓝图中查找定位这个 Gameplay Tag 的全部用法。",
+    "tags": "UE Blueprint 全局搜索 节点 变量 Tag",
+    "spokenForm": "Find in Blueprints",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Find in BP"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Find Usages",
+        "relation": "相似导航操作",
+        "explanation": "二者都用于定位符号或内容的使用位置。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "搜索结果依赖蓝图索引；结果缺失时可能需要加载或重新索引相关资产。"
+    ]
+  },
+  {
+    "id": "imported-find-usages",
+    "term": "Find Usages",
+    "ipa": "",
+    "zh": "查找用法",
+    "category": "软件工程",
+    "definition": "IDE 导航操作，用于查找函数、类、变量或其他符号被读取、写入和调用的位置。",
+    "example": "Run Find Usages on the reset function.",
+    "exampleZh": "对这个重置函数执行查找用法。",
+    "tags": "IDE 导航 usages references caller usage",
+    "spokenForm": "Find Usages",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Find References"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Go to Definition",
+        "relation": "互补导航操作",
+        "explanation": "查找用法从定义向消费者扩散，转到定义从使用点回到来源。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Find Usages on a delegate",
+        "explanation": "查找委托的广播位置和绑定位置。",
+        "experience": "Broadcast 通常是事件源，Bind、AddUObject 或监听节点通常是消费者。"
       }
     ],
     "usageNotes": []
@@ -972,6 +1285,63 @@
     "usageNotes": [
       "标记-清除-销毁循环。"
     ]
+  },
+  {
+    "id": "imported-generated-folders",
+    "term": "Generated Folders",
+    "ipa": "",
+    "zh": "生成目录",
+    "category": "构建与网络",
+    "definition": "由编辑器、编译器或运行时生成的目录，常见包括 Binaries、Intermediate、Saved 和 DerivedDataCache。",
+    "example": "Generated Folders are not the best place to study gameplay architecture.",
+    "exampleZh": "生成目录并不是研究玩法架构的最佳入口。",
+    "tags": "UE Binaries Intermediate Saved DerivedDataCache generated cache",
+    "spokenForm": "Generated Folders",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Binaries Folder",
+      "Intermediate Folder",
+      "Saved Folder",
+      "DerivedDataCache Folder"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Binaries / Intermediate / Saved / DerivedDataCache",
+        "explanation": "二进制、中间文件、日志与缓存等生成内容。",
+        "experience": "理解项目时优先查看 Source、Content、Config 和 Plugins，而不是从生成目录开始。"
+      }
+    ],
+    "usageNotes": [
+      "Saved 中可能包含有用日志，但它通常不是业务源码。"
+    ]
+  },
+  {
+    "id": "imported-go-to-definition",
+    "term": "Go to Definition",
+    "ipa": "",
+    "zh": "转到定义",
+    "category": "软件工程",
+    "definition": "IDE 导航操作，用于从符号使用位置跳转到声明或实现该符号的位置。",
+    "example": "Use Go to Definition to inspect the function implementation.",
+    "exampleZh": "使用转到定义查看函数实现。",
+    "tags": "IDE 导航 definition declaration implementation Ctrl Click",
+    "spokenForm": "Go to Definition",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Goto Definition"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Find Usages",
+        "relation": "互补导航操作",
+        "explanation": "Go to Definition 找定义，Find Usages 找所有使用者。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-health",
@@ -1390,6 +1760,102 @@
     ]
   },
   {
+    "id": "imported-module",
+    "term": "Module",
+    "ipa": "",
+    "zh": "模块",
+    "category": "软件工程",
+    "definition": "具有明确职责、独立构建规则和依赖关系的一组代码，是 UE C++ 项目的主要组织单元。",
+    "example": "The gameplay code lives in a separate Module.",
+    "exampleZh": "玩法代码位于一个独立模块中。",
+    "tags": "UE C++ 模块 Build.cs dependency architecture",
+    "spokenForm": "Module",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Code Module"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Module Rules",
+        "relation": "构建定义",
+        "explanation": "每个 UE C++ 模块通过 Build.cs 声明构建规则。"
+      },
+      {
+        "term": "Dependency",
+        "relation": "模块关系",
+        "explanation": "模块通过依赖访问其他模块公开的类型和功能。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Source/<ModuleName>",
+        "explanation": "UE 项目或插件中的模块目录。",
+        "experience": "先查看 Build.cs 的依赖，再阅读 Public 和 Private 目录，更容易理解模块边界。"
+      }
+    ],
+    "usageNotes": [
+      "Module 是编译和依赖边界，不等同于普通文件夹。"
+    ]
+  },
+  {
+    "id": "imported-module-layout",
+    "term": "Module Layout",
+    "ipa": "",
+    "zh": "模块目录布局",
+    "category": "软件工程",
+    "definition": "模块内部文件的组织方式；UE C++ 模块常使用 Public 存放公开接口、Private 存放内部实现。",
+    "example": "The Module Layout separates public headers from private implementation.",
+    "exampleZh": "模块目录布局将公开头文件与内部实现分开。",
+    "tags": "UE Module Public Private header cpp layout",
+    "spokenForm": "Module Layout",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Public and Private Folders"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Module",
+        "relation": "内部结构",
+        "explanation": "Public 和 Private 用来表达模块接口边界。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Public/Private 表达模块可见性意图，但真正依赖关系仍由 Build.cs 决定。"
+    ]
+  },
+  {
+    "id": "imported-module-rules",
+    "term": "Module Rules",
+    "ipa": "",
+    "zh": "模块构建规则",
+    "category": "构建与网络",
+    "definition": "写在 ModuleName.Build.cs 中的 C# 构建配置，用于声明模块依赖、包含路径和编译选项。",
+    "example": "Check the Module Rules before adding a new include.",
+    "exampleZh": "添加新的头文件引用前先检查模块构建规则。",
+    "tags": "UE Build.cs UBT Module dependency build",
+    "spokenForm": "Module Rules",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Build.cs",
+      "ModuleName.Build.cs"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Dependency",
+        "relation": "声明位置",
+        "explanation": "模块的公开和私有依赖通常在 Build.cs 中声明。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "C++ include 路径正确但编译仍失败时，应检查对应模块依赖是否已加入 Build.cs。"
+    ]
+  },
+  {
     "id": "imported-nanite",
     "term": "Nanite",
     "ipa": "",
@@ -1478,6 +1944,40 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-ownership",
+    "term": "Ownership",
+    "ipa": "",
+    "zh": "所有权 / 归属关系",
+    "category": "软件工程",
+    "definition": "描述哪个对象、系统或生命周期负责持有、管理并最终释放另一个对象。",
+    "example": "Level Ownership determines when the Actor is destroyed.",
+    "exampleZh": "关卡归属决定这个 Actor 何时被销毁。",
+    "tags": "所有权 owner lifetime Actor Level memory",
+    "spokenForm": "Ownership",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Object Ownership"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Actor Lifecycle",
+        "relation": "生命周期决定因素",
+        "explanation": "拥有者结束生命周期时，其持有对象通常也会失效或销毁。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Who owns this object?",
+        "explanation": "确认对象由关卡、组件、子系统还是其他对象管理。",
+        "experience": "跨关卡故障首先检查对象是否由旧 Level 持有。"
+      }
+    ],
+    "usageNotes": [
+      "UE 网络语境中的 Actor Owner 还有复制和连接相关含义，需要结合上下文判断。"
+    ]
   },
   {
     "id": "imported-pakprecacher",
@@ -1612,6 +2112,55 @@
     "usageNotes": [
       "Chaos Physics 计算在这里。"
     ]
+  },
+  {
+    "id": "imported-plugin",
+    "term": "Plugin",
+    "ipa": "",
+    "zh": "插件",
+    "category": "UE 基础",
+    "definition": "可包含代码模块、资源和配置的可复用功能包，通过 .uplugin 描述文件接入 UE 项目。",
+    "example": "The Plugin contains the shared gameplay systems.",
+    "exampleZh": "这个插件包含共享玩法系统。",
+    "tags": "UE 插件 uplugin Module Content reusable",
+    "spokenForm": "Plugin",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Unreal Plugin"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Plugin Descriptor",
+        "relation": "描述文件",
+        "explanation": "插件的名称、模块和加载信息写在 .uplugin 文件中。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "一个 Plugin 可以包含多个 Module，也可以带有自己的 Content 资源。"
+    ]
+  },
+  {
+    "id": "imported-plugin-descriptor",
+    "term": "Plugin Descriptor",
+    "ipa": "",
+    "zh": "插件描述文件",
+    "category": "UE 基础",
+    "definition": "扩展名为 .uplugin 的 JSON 文件，声明插件信息、包含的模块、加载阶段和支持平台。",
+    "example": "The Plugin Descriptor lists two runtime modules.",
+    "exampleZh": "插件描述文件列出了两个运行时模块。",
+    "tags": "UE uplugin 插件 Module LoadingPhase JSON",
+    "spokenForm": "Plugin Descriptor",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      ".uplugin",
+      "uplugin File"
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-postprocessing",
@@ -1765,6 +2314,72 @@
     "usageNotes": []
   },
   {
+    "id": "imported-project-descriptor",
+    "term": "Project Descriptor",
+    "ipa": "",
+    "zh": "项目描述文件",
+    "category": "UE 基础",
+    "definition": "扩展名为 .uproject 的 UE 项目入口文件，记录关联引擎版本、项目模块和启用插件等信息。",
+    "example": "Open the Project Descriptor to inspect the enabled plugins.",
+    "exampleZh": "打开项目描述文件检查已启用的插件。",
+    "tags": "UE uproject 项目入口 EngineAssociation Plugins Modules",
+    "spokenForm": "Project Descriptor",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      ".uproject",
+      "uproject File"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Plugin Descriptor",
+        "relation": "同类描述文件",
+        "explanation": ".uproject 描述项目，.uplugin 描述插件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "熟悉陌生 UE 项目时，.uproject 是最值得先看的文件之一。"
+    ]
+  },
+  {
+    "id": "imported-project-structure",
+    "term": "Project Structure",
+    "ipa": "",
+    "zh": "项目结构",
+    "category": "软件工程",
+    "definition": "项目中文件、模块、资源、运行时对象和系统职责的组织方式；它不只是一棵目录树。",
+    "example": "Start by mapping the Project Structure at a high level.",
+    "exampleZh": "先从高层梳理项目结构。",
+    "tags": "项目 架构 目录 模块 runtime architecture",
+    "spokenForm": "Project Structure",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Codebase Structure"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Module",
+        "relation": "组成单元",
+        "explanation": "大型项目通常由多个职责清晰的模块组成。"
+      },
+      {
+        "term": "Data Flow",
+        "relation": "运行关系",
+        "explanation": "静态目录结构需要结合运行时数据流才能完整理解。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "map the project structure",
+        "explanation": "整理文件、依赖、生命周期和数据流四张地图。",
+        "experience": "只记录目录位置不够，还应写清对象由谁创建、活多久以及与谁通信。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-psoprecompilepool",
     "term": "PSOPrecompilePool",
     "ipa": "",
@@ -1825,6 +2440,32 @@
     ],
     "usageNotes": [
       "所有 GPU Pass 在 RDG 里调度。"
+    ]
+  },
+  {
+    "id": "imported-reference-viewer",
+    "term": "Reference Viewer",
+    "ipa": "",
+    "zh": "引用查看器",
+    "category": "资源与渲染",
+    "definition": "Unreal Editor 中以关系图显示资产引用者和被引用资产的工具。",
+    "example": "Open the Reference Viewer for the Blueprint asset.",
+    "exampleZh": "为这个蓝图资源打开引用查看器。",
+    "tags": "UE 编辑器 资产 引用 dependency graph Content Browser",
+    "spokenForm": "Reference Viewer",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Asset Audit",
+        "relation": "资产分析工具",
+        "explanation": "Reference Viewer 关注引用关系，Asset Audit 关注资源信息与成本。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "通过字符串或运行时动态加载形成的关系不一定能完整显示在静态引用图中。"
     ]
   },
   {
@@ -1965,6 +2606,34 @@
     "usageNotes": []
   },
   {
+    "id": "imported-runtime",
+    "term": "Runtime",
+    "ipa": "",
+    "zh": "运行时",
+    "category": "软件工程",
+    "definition": "程序实际运行期间的环境和行为，与编辑、编译或构建阶段相对。",
+    "example": "The Actor exists only at Runtime.",
+    "exampleZh": "这个 Actor 只在运行时存在。",
+    "tags": "运行时 execution PIE game editor build",
+    "spokenForm": "Runtime",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Run Time"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Actor Lifecycle",
+        "relation": "运行阶段",
+        "explanation": "Actor 的创建、BeginPlay 和销毁都属于运行时行为。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "资源存在于 Content Browser，不代表运行时 World 中已经存在对应 Actor 实例。"
+    ]
+  },
+  {
     "id": "imported-sconstraintcanvas",
     "term": "SConstraintCanvas",
     "ipa": "",
@@ -2092,6 +2761,54 @@
     "usageNotes": [
       "UMG/Slate 的 GPU 绘制。"
     ]
+  },
+  {
+    "id": "imported-source-code",
+    "term": "Source Code",
+    "ipa": "",
+    "zh": "源代码",
+    "category": "软件工程",
+    "definition": "开发者编写并由编译器转换成程序的可读代码，例如 UE 项目中的 C++、头文件和构建脚本。",
+    "example": "Search the Source Code for the unique log message.",
+    "exampleZh": "在源代码中搜索这条独特日志。",
+    "tags": "源码 C++ header cpp code 编译",
+    "spokenForm": "Source Code",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Source"
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Source 在目录语境中可能指 Source Folder，在一般语境中也可能指信息来源。"
+    ]
+  },
+  {
+    "id": "imported-source-folder",
+    "term": "Source Folder",
+    "ipa": "",
+    "zh": "源码目录",
+    "category": "软件工程",
+    "definition": "UE 项目或插件中存放 C++ 模块、头文件、实现文件和 Build.cs 的目录。",
+    "example": "Search the Source Folder for the log message.",
+    "exampleZh": "在 Source 目录中搜索这条日志消息。",
+    "tags": "UE Source C++ 代码 Module Build.cs",
+    "spokenForm": "Source Folder",
+    "threadCategory": "",
+    "source": "UE project structure learning",
+    "aliases": [
+      "Source Directory"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Module",
+        "relation": "目录内容",
+        "explanation": "Source 目录通常包含一个或多个代码模块。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-staticloadobject",
