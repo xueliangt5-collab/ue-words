@@ -38,6 +38,18 @@ export async function sendLoginLink(email) {
   if (error) throw error;
 }
 
+export async function signInCloudWithPassword(email, password) {
+  if (!client) throw new Error('云同步尚未配置');
+  const { error } = await client.auth.signInWithPassword({ email, password });
+  if (error) throw error;
+}
+
+export async function setCloudPassword(password) {
+  if (!client) throw new Error('云同步尚未配置');
+  const { error } = await client.auth.updateUser({ password });
+  if (error) throw error;
+}
+
 export async function signOutCloud() {
   if (!client) return;
   const { error } = await client.auth.signOut();
@@ -46,7 +58,7 @@ export async function signOutCloud() {
 
 export function onCloudAuthChange(callback) {
   if (!client) return () => {};
-  const { data } = client.auth.onAuthStateChange((_event, session) => callback(session?.user || null));
+  const { data } = client.auth.onAuthStateChange((event, session) => callback(session?.user || null, event));
   return () => data.subscription.unsubscribe();
 }
 

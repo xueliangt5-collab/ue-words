@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ue-words-v6';
+const CACHE_NAME = 'ue-words-v7';
 const APP_SHELL = ['./', 'index.html', 'assets/app.js', 'assets/app.css', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', event => {

@@ -27,31 +27,35 @@
     "id": "imported-akcomponent-tickcomponent",
     "term": "AkComponent::TickComponent",
     "ipa": "",
-    "zh": "Wwise 组件 Tick",
+    "zh": "Wwise 音频组件逐帧更新",
     "category": "性能分析",
-    "definition": "Wwise 音频组件 Tick。",
+    "definition": "AkComponent 的逐帧更新计时标记，表示 Wwise 音频组件在游戏线程执行 TickComponent 的耗时。",
     "example": "Inspect AkComponent::TickComponent in Unreal Insights when profiling a slow frame.",
     "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 AkComponent::TickComponent。",
     "tags": "Unreal Insights timer 性能分析 GameThread Ak Component Tick Component",
     "spokenForm": "Ak Component Tick Component",
     "threadCategory": "GameThread",
     "source": "UE5_Timer_Glossary.csv",
-    "aliases": [],
+    "aliases": [
+      "Ak Component Tick Component"
+    ],
     "relatedTerms": [
       {
         "term": "Tick",
-        "relation": "性能分析关联",
-        "explanation": "AkComponent::TickComponent 与 Tick 位于相同流程或存在上下级分析关系。"
+        "relation": "通用更新机制",
+        "explanation": "该计时标记是 AkComponent 对组件 Tick 机制的具体实现。"
       }
     ],
     "contexts": [
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 AkComponent::TickComponent 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "持续偏高时，先确认场景中的 AkComponent 数量及启用 Tick 的组件，再检查位置与遮挡更新、事件回调和 Wwise 集成逻辑。"
       }
     ],
-    "usageNotes": []
+    "usageNotes": [
+      "这是性能计时标记，不是自然英语短语；阅读时可拆成 Ak Component / Tick Component。"
+    ]
   },
   {
     "id": "imported-basepass",

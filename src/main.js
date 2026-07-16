@@ -31,11 +31,15 @@ import {
   isCloudConfigured,
   onCloudAuthChange,
   sendLoginLink,
+  setCloudPassword,
+  signInCloudWithPassword,
   signOutCloud,
   syncNow,
 } from './sync.js';
 
 const app = document.getElementById('app');
+const returningFromEmailLogin = new URLSearchParams(window.location.search).has('code')
+  || window.location.hash.includes('access_token=');
 const baseCategories = [
   'UE 基础',
   '蓝图逻辑',
@@ -62,6 +66,7 @@ const state = {
   activity: [],
   settings: { ...DEFAULT_SETTINGS },
   selectedId: 'actor',
+  termHistory: [],
   search: '',
   category: '',
   threadCategory: '',
@@ -329,6 +334,21 @@ function setView(view) {
   renderCurrentView();
 }
 
+function scrollToTermDetail() {
+  window.requestAnimationFrame(() => {
+    document.getElementById('term-detail')?.scrollIntoView({ block: 'start' });
+  });
+}
+
+function returnFromReview() {
+  const originId = state.reviewSession?.originId;
+  if (originId && state.terms.some(term => term.id === originId)) state.selectedId = originId;
+  state.reviewSession = null;
+  state.view = 'library';
+  renderCurrentView();
+  scrollToTermDetail();
+}
+
 function renderCurrentView() {
   updateChrome();
   if (state.view === 'library') renderLibrary();
@@ -440,7 +460,9 @@ function renderLibrary() {
   document.querySelectorAll('[data-term-id]').forEach(button => button.addEventListener('click', () => {
     document.body.classList.remove('picker-open');
     state.selectedId = button.dataset.termId;
+    state.termHistory = [];
     renderLibrary();
+    scrollToTermDetail();
   }));
   document.getElementById('previous-term')?.addEventListener('click', () => navigateLibraryTerm(-1));
   document.getElementById('next-term')?.addEventListener('click', () => navigateLibraryTerm(1));
@@ -471,6 +493,7 @@ function navigateLibraryTerm(offset) {
   const nextIndex = Math.min(results.length - 1, Math.max(0, currentIndex + offset));
   if (nextIndex === currentIndex || nextIndex < 0) return;
   state.selectedId = results[nextIndex].id;
+  state.termHistory = [];
   renderLibrary();
 }
 
@@ -514,12 +537,24 @@ function bindMobileTermSwipe() {
 function termListItem(term) {
   const progress = state.progressMap.get(term.id);
   const reviewed = Number(progress?.reviewCount || 0);
+  const profilerMarker = isProfilerMarker(term);
   return `
     <button class="list-item ${term.id === state.selectedId ? 'is-selected' : ''}" type="button" data-term-id="${escapeHtml(term.id)}">
-      <span><span class="list-primary">${escapeHtml(term.term)}</span><span class="list-secondary">${escapeHtml(term.zh)}</span></span>
+      <span><span class="list-primary ${profilerMarker ? 'is-code' : ''}">${escapeHtml(term.term)}</span><span class="list-secondary">${escapeHtml(term.zh)}</span></span>
       <span class="list-meta">${progress?.favorite ? icon('star') : reviewed ? reviewed : ''}</span>
     </button>
   `;
+}
+
+function isProfilerMarker(term) {
+  return term.source === 'UE5_Timer_Glossary.csv' || String(term.tags || '').includes('Unreal Insights timer');
+}
+
+function termHistoryMarkup() {
+  const previousId = state.termHistory[state.termHistory.length - 1];
+  const previous = state.terms.find(term => term.id === previousId);
+  if (!previous) return '';
+  return `<button class="term-history-back" id="term-history-back" type="button">${icon('arrow-left')}<span>返回 <strong>${escapeHtml(previous.term)}</strong></span></button>`;
 }
 
 function termDetailMarkup(term) {
@@ -528,10 +563,13 @@ function termDetailMarkup(term) {
   const relatedTerms = relatedTermRecords(term);
   const contexts = contextRecords(term);
   const usageNotes = textList(term.usageNotes);
+  const profilerMarker = isProfilerMarker(term);
   return `
+    ${termHistoryMarkup()}
     <div class="term-detail-header">
       <div>
-        <h2>${escapeHtml(term.term)}</h2>
+        ${profilerMarker ? '<p class="term-kind">Unreal Insights 计时标记</p>' : ''}
+        <h2 class="${profilerMarker ? 'is-profiler-marker' : ''}">${profilerMarker ? `<code>${escapeHtml(term.term)}</code>` : escapeHtml(term.term)}</h2>
         <p class="term-ipa">${escapeHtml(term.ipa || (term.spokenForm ? '代码标识符' : '暂无音标'))}</p>
         ${term.spokenForm ? `<p class="term-spoken">读法：${escapeHtml(term.spokenForm)}</p>` : ''}
       </div>
@@ -592,13 +630,20 @@ function bindTermDetail(term) {
   document.getElementById('favorite-term').addEventListener('click', () => toggleFavorite(term));
   document.getElementById('study-term').addEventListener('click', () => {
     state.view = 'review';
-    state.reviewSession = { queue: [term], completed: 0, total: 1, manual: true };
+    state.reviewSession = { queue: [term], completed: 0, total: 1, manual: true, originId: term.id };
     state.reviewRevealed = false;
     renderCurrentView();
   });
   document.getElementById('speak-example')?.addEventListener('click', () => speak(term.example));
   document.getElementById('edit-term')?.addEventListener('click', () => openTermDialog(term));
   document.getElementById('delete-term')?.addEventListener('click', () => removeCustomTerm(term));
+  document.getElementById('term-history-back')?.addEventListener('click', () => {
+    const previousId = state.termHistory.pop();
+    if (!previousId || !state.terms.some(item => item.id === previousId)) return;
+    state.selectedId = previousId;
+    renderLibrary();
+    scrollToTermDetail();
+  });
   document.querySelectorAll('[data-related-term]').forEach(button => button.addEventListener('click', () => {
     const targetKey = identityKey(button.dataset.relatedTerm);
     const target = state.terms.find(item => termIdentityKeys(item).includes(targetKey));
@@ -606,8 +651,12 @@ function bindTermDetail(term) {
     state.category = '';
     state.threadCategory = '';
     state.listMode = 'all';
-    if (target) state.selectedId = target.id;
+    if (target && target.id !== state.selectedId) {
+      state.termHistory.push(state.selectedId);
+      state.selectedId = target.id;
+    }
     renderLibrary();
+    scrollToTermDetail();
   }));
 }
 
@@ -634,6 +683,10 @@ function startReviewSession({ force = false } = {}) {
   state.lastSpokenTermId = '';
 }
 
+function reviewOriginTerm(session = state.reviewSession) {
+  return session?.originId ? state.terms.find(term => term.id === session.originId) : null;
+}
+
 function renderReview() {
   startReviewSession();
   const root = document.getElementById('view-root');
@@ -642,10 +695,12 @@ function renderReview() {
   const progress = term ? state.progressMap.get(term.id) : null;
   const intervals = term && state.reviewRevealed ? previewIntervals(progress) : {};
   const completionRatio = session.total ? Math.round((session.completed / session.total) * 100) : 100;
+  const originTerm = reviewOriginTerm(session);
   root.innerHTML = `
     <div class="view-header review-layout">
       <div><h1>今日复习</h1><p>FSRS 会根据你的记忆反馈安排下次出现时间</p></div>
       <div class="review-controls">
+        ${originTerm && term ? `<button class="button" id="review-back-term" type="button">${icon('arrow-left')}返回 ${escapeHtml(originTerm.term)}</button>` : ''}
         <div class="segmented-control" aria-label="复习方向">
           <button class="segmented-button" type="button" data-direction="en-zh" aria-pressed="${state.settings.reviewDirection === 'en-zh'}">英 → 中</button>
           <button class="segmented-button" type="button" data-direction="zh-en" aria-pressed="${state.settings.reviewDirection === 'zh-en'}">中 → 英</button>
@@ -655,7 +710,7 @@ function renderReview() {
     <div class="review-layout">
       <div class="review-status"><span>${session.completed} / ${session.total}</span><span>${session.queue.length} 个待复习</span></div>
       <div class="review-progress-track" aria-label="今日复习进度"><div class="review-progress-fill" style="width:${completionRatio}%"></div></div>
-      ${term ? reviewCardMarkup(term, intervals) : completionMarkup(session.completed)}
+      ${term ? reviewCardMarkup(term, intervals) : completionMarkup(session)}
     </div>
   `;
 
@@ -666,6 +721,7 @@ function renderReview() {
     renderReview();
     queueCloudSync();
   }));
+  document.getElementById('review-back-term')?.addEventListener('click', returnFromReview);
 
   if (term) {
     document.getElementById('review-speak').addEventListener('click', () => speak(term.term));
@@ -679,7 +735,7 @@ function renderReview() {
       window.setTimeout(() => speak(term.term), 80);
     }
   } else {
-    document.getElementById('back-library').addEventListener('click', () => setView('library'));
+    document.getElementById('back-library').addEventListener('click', returnFromReview);
     document.getElementById('refresh-review').addEventListener('click', () => {
       state.reviewSession = null;
       startReviewSession({ force: true });
@@ -693,17 +749,18 @@ function reviewCardMarkup(term, intervals) {
   const englishFirst = state.settings.reviewDirection === 'en-zh';
   const front = englishFirst ? term.term : term.zh;
   const secondary = englishFirst ? term.ipa : term.category;
+  const profilerMarker = isProfilerMarker(term);
   return `
     <article class="review-card">
       <div class="review-card-front">
-        <span class="term-category">${escapeHtml(term.category)}</span>
-        <h2>${escapeHtml(front)}</h2>
+        <span class="term-category">${escapeHtml(profilerMarker ? 'Insights 计时标记' : term.category)}</span>
+        <h2 class="${profilerMarker && englishFirst ? 'is-profiler-marker' : ''}">${profilerMarker && englishFirst ? `<code>${escapeHtml(front)}</code>` : escapeHtml(front)}</h2>
         <p class="term-ipa">${escapeHtml(secondary || '')}</p>
         <button class="icon-button" id="review-speak" type="button" aria-label="朗读英文">${icon('volume-2')}</button>
       </div>
       ${state.reviewRevealed ? `
         <div class="review-answer">
-          <h3>${escapeHtml(englishFirst ? term.zh : term.term)}</h3>
+          <h3>${profilerMarker && !englishFirst ? `<code>${escapeHtml(term.term)}</code>` : escapeHtml(englishFirst ? term.zh : term.term)}</h3>
           ${!englishFirst && term.ipa ? `<p class="term-ipa">${escapeHtml(term.ipa)}</p>` : ''}
           <p>${escapeHtml(term.definition)}</p>
           ${term.example ? `<p class="muted" lang="en">${escapeHtml(term.example)}</p>` : ''}
@@ -716,14 +773,15 @@ function reviewCardMarkup(term, intervals) {
   `;
 }
 
-function completionMarkup(completed) {
+function completionMarkup(session) {
+  const originTerm = reviewOriginTerm(session);
   return `
     <div class="completion">
       <div class="completion-icon">${icon('check')}</div>
       <h2>本轮复习完成</h2>
-      <p class="muted">完成 ${completed} 个术语</p>
+      <p class="muted">完成 ${session.completed} 个术语</p>
       <div class="inline-actions" style="justify-content:center">
-        <button class="button primary" id="back-library" type="button">${icon('library')}返回词库</button>
+        <button class="button primary" id="back-library" type="button">${icon(originTerm ? 'arrow-left' : 'library')}${originTerm ? `返回 ${escapeHtml(originTerm.term)}` : '返回词库'}</button>
         <button class="button" id="refresh-review" type="button">${icon('refresh-cw')}检查到期词条</button>
       </div>
     </div>
@@ -863,6 +921,8 @@ function renderSettings() {
   document.getElementById('reset-learning').addEventListener('click', resetLearning);
   document.getElementById('backup-file').onchange = importBackup;
   document.getElementById('cloud-login')?.addEventListener('submit', requestLoginLink);
+  document.getElementById('cloud-password-login')?.addEventListener('submit', requestPasswordLogin);
+  document.getElementById('cloud-set-password')?.addEventListener('submit', requestPasswordUpdate);
   document.getElementById('sync-now')?.addEventListener('click', performCloudSync);
   document.getElementById('cloud-signout')?.addEventListener('click', signOut);
   hydrateIcons();
@@ -880,20 +940,37 @@ function cloudStatusSubtitle() {
   if (state.cloudRestoring) return '正在读取此设备保存的登录状态';
   if (state.syncing) return '正在合并本机与云端记录';
   if (state.cloudUser) return '词条、收藏与复习进度已纳入同步';
-  return '使用邮箱验证码登录';
+  return '安装版可直接使用邮箱和密码登录';
 }
 
 function cloudControlsMarkup() {
   if (!isCloudConfigured()) return '<span class="status-badge">云端未配置</span>';
   if (state.cloudRestoring) return '<span class="status-badge">请稍候</span>';
   if (state.cloudUser) {
-    return `<div class="inline-actions"><button class="button primary" id="sync-now" type="button" ${state.syncing ? 'disabled' : ''}>${icon('refresh-cw')}立即同步</button><button class="button" id="cloud-signout" type="button">退出登录</button></div>`;
+    return `
+      <div class="inline-actions"><button class="button primary" id="sync-now" type="button" ${state.syncing ? 'disabled' : ''}>${icon('refresh-cw')}立即同步</button><button class="button" id="cloud-signout" type="button">退出登录</button></div>
+      <form class="password-form" id="cloud-set-password">
+        <span class="form-label">设备登录密码</span>
+        <div class="password-fields">
+          <input class="field" id="cloud-new-password" type="password" minlength="8" required autocomplete="new-password" placeholder="至少 8 位">
+          <input class="field" id="cloud-confirm-password" type="password" minlength="8" required autocomplete="new-password" placeholder="再次输入">
+          <button class="button" type="submit">设置密码</button>
+        </div>
+      </form>
+    `;
   }
   return `
-    <form class="login-form" id="cloud-login">
-      <label><span class="sr-only">邮箱</span><input class="field" id="cloud-email" type="email" required placeholder="你的邮箱"></label>
-      <button class="button primary" type="submit">发送登录链接</button>
-    </form>
+    <div class="auth-forms">
+      <form class="login-form login-form-password" id="cloud-password-login">
+        <label><span class="sr-only">邮箱</span><input class="field" id="cloud-password-email" type="email" required autocomplete="email" placeholder="邮箱"></label>
+        <label><span class="sr-only">密码</span><input class="field" id="cloud-password" type="password" required autocomplete="current-password" placeholder="设备登录密码"></label>
+        <button class="button primary" type="submit">直接登录</button>
+      </form>
+      <form class="login-form" id="cloud-login">
+        <label><span class="sr-only">邮箱</span><input class="field" id="cloud-email" type="email" required autocomplete="email" placeholder="首次登录或忘记密码"></label>
+        <button class="button" type="submit">发送邮箱链接</button>
+      </form>
+    </div>
   `;
 }
 
@@ -1209,9 +1286,48 @@ async function requestLoginLink(event) {
   const email = document.getElementById('cloud-email').value.trim();
   try {
     await sendLoginLink(email);
-    showToast('登录链接已发送到邮箱');
+    showToast('邮箱链接已发送，登录后可设置设备登录密码');
   } catch (error) {
-    showToast(error.message || '发送失败', 'error');
+    showToast(authErrorMessage(error, '发送失败'), 'error');
+  }
+}
+
+function authErrorMessage(error, fallback) {
+  const message = String(error?.message || '');
+  if (/invalid login credentials/i.test(message)) return '邮箱或密码不正确';
+  if (/password should be at least/i.test(message)) return '密码长度不足';
+  if (/email not confirmed/i.test(message)) return '请先打开邮箱链接完成验证';
+  return message || fallback;
+}
+
+async function requestPasswordLogin(event) {
+  event.preventDefault();
+  const email = document.getElementById('cloud-password-email').value.trim();
+  const password = document.getElementById('cloud-password').value;
+  try {
+    await signInCloudWithPassword(email, password);
+    state.cloudUser = await getCloudUser();
+    state.cloudRestoring = false;
+    renderSettings();
+  } catch (error) {
+    showToast(authErrorMessage(error, '登录失败'), 'error');
+  }
+}
+
+async function requestPasswordUpdate(event) {
+  event.preventDefault();
+  const password = document.getElementById('cloud-new-password').value;
+  const confirmation = document.getElementById('cloud-confirm-password').value;
+  if (password !== confirmation) {
+    showToast('两次输入的密码不一致', 'error');
+    return;
+  }
+  try {
+    await setCloudPassword(password);
+    event.target.reset();
+    showToast('设备登录密码已设置');
+  } catch (error) {
+    showToast(authErrorMessage(error, '密码设置失败'), 'error');
   }
 }
 
@@ -1272,13 +1388,17 @@ function registerPwaEvents() {
 }
 
 async function initializeCloud() {
-  onCloudAuthChange(async user => {
+  onCloudAuthChange(async (user, event) => {
     const changed = user?.id !== state.cloudUser?.id;
     state.cloudUser = user;
     state.cloudRestoring = false;
+    if (event === 'SIGNED_IN' && user) state.view = 'settings';
     updateChrome();
     if (changed && user) await performCloudSync({ quiet: true });
     else if (state.view === 'settings') renderSettings();
+    if (event === 'SIGNED_IN' && user) {
+      showToast(returningFromEmailLogin ? '登录完成，请设置设备登录密码' : '已在此设备登录');
+    }
   });
   try {
     state.cloudUser = await getCloudUser();

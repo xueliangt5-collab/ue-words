@@ -444,6 +444,12 @@ strong {
   font-size: 13px;
 }
 
+.list-primary.is-code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
 .empty-list {
   padding: 48px 20px;
   color: var(--muted);
@@ -453,6 +459,23 @@ strong {
 .term-detail {
   min-width: 0;
   padding: 28px;
+  scroll-margin-top: 70px;
+}
+
+.term-history-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-strong);
+  text-align: left;
+}
+
+.term-history-back strong {
+  overflow-wrap: anywhere;
 }
 
 .mobile-term-nav,
@@ -471,6 +494,26 @@ strong {
 .term-detail h2 {
   margin-bottom: 5px;
   font-size: 30px;
+  overflow-wrap: anywhere;
+}
+
+.term-kind {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.term-detail h2.is-profiler-marker,
+.review-card-front h2.is-profiler-marker {
+  font-size: 24px;
+}
+
+.is-profiler-marker code,
+.review-answer h3 code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-weight: 650;
   overflow-wrap: anywhere;
 }
 
@@ -938,6 +981,32 @@ strong {
   gap: 8px;
 }
 
+.auth-forms,
+.password-form {
+  display: grid;
+  gap: 10px;
+}
+
+.auth-forms {
+  margin-top: 4px;
+}
+
+.login-form-password {
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.8fr) auto;
+}
+
+.password-form {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.password-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
 .install-help {
   display: grid;
   gap: 18px;
@@ -1384,7 +1453,12 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 
-  .login-form .button {
+  .password-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .login-form .button,
+  .password-fields .button {
     width: 100%;
   }
 }
@@ -1404,6 +1478,11 @@ dialog::backdrop {
 
   .term-detail-header {
     align-items: flex-start;
+  }
+
+  .term-detail h2.is-profiler-marker,
+  .review-card-front h2.is-profiler-marker {
+    font-size: 22px;
   }
 
   .term-detail-header .inline-actions {
