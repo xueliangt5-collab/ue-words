@@ -1,6 +1,7 @@
 import { createIcons, icons } from 'lucide';
 import './styles.css';
 import { BUILTIN_TERMS } from './terms.js';
+import SPEECH_ASSETS from './speech-assets.json';
 import {
   DEFAULT_SETTINGS,
   addActivity,
@@ -1014,14 +1015,31 @@ function stopOnlineVoice() {
   if (player) player.hidden = true;
 }
 
-function speakWithOnlineVoice(text, requestId) {
+function speechSources(text) {
+  const localFile = SPEECH_ASSETS[text];
+  const sources = [];
+  if (localFile) sources.push(`${import.meta.env.BASE_URL}audio/${localFile}`);
+  sources.push(`https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`);
+  return sources;
+}
+
+function speakWithAudio(text, requestId) {
   if (!text || requestId !== speechRequestId) return;
   const player = document.getElementById('speech-player');
   const audio = document.getElementById('speech-audio');
   if (!player || !audio) return;
+  const sources = speechSources(text);
+  let sourceIndex = 0;
   let reported = false;
   const reportFailure = () => {
     if (reported || requestId !== speechRequestId) return;
+    sourceIndex += 1;
+    if (sourceIndex < sources.length) {
+      audio.src = sources[sourceIndex];
+      audio.load();
+      audio.play().catch(() => {});
+      return;
+    }
     reported = true;
     showToast('当前浏览器无法播放读音，请使用 Safari 或 Chrome 打开', 'error');
   };
@@ -1029,7 +1047,7 @@ function speakWithOnlineVoice(text, requestId) {
   audio.onended = () => {
     if (requestId === speechRequestId) player.hidden = true;
   };
-  audio.src = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`;
+  audio.src = sources[sourceIndex];
   player.hidden = false;
   audio.load();
   // Restricted webviews can reject scripted playback; native controls remain available for a second tap.
@@ -1043,7 +1061,7 @@ function speak(text) {
   stopOnlineVoice();
 
   if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
-    speakWithOnlineVoice(cleanedText, requestId);
+    speakWithAudio(cleanedText, requestId);
     return;
   }
 
@@ -1056,7 +1074,7 @@ function speak(text) {
   if (voice) utterance.voice = voice;
   utterance.onerror = event => {
     if (requestId !== speechRequestId || ['canceled', 'interrupted'].includes(event.error)) return;
-    speakWithOnlineVoice(cleanedText, requestId);
+    speakWithAudio(cleanedText, requestId);
   };
   window.speechSynthesis.speak(utterance);
 }

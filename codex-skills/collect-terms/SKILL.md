@@ -57,9 +57,16 @@ node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents
 
 Resolve the bundled Node executable when `node` is not available on `PATH`.
 
-3. Run the repository's `pnpm run check` and `pnpm run build` commands.
-4. Review the diff. Commit only the glossary-related changes and push `main` when the user requested publication.
-5. Verify the GitHub Pages workflow and report the live URL.
+3. When a public term, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. If `.tts-deps/edge_tts` is missing, install `scripts/speech-requirements.txt` into `.tts-deps`, then run:
+
+```powershell
+python scripts/generate_speech_assets.py --node <node-executable>
+```
+
+Stage the generated `src/speech-assets.json` and `public/audio` files with the term changes. Existing audio files are reused.
+4. Run the repository's `pnpm run check` and `pnpm run build` commands.
+5. Review the diff. Commit only the glossary and generated speech changes, then push `main` when the user requested publication.
+6. Verify the GitHub Pages workflow and report the live URL.
 
 Do not edit the large core array in `src/terms.js`; public additions belong in `src/imported-terms.json`.
 
