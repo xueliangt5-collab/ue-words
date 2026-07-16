@@ -1,5 +1,42 @@
 [
   {
+    "id": "imported-actor-lifecycle",
+    "term": "Actor Lifecycle",
+    "ipa": "",
+    "zh": "Actor 生命周期",
+    "category": "UE 基础",
+    "definition": "Actor 从创建、初始化、开始运行到销毁所经历的一系列阶段，决定其事件何时能够执行。",
+    "example": "The listener is active only while the Actor is in its valid lifecycle.",
+    "exampleZh": "监听器只在 Actor 处于有效生命周期时工作。",
+    "tags": "UE Actor 生命周期 初始化 销毁 BeginPlay",
+    "spokenForm": "Actor Lifecycle",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Lifecycle"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Event BeginPlay",
+        "relation": "初始化事件",
+        "explanation": "BeginPlay 表示 Actor 已进入游戏运行阶段。"
+      },
+      {
+        "term": "Level Transition",
+        "relation": "生命周期边界",
+        "explanation": "切换关卡通常会销毁旧关卡中的 Actor，并创建新关卡中的 Actor。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Blueprint Actor across levels",
+        "explanation": "普通关卡 Actor 通常只属于放置它的那个关卡。",
+        "experience": "需要跨关卡持续存在的数据更适合放在 Game Instance 等生命周期更长的对象中。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-akaudiodevice",
     "term": "AkAudioDevice",
     "ipa": "",
@@ -58,6 +95,38 @@
     ]
   },
   {
+    "id": "imported-async-action",
+    "term": "Async Action",
+    "ipa": "",
+    "zh": "异步操作",
+    "category": "蓝图逻辑",
+    "definition": "启动后可以等待未来结果或多次回调，而不阻塞当前游戏执行流程的操作。",
+    "example": "The Async Action waits for future gameplay messages.",
+    "exampleZh": "这个异步操作等待以后到达的游戏玩法消息。",
+    "tags": "UE 蓝图 异步 回调 等待 时钟图标",
+    "spokenForm": "Async Action",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Asynchronous Action"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Callback",
+        "relation": "结果通知",
+        "explanation": "异步操作通常通过回调返回未来发生的结果。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Blueprint node with a clock icon",
+        "explanation": "蓝图时钟图标通常表示延迟或异步行为。",
+        "experience": "异步节点的立即输出和未来回调输出含义不同，连线时要根据触发时机选择。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-basepass",
     "term": "Basepass",
     "ipa": "/beɪs pæs/",
@@ -109,6 +178,82 @@
     ],
     "usageNotes": [
       "CSV 中 FrameTime 从这算。"
+    ]
+  },
+  {
+    "id": "imported-break-struct",
+    "term": "Break Struct",
+    "ipa": "",
+    "zh": "拆分结构体",
+    "category": "蓝图逻辑",
+    "definition": "蓝图中把一个 Struct 输入展开为多个成员输出引脚的节点形式。",
+    "example": "Break the Struct to access Victim and Damage Amount.",
+    "exampleZh": "拆分结构体以访问受害者和伤害数值。",
+    "tags": "UE 蓝图 结构体 字段 节点 Break",
+    "spokenForm": "Break Struct",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Break Structure"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Payload -> Break Struct",
+        "explanation": "将消息载荷拆成独立字段。",
+        "experience": "Break 节点通常是纯节点，没有白色执行引脚；数据会在下游需要时被读取。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-callback",
+    "term": "Callback",
+    "ipa": "",
+    "zh": "回调",
+    "category": "蓝图逻辑",
+    "definition": "先注册、在指定事件以后发生时由系统调用的一段逻辑。",
+    "example": "The callback runs when a matching message arrives.",
+    "exampleZh": "匹配消息到达时会执行这个回调。",
+    "tags": "编程 事件 异步 监听 回调函数",
+    "spokenForm": "Callback",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Callback Function"
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Callback 强调由另一个系统在未来某个时机调用，而不是当前执行线立即主动调用。"
+    ]
+  },
+  {
+    "id": "imported-channel",
+    "term": "Channel",
+    "ipa": "",
+    "zh": "消息频道",
+    "category": "蓝图逻辑",
+    "definition": "消息系统用于区分消息主题的路由标识，监听器只处理符合其 Channel 和匹配规则的消息。",
+    "example": "Select the same Channel used by the broadcaster.",
+    "exampleZh": "选择与广播方使用的相同消息频道。",
+    "tags": "UE 消息 路由 Gameplay Tag 广播 监听",
+    "spokenForm": "Channel",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Message Channel"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Gameplay Tag",
+        "relation": "常用标识类型",
+        "explanation": "Gameplay Message 的 Channel 通常使用分层 Gameplay Tag 表示。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Channel 正确但 Match Type 不合适时，监听器仍可能收不到消息。"
     ]
   },
   {
@@ -238,6 +383,67 @@
     "usageNotes": []
   },
   {
+    "id": "imported-damage-amount",
+    "term": "Damage Amount",
+    "ipa": "",
+    "zh": "伤害数值",
+    "category": "蓝图逻辑",
+    "definition": "一次伤害事件所携带的伤害量，通常为 Float，并可用于累计统计或 UI 显示。",
+    "example": "Add the Damage Amount to the running total.",
+    "exampleZh": "把本次伤害数值加到累计值中。",
+    "tags": "UE 伤害 Float 数值 累计",
+    "spokenForm": "Damage Amount",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Damage Value"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "Total Damage += Damage Amount",
+        "explanation": "将本次伤害加到已有累计伤害中。",
+        "experience": "先计算新值并 Set 变量，再把新值交给显示节点，可以避免打印旧累计值。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-event-beginplay",
+    "term": "Event BeginPlay",
+    "ipa": "",
+    "zh": "开始运行事件",
+    "category": "UE 基础",
+    "definition": "Actor 进入正在运行的游戏世界并开始参与游戏时触发的事件，通常用于初始化变量、注册监听器和启动计时器。",
+    "example": "Register the message listener in Event BeginPlay.",
+    "exampleZh": "在开始运行事件中注册消息监听器。",
+    "tags": "UE 蓝图 初始化 事件 生命周期 Begin Play",
+    "spokenForm": "Event Begin Play",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "BeginPlay",
+      "Begin Play"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Actor Lifecycle",
+        "relation": "生命周期阶段",
+        "explanation": "BeginPlay 是 Actor 生命周期中的关键初始化阶段。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Event BeginPlay -> register listener",
+        "explanation": "关卡开始运行时创建消息监听。",
+        "experience": "如果 BeginPlay 没有执行，优先确认该 Actor 实例是否存在于当前已加载关卡中。"
+      }
+    ],
+    "usageNotes": [
+      "编辑蓝图类并不等于关卡里已经存在该蓝图的 Actor 实例。"
+    ]
+  },
+  {
     "id": "imported-event-deferredpostload",
     "term": "Event_DeferredPostLoad",
     "ipa": "",
@@ -262,6 +468,38 @@
     "usageNotes": [
       "CDO 构建等。"
     ]
+  },
+  {
+    "id": "imported-exact-match",
+    "term": "Exact Match",
+    "ipa": "",
+    "zh": "精确匹配",
+    "category": "蓝图逻辑",
+    "definition": "只接受与目标值完全相同的标识，不自动接受其父级或子级 Gameplay Tag。",
+    "example": "Exact Match ignores messages sent on a child tag.",
+    "exampleZh": "精确匹配会忽略发送到子标签上的消息。",
+    "tags": "UE Gameplay Tag 匹配 Channel 条件",
+    "spokenForm": "Exact Match",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Exact Matching"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Partial Match",
+        "relation": "相对匹配方式",
+        "explanation": "Partial Match 可用于更宽泛地接收标签层级中的消息。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Match Type: Exact Match",
+        "explanation": "监听器要求消息 Channel 与所选 Channel 完全相同。",
+        "experience": "排查监听失败时，可以临时改为较宽泛的匹配方式验证是否存在标签层级差异。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-fasyncloadingthread",
@@ -452,6 +690,38 @@
     ]
   },
   {
+    "id": "imported-format-text",
+    "term": "Format Text",
+    "ipa": "",
+    "zh": "格式化文本",
+    "category": "蓝图逻辑",
+    "definition": "使用花括号参数把固定文字和运行时变量组合为一段 Text 的蓝图节点。",
+    "example": "Use Format Text to display the victim and total damage.",
+    "exampleZh": "使用格式化文本显示受击目标和累计伤害。",
+    "tags": "UE 蓝图 Text 字符串 占位符 UI",
+    "spokenForm": "Format Text",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "FormatText"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Print String",
+        "relation": "调试显示",
+        "explanation": "格式化后的结果可以转换并传给 Print String。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Format Text with {Name} and {Total}",
+        "explanation": "花括号中的名称会变成节点输入引脚。",
+        "experience": "累计结果应连接新计算值或 Set 节点输出，避免显示更新前的旧值。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-frendercommandfence-beginfence",
     "term": "FRenderCommandFence::BeginFence",
     "ipa": "",
@@ -526,6 +796,34 @@
     "usageNotes": []
   },
   {
+    "id": "imported-friendly-fire",
+    "term": "Friendly Fire",
+    "ipa": "",
+    "zh": "友军伤害 / 误伤",
+    "category": "游戏测试",
+    "definition": "玩家或单位对同一队伍中的友军造成伤害的游戏行为或规则。",
+    "example": "The test tracks Friendly Fire during combat.",
+    "exampleZh": "这个测试会统计战斗中的友军伤害。",
+    "tags": "游戏测试 伤害 队伍 误伤 teammate ally",
+    "spokenForm": "Friendly Fire",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Team Damage"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Instigator",
+        "relation": "伤害来源",
+        "explanation": "需要通过 Instigator 判断伤害是否由友方或玩家发起。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Friendly Fire 描述友方之间的伤害，不等同于队友对敌人造成的普通伤害。"
+    ]
+  },
+  {
     "id": "imported-fxsystem",
     "term": "FXSystem",
     "ipa": "",
@@ -548,6 +846,71 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-gameplay-message",
+    "term": "Gameplay Message",
+    "ipa": "",
+    "zh": "游戏玩法消息",
+    "category": "蓝图逻辑",
+    "definition": "由发送方广播、由一个或多个监听器接收的结构化游戏通知，使发送方不必直接引用接收方。",
+    "example": "The damage system broadcasts a Gameplay Message.",
+    "exampleZh": "伤害系统广播了一条游戏玩法消息。",
+    "tags": "UE 消息 广播 监听 解耦 事件",
+    "spokenForm": "Gameplay Message",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Gameplay Message System"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Channel",
+        "relation": "消息路由",
+        "explanation": "消息通过 Channel 区分主题和接收范围。"
+      },
+      {
+        "term": "Payload",
+        "relation": "消息数据",
+        "explanation": "Payload 携带消息接收者需要读取的具体数据。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "broadcast and listen for gameplay messages",
+        "explanation": "发送系统广播消息，测试蓝图只负责监听和显示。",
+        "experience": "这种设计减少系统之间的直接依赖，适合统计、UI、任务和调试功能。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-gameplay-tag",
+    "term": "Gameplay Tag",
+    "ipa": "",
+    "zh": "游戏玩法标签",
+    "category": "UE 基础",
+    "definition": "UE 中使用点号形成分层名称的标签系统，用于表达状态、类别、能力、事件和消息频道。",
+    "example": "Use a Gameplay Tag to identify the message channel.",
+    "exampleZh": "使用游戏玩法标签标识消息频道。",
+    "tags": "UE Tag 标签 GAS 层级 Channel",
+    "spokenForm": "Gameplay Tag",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "GameplayTag"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Exact Match",
+        "relation": "匹配规则",
+        "explanation": "分层 Gameplay Tag 可以选择精确匹配或包含父子关系的匹配。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "点号表示层级，例如父标签与更具体的子标签。"
+    ]
   },
   {
     "id": "imported-gamethreadwaitfortask",
@@ -611,6 +974,39 @@
     ]
   },
   {
+    "id": "imported-health",
+    "term": "Health",
+    "ipa": "",
+    "zh": "生命值",
+    "category": "UE 基础",
+    "definition": "表示角色或对象还能承受多少伤害的游戏属性，通常在受到伤害时减少。",
+    "example": "The message contains the Health value before and after damage.",
+    "exampleZh": "消息包含受到伤害前后的生命值。",
+    "tags": "UE HP 属性 伤害 生命值",
+    "spokenForm": "Health",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "HP",
+      "Hit Points"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Damage Amount",
+        "relation": "属性变化来源",
+        "explanation": "伤害通常会使 Health 减少。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Health Before -> Health After",
+        "explanation": "同一伤害事件发生前后的生命值快照。",
+        "experience": "比较前后值可以验证实际扣血是否与消息中的 Damage Amount 一致。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-initviews",
     "term": "InitViews",
     "ipa": "",
@@ -634,6 +1030,34 @@
     ],
     "usageNotes": [
       "剔除/可见性/LOD 计算。"
+    ]
+  },
+  {
+    "id": "imported-instigator",
+    "term": "Instigator",
+    "ipa": "",
+    "zh": "行为发起者",
+    "category": "蓝图逻辑",
+    "definition": "引发攻击、伤害或其他游戏行为的 Actor 或 Pawn，常用于判断伤害来源。",
+    "example": "Check whether the Instigator is the player Pawn.",
+    "exampleZh": "检查行为发起者是否为玩家 Pawn。",
+    "tags": "UE 伤害 攻击者 Pawn Actor 来源",
+    "spokenForm": "Instigator",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Damage Instigator"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Victim",
+        "relation": "伤害双方",
+        "explanation": "Instigator 发起行为，Victim 承受行为结果。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Instigator 通常表示最初发起行为的 Pawn；不要默认它一定是武器、子弹或 Controller。"
     ]
   },
   {
@@ -719,6 +1143,38 @@
     ]
   },
   {
+    "id": "imported-level-transition",
+    "term": "Level Transition",
+    "ipa": "",
+    "zh": "关卡切换",
+    "category": "UE 基础",
+    "definition": "游戏从一个 Level 或 Map 离开并加载另一个关卡的过程，通常会改变当前 World 中存在的 Actor。",
+    "example": "The tracker disappeared after the level transition.",
+    "exampleZh": "关卡切换后，跟踪器消失了。",
+    "tags": "UE 关卡 地图 加载 Open Level 生命周期",
+    "spokenForm": "Level Transition",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Map Transition"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Game Instance",
+        "relation": "跨关卡对象",
+        "explanation": "Game Instance 的生命周期通常跨越多个关卡。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "transition from a lobby to a gameplay level",
+        "explanation": "从大厅关卡进入实际游戏关卡。",
+        "experience": "放在大厅关卡里的测试 Actor 不会自动出现在新加载的游戏关卡中。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-levelstreaming",
     "term": "LevelStreaming",
     "ipa": "/ˈlevəl ˈstriːmɪŋ/",
@@ -755,6 +1211,40 @@
     ],
     "usageNotes": [
       "LoadStreamLevel/UnloadStreamLevel。"
+    ]
+  },
+  {
+    "id": "imported-listen-for-gameplay-messages",
+    "term": "Listen for Gameplay Messages",
+    "ipa": "",
+    "zh": "监听游戏玩法消息",
+    "category": "蓝图逻辑",
+    "definition": "注册一个异步监听器，在指定 Channel 收到匹配的 Gameplay Message 时触发回调。",
+    "example": "Use Listen for Gameplay Messages to observe friendly-fire events.",
+    "exampleZh": "使用监听游戏玩法消息节点观察友军误伤事件。",
+    "tags": "UE 蓝图 监听器 Gameplay Message 异步 节点",
+    "spokenForm": "Listen for Gameplay Messages",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "ListenForGameplayMessages"
+    ],
+    "relatedTerms": [
+      {
+        "term": "On Message Received",
+        "relation": "接收回调",
+        "explanation": "匹配消息到达时，从 On Message Received 输出继续执行。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Event BeginPlay -> Listen for Gameplay Messages",
+        "explanation": "Actor 开始运行时注册监听。",
+        "experience": "节点连线正确但 Actor 未加载时，监听器根本不会被注册。"
+      }
+    ],
+    "usageNotes": [
+      "监听节点的普通完成输出与消息到达回调不是同一条执行路径。"
     ]
   },
   {
@@ -926,6 +1416,70 @@
     ]
   },
   {
+    "id": "imported-on-message-received",
+    "term": "On Message Received",
+    "ipa": "",
+    "zh": "收到消息时",
+    "category": "蓝图逻辑",
+    "definition": "监听器成功收到匹配消息时触发的回调执行输出，后续解包和统计逻辑应从这里开始。",
+    "example": "Update the total damage on On Message Received.",
+    "exampleZh": "收到消息时更新累计伤害。",
+    "tags": "UE 回调 消息 事件 执行引脚",
+    "spokenForm": "On Message Received",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Message Received Callback"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Callback",
+        "relation": "回调形式",
+        "explanation": "On Message Received 是消息监听器提供的回调。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "On Message Received -> update state -> print",
+        "explanation": "消息到达后先更新累计状态，再显示新结果。",
+        "experience": "临时在回调后直接连接 Print String，可以快速判断问题在监听之前还是数据处理之后。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-output-log",
+    "term": "Output Log",
+    "ipa": "",
+    "zh": "输出日志",
+    "category": "故障与性能",
+    "definition": "Unreal Editor 中显示运行日志、警告、错误和自定义日志分类的调试窗口。",
+    "example": "Filter the Output Log by the relevant log category.",
+    "exampleZh": "按相关日志分类过滤输出日志。",
+    "tags": "UE 编辑器 日志 调试 Warning Error",
+    "spokenForm": "Output Log",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Log Window"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Print String",
+        "relation": "调试输出方式",
+        "explanation": "Print String 适合即时屏幕提示，Output Log 更适合保留和过滤详细记录。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "filter the Output Log",
+        "explanation": "通过日志分类或关键词缩小排查范围。",
+        "experience": "日志证明广播已发生后，应把排查范围缩小到监听器、Actor 实例和后续蓝图执行链。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-pakprecacher",
     "term": "PakPrecacher",
     "ipa": "",
@@ -974,6 +1528,64 @@
     "usageNotes": [
       "多个 worker 同时干活。"
     ]
+  },
+  {
+    "id": "imported-payload",
+    "term": "Payload",
+    "ipa": "",
+    "zh": "消息载荷",
+    "category": "蓝图逻辑",
+    "definition": "随消息一起传递的数据主体，可包含对象引用、伤害数值、血量和其他上下文。",
+    "example": "Break the Payload to read the damage amount.",
+    "exampleZh": "拆分消息载荷以读取伤害数值。",
+    "tags": "UE 消息 数据 结构体 Gameplay Message",
+    "spokenForm": "Payload",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Message Payload"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Struct",
+        "relation": "常见数据形式",
+        "explanation": "Payload 经常使用 Struct 组织多个相关字段。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Payload 可理解为快递包裹中的实际内容，Channel 则像包裹的投递路线。"
+    ]
+  },
+  {
+    "id": "imported-payload-type",
+    "term": "Payload Type",
+    "ipa": "",
+    "zh": "载荷类型",
+    "category": "蓝图逻辑",
+    "definition": "规定消息 Payload 所使用的结构体类型，使监听器能够按正确字段解释收到的数据。",
+    "example": "The Payload Type must match the broadcast message.",
+    "exampleZh": "载荷类型必须与广播消息一致。",
+    "tags": "UE 类型 结构体 消息 Gameplay Message",
+    "spokenForm": "Payload Type",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [],
+    "relatedTerms": [
+      {
+        "term": "Payload",
+        "relation": "类型约束",
+        "explanation": "Payload Type 描述 Payload 的数据结构。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Gameplay Message payload type mismatch",
+        "explanation": "广播方与监听方使用了不同的结构体类型。",
+        "experience": "Channel 正确但回调不触发时，应检查 Payload Type 和 Output Log 中的类型不匹配信息。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-physics",
@@ -1081,6 +1693,40 @@
     ],
     "usageNotes": [
       "先画深度再画颜色减少 overdraw。"
+    ]
+  },
+  {
+    "id": "imported-print-string",
+    "term": "Print String",
+    "ipa": "",
+    "zh": "打印字符串",
+    "category": "蓝图逻辑",
+    "definition": "在屏幕或 Output Log 中输出临时文本的蓝图调试节点。",
+    "example": "Insert a Print String after BeginPlay to verify execution.",
+    "exampleZh": "在 BeginPlay 后插入打印字符串节点以验证执行。",
+    "tags": "UE 蓝图 调试 屏幕 日志 字符串",
+    "spokenForm": "Print String",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "PrintString"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Format Text",
+        "relation": "文本输入来源",
+        "explanation": "Format Text 可先组合变量，再把结果传给 Print String。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "BeginPlay -> Print String -> listener",
+        "explanation": "用屏幕提示确认 Actor 的 BeginPlay 是否运行。",
+        "experience": "沿执行链逐段插入 Print String，是蓝图中定位断点位置的简单方法。"
+      }
+    ],
+    "usageNotes": [
+      "Print String 是开发调试工具，不应代替正式 UI 或长期日志方案。"
     ]
   },
   {
@@ -1504,6 +2150,32 @@
         "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-struct",
+    "term": "Struct",
+    "ipa": "",
+    "zh": "结构体",
+    "category": "蓝图逻辑",
+    "definition": "把多个相关字段组合成一个数据类型的容器，例如把受害者、攻击者、伤害和血量放在同一条消息中。",
+    "example": "The Struct stores all fields of the damage message.",
+    "exampleZh": "这个结构体保存伤害消息的全部字段。",
+    "tags": "UE 数据类型 字段 Blueprint C++ structure",
+    "spokenForm": "Struct",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Structure"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Break Struct",
+        "relation": "字段读取",
+        "explanation": "Break Struct 节点把结构体展开为独立字段。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -1990,6 +2662,32 @@
     ]
   },
   {
+    "id": "imported-victim",
+    "term": "Victim",
+    "ipa": "",
+    "zh": "受害者 / 受击目标",
+    "category": "蓝图逻辑",
+    "definition": "在伤害或攻击事件中承受效果的 Actor。",
+    "example": "Display the Victim name in the debug message.",
+    "exampleZh": "在调试消息中显示受击目标的名称。",
+    "tags": "UE 伤害 目标 Actor 受击者",
+    "spokenForm": "Victim",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Damage Victim"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Instigator",
+        "relation": "伤害双方",
+        "explanation": "Victim 是效果承受者，Instigator 是行为发起者。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-virtualtexturesystem",
     "term": "VirtualTextureSystem",
     "ipa": "",
@@ -2048,6 +2746,32 @@
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 WaitForTasks 归入 RenderThread 线程或轨道分类。",
         "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-world-outliner",
+    "term": "World Outliner",
+    "ipa": "",
+    "zh": "世界大纲",
+    "category": "UE 基础",
+    "definition": "Unreal Editor 中列出当前关卡或世界内 Actor 层级和实例的面板。",
+    "example": "Search for the tracker Actor in the World Outliner.",
+    "exampleZh": "在世界大纲中搜索跟踪器 Actor。",
+    "tags": "UE 编辑器 Actor 实例 层级 场景",
+    "spokenForm": "World Outliner",
+    "threadCategory": "",
+    "source": "UE Blueprint gameplay-message debugging",
+    "aliases": [
+      "Outliner"
+    ],
+    "relatedTerms": [],
+    "contexts": [
+      {
+        "phrase": "verify an Actor instance in the World Outliner",
+        "explanation": "确认蓝图 Actor 是否真正放入当前关卡。",
+        "experience": "蓝图逻辑不执行时，先在 World Outliner 中确认实例存在，比立即检查复杂节点更高效。"
       }
     ],
     "usageNotes": []
