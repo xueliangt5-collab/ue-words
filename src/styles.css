@@ -1056,6 +1056,30 @@ dialog::backdrop {
   width: min(360px, calc(100% - 40px));
 }
 
+.speech-player {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.speech-player[hidden] {
+  display: none;
+}
+
+.speech-player audio {
+  width: min(320px, calc(100vw - 90px));
+  height: 40px;
+}
+
 .toast {
   display: flex;
   align-items: center;
@@ -1109,6 +1133,17 @@ dialog::backdrop {
 
   .app-main {
     padding-bottom: 108px;
+  }
+
+  .speech-player {
+    right: 12px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    left: 12px;
+  }
+
+  .speech-player audio {
+    width: 100%;
+    min-width: 0;
   }
 
   .progress-layout,

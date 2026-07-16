@@ -77,6 +77,7 @@ const state = {
 };
 
 let syncTimer;
+let speechRequestId = 0;
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, character => ({
@@ -200,6 +201,10 @@ function renderShell() {
         </div>
       </header>
       <main class="app-main" id="view-root"></main>
+      <div class="speech-player" id="speech-player" hidden>
+        <audio id="speech-audio" controls preload="none"></audio>
+        <button class="icon-button" id="close-speech-player" type="button" aria-label="关闭读音播放器">${icon('x')}</button>
+      </div>
       <div class="toast-region" aria-live="polite"></div>
       ${termDialogMarkup()}
       ${installDialogMarkup()}
@@ -209,6 +214,7 @@ function renderShell() {
 
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => setView(button.dataset.view)));
   document.getElementById('install-button').addEventListener('click', installApp);
+  document.getElementById('close-speech-player').addEventListener('click', stopOnlineVoice);
   bindTermDialog();
   bindInstallDialog();
   updateChrome();
@@ -997,18 +1003,61 @@ async function removeCustomTerm(term) {
   queueCloudSync();
 }
 
+function speechText(text) {
+  return String(text || '').replace(/\([^)]*\)/g, '').replace(/\//g, ' ').trim();
+}
+
+function stopOnlineVoice() {
+  const player = document.getElementById('speech-player');
+  const audio = document.getElementById('speech-audio');
+  audio?.pause();
+  if (player) player.hidden = true;
+}
+
+function speakWithOnlineVoice(text, requestId) {
+  if (!text || requestId !== speechRequestId) return;
+  const player = document.getElementById('speech-player');
+  const audio = document.getElementById('speech-audio');
+  if (!player || !audio) return;
+  let reported = false;
+  const reportFailure = () => {
+    if (reported || requestId !== speechRequestId) return;
+    reported = true;
+    showToast('当前浏览器无法播放读音，请使用 Safari 或 Chrome 打开', 'error');
+  };
+  audio.onerror = reportFailure;
+  audio.onended = () => {
+    if (requestId === speechRequestId) player.hidden = true;
+  };
+  audio.src = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`;
+  player.hidden = false;
+  audio.load();
+  // Restricted webviews can reject scripted playback; native controls remain available for a second tap.
+  audio.play().catch(() => {});
+}
+
 function speak(text) {
-  if (!('speechSynthesis' in window)) {
-    showToast('当前设备不支持系统语音', 'error');
+  const cleanedText = speechText(text);
+  if (!cleanedText) return;
+  const requestId = ++speechRequestId;
+  stopOnlineVoice();
+
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+    speakWithOnlineVoice(cleanedText, requestId);
     return;
   }
+
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(String(text).replace(/\([^)]*\)/g, '').replace(/\//g, ' '));
+  const utterance = new SpeechSynthesisUtterance(cleanedText);
   utterance.lang = 'en-US';
   utterance.rate = Number(state.settings.speechRate || 0.85);
   const voices = window.speechSynthesis.getVoices();
   const voice = voices.find(item => /^en-US/i.test(item.lang)) || voices.find(item => /^en/i.test(item.lang));
   if (voice) utterance.voice = voice;
+  utterance.onerror = event => {
+    if (requestId !== speechRequestId || ['canceled', 'interrupted'].includes(event.error)) return;
+    speakWithOnlineVoice(cleanedText, requestId);
+  };
   window.speechSynthesis.speak(utterance);
 }
 
