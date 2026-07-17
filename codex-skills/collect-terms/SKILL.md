@@ -1,6 +1,6 @@
 ---
 name: collect-terms
-description: Automatically decompose, explain, classify, relate, deduplicate, and publish English words, technical terms, profiler markers, or Unreal Insights CSV rows into the user's terminology learning PWA. Use when the user asks to add, collect, save, import, organize, enrich, or publish vocabulary, including "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
+description: Normalize Chinese nouns, descriptions, mixed Chinese-English notes, English words, technical terms, profiler markers, or Unreal Insights CSV rows into standard English glossary records, then explain, classify, relate, deduplicate, enrich, and publish them to the user's terminology learning PWA. Use when the user asks to translate technical concepts into English or to add, collect, save, import, organize, enrich, or publish vocabulary, including "这个名词英文怎么说", "把这些中文名词整理成英文", "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
 ---
 
 # Collect Terms
@@ -27,22 +27,34 @@ For Unreal Insights CSV exports with `TimerName`, `Category`, and `Explanation_C
 6. Generate aliases, examples, translations, tags, analysis experience, and only defensible semantic relations.
 7. Use the spreadsheet skill and `@oai/artifact-tool` to extract CSV rows into `{ headers, rows }` JSON, then run `scripts/enrich_insights_rows.mjs` to produce term records.
 
-For unstructured text, identify symbols, ordinary terms, context, and experience from meaning rather than delimiter position. Keep one learnable concept per record and preserve useful combinations in `contexts`.
+For unstructured text, identify symbols, ordinary terms, Chinese concepts, context, and experience from meaning rather than delimiter position. Keep one learnable concept per record and preserve useful combinations in `contexts`.
+
+## Normalize Chinese-first input
+
+When any source concept is Chinese or mixed Chinese-English, read [references/chinese-intake.md](references/chinese-intake.md) before preparing records.
+
+1. Infer the domain and intended sense from the surrounding sentence, source, UI, code, or profiler context.
+2. Choose the canonical English term, not a word-for-word translation. Prefer official product wording, API or code spelling, then established industry usage.
+3. Distinguish a dictionary concept from a symptom, command, UI label, code identifier, or complete phrase. Keep canonical multiword terms intact.
+4. Use the original Chinese wording as evidence: make `zh` concise, and preserve useful source wording in `tags`, `contexts`, or `usageNotes`.
+5. Proceed automatically for a dominant, well-supported sense. Ask only when competing senses would create materially different records and context cannot resolve them.
+6. Search English identities and Chinese meanings before adding. If the concept already exists, enrich the existing imported record instead of creating a translated duplicate.
 
 ## Prepare each term
 
 Read [references/schema.md](references/schema.md) before producing records. For every term:
 
-1. Preserve the standard English spelling and capitalization.
-2. Provide a concise Chinese meaning and a plain-Chinese explanation for the user's learning level.
+1. Preserve or derive the standard English spelling and capitalization. Use the base or singular form unless an official term is conventionally plural.
+2. Provide a concise canonical Chinese meaning and a plain-Chinese explanation for the user's learning level.
 3. Use an existing category when it fits; create a short new category only when necessary.
 4. Add one natural English example and Chinese translation.
-5. Add useful Chinese and English search tags.
+5. Add useful Chinese and English search tags, including the user's original Chinese noun when it improves retrieval.
 6. Add IPA only when confident or verified. Leave it empty instead of inventing pronunciation.
 7. Generate `spokenForm` for code symbols so pronunciation remains available without fake IPA.
 8. Add `threadCategory` when the source identifies an execution thread or profiler track.
 9. Add `relatedTerms`, `contexts`, and `usageNotes` only when their relationship or experience is supported by the source or strong domain knowledge.
-10. Search `src/terms.js` and `src/imported-terms.json` using compact, case-insensitive identities across names, spoken forms, and aliases. Update an imported record when refining it; do not duplicate a core record.
+10. Search `src/terms.js` and `src/imported-terms.json` using compact, case-insensitive identities across English names, Chinese meanings, spoken forms, aliases, and tags. Confirm semantic equivalence before treating a Chinese match as a duplicate. Update an imported record when refining it; do not duplicate a core record.
+11. Check that the English example demonstrates the intended sense, and that `exampleZh` translates that exact example rather than merely repeating the definition.
 
 Proceed automatically when the source is unambiguous. Ask only when spelling, column meaning, or intended sense would materially change the record.
 
