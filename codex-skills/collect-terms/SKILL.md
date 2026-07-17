@@ -7,6 +7,8 @@ description: Normalize Chinese nouns, descriptions, mixed Chinese-English notes,
 
 Use the glossary repository at `C:\Users\tianxueliang\Documents\UE学习`. Locate it by its `src/imported-terms.json` file if the path changes.
 
+On Windows, read [references/windows-publishing.md](references/windows-publishing.md) before any published-mode mutation. Follow its preflight, runtime, permission, Git, and fallback paths. A skill cannot grant or bypass permissions; request only the narrow escalation required at the documented gate and reuse an existing approved prefix when available.
+
 ## Choose the destination
 
 - Default to **published mode** for non-sensitive technical vocabulary because the owner has authorized automatic enrichment and publication to this repository. Do not pause to request approval for each unambiguous batch.
@@ -61,10 +63,11 @@ Proceed automatically when the source is unambiguous. Ask only when spelling, co
 
 ## Published mode
 
-1. Create a temporary JSON file containing an array of prepared records.
-2. Run:
+1. Snapshot `git status --short --branch`, the current commit, and all pre-existing changes. Treat them as user-owned and stage only files created or intentionally updated by this batch.
+2. Create the prepared-record JSON under the system temporary directory rather than the repository. Run a dry merge first, inspect the counts, then run the real merge:
 
 ```powershell
+node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-json> --dry-run
 node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-json>
 ```
 
@@ -77,9 +80,10 @@ python scripts/generate_speech_assets.py --node <node-executable>
 ```
 
 Stage the generated `src/speech-assets.json` and `public/audio` files with the term changes. Existing audio files are reused.
-4. Run the repository's `pnpm run check` and `pnpm run build` commands.
-5. Review the diff. Commit only the glossary and generated speech changes, then push `main` when the user requested publication.
-6. Verify the GitHub Pages workflow and report the live URL.
+4. Run syntax checks and the Vite build through the resolved Node executable as described in `windows-publishing.md`. Do not install dependencies unless the required executable is actually missing.
+5. Review `git diff --check`, the exact diff, and the staged file list. Commit only the glossary, generated speech assets, and any explicitly requested Skill or application files. Never use `git add -A` in a dirty worktree.
+6. Push `main` normally. If Git transport repeatedly resets but `api.github.com` is reachable, use `scripts/publish_commit_via_api.py` only after its dry run succeeds. The fallback refuses force pushes and only publishes one exact fast-forward commit whose parent is the remote branch.
+7. Verify that the GitHub Pages workflow completed for the expected SHA, then verify one live version marker such as the Service Worker cache name or a unique application string. Use browser testing only when the UI changed.
 
 Do not edit the large core array in `src/terms.js`; public additions belong in `src/imported-terms.json`.
 
