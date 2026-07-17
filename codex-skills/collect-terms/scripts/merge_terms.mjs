@@ -44,7 +44,15 @@ function identityKey(value) {
 }
 
 function termIdentityKeys(term) {
-  return [term.term, term.spokenForm, ...textList(term.aliases)].map(identityKey).filter(Boolean);
+  return [term.term, term.abbreviation, term.fullForm, term.spokenForm, ...textList(term.aliases)]
+    .map(identityKey)
+    .filter(Boolean);
+}
+
+function normalizeWordParts(value) {
+  return Array.isArray(value) ? value
+    .filter(item => item && typeof item === 'object' && text(item.word))
+    .map(item => ({ word: text(item.word), zh: text(item.zh) })) : [];
 }
 
 function normalizeRelatedTerms(value) {
@@ -83,6 +91,8 @@ function normalizeTerm(raw, index) {
   return {
     id: normalizeId(raw.id, term),
     term,
+    abbreviation: text(raw.abbreviation),
+    fullForm: text(raw.fullForm),
     ipa: text(raw.ipa),
     zh,
     category: text(raw.category) || '其他',
@@ -94,6 +104,7 @@ function normalizeTerm(raw, index) {
     threadCategory: text(raw.threadCategory),
     source: text(raw.source),
     aliases: textList(raw.aliases),
+    wordParts: normalizeWordParts(raw.wordParts),
     relatedTerms: normalizeRelatedTerms(raw.relatedTerms),
     contexts: normalizeContexts(raw.contexts),
     usageNotes: textList(raw.usageNotes),
@@ -174,7 +185,10 @@ if (args['package-output']) {
         ...current,
         ...term,
         id: current.id,
+        abbreviation: term.abbreviation || current.abbreviation,
+        fullForm: term.fullForm || current.fullForm,
         aliases: uniqueBy([...current.aliases, ...term.aliases], identityKey),
+        wordParts: term.wordParts.length ? term.wordParts : current.wordParts,
         relatedTerms: uniqueBy([...current.relatedTerms, ...term.relatedTerms], item => `${identityKey(item.term)}|${identityKey(item.relation)}`),
         contexts: uniqueBy([...current.contexts, ...term.contexts], item => identityKey(item.phrase)),
         usageNotes: uniqueBy([...current.usageNotes, ...term.usageNotes], identityKey),

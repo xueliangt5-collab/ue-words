@@ -116,12 +116,48 @@ function textList(value) {
   return item ? [item] : [];
 }
 
+function wordPartRecords(term) {
+  return Array.isArray(term?.wordParts)
+    ? term.wordParts.filter(item => item && typeof item === 'object' && String(item.word || '').trim())
+    : [];
+}
+
 function identityKey(value) {
   return String(value || '').normalize('NFKC').toLocaleLowerCase().replace(/[\s:._/\\()[\]{}-]+/g, '');
 }
 
+function isLikelyAbbreviation(value) {
+  const source = String(value || '').trim();
+  const compact = source.replace(/[^a-z0-9]/gi, '');
+  if (!compact || compact.length < 2 || compact.length > 10 || /\s/.test(source)) return false;
+  return /[A-Z]{2}/.test(source) || (/[A-Z]/.test(source) && /\d/.test(source));
+}
+
+function termAbbreviation(term) {
+  const explicit = String(term?.abbreviation || '').trim();
+  if (explicit) return explicit;
+  if (isLikelyAbbreviation(term?.term)) return String(term.term).trim();
+  return textList(term?.aliases).find(isLikelyAbbreviation) || '';
+}
+
+function termFullForm(term) {
+  const explicit = String(term?.fullForm || '').trim();
+  if (explicit) return explicit;
+  const abbreviation = termAbbreviation(term);
+  if (!abbreviation) return '';
+  const name = String(term?.term || '').trim();
+  if (abbreviation && identityKey(name) !== identityKey(abbreviation) && /\s/.test(name)) return name;
+  return textList(term?.aliases).find(alias => (
+    identityKey(alias) !== identityKey(abbreviation)
+    && /\s/.test(alias)
+    && !isLikelyAbbreviation(alias)
+  )) || '';
+}
+
 function termIdentityKeys(term) {
-  return [term.term, term.spokenForm, ...textList(term.aliases)].map(identityKey).filter(Boolean);
+  return [term.term, term.abbreviation, term.fullForm, term.spokenForm, ...textList(term.aliases)]
+    .map(identityKey)
+    .filter(Boolean);
 }
 
 function relatedTermRecords(term) {
@@ -139,8 +175,11 @@ function contextRecords(term) {
 function searchableTermText(term) {
   const related = relatedTermRecords(term).flatMap(item => [item.term, item.relation, item.explanation]);
   const contexts = contextRecords(term).flatMap(item => [item.phrase, item.explanation, item.experience]);
+  const wordParts = wordPartRecords(term).flatMap(item => [item.word, item.zh]);
   return [
     term.term,
+    term.abbreviation,
+    term.fullForm,
     ...textList(term.aliases),
     term.spokenForm,
     term.threadCategory,
@@ -154,6 +193,7 @@ function searchableTermText(term) {
     ...textList(term.usageNotes),
     ...related,
     ...contexts,
+    ...wordParts,
   ].join(' ').toLocaleLowerCase();
 }
 
@@ -404,7 +444,7 @@ function renderLibrary() {
       <label class="search-field">
         <span class="sr-only">搜索术语或中文</span>
         ${icon('search')}
-        <input class="field" id="term-search" type="search" value="${escapeHtml(state.search)}" placeholder="搜索英文、中文、解释或标签">
+        <input class="field" id="term-search" type="search" value="${escapeHtml(state.search)}" placeholder="搜索英文、缩写、中文或解释">
       </label>
       <label>
         <span class="sr-only">分类</span>
@@ -549,13 +589,53 @@ function bindMobileTermSwipe() {
   }, { passive: true });
 }
 
+function termStructureMarkup(term, { compact = false, allowSpeech = false } = {}) {
+  const abbreviation = termAbbreviation(term);
+  const fullForm = termFullForm(term);
+  const wordParts = wordPartRecords(term);
+  const showAbbreviation = abbreviation && identityKey(abbreviation) !== identityKey(term.term);
+  const showFullForm = fullForm && identityKey(fullForm) !== identityKey(term.term);
+  if (!showAbbreviation && !showFullForm && !wordParts.length) return '';
+
+  return `
+    <section class="term-structure ${compact ? 'is-compact' : ''}" aria-label="缩写与完整形式">
+      ${showAbbreviation ? `<div class="term-structure-row"><span>缩写</span><code>${escapeHtml(abbreviation)}</code></div>` : ''}
+      ${showFullForm ? `
+        <div class="term-structure-row">
+          <span>完整形式</span>
+          <strong lang="en">${escapeHtml(fullForm)}</strong>
+          ${allowSpeech ? `<button class="icon-button term-inline-audio" id="speak-full-form" type="button" aria-label="朗读完整形式">${icon('volume-2')}</button>` : ''}
+        </div>
+      ` : ''}
+      ${wordParts.length ? `
+        <div class="word-parts">
+          <span class="word-parts-label">单词拆解</span>
+          <div class="word-part-list">
+            ${wordParts.map(item => `<span class="word-part"><strong lang="en">${escapeHtml(item.word)}</strong>${item.zh ? `<small>${escapeHtml(item.zh)}</small>` : ''}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </section>
+  `;
+}
+
+function termListSecondary(term) {
+  const abbreviation = termAbbreviation(term);
+  const fullForm = termFullForm(term);
+  return [
+    fullForm && identityKey(fullForm) !== identityKey(term.term) ? fullForm : '',
+    abbreviation && identityKey(abbreviation) !== identityKey(term.term) ? abbreviation : '',
+    term.zh,
+  ].filter(Boolean).filter((value, index, values) => values.findIndex(item => identityKey(item) === identityKey(value)) === index).join(' · ');
+}
+
 function termListItem(term) {
   const progress = state.progressMap.get(term.id);
   const reviewed = Number(progress?.reviewCount || 0);
   const profilerMarker = isProfilerMarker(term);
   return `
     <button class="list-item ${term.id === state.selectedId ? 'is-selected' : ''}" type="button" data-term-id="${escapeHtml(term.id)}">
-      <span><span class="list-primary ${profilerMarker ? 'is-code' : ''}">${escapeHtml(term.term)}</span><span class="list-secondary">${escapeHtml(term.zh)}</span></span>
+      <span><span class="list-primary ${profilerMarker ? 'is-code' : ''}">${escapeHtml(term.term)}</span><span class="list-secondary">${escapeHtml(termListSecondary(term))}</span></span>
       <span class="list-meta">${progress?.favorite ? icon('star') : reviewed ? reviewed : ''}</span>
     </button>
   `;
@@ -574,7 +654,11 @@ function termHistoryMarkup() {
 
 function termDetailMarkup(term) {
   const progress = state.progressMap.get(term.id);
-  const aliases = textList(term.aliases);
+  const abbreviation = termAbbreviation(term);
+  const fullForm = termFullForm(term);
+  const displayedAsAbbreviation = abbreviation && identityKey(abbreviation) === identityKey(term.term);
+  const primaryIdentities = new Set([term.term, abbreviation, fullForm].map(identityKey).filter(Boolean));
+  const aliases = textList(term.aliases).filter(alias => !primaryIdentities.has(identityKey(alias)));
   const relatedTerms = relatedTermRecords(term);
   const contexts = contextRecords(term);
   const usageNotes = textList(term.usageNotes);
@@ -587,7 +671,7 @@ function termDetailMarkup(term) {
       <div>
         ${profilerMarker ? '<p class="term-kind">Unreal Insights 计时标记</p>' : ''}
         <h2 class="term-title ${profilerMarker ? 'is-profiler-marker' : ''} ${titleClass}">${profilerMarker ? `<code>${titleMarkup}</code>` : titleMarkup}</h2>
-        <p class="term-ipa">${escapeHtml(term.ipa || (term.spokenForm ? '代码标识符' : '暂无音标'))}</p>
+        <p class="term-ipa">${escapeHtml(term.ipa || (displayedAsAbbreviation ? '缩写' : term.spokenForm ? '按标注读法朗读' : '暂无音标'))}</p>
         ${term.spokenForm ? `<p class="term-spoken">读法：${escapeHtml(term.spokenForm)}</p>` : ''}
       </div>
       <div class="inline-actions">
@@ -596,6 +680,7 @@ function termDetailMarkup(term) {
       </div>
     </div>
     <div class="term-meta-row"><span class="term-category">${escapeHtml(term.category)}</span>${term.threadCategory ? `<span class="status-badge">${icon('cpu')}线程：${escapeHtml(term.threadCategory)}</span>` : ''}${term.custom ? '<span class="status-badge">个人词条</span>' : ''}${progress?.reviewCount ? `<span class="status-badge">已复习 ${progress.reviewCount} 次</span>` : '<span class="status-badge">未学习</span>'}</div>
+    ${termStructureMarkup(term, { allowSpeech: true })}
     ${aliases.length ? `<div class="alias-row"><span>别名</span>${aliases.map(alias => `<code>${escapeHtml(alias)}</code>`).join('')}</div>` : ''}
     <p class="term-meaning">${escapeHtml(term.zh)}</p>
     <p class="term-definition">${escapeHtml(term.definition)}</p>
@@ -644,6 +729,7 @@ function termDetailMarkup(term) {
 function bindTermDetail(term) {
   if (!term) return;
   document.getElementById('speak-term').addEventListener('click', () => speak(term.spokenForm || term.term));
+  document.getElementById('speak-full-form')?.addEventListener('click', () => speak(termFullForm(term)));
   document.getElementById('favorite-term').addEventListener('click', () => toggleFavorite(term));
   document.getElementById('study-term').addEventListener('click', () => {
     state.view = 'review';
@@ -741,7 +827,7 @@ function renderReview() {
   document.getElementById('review-back-term')?.addEventListener('click', returnFromReview);
 
   if (term) {
-    document.getElementById('review-speak').addEventListener('click', () => speak(term.term));
+    document.getElementById('review-speak').addEventListener('click', () => speak(term.spokenForm || term.term));
     document.getElementById('reveal-answer')?.addEventListener('click', () => {
       state.reviewRevealed = true;
       renderReview();
@@ -749,7 +835,7 @@ function renderReview() {
     document.querySelectorAll('[data-rating]').forEach(button => button.addEventListener('click', () => rateReview(term, Number(button.dataset.rating))));
     if (state.settings.autoSpeak && state.settings.reviewDirection === 'en-zh' && state.lastSpokenTermId !== term.id) {
       state.lastSpokenTermId = term.id;
-      window.setTimeout(() => speak(term.term), 80);
+      window.setTimeout(() => speak(term.spokenForm || term.term), 80);
     }
   } else {
     document.getElementById('back-library').addEventListener('click', returnFromReview);
@@ -766,6 +852,12 @@ function reviewCardMarkup(term, intervals) {
   const englishFirst = state.settings.reviewDirection === 'en-zh';
   const front = englishFirst ? term.term : term.zh;
   const secondary = englishFirst ? term.ipa : term.category;
+  const abbreviation = termAbbreviation(term);
+  const fullForm = termFullForm(term);
+  const frontPair = englishFirst ? [
+    fullForm && identityKey(fullForm) !== identityKey(term.term) ? fullForm : '',
+    abbreviation && identityKey(abbreviation) !== identityKey(term.term) ? abbreviation : '',
+  ].filter(Boolean).join(' · ') : '';
   const profilerMarker = isProfilerMarker(term);
   const frontTitleClass = englishFirst ? termTitleLengthClass(front) : '';
   const frontMarkup = englishFirst ? breakableTermMarkup(front) : escapeHtml(front);
@@ -775,6 +867,7 @@ function reviewCardMarkup(term, intervals) {
       <div class="review-card-front">
         <span class="term-category">${escapeHtml(profilerMarker ? 'Insights 计时标记' : term.category)}</span>
         <h2 class="term-title ${profilerMarker && englishFirst ? 'is-profiler-marker' : ''} ${frontTitleClass}">${profilerMarker && englishFirst ? `<code>${frontMarkup}</code>` : frontMarkup}</h2>
+        ${frontPair ? `<p class="review-term-pair" lang="en">${escapeHtml(frontPair)}</p>` : ''}
         <p class="term-ipa">${escapeHtml(secondary || '')}</p>
         <button class="icon-button" id="review-speak" type="button" aria-label="朗读英文">${icon('volume-2')}</button>
       </div>
@@ -782,6 +875,7 @@ function reviewCardMarkup(term, intervals) {
         <div class="review-answer">
           <h3 class="${!englishFirst ? `term-title ${termTitleLengthClass(term.term)}` : ''}">${profilerMarker && !englishFirst ? `<code>${answerTermMarkup}</code>` : (englishFirst ? escapeHtml(term.zh) : answerTermMarkup)}</h3>
           ${!englishFirst && term.ipa ? `<p class="term-ipa">${escapeHtml(term.ipa)}</p>` : ''}
+          ${termStructureMarkup(term, { compact: true })}
           <p>${escapeHtml(term.definition)}</p>
           ${term.example ? `<p class="muted" lang="en">${escapeHtml(term.example)}</p>` : ''}
         </div>
@@ -1019,6 +1113,9 @@ function termDialogMarkup() {
           <div class="form-grid">
             <label class="form-group"><span class="form-label">英文术语 *</span><input class="field" id="term-name" required></label>
             <label class="form-group"><span class="form-label">中文名称 *</span><input class="field" id="term-zh" required></label>
+            <label class="form-group"><span class="form-label">缩写</span><input class="field" id="term-abbreviation" placeholder="例如 RHI"></label>
+            <label class="form-group"><span class="form-label">完整形式</span><input class="field" id="term-full-form" placeholder="例如 Render Hardware Interface"></label>
+            <label class="form-group"><span class="form-label">读法</span><input class="field" id="term-spoken-form" placeholder="例如 R H I"></label>
             <label class="form-group"><span class="form-label">音标</span><input class="field" id="term-ipa" placeholder="例如 /ˈæktər/"></label>
             <label class="form-group"><span class="form-label">分类</span><select class="select" id="term-category"></select></label>
             <label class="form-group full"><span class="form-label">简明解释 *</span><textarea class="textarea" id="term-definition" required></textarea></label>
@@ -1053,6 +1150,9 @@ function openTermDialog(term = null) {
   document.getElementById('term-id').value = term?.id || '';
   document.getElementById('term-name').value = term?.term || '';
   document.getElementById('term-zh').value = term?.zh || '';
+  document.getElementById('term-abbreviation').value = term?.abbreviation || '';
+  document.getElementById('term-full-form').value = term?.fullForm || '';
+  document.getElementById('term-spoken-form').value = term?.spokenForm || '';
   document.getElementById('term-ipa').value = term?.ipa || '';
   document.getElementById('term-category').value = term?.category || baseCategories[0];
   document.getElementById('term-definition').value = term?.definition || '';
@@ -1067,7 +1167,10 @@ async function submitTerm(event) {
   event.preventDefault();
   const id = document.getElementById('term-id').value;
   const name = document.getElementById('term-name').value.trim();
-  const duplicate = state.terms.find(term => term.term.toLocaleLowerCase() === name.toLocaleLowerCase() && term.id !== id);
+  const abbreviation = document.getElementById('term-abbreviation').value.trim();
+  const fullForm = document.getElementById('term-full-form').value.trim();
+  const candidateKeys = new Set(termIdentityKeys({ term: name, abbreviation, fullForm }));
+  const duplicate = state.terms.find(term => term.id !== id && termIdentityKeys(term).some(key => candidateKeys.has(key)));
   if (duplicate) {
     document.getElementById('term-form-error').textContent = `“${duplicate.term}” 已存在于词库中。`;
     return;
@@ -1077,6 +1180,9 @@ async function submitTerm(event) {
     ...existing,
     id: id || `custom-${crypto.randomUUID()}`,
     term: name,
+    abbreviation,
+    fullForm,
+    spokenForm: document.getElementById('term-spoken-form').value.trim(),
     zh: document.getElementById('term-zh').value.trim(),
     ipa: document.getElementById('term-ipa').value.trim(),
     category: document.getElementById('term-category').value,
@@ -1227,7 +1333,11 @@ async function importGlossaryTerms(terms) {
     if (!term || !zh || !definition) throw new Error(`第 ${index + 1} 个术语缺少英文、中文或解释`);
 
     const aliases = textList(rawTerm.aliases);
-    const duplicate = [term, ...aliases].map(identityKey).map(key => knownTerms.get(key)).find(Boolean);
+    const abbreviation = String(rawTerm.abbreviation || '').trim();
+    const fullForm = String(rawTerm.fullForm || '').trim();
+    const duplicate = termIdentityKeys({ ...rawTerm, term, abbreviation, fullForm, aliases })
+      .map(key => knownTerms.get(key))
+      .find(Boolean);
     if (duplicate && !duplicate.custom) {
       skipped += 1;
       continue;
@@ -1236,6 +1346,8 @@ async function importGlossaryTerms(terms) {
     const record = {
       id: duplicate?.id || String(rawTerm.id || `custom-${crypto.randomUUID()}`).trim(),
       term,
+      abbreviation,
+      fullForm,
       zh,
       ipa: String(rawTerm.ipa || '').trim(),
       category: String(rawTerm.category || '其他').trim(),
@@ -1247,6 +1359,10 @@ async function importGlossaryTerms(terms) {
       threadCategory: String(rawTerm.threadCategory || '').trim(),
       source: String(rawTerm.source || '').trim(),
       aliases,
+      wordParts: wordPartRecords(rawTerm).map(item => ({
+        word: String(item.word || '').trim(),
+        zh: String(item.zh || '').trim(),
+      })),
       relatedTerms: relatedTermRecords(rawTerm).map(item => ({
         term: String(item.term || '').trim(),
         relation: String(item.relation || '').trim(),

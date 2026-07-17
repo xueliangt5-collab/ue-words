@@ -16,6 +16,7 @@ try {
     .trim();
   const texts = [...new Set(BUILTIN_TERMS.flatMap(term => [
     clean(term.spokenForm || term.term),
+    clean(term.fullForm),
     clean(term.example),
   ]).filter(Boolean))];
   process.stdout.write(JSON.stringify(texts));

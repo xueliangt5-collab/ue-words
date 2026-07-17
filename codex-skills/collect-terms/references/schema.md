@@ -4,40 +4,47 @@ Use UTF-8 JSON. A term record has this shape:
 
 ```json
 {
-  "id": "imported-render-thread",
-  "term": "Render Thread",
-  "spokenForm": "Render Thread",
+  "id": "imported-rhi",
+  "term": "RHI",
+  "abbreviation": "RHI",
+  "fullForm": "Render Hardware Interface",
+  "spokenForm": "R H I",
   "ipa": "",
-  "zh": "渲染线程",
+  "zh": "渲染硬件接口",
   "category": "图形与渲染",
-  "threadCategory": "RenderThread",
-  "definition": "负责向图形接口准备和提交渲染工作的线程。",
-  "example": "The Render Thread is waiting for the GPU.",
-  "exampleZh": "渲染线程正在等待 GPU。",
-  "tags": "渲染 性能 GPU thread",
-  "aliases": ["RenderThread"],
+  "threadCategory": "",
+  "definition": "Unreal Engine 用来抽象 Direct3D、Vulkan、Metal 等底层图形 API 的接口层。",
+  "example": "The RHI translates rendering commands for the active graphics API.",
+  "exampleZh": "RHI 会为当前图形 API 转换渲染命令。",
+  "tags": "RHI Render Hardware Interface 渲染硬件接口 graphics API",
+  "aliases": [],
+  "wordParts": [
+    { "word": "Render", "zh": "渲染" },
+    { "word": "Hardware", "zh": "硬件" },
+    { "word": "Interface", "zh": "接口" }
+  ],
   "relatedTerms": [
     {
-      "term": "Game Thread",
-      "relation": "并行线程",
-      "explanation": "游戏线程准备状态，渲染线程生成渲染命令。"
+      "term": "RHI Thread",
+      "relation": "执行线程",
+      "explanation": "RHI Thread 可以异步处理和提交部分 RHI 命令。"
     }
   ],
   "contexts": [
     {
-      "phrase": "Unreal Insights · RenderThread",
-      "explanation": "该计时项位于渲染线程轨道。",
-      "experience": "持续偏高时展开子事件查找可见性或场景更新开销。"
+      "phrase": "Unreal Engine rendering pipeline",
+      "explanation": "RHI 位于引擎渲染器与平台图形 API 之间。",
+      "experience": "分析 RHI 开销时区分命令生成、驱动提交和 GPU 执行时间。"
     }
   ],
-  "usageNotes": ["不要把顶层计时范围直接当作根因。"],
-  "source": "UE5_Timer_Glossary.csv"
+  "usageNotes": ["RHI 在 Unreal Engine 语境中指 Render Hardware Interface。"],
+  "source": "Unreal Engine terminology"
 }
 ```
 
 Required fields: `term`, `zh`, `definition`.
 
-Optional fields: `id`, `spokenForm`, `ipa`, `category`, `threadCategory`, `example`, `exampleZh`, `tags`, `aliases`, `relatedTerms`, `contexts`, `usageNotes`, `source`.
+Optional fields: `id`, `abbreviation`, `fullForm`, `wordParts`, `spokenForm`, `ipa`, `category`, `threadCategory`, `example`, `exampleZh`, `tags`, `aliases`, `relatedTerms`, `contexts`, `usageNotes`, `source`.
 
 Use a stable lowercase `imported-` ID with ASCII letters, digits, and hyphens. The merge script generates one when omitted.
 
@@ -55,11 +62,23 @@ Use `性能分析` for profiler timers. Preserve thread or track values such as 
 
 ## Relations and experience
 
+- `abbreviation`: established abbreviation or acronym, such as `RHI` or `tRFC`.
+- `fullForm`: exact expansion used in the selected domain, such as `Render Hardware Interface`.
+- `wordParts`: ordered words from `fullForm` with concise Chinese meanings. Do not split code identifiers or fabricate expansions.
 - `aliases`: alternate spellings or UI names that should participate in search and deduplication.
 - `relatedTerms`: semantic or pipeline relationships only; do not create a relation merely because two CSV fields are adjacent.
 - `contexts`: source environments or phrases with their explanation and diagnostic experience.
 - `usageNotes`: additional cautions or practical observations.
 - `spokenForm`: readable words for a code symbol, for example `F Engine Loop Tick`.
+
+## Abbreviations and full forms
+
+- Keep one record when an abbreviation and its full form express the same concept in the same domain.
+- Set `term` to the form users most often encounter in the product or workflow. It may be the abbreviation or the full form.
+- Always set both `abbreviation` and `fullForm` when the expansion is authoritative.
+- Put established variants in `aliases`; do not repeat `abbreviation` or `fullForm` there.
+- Use `spokenForm` for how to read the displayed `term`, for example `R H I`.
+- Create separate records when the same abbreviation has different meanings across domains, and state the domain boundary in `usageNotes` and tags.
 
 ## Private import package
 

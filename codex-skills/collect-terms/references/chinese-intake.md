@@ -32,11 +32,14 @@ When one sense clearly dominates, proceed and explain the boundary in `usageNote
 ## Map evidence into the record
 
 - `term`: canonical English term or exact code/UI identifier.
+- `abbreviation`: established acronym or short form when one exists.
+- `fullForm`: authoritative expansion for the selected domain; never guess from letters alone.
+- `wordParts`: ordered words from `fullForm` with concise Chinese meanings when decomposition helps learning.
 - `zh`: short canonical Chinese label, not the entire source sentence.
 - `definition`: explain the selected sense and relevant boundary in plain Chinese.
 - `ipa`: include only verified or highly reliable IPA for ordinary English.
 - `spokenForm`: provide a readable pronunciation form for identifiers, acronyms, or CamelCase names.
-- `aliases`: include established abbreviations, alternate English spellings, or official UI/code variants. Avoid long Chinese sentences.
+- `aliases`: include alternate English spellings or official UI/code variants. Keep structured `abbreviation` and `fullForm` out of aliases unless preserving legacy input.
 - `tags`: include useful Chinese source words, English retrieval terms, product names, and domain terms.
 - `example` and `exampleZh`: demonstrate the same intended sense in a natural work situation.
 - `relatedTerms`: add only useful semantic, pipeline, contrast, or cause-effect relationships.
@@ -49,8 +52,9 @@ When one sense clearly dominates, proceed and explain the boundary in `usageNote
 1. Normalize case, spaces, punctuation, CamelCase separators, and common abbreviations.
 2. Search `term`, `spokenForm`, `aliases`, `zh`, and `tags` in both built-in and imported records.
 3. Treat an exact English identity as a strong match.
-4. Treat an exact Chinese label as a candidate only; confirm that domain and sense match.
-5. Enrich an existing imported record when it represents the same concept. Do not create a second record merely because the user's Chinese wording differs.
+4. Match `abbreviation` and `fullForm` as equivalent identities only within the same domain and sense.
+5. Treat an exact Chinese label as a candidate only; confirm that domain and sense match.
+6. Enrich an existing imported record when it represents the same concept. Do not create a second record merely because the user's Chinese wording differs.
 
 ## Quality check
 
@@ -58,6 +62,7 @@ Before merging, confirm that:
 
 - the English is standard for the inferred domain;
 - capitalization and acronym spelling match official usage;
+- abbreviations have authoritative full forms, readable `spokenForm` values, and separate domain records when ambiguous;
 - the Chinese meaning is concise and the definition explains the correct sense;
 - pronunciation is available through `ipa`, `spokenForm`, or the term itself without invented IPA;
 - the example is natural and its translation is aligned;

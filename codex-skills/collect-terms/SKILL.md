@@ -1,6 +1,6 @@
 ---
 name: collect-terms
-description: Normalize Chinese nouns, descriptions, mixed Chinese-English notes, English words, technical terms, profiler markers, or Unreal Insights CSV rows into standard English glossary records, then explain, classify, relate, deduplicate, enrich, and publish them to the user's terminology learning PWA. Use when the user asks to translate technical concepts into English or to add, collect, save, import, organize, enrich, or publish vocabulary, including "这个名词英文怎么说", "把这些中文名词整理成英文", "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
+description: Normalize Chinese nouns, descriptions, mixed Chinese-English notes, abbreviations with their full forms, English words, technical phrases, profiler markers, or Unreal Insights CSV rows into standard English glossary records, then explain, classify, relate, deduplicate, enrich, and publish them to the user's terminology learning PWA. Use when the user asks to translate technical concepts into English, expand or collect acronyms, or add, save, import, organize, enrich, or publish vocabulary, including "这个名词英文怎么说", "缩写与原词", "把这些中文名词整理成英文", "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
 ---
 
 # Collect Terms
@@ -45,16 +45,17 @@ When any source concept is Chinese or mixed Chinese-English, read [references/ch
 Read [references/schema.md](references/schema.md) before producing records. For every term:
 
 1. Preserve or derive the standard English spelling and capitalization. Use the base or singular form unless an official term is conventionally plural.
-2. Provide a concise canonical Chinese meaning and a plain-Chinese explanation for the user's learning level.
-3. Use an existing category when it fits; create a short new category only when necessary.
-4. Add one natural English example and Chinese translation.
-5. Add useful Chinese and English search tags, including the user's original Chinese noun when it improves retrieval.
-6. Add IPA only when confident or verified. Leave it empty instead of inventing pronunciation.
-7. Generate `spokenForm` for code symbols so pronunciation remains available without fake IPA.
-8. Add `threadCategory` when the source identifies an execution thread or profiler track.
-9. Add `relatedTerms`, `contexts`, and `usageNotes` only when their relationship or experience is supported by the source or strong domain knowledge.
-10. Search `src/terms.js` and `src/imported-terms.json` using compact, case-insensitive identities across English names, Chinese meanings, spoken forms, aliases, and tags. Confirm semantic equivalence before treating a Chinese match as a duplicate. Update an imported record when refining it; do not duplicate a core record.
-11. Check that the English example demonstrates the intended sense, and that `exampleZh` translates that exact example rather than merely repeating the definition.
+2. Pair an established abbreviation with its authoritative `fullForm` in the same record. Set `abbreviation`, add ordered `wordParts` when the expansion is useful for learning, and use `spokenForm` for the displayed form's pronunciation. Keep different domain meanings as separate records.
+3. Provide a concise canonical Chinese meaning and a plain-Chinese explanation for the user's learning level.
+4. Use an existing category when it fits; create a short new category only when necessary.
+5. Add one natural English example and Chinese translation.
+6. Add useful Chinese and English search tags, including the user's original Chinese noun when it improves retrieval.
+7. Add IPA only when confident or verified. Leave it empty instead of inventing pronunciation.
+8. Generate `spokenForm` for code symbols so pronunciation remains available without fake IPA.
+9. Add `threadCategory` when the source identifies an execution thread or profiler track.
+10. Add `relatedTerms`, `contexts`, and `usageNotes` only when their relationship or experience is supported by the source or strong domain knowledge.
+11. Search `src/terms.js` and `src/imported-terms.json` using compact, case-insensitive identities across English names, abbreviations, full forms, Chinese meanings, spoken forms, aliases, and tags. Confirm semantic equivalence before treating a Chinese match as a duplicate. Update an imported record when refining it; do not duplicate a core record.
+12. Check that the English example demonstrates the intended sense, and that `exampleZh` translates that exact example rather than merely repeating the definition.
 
 Proceed automatically when the source is unambiguous. Ask only when spelling, column meaning, or intended sense would materially change the record.
 
@@ -69,7 +70,7 @@ node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents
 
 Resolve the bundled Node executable when `node` is not available on `PATH`.
 
-3. When a public term, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. If `.tts-deps/edge_tts` is missing, install `scripts/speech-requirements.txt` into `.tts-deps`, then run:
+3. When a public term, `fullForm`, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. If `.tts-deps/edge_tts` is missing, install `scripts/speech-requirements.txt` into `.tts-deps`, then run:
 
 ```powershell
 python scripts/generate_speech_assets.py --node <node-executable>
