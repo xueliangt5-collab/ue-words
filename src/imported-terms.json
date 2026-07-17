@@ -261,6 +261,91 @@
     ]
   },
   {
+    "id": "imported-burst-length",
+    "term": "Burst Length",
+    "ipa": "",
+    "zh": "突发长度",
+    "category": "内存与架构",
+    "definition": "一次 DRAM 读写命令连续传输的数据拍数；DDR5 的基础突发长度通常为 16。",
+    "example": "DDR5 uses a burst length of 16 to transfer a full cache line on a subchannel.",
+    "exampleZh": "DDR5 使用 16 拍突发长度，在一个子通道上传输完整缓存行。",
+    "tags": "Burst Length BL16 突发长度 DDR5 cache line",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "BL",
+      "BL16"
+    ],
+    "relatedTerms": [
+      {
+        "term": "DDR5 Subchannel",
+        "relation": "传输单位",
+        "explanation": "32-bit 子通道以 BL16 传输时总数据量为 64 字节。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Burst Length 描述数据拍数，不是以字节直接表示的长度。"
+    ]
+  },
+  {
+    "id": "imported-cache-line",
+    "term": "Cache Line",
+    "ipa": "",
+    "zh": "缓存行",
+    "category": "内存与架构",
+    "definition": "CPU 缓存与内存之间搬运和维护一致性的基本数据块；现代桌面 CPU 常见大小为 64 字节。",
+    "example": "A sequential read can use every byte fetched in the cache line.",
+    "exampleZh": "顺序读取可以利用缓存行中取回的每一个字节。",
+    "tags": "缓存行 CPU cache memory 64字节 数据块",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Cacheline"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Cache Miss",
+        "relation": "触发条件",
+        "explanation": "缓存未命中时，处理器通常需要从更低层级取回一整条缓存行。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "缓存行是传输和一致性粒度，不等同于程序变量或 DRAM 行。"
+    ]
+  },
+  {
+    "id": "imported-cache-miss",
+    "term": "Cache Miss",
+    "ipa": "",
+    "zh": "缓存未命中",
+    "category": "内存与架构",
+    "definition": "处理器在当前缓存层级中没有找到所需数据，必须查询更低级缓存或系统内存的情况。",
+    "example": "The pointer-chasing loop causes frequent cache misses.",
+    "exampleZh": "这个指针追踪循环会频繁产生缓存未命中。",
+    "tags": "缓存未命中 cache miss CPU 延迟 内存访问",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Cache Misses"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Latency",
+        "relation": "暴露延迟",
+        "explanation": "末级缓存未命中会让核心更直接地承受系统内存延迟。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "应说明是哪一级缓存未命中；L1 Miss 不一定会访问 DRAM。"
+    ]
+  },
+  {
     "id": "imported-call-stack",
     "term": "Call Stack",
     "ipa": "",
@@ -308,6 +393,36 @@
     "contexts": [],
     "usageNotes": [
       "Callback 强调由另一个系统在未来某个时机调用，而不是当前执行线立即主动调用。"
+    ]
+  },
+  {
+    "id": "imported-cas-latency",
+    "term": "CAS Latency",
+    "ipa": "",
+    "zh": "列地址选通延迟",
+    "category": "内存与架构",
+    "definition": "目标行已经激活后，从发出读取命令到首批数据输出之间的时钟周期数。",
+    "example": "DDR5-6000 CL30 has a nominal CAS latency of 10 nanoseconds.",
+    "exampleZh": "DDR5-6000 CL30 的标称 CAS 延迟为 10 纳秒。",
+    "tags": "CAS Latency CL tCAS 列地址选通延迟 DDR timing",
+    "spokenForm": "Column Address Strobe Latency",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "CL",
+      "tCAS",
+      "Column Address Strobe Latency"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Hit",
+        "relation": "读取时序",
+        "explanation": "行命中时无需 ACT 或 PRE，CAS Latency 是最直观的 DRAM 阵列侧等待之一。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "CL 周期数必须结合数据率换算为纳秒；它不等于整机内存延迟。"
     ]
   },
   {
@@ -364,6 +479,35 @@
     ],
     "usageNotes": [
       "MoveComponent 在这里。"
+    ]
+  },
+  {
+    "id": "imported-command-rate",
+    "term": "Command Rate",
+    "ipa": "",
+    "zh": "命令率",
+    "category": "内存与架构",
+    "definition": "内存控制器选中 Rank 后到能够稳定发送命令之间使用的命令时钟周期设置，常见写法为 1T 或 2T。",
+    "example": "A 2T command rate can improve stability with a heavier DIMM load.",
+    "exampleZh": "在 DIMM 负载较重时，2T 命令率可能改善稳定性。",
+    "tags": "Command Rate CR 1T 2T 命令率 memory timing",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "CR",
+      "Command Timing"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Gear Down Mode",
+        "relation": "命令总线设置",
+        "explanation": "两者都会影响命令时序、训练难度和延迟表现。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Command Rate 与 Intel Gear 2/Gear 4 不是同一个概念。"
     ]
   },
   {
@@ -520,6 +664,35 @@
     "usageNotes": []
   },
   {
+    "id": "imported-daisy-chain-memory-topology",
+    "term": "Daisy-Chain Memory Topology",
+    "ipa": "",
+    "zh": "内存菊花链拓扑",
+    "category": "内存与架构",
+    "definition": "同一内存通道的主板走线依次经过多个 DIMM 插槽、通常优先优化单条插槽使用的布线方式。",
+    "example": "On a daisy-chain board, install two DIMMs in the slots recommended by the manual.",
+    "exampleZh": "在菊花链主板上，应把两根 DIMM 安装到说明书推荐的插槽。",
+    "tags": "Daisy Chain Memory Topology 菊花链 A2 B2 主板布线",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Daisy Chain Topology",
+      "Daisy-Chain Topology"
+    ],
+    "relatedTerms": [
+      {
+        "term": "T-Topology",
+        "relation": "对比布线",
+        "explanation": "T-Topology 更强调同一通道两个插槽走线长度的平衡。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "两条内存常用 A2/B2，但最终应以具体主板说明书为准。"
+    ]
+  },
+  {
     "id": "imported-damage-amount",
     "term": "Damage Amount",
     "ipa": "",
@@ -578,6 +751,62 @@
     "usageNotes": []
   },
   {
+    "id": "imported-ddr-phy",
+    "term": "DDR PHY",
+    "ipa": "",
+    "zh": "DDR 物理层",
+    "category": "内存与架构",
+    "definition": "在内存控制器与外部 DDR 总线之间负责电气信号发送、接收、校准和时序对齐的物理接口。",
+    "example": "Memory training calibrates the DDR PHY for the board and DIMMs.",
+    "exampleZh": "内存训练会针对主板和 DIMM 校准 DDR 物理层。",
+    "tags": "DDR PHY 物理层 signal integrity training",
+    "spokenForm": "D D R Physical Layer",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DDR Physical Layer",
+      "Memory PHY"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "校准对象",
+        "explanation": "训练会寻找 DDR PHY 的读写采样窗口和其他物理层参数。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ddr5-subchannel",
+    "term": "DDR5 Subchannel",
+    "ipa": "",
+    "zh": "DDR5 子通道",
+    "category": "内存与架构",
+    "definition": "DDR5 DIMM 将传统 64-bit 数据通路拆分形成的独立 32-bit 数据通路，用于提高命令与数据调度效率。",
+    "example": "Each DDR5 DIMM exposes two independent 32-bit subchannels.",
+    "exampleZh": "每根 DDR5 DIMM 提供两个独立的 32 位子通道。",
+    "tags": "DDR5 Subchannel 子通道 32-bit DIMM",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Memory Subchannel",
+      "Subchannel"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Burst Length",
+        "relation": "传输组合",
+        "explanation": "DDR5 的 32-bit 子通道配合 BL16 可传输一条常见的 64 字节缓存行。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "两个 Subchannel 不等于主板的双通道模式。"
+    ]
+  },
+  {
     "id": "imported-dependency",
     "term": "Dependency",
     "ipa": "",
@@ -631,6 +860,174 @@
     "contexts": [],
     "usageNotes": [
       "Directory 更偏技术表达，Folder 更常见于图形界面。"
+    ]
+  },
+  {
+    "id": "imported-dual-data-rate",
+    "term": "Double Data Rate",
+    "ipa": "",
+    "zh": "双倍数据速率",
+    "category": "内存与架构",
+    "definition": "在一个物理时钟周期的上升沿和下降沿各传输一次数据的总线传输方式。",
+    "example": "Double Data Rate transfers data twice per memory clock cycle.",
+    "exampleZh": "双倍数据速率在每个内存时钟周期传输两次数据。",
+    "tags": "DDR Double Data Rate 双倍数据速率 MT/s MCLK",
+    "spokenForm": "Double Data Rate",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DDR"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Data Rate",
+        "relation": "速率关系",
+        "explanation": "DDR 有效传输率通常约为内存物理时钟的两倍。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DDR5-6000 严格表示 6000MT/s，而不是 6000MHz 物理时钟。"
+    ]
+  },
+  {
+    "id": "imported-dram-bank",
+    "term": "DRAM Bank",
+    "ipa": "",
+    "zh": "DRAM Bank",
+    "category": "内存与架构",
+    "definition": "DRAM 内可相对独立执行激活、读写和预充电操作的存储阵列单元。",
+    "example": "A request to another DRAM bank can proceed while this bank is busy.",
+    "exampleZh": "当这个 DRAM Bank 忙碌时，另一个 Bank 的请求仍可能继续执行。",
+    "tags": "DRAM Bank 存储阵列 Row Buffer Bank并行",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Memory Bank"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Buffer",
+        "relation": "内部结构",
+        "explanation": "每个 Bank 通过行缓冲保存当前激活行的数据。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DRAM Bank 不是银行，也不是操作系统所说的内存池。"
+    ]
+  },
+  {
+    "id": "imported-dram-bank-group",
+    "term": "DRAM Bank Group",
+    "ipa": "",
+    "zh": "DRAM Bank 组",
+    "category": "内存与架构",
+    "definition": "将多个 DRAM Bank 组织成一组的层级；组内和跨组命令可能受到不同的时序约束。",
+    "example": "The controller alternates between bank groups to increase command parallelism.",
+    "exampleZh": "控制器在不同 Bank 组之间交替调度，以提高命令并行度。",
+    "tags": "DRAM Bank Group Bank组 tCCD tRRD 并行",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Bank Group"
+    ],
+    "relatedTerms": [
+      {
+        "term": "DRAM Bank",
+        "relation": "包含关系",
+        "explanation": "一个 Bank Group 包含多个可以相对独立工作的 Bank。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-dimm",
+    "term": "Dual In-line Memory Module",
+    "ipa": "",
+    "zh": "双列直插式内存模块",
+    "category": "内存与架构",
+    "definition": "将多颗 DRAM、PCB、SPD 和相关电源管理器件组合成可安装内存条的标准模块。",
+    "example": "Install the two DIMMs in the motherboard's recommended slots.",
+    "exampleZh": "将两根 DIMM 安装到主板推荐的插槽中。",
+    "tags": "DIMM 内存条 内存模块 DDR5 插槽",
+    "spokenForm": "Dual In Line Memory Module",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DIMM",
+      "Memory Module"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Rank",
+        "relation": "模块组织",
+        "explanation": "一根 DIMM 可以包含一个或多个 Rank。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DIMM 是模块形态，不等同于 Channel 或 Rank。"
+    ]
+  },
+  {
+    "id": "imported-dram",
+    "term": "Dynamic Random-Access Memory",
+    "ipa": "",
+    "zh": "动态随机存取存储器",
+    "category": "内存与架构",
+    "definition": "用电容保存数据位、需要周期性刷新的易失性存储器，是现代系统内存的主要实现。",
+    "example": "DRAM must refresh its cells periodically to retain data.",
+    "exampleZh": "DRAM 必须周期性刷新存储单元才能保持数据。",
+    "tags": "DRAM 动态随机存取存储器 系统内存 刷新",
+    "spokenForm": "Dynamic Random Access Memory",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Refresh Cycle Time",
+        "relation": "刷新约束",
+        "explanation": "DRAM 刷新操作会占用阵列，并受到 tRFC 约束。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "日常所说的内存条是由 DRAM 颗粒、PCB、SPD Hub 和其他器件组成的模块。"
+    ]
+  },
+  {
+    "id": "imported-ecc-memory",
+    "term": "ECC Memory",
+    "ipa": "",
+    "zh": "纠错码内存",
+    "category": "内存与架构",
+    "definition": "通过额外校验数据检测并通常能够修正特定位错误的系统内存，需要 CPU、主板、DIMM 和固件支持。",
+    "example": "The workstation uses ECC memory to detect and correct single-bit errors.",
+    "exampleZh": "这台工作站使用 ECC 内存检测并修正单比特错误。",
+    "tags": "ECC Memory 纠错码内存 error correction reliability",
+    "spokenForm": "Error Correcting Code Memory",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Error-Correcting Code Memory",
+      "System ECC"
+    ],
+    "relatedTerms": [
+      {
+        "term": "On-die ECC",
+        "relation": "保护范围对比",
+        "explanation": "On-die ECC 主要保护颗粒内部，不能替代系统级 ECC。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "还要区分 ECC UDIMM、RDIMM 等模块类型，它们通常不能随意混用。"
     ]
   },
   {
@@ -755,6 +1152,63 @@
     "usageNotes": []
   },
   {
+    "id": "imported-extended-profiles-for-overclocking",
+    "term": "Extended Profiles for Overclocking",
+    "ipa": "",
+    "zh": "AMD 扩展超频配置文件",
+    "category": "内存与架构",
+    "definition": "AMD 推广的 DDR5 DIMM 预设超频配置格式，保存目标频率、时序和电压等参数。",
+    "example": "The motherboard retrained the memory after EXPO was enabled.",
+    "exampleZh": "启用 EXPO 后，主板重新训练了内存。",
+    "tags": "EXPO Extended Profiles for Overclocking AMD DDR5 超频",
+    "spokenForm": "Extended Profiles for Overclocking",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "EXPO",
+      "AMD EXPO"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "启用后步骤",
+        "explanation": "启用 EXPO 改变频率与时序后，平台通常需要重新训练。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "EXPO 是预设超频配置，不是所有平台组合都无条件保证的默认规格。"
+    ]
+  },
+  {
+    "id": "imported-extreme-memory-profile",
+    "term": "Extreme Memory Profile",
+    "ipa": "",
+    "zh": "Intel 内存超频配置文件",
+    "category": "内存与架构",
+    "definition": "Intel 推广的 DIMM 预设超频配置，记录高于基础 JEDEC 档的频率、时序和电压参数。",
+    "example": "Enable XMP only after the system is stable at its default JEDEC settings.",
+    "exampleZh": "先确认系统在默认 JEDEC 参数下稳定，再启用 XMP。",
+    "tags": "XMP Extreme Memory Profile Intel 内存超频 配置文件",
+    "spokenForm": "Extreme Memory Profile",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "XMP"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Extended Profiles for Overclocking",
+        "relation": "平台对应配置",
+        "explanation": "EXPO 是 AMD 推广的 DDR5 内存超频配置格式。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "XMP 属于超频配置，内存套装标称不代表任意 CPU 和主板组合都保证稳定。"
+    ]
+  },
+  {
     "id": "imported-fasyncloadingthread",
     "term": "FAsyncLoadingThread",
     "ipa": "",
@@ -814,6 +1268,34 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-fclk",
+    "term": "FCLK",
+    "ipa": "",
+    "zh": "Infinity Fabric 时钟",
+    "category": "内存与架构",
+    "definition": "AMD 处理器内部 Infinity Fabric 互连使用的相关时钟，影响 I/O Die、CCD 等模块之间的通信。",
+    "example": "FCLK affects traffic between the I/O die and the compute die.",
+    "exampleZh": "FCLK 会影响 I/O Die 与计算芯粒之间的数据通信。",
+    "tags": "FCLK Fabric Clock Infinity Fabric AMD CCD IOD",
+    "spokenForm": "Fabric Clock",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Fabric Clock"
+    ],
+    "relatedTerms": [
+      {
+        "term": "UCLK",
+        "relation": "平台时钟",
+        "explanation": "两者都影响 AMD 内存访问路径，但在现代 AM5 平台上不必沿用旧平台的固定同步比例。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Zen 4/Zen 5 的 FCLK 规则不能直接套用 Zen 2/Zen 3 的同步经验。"
+    ]
   },
   {
     "id": "imported-fengineloop-tick",
@@ -1287,6 +1769,64 @@
     ]
   },
   {
+    "id": "imported-gear-down-mode",
+    "term": "Gear Down Mode",
+    "ipa": "",
+    "zh": "降档模式",
+    "category": "内存与架构",
+    "definition": "AMD 内存控制器用于放宽部分命令与地址时序、提高高频训练稳定性的工作模式。",
+    "example": "Enabling Gear Down Mode can make an aggressive memory profile easier to train.",
+    "exampleZh": "启用降档模式可以让激进的内存配置更容易完成训练。",
+    "tags": "Gear Down Mode GDM AMD 命令时序 训练",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "GDM"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Command Rate",
+        "relation": "命令时序",
+        "explanation": "GDM 会改变部分命令时序行为，不能只把它理解成一个简单的 1T/2T 开关。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Gear Down Mode 与 Intel 的 Gear Mode 名称相似，但机制不同。"
+    ]
+  },
+  {
+    "id": "imported-gear-mode",
+    "term": "Gear Mode",
+    "ipa": "",
+    "zh": "内存控制器分频模式",
+    "category": "内存与架构",
+    "definition": "Intel 平台用来表示内存控制器时钟与 DRAM 时钟比例的模式，例如 Gear 2 和 Gear 4。",
+    "example": "Gear 2 runs the memory controller at half the DRAM clock.",
+    "exampleZh": "Gear 2 让内存控制器以 DRAM 时钟的一半运行。",
+    "tags": "Intel Gear Mode Gear 2 Gear 4 IMC 分频",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Memory Gear",
+      "Gear 2",
+      "Gear 4"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Integrated Memory Controller",
+        "relation": "时钟模式",
+        "explanation": "Gear Mode 调整的是 Intel 内存控制器相对于 DRAM 的工作频率。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Gear Mode 与 AMD Gear Down Mode 不是同一机制。"
+    ]
+  },
+  {
     "id": "imported-generated-folders",
     "term": "Generated Folders",
     "ipa": "",
@@ -1342,6 +1882,35 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-hardware-prefetcher",
+    "term": "Hardware Prefetcher",
+    "ipa": "",
+    "zh": "硬件预取器",
+    "category": "内存与架构",
+    "definition": "识别连续或规律内存访问并提前把可能需要的数据取入缓存的处理器硬件。",
+    "example": "The hardware prefetcher hides part of the latency in a sequential scan.",
+    "exampleZh": "硬件预取器隐藏了顺序扫描中的部分延迟。",
+    "tags": "硬件预取器 prefetch CPU cache latency 顺序访问",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Memory Prefetcher",
+      "Prefetcher"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Cache Line",
+        "relation": "预取单位",
+        "explanation": "预取器通常提前请求一个或多个缓存行。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "依赖链式随机访问通常难以被预取器有效预测。"
+    ]
   },
   {
     "id": "imported-health",
@@ -1428,6 +1997,35 @@
     "contexts": [],
     "usageNotes": [
       "Instigator 通常表示最初发起行为的 Pawn；不要默认它一定是武器、子弹或 Controller。"
+    ]
+  },
+  {
+    "id": "imported-integrated-memory-controller",
+    "term": "Integrated Memory Controller",
+    "ipa": "",
+    "zh": "集成内存控制器",
+    "category": "内存与架构",
+    "definition": "集成在 CPU 或其 I/O 芯片中的控制器，负责调度内存命令、管理通道并协调数据传输。",
+    "example": "Four DIMMs place a heavier electrical load on the integrated memory controller.",
+    "exampleZh": "四根 DIMM 会给集成内存控制器带来更大的电气负载。",
+    "tags": "IMC Integrated Memory Controller 集成内存控制器 CPU",
+    "spokenForm": "Integrated Memory Controller",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "IMC",
+      "Memory Controller"
+    ],
+    "relatedTerms": [
+      {
+        "term": "DDR PHY",
+        "relation": "相邻模块",
+        "explanation": "IMC 决定命令调度，DDR PHY 负责物理层信号收发与训练。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "IMC 体质会影响可训练频率和时序，但主板布线与 DIMM 负载同样重要。"
     ]
   },
   {
@@ -1708,6 +2306,34 @@
     "usageNotes": []
   },
   {
+    "id": "imported-mclk",
+    "term": "MCLK",
+    "ipa": "",
+    "zh": "内存物理时钟",
+    "category": "内存与架构",
+    "definition": "DRAM 数据总线的基础物理时钟；DDR5-6000 的 MCLK 通常为 3000MHz。",
+    "example": "DDR5-6000 runs with a 3000 MHz MCLK.",
+    "exampleZh": "DDR5-6000 的 MCLK 为 3000MHz。",
+    "tags": "MCLK Memory Clock 内存时钟 DDR5 AMD",
+    "spokenForm": "Memory Clock",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Memory Clock"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Data Rate",
+        "relation": "倍率关系",
+        "explanation": "DDR 有效数据率通常约为 MCLK 的两倍。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不要把 DDR5-6000 的 6000MT/s 直接称为 6000MHz MCLK。"
+    ]
+  },
+  {
     "id": "imported-mediatextureresource",
     "term": "MediaTextureResource",
     "ipa": "",
@@ -1732,6 +2358,233 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-memory-bandwidth",
+    "term": "Memory Bandwidth",
+    "ipa": "",
+    "zh": "内存带宽",
+    "category": "内存与架构",
+    "definition": "内存系统单位时间内能够传输的数据量，通常用 GB/s 表示。",
+    "example": "The integrated GPU benefits from higher memory bandwidth.",
+    "exampleZh": "集成显卡会受益于更高的内存带宽。",
+    "tags": "Memory Bandwidth 内存带宽 GB/s throughput",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Bandwidth"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Data Rate",
+        "relation": "决定因素",
+        "explanation": "数据率、通道位宽和通道数量共同决定理论内存带宽。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "带宽表示吞吐能力，不等于获得第一批数据所需的延迟。"
+    ]
+  },
+  {
+    "id": "imported-memory-channel",
+    "term": "Memory Channel",
+    "ipa": "",
+    "zh": "内存通道",
+    "category": "内存与架构",
+    "definition": "CPU 内存控制器与内存模块之间可相对独立传输数据的逻辑数据通路。",
+    "example": "Using both memory channels doubles the theoretical bus width.",
+    "exampleZh": "同时使用两个内存通道会使理论总线位宽翻倍。",
+    "tags": "内存通道 Memory Channel 双通道 bandwidth",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Channel"
+    ],
+    "relatedTerms": [
+      {
+        "term": "DDR5 Subchannel",
+        "relation": "内部划分",
+        "explanation": "DDR5 会把每个 64-bit DIMM 数据通路拆成两个更窄的子通道。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "双通道描述 CPU 平台通道数，不是 DDR5 单条内部的两个 Subchannel。"
+    ]
+  },
+  {
+    "id": "imported-memory-context-restore",
+    "term": "Memory Context Restore",
+    "ipa": "",
+    "zh": "内存上下文恢复",
+    "category": "内存与架构",
+    "definition": "AMD 平台固件尝试复用之前的内存训练结果，从而缩短后续启动时间的功能。",
+    "example": "Disabling Memory Context Restore can help diagnose unstable cold boots.",
+    "exampleZh": "关闭内存上下文恢复有助于诊断不稳定的冷启动。",
+    "tags": "Memory Context Restore MCR AMD BIOS 启动 内存训练",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "MCR"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "复用结果",
+        "explanation": "MCR 保存并复用训练上下文，而不是完全取消训练机制。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "边缘超频参数可能在复用训练结果时表现出冷启动或睡眠唤醒问题。"
+    ]
+  },
+  {
+    "id": "imported-memory-data-rate",
+    "term": "Memory Data Rate",
+    "ipa": "",
+    "zh": "内存数据率",
+    "category": "内存与架构",
+    "definition": "内存总线每秒完成的数据传输次数，DDR 内存通常以 MT/s 表示。",
+    "example": "DDR5-6000 has a data rate of 6000 megatransfers per second.",
+    "exampleZh": "DDR5-6000 的数据率是每秒 6000 百万次传输。",
+    "tags": "Memory Data Rate 内存数据率 MT/s DDR5-6000",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Transfer Rate",
+      "Effective Data Rate"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Double Data Rate",
+        "relation": "传输机制",
+        "explanation": "DDR 每个物理时钟周期传输两次，因此数据率约为 MCLK 的两倍。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "MT/s 是传输率单位，MHz 是时钟频率单位。"
+    ]
+  },
+  {
+    "id": "imported-memory-latency",
+    "term": "Memory Latency",
+    "ipa": "",
+    "zh": "内存延迟",
+    "category": "内存与架构",
+    "definition": "从发出内存请求到所需数据可被处理器使用所经历的时间。",
+    "example": "Pointer chasing is sensitive to memory latency because each load depends on the previous one.",
+    "exampleZh": "指针追踪对内存延迟敏感，因为每次加载都依赖前一次结果。",
+    "tags": "Memory Latency 内存延迟 ns random access",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Latency"
+    ],
+    "relatedTerms": [
+      {
+        "term": "CAS Latency",
+        "relation": "组成因素",
+        "explanation": "CAS Latency 只是 DRAM 时序的一部分，不等于软件测得的整条访问链路延迟。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "软件测试值还包含缓存退出、地址转换、IMC、PHY、互连和排队开销。"
+    ]
+  },
+  {
+    "id": "imported-memory-rank",
+    "term": "Memory Rank",
+    "ipa": "",
+    "zh": "内存 Rank",
+    "category": "内存与架构",
+    "definition": "一组同时响应片选信号并共同提供完整通道数据位宽的 DRAM 颗粒。",
+    "example": "A dual-rank DIMM can interleave requests between its two ranks.",
+    "exampleZh": "双 Rank DIMM 可以在两个 Rank 之间交错处理请求。",
+    "tags": "Memory Rank 内存Rank 单Rank 双Rank DRAM",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Rank",
+      "Rank"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Rank Interleaving",
+        "relation": "并行机制",
+        "explanation": "控制器可在一个 Rank 忙碌时向另一个 Rank 调度请求。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Rank 数量、DIMM 数量和内存通道数量是三个不同概念。"
+    ]
+  },
+  {
+    "id": "imported-memory-stability",
+    "term": "Memory Stability",
+    "ipa": "",
+    "zh": "内存稳定性",
+    "category": "内存与架构",
+    "definition": "内存颗粒、控制器、主板与参数组合在启动、热态和各种负载下持续无数据错误运行的能力。",
+    "example": "A benchmark pass alone does not prove memory stability.",
+    "exampleZh": "只通过一次跑分不能证明内存稳定性。",
+    "tags": "Memory Stability 内存稳定性 TM5 MemTest86 WHEA 热态",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Stability"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "启动阶段",
+        "explanation": "能完成训练和开机只是稳定性验证的一部分。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "应组合验证冷启动、热启动、睡眠唤醒、长时间压力和真实工作负载。"
+    ]
+  },
+  {
+    "id": "imported-memory-training",
+    "term": "Memory Training",
+    "ipa": "",
+    "zh": "内存训练",
+    "category": "内存与架构",
+    "definition": "系统启动时为当前 CPU、主板和 DIMM 组合校准读写采样、信号延迟、终端和驱动参数的过程。",
+    "example": "The first boot takes longer because the firmware is training the memory.",
+    "exampleZh": "首次启动耗时更长，因为固件正在训练内存。",
+    "tags": "Memory Training 内存训练 POST DDR PHY BIOS",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Training",
+      "Memory Retraining"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Context Restore",
+        "relation": "结果复用",
+        "explanation": "Memory Context Restore 尝试复用已有训练结果以缩短启动时间。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "训练失败可能来自 IMC、主板布线、插槽、BIOS 或参数，不一定是 DIMM 损坏。"
+    ]
   },
   {
     "id": "imported-mergeintolocalqueue",
@@ -1914,6 +2767,63 @@
     "usageNotes": []
   },
   {
+    "id": "imported-on-die-ecc",
+    "term": "On-die ECC",
+    "ipa": "",
+    "zh": "片上纠错码",
+    "category": "内存与架构",
+    "definition": "集成在 DDR5 DRAM 颗粒内部、用于检测和修正颗粒阵列内部部分位错误的纠错机制。",
+    "example": "On-die ECC does not protect data on the bus between the DIMM and the CPU.",
+    "exampleZh": "片上 ECC 不能保护 DIMM 与 CPU 之间总线上的数据。",
+    "tags": "On-die ECC 片上ECC DDR5 纠错 DRAM",
+    "spokenForm": "On Die E C C",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "ODECC",
+      "On-Die Error Correction Code"
+    ],
+    "relatedTerms": [
+      {
+        "term": "ECC Memory",
+        "relation": "保护范围对比",
+        "explanation": "系统级 ECC 需要 DIMM、内存控制器、主板和固件共同支持更完整的数据路径保护。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DDR5 带 On-die ECC 不等于购买了系统级 ECC 内存。"
+    ]
+  },
+  {
+    "id": "imported-one-dimm-per-channel",
+    "term": "One DIMM Per Channel",
+    "ipa": "",
+    "zh": "每通道一根内存",
+    "category": "内存与架构",
+    "definition": "每个内存通道只安装一根 DIMM 的拓扑，通常比每通道两根更容易实现 DDR5 高频。",
+    "example": "A two-DIMM kit uses one DIMM per channel on a dual-channel board.",
+    "exampleZh": "在双通道主板上，两条套装采用每通道一根 DIMM。",
+    "tags": "1DPC One DIMM Per Channel 每通道一根 DDR5",
+    "spokenForm": "One Dimm Per Channel",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "1DPC"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Two DIMMs Per Channel",
+        "relation": "对比拓扑",
+        "explanation": "2DPC 增加插槽和 DIMM 负载，通常会降低高频余量。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "1DPC 描述每通道插条数量，不描述 Rank 数量。"
+    ]
+  },
+  {
     "id": "imported-output-log",
     "term": "Output Log",
     "ipa": "",
@@ -1977,6 +2887,34 @@
     ],
     "usageNotes": [
       "UE 网络语境中的 Actor Owner 还有复制和连接相关含义，需要结合上下文判断。"
+    ]
+  },
+  {
+    "id": "imported-page-fault",
+    "term": "Page Fault",
+    "ipa": "",
+    "zh": "缺页异常",
+    "category": "内存与架构",
+    "definition": "处理器访问的虚拟页面当前没有有效映射或未驻留在物理内存中，因而需要操作系统介入处理的异常。",
+    "example": "Major page faults can stall the application while data is loaded from storage.",
+    "exampleZh": "严重缺页可能让应用停顿，等待数据从存储设备载入。",
+    "tags": "缺页 Page Fault 虚拟内存 换页 SSD",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Page Fault Exception"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Translation Lookaside Buffer",
+        "relation": "地址转换",
+        "explanation": "两者都涉及虚拟内存，但 TLB Miss 可以由硬件页表遍历解决，不一定产生缺页异常。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Minor Page Fault 不一定访问磁盘；Major Page Fault 通常需要外部存储 I/O。"
     ]
   },
   {
@@ -2188,6 +3126,34 @@
     ],
     "usageNotes": [
       "Bloom/DOF/Tonemapping/TAA。"
+    ]
+  },
+  {
+    "id": "imported-power-management-integrated-circuit",
+    "term": "Power Management Integrated Circuit",
+    "ipa": "",
+    "zh": "电源管理集成电路",
+    "category": "内存与架构",
+    "definition": "DDR5 DIMM 上负责本地电压转换与电源管理的集成电路。",
+    "example": "The DDR5 PMIC manages local power rails on the memory module.",
+    "exampleZh": "DDR5 PMIC 管理内存模块上的本地供电轨。",
+    "tags": "PMIC Power Management Integrated Circuit DDR5 供电",
+    "spokenForm": "Power Management Integrated Circuit",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "PMIC"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Dual In-line Memory Module",
+        "relation": "模块器件",
+        "explanation": "PMIC 是 DDR5 DIMM 上除 DRAM 颗粒之外的重要器件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DDR5 把更多电源管理功能移到 DIMM，并不表示主板不再影响内存供电。"
     ]
   },
   {
@@ -2406,6 +3372,34 @@
     ]
   },
   {
+    "id": "imported-rank-interleaving",
+    "term": "Rank Interleaving",
+    "ipa": "",
+    "zh": "Rank 交错",
+    "category": "内存与架构",
+    "definition": "内存控制器把请求分配到不同 Rank，使一个 Rank 等待时另一个 Rank 可以执行命令的并行调度方式。",
+    "example": "Rank interleaving can improve throughput when enough independent requests are available.",
+    "exampleZh": "当存在足够多独立请求时，Rank 交错可以提高吞吐量。",
+    "tags": "Rank Interleaving Rank交错 并行 吞吐",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Rank Interleave"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Rank",
+        "relation": "前提结构",
+        "explanation": "只有存在多个可调度 Rank 时才能利用 Rank 交错。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "双 Rank 可能提高并行度，也会增加内存控制器的电气负载。"
+    ]
+  },
+  {
     "id": "imported-rdg-execute",
     "term": "RDG_Execute",
     "ipa": "",
@@ -2466,6 +3460,64 @@
     "contexts": [],
     "usageNotes": [
       "通过字符串或运行时动态加载形成的关系不一定能完整显示在静态引用图中。"
+    ]
+  },
+  {
+    "id": "imported-refresh-cycle-time",
+    "term": "Refresh Cycle Time",
+    "ipa": "",
+    "zh": "刷新周期时间",
+    "category": "内存与架构",
+    "definition": "DRAM 执行刷新命令期间相关阵列被占用、无法正常处理部分访问的持续时间。",
+    "example": "A shorter refresh cycle time reduces the pause caused by each refresh.",
+    "exampleZh": "更短的刷新周期时间会减少每次刷新造成的停顿。",
+    "tags": "tRFC Refresh Cycle Time 刷新周期 DDR5",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tRFC",
+      "Refresh Recovery Time"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Refresh Interval",
+        "relation": "刷新参数",
+        "explanation": "tRFC 描述一次刷新占用多久，tREFI 描述平均多久发起一次刷新。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "比较不同数据率的 tRFC 时应换算为纳秒；合理范围还受颗粒密度影响。"
+    ]
+  },
+  {
+    "id": "imported-refresh-interval",
+    "term": "Refresh Interval",
+    "ipa": "",
+    "zh": "刷新间隔",
+    "category": "内存与架构",
+    "definition": "DRAM 刷新命令之间的平均时间间隔；间隔越长，刷新开销越少，但数据保持风险越高。",
+    "example": "A very high refresh interval may fail after the DIMMs heat up.",
+    "exampleZh": "过高的刷新间隔可能在 DIMM 升温后出现错误。",
+    "tags": "tREFI Refresh Interval 刷新间隔 温度 DDR5",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tREFI",
+      "Refresh Interval Time"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Refresh Cycle Time",
+        "relation": "刷新参数",
+        "explanation": "两者共同影响刷新开销和数据保持稳定性。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "提高 tREFI 属于超频调校，热态稳定性尤其重要。"
     ]
   },
   {
@@ -2606,6 +3658,226 @@
     "usageNotes": []
   },
   {
+    "id": "imported-row-active-time",
+    "term": "Row Active Time",
+    "ipa": "",
+    "zh": "行激活保持时间",
+    "category": "内存与架构",
+    "definition": "DRAM 行从激活开始到允许执行预充电关闭之间必须保持打开的最短时间。",
+    "example": "The controller cannot precharge the row before the row active time has elapsed.",
+    "exampleZh": "在行激活保持时间结束前，控制器不能对该行执行预充电。",
+    "tags": "tRAS Row Active Time 行激活时间 DRAM timing",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tRAS",
+      "Active-to-Precharge Delay"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Cycle Time",
+        "relation": "组成约束",
+        "explanation": "tRC 通常至少包含 tRAS 与 tRP。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "tRAS 通常不直接加到一次读取的首字节延迟中。"
+    ]
+  },
+  {
+    "id": "imported-row-buffer",
+    "term": "Row Buffer",
+    "ipa": "",
+    "zh": "行缓冲",
+    "category": "内存与架构",
+    "definition": "DRAM Bank 中保存当前激活行内容的感应放大器阵列，后续列读写从这里进行。",
+    "example": "A row hit reads data from the row already held in the row buffer.",
+    "exampleZh": "行命中会从行缓冲中已经打开的那一行读取数据。",
+    "tags": "Row Buffer 行缓冲 DRAM Row Hit",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "DRAM Row Buffer",
+      "Page Buffer"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Hit",
+        "relation": "命中状态",
+        "explanation": "目标行已经位于行缓冲中时会发生 Row Hit。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DRAM Row 有时也被称为 Page，但不要与虚拟内存页面混淆。"
+    ]
+  },
+  {
+    "id": "imported-row-conflict",
+    "term": "Row Conflict",
+    "ipa": "",
+    "zh": "行冲突",
+    "category": "内存与架构",
+    "definition": "目标 Bank 已经打开了另一行，必须先预充电关闭旧行，再激活目标行的访问状态。",
+    "example": "Random accesses to the same bank can create repeated row conflicts.",
+    "exampleZh": "对同一 Bank 的随机访问可能反复产生行冲突。",
+    "tags": "Row Conflict 行冲突 tRP tRCD DRAM",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Page Conflict"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Precharge Time",
+        "relation": "额外等待",
+        "explanation": "关闭旧行需要满足 tRP，之后才能激活目标行。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-row-cycle-time",
+    "term": "Row Cycle Time",
+    "ipa": "",
+    "zh": "行周期时间",
+    "category": "内存与架构",
+    "definition": "同一 DRAM Bank 从一次行激活到下一次行激活之间必须满足的最小周期。",
+    "example": "The row cycle time limits how quickly the same bank can activate another row.",
+    "exampleZh": "行周期时间限制了同一 Bank 激活下一行的速度。",
+    "tags": "tRC Row Cycle Time 行周期 tRAS tRP",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tRC"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Active Time",
+        "relation": "时序关系",
+        "explanation": "tRC 通常满足 tRC 不小于 tRAS 加 tRP。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "如果 tRAS=76、tRP=36，则 tRC 不应低于 112 个周期。"
+    ]
+  },
+  {
+    "id": "imported-row-hit",
+    "term": "Row Hit",
+    "ipa": "",
+    "zh": "行命中",
+    "category": "内存与架构",
+    "definition": "目标数据所在行已经在对应 DRAM Bank 的行缓冲中打开，可以直接发出列读写命令的状态。",
+    "example": "Sequential accesses often produce more row hits than random accesses.",
+    "exampleZh": "顺序访问通常比随机访问产生更多行命中。",
+    "tags": "Row Hit 行命中 DRAM latency CL",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Page Hit"
+    ],
+    "relatedTerms": [
+      {
+        "term": "CAS Latency",
+        "relation": "主要时序",
+        "explanation": "行命中无需再次激活目标行，列读取主要受到 CAS Latency 等约束。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-row-miss",
+    "term": "Row Miss",
+    "ipa": "",
+    "zh": "行未命中",
+    "category": "内存与架构",
+    "definition": "目标 Bank 当前没有打开目标行，需要先激活该行再进行列读写的访问状态。",
+    "example": "A row miss requires an activate command before the read command.",
+    "exampleZh": "行未命中需要在读取命令之前先执行激活命令。",
+    "tags": "Row Miss 行未命中 ACT tRCD DRAM",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Closed-Row Miss"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row-to-Column Delay",
+        "relation": "增加等待",
+        "explanation": "激活目标行后必须等待 tRCD 才能发出列命令。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "有些资料把 Row Conflict 也宽泛归为 Row Miss；分析时最好明确 Bank 原先是否打开了另一行。"
+    ]
+  },
+  {
+    "id": "imported-row-precharge-time",
+    "term": "Row Precharge Time",
+    "ipa": "",
+    "zh": "行预充电时间",
+    "category": "内存与架构",
+    "definition": "对 DRAM Bank 执行预充电、关闭当前行并准备下一次激活所需的最小时间。",
+    "example": "A row conflict adds the row precharge time before the next activate command.",
+    "exampleZh": "行冲突会在下一次激活命令前增加行预充电时间。",
+    "tags": "tRP Row Precharge Time 行预充电 DRAM timing",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tRP",
+      "Precharge Time"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Conflict",
+        "relation": "关闭旧行",
+        "explanation": "Bank 打开了错误行时，需要先等待 tRP。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-row-to-column-delay",
+    "term": "Row-to-Column Delay",
+    "ipa": "",
+    "zh": "行到列延迟",
+    "category": "内存与架构",
+    "definition": "从激活 DRAM 行到允许发出该行列读写命令之间的最小间隔。",
+    "example": "A row miss must wait for the row-to-column delay before reading data.",
+    "exampleZh": "行未命中必须等待行到列延迟后才能读取数据。",
+    "tags": "tRCD Row-to-Column Delay 行到列延迟 DRAM timing",
+    "spokenForm": "Row to Column Delay",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "tRCD",
+      "RAS-to-CAS Delay"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Row Miss",
+        "relation": "激活等待",
+        "explanation": "目标行未打开时，ACT 后必须满足 tRCD 才能进行列访问。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-runtime",
     "term": "Runtime",
     "ipa": "",
@@ -2683,6 +3955,34 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-serial-presence-detect",
+    "term": "Serial Presence Detect",
+    "ipa": "",
+    "zh": "串行存在检测",
+    "category": "内存与架构",
+    "definition": "DIMM 上用于保存模块身份、容量、组织方式和标准时序配置的数据结构与访问机制。",
+    "example": "The firmware reads SPD data before selecting a safe memory profile.",
+    "exampleZh": "固件会读取 SPD 数据，再选择安全的内存配置。",
+    "tags": "SPD Serial Presence Detect 内存条 参数 JEDEC",
+    "spokenForm": "Serial Presence Detect",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "SPD"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Extreme Memory Profile",
+        "relation": "配置存储",
+        "explanation": "XMP 配置通常保存在 DIMM 的 SPD 数据区域中。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "SPD 不只是软件名称，而是内存模块信息与配置机制。"
+    ]
   },
   {
     "id": "imported-shadows",
@@ -2835,6 +4135,34 @@
     "usageNotes": []
   },
   {
+    "id": "imported-store-buffer",
+    "term": "Store Buffer",
+    "ipa": "",
+    "zh": "存储缓冲区",
+    "category": "内存与架构",
+    "definition": "暂存尚未提交到缓存层级的写入操作，使 CPU 核心可以在写入完成前继续执行后续指令。",
+    "example": "The store buffer lets the core continue before the write reaches the cache.",
+    "exampleZh": "存储缓冲区让核心无需等到写入抵达缓存就能继续执行。",
+    "tags": "Store Buffer 写入缓冲 CPU memory ordering",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Write Buffer"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Cache Line",
+        "relation": "写入目标",
+        "explanation": "暂存写入最终会合并或提交到对应缓存行。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Store 在这里是处理器写内存操作，不是磁盘存储。"
+    ]
+  },
+  {
     "id": "imported-streamablemanager",
     "term": "StreamableManager",
     "ipa": "",
@@ -2953,6 +4281,35 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-t-topology",
+    "term": "T-Topology",
+    "ipa": "",
+    "zh": "T 型内存拓扑",
+    "category": "内存与架构",
+    "definition": "通过分支布线尽量平衡同一通道两个 DIMM 插槽信号路径长度的主板内存拓扑。",
+    "example": "T-topology can favor balanced loading across two slots per channel.",
+    "exampleZh": "T 型拓扑可以更偏向每通道两个插槽的均衡负载。",
+    "tags": "T-Topology T型拓扑 内存插槽 主板布线 4 DIMM",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "T Topology",
+      "T-Branch Topology"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Daisy-Chain Memory Topology",
+        "relation": "对比布线",
+        "explanation": "Daisy Chain 通常更偏向每通道单条 DIMM 的高频表现。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "拓扑只是影响因素之一，不能脱离主板层数、BIOS 和 CPU IMC 判断性能。"
+    ]
   },
   {
     "id": "imported-taskgraph",
@@ -3303,6 +4660,34 @@
     ]
   },
   {
+    "id": "imported-translation-lookaside-buffer",
+    "term": "Translation Lookaside Buffer",
+    "ipa": "",
+    "zh": "地址转换后备缓冲器",
+    "category": "内存与架构",
+    "definition": "缓存近期虚拟地址到物理地址转换结果的处理器结构，用来减少重复遍历页表的开销。",
+    "example": "Huge pages can reduce Translation Lookaside Buffer pressure for a large working set.",
+    "exampleZh": "对于大型工作集，大页可以降低地址转换后备缓冲器的压力。",
+    "tags": "TLB 地址转换 虚拟内存 页表 CPU",
+    "spokenForm": "Translation Lookaside Buffer",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "TLB"
+    ],
+    "relatedTerms": [
+      {
+        "term": "Page Fault",
+        "relation": "虚拟内存机制",
+        "explanation": "TLB Miss 通常需要页表遍历，而 Page Fault 表示页面映射或驻留状态需要操作系统处理。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "TLB Miss 与 Page Fault 不是同一件事。"
+    ]
+  },
+  {
     "id": "imported-translucency",
     "term": "Translucency",
     "ipa": "/trænzˈluːsənsi/",
@@ -3326,6 +4711,62 @@
     ],
     "usageNotes": [
       "玻璃/粒子/UI。"
+    ]
+  },
+  {
+    "id": "imported-two-dimms-per-channel",
+    "term": "Two DIMMs Per Channel",
+    "ipa": "",
+    "zh": "每通道两根内存",
+    "category": "内存与架构",
+    "definition": "每个内存通道安装两根 DIMM 的拓扑，会增加信号完整性压力和内存控制器负载。",
+    "example": "Two DIMMs per channel may require a lower data rate for reliable training.",
+    "exampleZh": "每通道两根 DIMM 可能需要降低数据率才能可靠训练。",
+    "tags": "2DPC Two DIMMs Per Channel 四条内存 DDR5",
+    "spokenForm": "Two Dimms Per Channel",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "2DPC"
+    ],
+    "relatedTerms": [
+      {
+        "term": "One DIMM Per Channel",
+        "relation": "对比拓扑",
+        "explanation": "1DPC 通常具有更低电气负载和更高频率余量。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "四槽插满不保证还能使用两条套装标称的 XMP 或 EXPO 频率。"
+    ]
+  },
+  {
+    "id": "imported-uclk",
+    "term": "UCLK",
+    "ipa": "",
+    "zh": "内存控制器时钟",
+    "category": "内存与架构",
+    "definition": "AMD 平台中内存控制器使用的工作时钟，常与 MCLK 同步或以其一半频率运行。",
+    "example": "Running UCLK equal to MCLK usually reduces latency on AM5.",
+    "exampleZh": "在 AM5 上令 UCLK 等于 MCLK 通常可以降低延迟。",
+    "tags": "UCLK 内存控制器时钟 AM5 1:1 1:2",
+    "spokenForm": "Unified Memory Controller Clock",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Unified Memory Controller Clock"
+    ],
+    "relatedTerms": [
+      {
+        "term": "MCLK",
+        "relation": "时钟比例",
+        "explanation": "AM5 常见模式是 UCLK=MCLK 或 UCLK=MCLK/2。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "1:1 和 1:2 的口语写法容易混淆，最好直接写出 UCLK 与 MCLK 的等式。"
     ]
   },
   {
