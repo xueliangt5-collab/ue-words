@@ -42,9 +42,9 @@
     "ipa": "",
     "zh": "Wwise 音频设备",
     "category": "性能分析",
-    "definition": "Wwise 音频设备管理。",
-    "example": "Inspect AkAudioDevice in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 AkAudioDevice。",
+    "definition": "记录 Wwise 音频设备在游戏线程管理监听者、房间、发声体和事件状态的耗时。",
+    "example": "AkAudioDevice became expensive after the level registered many spatial audio rooms.",
+    "exampleZh": "关卡注册大量空间音频房间后，AkAudioDevice 的耗时升高了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Ak Audio Device",
     "spokenForm": "Ak Audio Device",
     "threadCategory": "GameThread",
@@ -55,7 +55,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 AkAudioDevice 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 AkAudioDevice 持续偏高时，先确认其对应的工作内容（记录 Wwise 音频设备在游戏线程管理监听者、房间、发声体和事件状态的耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -66,9 +66,9 @@
     "ipa": "",
     "zh": "Wwise 音频组件逐帧更新",
     "category": "性能分析",
-    "definition": "AkComponent 的逐帧更新计时标记，表示 Wwise 音频组件在游戏线程执行 TickComponent 的耗时。",
-    "example": "Inspect AkComponent::TickComponent in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 AkComponent::TickComponent。",
+    "definition": "记录 Wwise AkComponent 在游戏线程逐帧更新位置、遮挡、混响和事件回调的耗时。",
+    "example": "AkComponent::TickComponent increased when hundreds of moving emitters updated in one frame.",
+    "exampleZh": "数百个移动发声体在同一帧更新时，AkComponent::TickComponent 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Ak Component Tick Component",
     "spokenForm": "Ak Component Tick Component",
     "threadCategory": "GameThread",
@@ -87,7 +87,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 AkComponent::TickComponent 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，先确认场景中的 AkComponent 数量及启用 Tick 的组件，再检查位置与遮挡更新、事件回调和 Wwise 集成逻辑。"
+        "experience": "当 AkComponent::TickComponent 持续偏高时，先确认其对应的工作内容（记录 Wwise AkComponent 在游戏线程逐帧更新位置、遮挡、混响和事件回调的耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -152,9 +152,9 @@
     "ipa": "/beɪs pæs/",
     "zh": "基础通道",
     "category": "性能分析",
-    "definition": "主渲染通道。",
-    "example": "Inspect Basepass on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Basepass。",
+    "definition": "GPU 主基础渲染通道，写入不透明几何体的材质、颜色、法线和深度数据。",
+    "example": "Basepass grew after the scene added more opaque materials and geometry.",
+    "exampleZh": "场景增加更多不透明材质和几何体后，Basepass 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GPU Basepass",
     "spokenForm": "Basepass",
     "threadCategory": "GPU",
@@ -167,7 +167,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Basepass 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Basepass 持续偏高时，先确认其对应的工作内容（GPU 主基础渲染通道，写入不透明几何体的材质、颜色、法线和深度数据）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -180,9 +180,9 @@
     "ipa": "",
     "zh": "帧起止标记",
     "category": "性能分析",
-    "definition": "帧开始和结束的标记。",
-    "example": "Inspect BeginFrame + EndFrame in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 BeginFrame + EndFrame。",
+    "definition": "帧开始和结束的标记。CSV 中 FrameTime 从这算。",
+    "example": "BeginFrame + EndFrame revealed extra work around the frame boundaries.",
+    "exampleZh": "BeginFrame + EndFrame 显示帧边界附近出现了额外工作。",
     "tags": "Unreal Insights timer 性能分析 GameThread Begin Frame End Frame",
     "spokenForm": "Begin Frame End Frame",
     "threadCategory": "GameThread",
@@ -193,7 +193,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 BeginFrame + EndFrame 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 BeginFrame + EndFrame 持续偏高时，先确认其对应的工作内容（帧开始和结束的标记。CSV 中 FrameTime 从这算）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -459,9 +459,9 @@
     "ipa": "/ˈkærəktər ˈmuːvmənt/",
     "zh": "角色移动",
     "category": "性能分析",
-    "definition": "角色移动组件。",
-    "example": "Inspect CharacterMovement in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 CharacterMovement。",
+    "definition": "角色移动组件。MoveComponent 在这里。",
+    "example": "CharacterMovement dominated the frame while many characters were moving.",
+    "exampleZh": "大量角色同时移动时，CharacterMovement 占用了主要帧时间。",
     "tags": "Unreal Insights timer 性能分析 GameThread Character Movement",
     "spokenForm": "Character Movement",
     "threadCategory": "GameThread",
@@ -474,7 +474,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 CharacterMovement 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 CharacterMovement 持续偏高时，先确认其对应的工作内容（角色移动组件。MoveComponent 在这里）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -516,9 +516,9 @@
     "ipa": "",
     "zh": "光照网格计算",
     "category": "性能分析",
-    "definition": "计算光照网格。",
-    "example": "Inspect ComputeLightGrid when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 ComputeLightGrid。",
+    "definition": "计算光照网格。Forward+ 渲染用。",
+    "example": "ComputeLightGrid increased when many local lights affected the camera view.",
+    "exampleZh": "大量局部光源影响摄像机视图时，ComputeLightGrid 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Compute Light Grid",
     "spokenForm": "Compute Light Grid",
     "threadCategory": "RenderThread",
@@ -529,7 +529,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 ComputeLightGrid 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 ComputeLightGrid 持续偏高时，先确认其对应的工作内容（计算光照网格。Forward+ 渲染用）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -542,9 +542,9 @@
     "ipa": "",
     "zh": "条件性完成加载",
     "category": "性能分析",
-    "definition": "条件性等待加载完成。",
-    "example": "Inspect ConditionalFinishLoading in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ConditionalFinishLoading。",
+    "definition": "在需要立即使用对象时等待其加载完成，可能形成游戏线程同步阻塞。",
+    "example": "ConditionalFinishLoading blocked the game thread until the requested asset became ready.",
+    "exampleZh": "ConditionalFinishLoading 阻塞了游戏线程，直到请求的资产准备完成。",
     "tags": "Unreal Insights timer 性能分析 GameThread Conditional Finish Loading",
     "spokenForm": "Conditional Finish Loading",
     "threadCategory": "GameThread",
@@ -555,7 +555,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 ConditionalFinishLoading 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 ConditionalFinishLoading 持续偏高时，先确认其对应的工作内容（在需要立即使用对象时等待其加载完成，可能形成游戏线程同步阻塞）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -621,9 +621,9 @@
     "ipa": "",
     "zh": "分配 D3D12 池资源",
     "category": "性能分析",
-    "definition": "从 GPU 资源池分配（D3D12）。",
-    "example": "Inspect D3D12_AllocatePoolResource when the RHI Thread stalls.",
-    "exampleZh": "当 RHI 线程发生阻塞时，检查 D3D12_AllocatePoolResource。",
+    "definition": "记录 D3D12 后端从 GPU 资源池查找或分配纹理、缓冲区等资源的耗时。",
+    "example": "D3D12_AllocatePoolResource spiked when transient GPU resources exhausted the reusable pool.",
+    "exampleZh": "瞬时 GPU 资源耗尽可复用池时，D3D12_AllocatePoolResource 出现了尖峰。",
     "tags": "Unreal Insights timer 性能分析 RHIThread D3 D12 Allocate Pool Resource",
     "spokenForm": "D3 D12 Allocate Pool Resource",
     "threadCategory": "RHIThread",
@@ -634,7 +634,7 @@
       {
         "phrase": "Unreal Insights · RHIThread",
         "explanation": "CSV 将 D3D12_AllocatePoolResource 归入 RHIThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+        "experience": "当 D3D12_AllocatePoolResource 持续偏高时，先确认其对应的工作内容（记录 D3D12 后端从 GPU 资源池查找或分配纹理、缓冲区等资源的耗时）是否因工作量增长而变重；检查资源创建频率、命令列表数量、显式 Flush 和图形驱动提交时间。"
       }
     ],
     "usageNotes": []
@@ -646,8 +646,8 @@
     "zh": "创建 D3D12 缓冲区",
     "category": "性能分析",
     "definition": "创建 GPU Buffer（D3D12 后端）。",
-    "example": "Inspect D3D12_CreateBuffer when the RHI Thread stalls.",
-    "exampleZh": "当 RHI 线程发生阻塞时，检查 D3D12_CreateBuffer。",
+    "example": "D3D12_CreateBuffer appeared every frame because a system recreated its GPU buffers.",
+    "exampleZh": "某个系统每帧重新创建 GPU 缓冲区，因此持续出现 D3D12_CreateBuffer。",
     "tags": "Unreal Insights timer 性能分析 RHIThread D3 D12 Create Buffer",
     "spokenForm": "D3 D12 Create Buffer",
     "threadCategory": "RHIThread",
@@ -658,7 +658,7 @@
       {
         "phrase": "Unreal Insights · RHIThread",
         "explanation": "CSV 将 D3D12_CreateBuffer 归入 RHIThread 线程或轨道分类。",
-        "experience": "帧内频繁创建 GPU Buffer 容易产生尖峰，优先复用、池化或提前创建资源。"
+        "experience": "当 D3D12_CreateBuffer 持续偏高时，先确认其对应的工作内容（创建 GPU Buffer（D3D12 后端））是否因工作量增长而变重；检查资源创建频率、命令列表数量、显式 Flush 和图形驱动提交时间。"
       }
     ],
     "usageNotes": []
@@ -1099,9 +1099,9 @@
     "ipa": "",
     "zh": "延迟后加载初始化",
     "category": "性能分析",
-    "definition": "资产加载后的初始化。",
-    "example": "Inspect Event_DeferredPostLoad in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Event_DeferredPostLoad。",
+    "definition": "执行资产加载后的延迟 PostLoad 初始化，例如对象默认值和依赖对象处理。",
+    "example": "Event_DeferredPostLoad became slow while newly loaded objects initialized their dependencies.",
+    "exampleZh": "新加载对象初始化依赖项时，Event_DeferredPostLoad 变慢了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Event Deferred Post Load",
     "spokenForm": "Event Deferred Post Load",
     "threadCategory": "GameThread",
@@ -1112,7 +1112,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Event_DeferredPostLoad 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Event_DeferredPostLoad 持续偏高时，先确认其对应的工作内容（执行资产加载后的延迟 PostLoad 初始化，例如对象默认值和依赖对象处理）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -1214,9 +1214,9 @@
     "ipa": "",
     "zh": "异步加载线程",
     "category": "性能分析",
-    "definition": "异步加载线程。",
-    "example": "Inspect FAsyncLoadingThread in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FAsyncLoadingThread。",
+    "definition": "负责在后台读取、解压并创建资产数据的异步加载线程计时范围。",
+    "example": "FAsyncLoadingThread stayed busy while the level streamed compressed asset data.",
+    "exampleZh": "关卡流送压缩资产数据时，FAsyncLoadingThread 一直处于忙碌状态。",
     "tags": "Unreal Insights timer 性能分析 AsyncLoading F Async Loading Thread",
     "spokenForm": "F Async Loading Thread",
     "threadCategory": "AsyncLoading",
@@ -1238,7 +1238,7 @@
       {
         "phrase": "Unreal Insights · AsyncLoading",
         "explanation": "CSV 将 FAsyncLoadingThread 归入 AsyncLoading 线程或轨道分类。",
-        "experience": "持续偏高时，检查磁盘读取、解压、资源依赖和加载完成后的主线程工作。"
+        "experience": "当 FAsyncLoadingThread 持续偏高时，先确认其对应的工作内容（负责在后台读取、解压并创建资产数据的异步加载线程计时范围）是否因工作量增长而变重；对照读取、解压、对象创建和游戏线程收尾阶段，定位加载管线的主耗时。"
       }
     ],
     "usageNotes": [
@@ -1251,9 +1251,9 @@
     "ipa": "",
     "zh": "异步任务同步完成",
     "category": "性能分析",
-    "definition": "等待异步任务完成的同步点。",
-    "example": "Inspect FAsyncTask::SyncCompletion when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 FAsyncTask::SyncCompletion。",
+    "definition": "记录当前线程等待异步任务完成并同步其结果的阻塞时间。",
+    "example": "FAsyncTask::SyncCompletion exposed a render-thread wait on unfinished worker tasks.",
+    "exampleZh": "FAsyncTask::SyncCompletion 暴露了渲染线程对未完成 Worker 任务的等待。",
     "tags": "Unreal Insights timer 性能分析 RenderThread F Async Task Sync Completion",
     "spokenForm": "F Async Task Sync Completion",
     "threadCategory": "RenderThread",
@@ -1264,7 +1264,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 FAsyncTask::SyncCompletion 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 FAsyncTask::SyncCompletion 持续偏高时，先确认其对应的工作内容（记录当前线程等待异步任务完成并同步其结果的阻塞时间）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": []
@@ -1303,9 +1303,9 @@
     "ipa": "",
     "zh": "引擎主循环 Tick",
     "category": "性能分析",
-    "definition": "引擎主循环，每帧执行一次。",
-    "example": "Inspect FEngineLoop::Tick in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FEngineLoop::Tick。",
+    "definition": "引擎主循环入口，每帧执行一次；分析卡顿时应继续展开子事件定位实际耗时。",
+    "example": "FEngineLoop::Tick exceeded the frame budget, so we expanded its child events to find the cause.",
+    "exampleZh": "FEngineLoop::Tick 超出帧预算后，我们展开其子事件查找原因。",
     "tags": "Unreal Insights timer 性能分析 GameThread F Engine Loop Tick",
     "spokenForm": "F Engine Loop Tick",
     "threadCategory": "GameThread",
@@ -1332,7 +1332,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 FEngineLoop::Tick 归入 GameThread 线程或轨道分类。",
-        "experience": "卡顿时先用它定位游戏线程慢帧，再展开子事件；顶层耗时高不代表主循环本身就是根因。"
+        "experience": "当 FEngineLoop::Tick 持续偏高时，先确认其对应的工作内容（引擎主循环入口，每帧执行一次；分析卡顿时应继续展开子事件定位实际耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -1343,9 +1343,9 @@
     "ipa": "",
     "zh": "文件 I/O",
     "category": "性能分析",
-    "definition": "文件 IO 统计。",
-    "example": "Inspect FileIO in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FileIO。",
+    "definition": "汇总文件读取、定位和数据传输产生的 I/O 耗时。",
+    "example": "FileIO spiked when the game read many small files with poor locality.",
+    "exampleZh": "游戏读取大量局部性较差的小文件时，FileIO 出现了尖峰。",
     "tags": "Unreal Insights timer 性能分析 IO File I O",
     "spokenForm": "File I O",
     "threadCategory": "IO",
@@ -1358,7 +1358,7 @@
       {
         "phrase": "Unreal Insights · IO",
         "explanation": "CSV 将 FileIO 归入 IO 线程或轨道分类。",
-        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+        "experience": "当 FileIO 持续偏高时，先确认其对应的工作内容（汇总文件读取、定位和数据传输产生的 I/O 耗时）是否因工作量增长而变重；检查请求数量、读取粒度、缓存命中、文件布局和同步等待。"
       }
     ],
     "usageNotes": []
@@ -1429,9 +1429,9 @@
     "ipa": "",
     "zh": "等待异步加载完成",
     "category": "性能分析",
-    "definition": "等待所有异步加载完成。",
-    "example": "Inspect FlushAsyncLoading in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FlushAsyncLoading。",
+    "definition": "等待所有异步加载任务完成；显式调用会把异步工作变成同步阻塞。",
+    "example": "FlushAsyncLoading caused a hitch by waiting for all pending asset loads.",
+    "exampleZh": "FlushAsyncLoading 等待所有待处理资产加载，导致了一次卡顿。",
     "tags": "Unreal Insights timer 性能分析 GameThread Flush Async Loading",
     "spokenForm": "Flush Async Loading",
     "threadCategory": "GameThread",
@@ -1453,7 +1453,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 FlushAsyncLoading 归入 GameThread 线程或轨道分类。",
-        "experience": "显式等待会把异步工作重新变成同步阻塞，应追查调用位置和触发条件。"
+        "experience": "当 FlushAsyncLoading 持续偏高时，先确认其对应的工作内容（等待所有异步加载任务完成；显式调用会把异步工作变成同步阻塞）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -1464,9 +1464,9 @@
     "ipa": "",
     "zh": "遍历类实例",
     "category": "性能分析",
-    "definition": "遍历某类所有实例。",
-    "example": "Inspect ForEachObjectOfClass in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ForEachObjectOfClass。",
+    "definition": "遍历指定类的所有 UObject 实例，常用于垃圾回收、验证或对象查询。",
+    "example": "ForEachObjectOfClass became costly because the class had thousands of live instances.",
+    "exampleZh": "该类存在数千个活动实例，因此 ForEachObjectOfClass 的开销变高了。",
     "tags": "Unreal Insights timer 性能分析 GameThread For Each Object Of Class",
     "spokenForm": "For Each Object Of Class",
     "threadCategory": "GameThread",
@@ -1477,7 +1477,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 ForEachObjectOfClass 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 ForEachObjectOfClass 持续偏高时，先确认其对应的工作内容（遍历指定类的所有 UObject 实例，常用于垃圾回收、验证或对象查询）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -1522,9 +1522,9 @@
     "ipa": "",
     "zh": "插入渲染命令栅栏",
     "category": "性能分析",
-    "definition": "插入渲染命令栅栏。",
-    "example": "Inspect FRenderCommandFence::BeginFence in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandFence::BeginFence。",
+    "definition": "在游戏线程插入渲染命令栅栏，用于确认此前提交的渲染工作何时完成。",
+    "example": "FRenderCommandFence::BeginFence marked the point where the game thread began waiting for rendering work.",
+    "exampleZh": "FRenderCommandFence::BeginFence 标记了游戏线程开始等待渲染工作的同步点。",
     "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Fence Begin Fence",
     "spokenForm": "F Render Command Fence Begin Fence",
     "threadCategory": "GameThread",
@@ -1535,7 +1535,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 FRenderCommandFence::BeginFence 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 FRenderCommandFence::BeginFence 持续偏高时，先确认其对应的工作内容（在游戏线程插入渲染命令栅栏，用于确认此前提交的渲染工作何时完成）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -1548,9 +1548,9 @@
     "ipa": "",
     "zh": "开始记录渲染命令",
     "category": "性能分析",
-    "definition": "开始记录渲染命令管道。",
-    "example": "Inspect FRenderCommandPipe_StartRecording in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandPipe_StartRecording。",
+    "definition": "开始把后续渲染命令记录到指定管道，以便批量转交渲染线程。",
+    "example": "FRenderCommandPipe_StartRecording opened a new batch for deferred render commands.",
+    "exampleZh": "FRenderCommandPipe_StartRecording 为延迟渲染命令开启了一个新批次。",
     "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Pipe Start Recording",
     "spokenForm": "F Render Command Pipe Start Recording",
     "threadCategory": "GameThread",
@@ -1561,7 +1561,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 FRenderCommandPipe_StartRecording 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 FRenderCommandPipe_StartRecording 持续偏高时，先确认其对应的工作内容（开始把后续渲染命令记录到指定管道，以便批量转交渲染线程）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -1572,9 +1572,9 @@
     "ipa": "",
     "zh": "停止记录渲染命令",
     "category": "性能分析",
-    "definition": "停止记录渲染命令管道。",
-    "example": "Inspect FRenderCommandPipe_StopRecording in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 FRenderCommandPipe_StopRecording。",
+    "definition": "停止向当前渲染命令管道追加命令，并准备合并或提交已记录工作。",
+    "example": "FRenderCommandPipe_StopRecording closed the batch before its commands were merged.",
+    "exampleZh": "FRenderCommandPipe_StopRecording 在命令合并前关闭了该批次。",
     "tags": "Unreal Insights timer 性能分析 GameThread F Render Command Pipe Stop Recording",
     "spokenForm": "F Render Command Pipe Stop Recording",
     "threadCategory": "GameThread",
@@ -1585,7 +1585,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 FRenderCommandPipe_StopRecording 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 FRenderCommandPipe_StopRecording 持续偏高时，先确认其对应的工作内容（停止向当前渲染命令管道追加命令，并准备合并或提交已记录工作）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -1624,9 +1624,9 @@
     "ipa": "",
     "zh": "特效系统",
     "category": "性能分析",
-    "definition": "特效系统提交 Cascade/Niagara。",
-    "example": "Inspect FXSystem when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 FXSystem。",
+    "definition": "在渲染线程更新并提交 Cascade 或 Niagara 特效系统的渲染数据。",
+    "example": "FXSystem grew when many Niagara systems uploaded new render data.",
+    "exampleZh": "大量 Niagara 系统上传新渲染数据时，FXSystem 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread F X System",
     "spokenForm": "F X System",
     "threadCategory": "RenderThread",
@@ -1637,7 +1637,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 FXSystem 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 FXSystem 持续偏高时，先确认其对应的工作内容（在渲染线程更新并提交 Cascade 或 Niagara 特效系统的渲染数据）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": []
@@ -1713,9 +1713,9 @@
     "ipa": "",
     "zh": "游戏线程等待任务",
     "category": "性能分析",
-    "definition": "游戏线程等待异步任务。",
-    "example": "Inspect GameThreadWaitForTask in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 GameThreadWaitForTask。",
+    "definition": "游戏线程等待异步任务或任务图工作完成，是可能造成卡顿的同步点。",
+    "example": "GameThreadWaitForTask showed that the game thread was blocked by an unfinished async task.",
+    "exampleZh": "GameThreadWaitForTask 表明游戏线程被未完成的异步任务阻塞。",
     "tags": "Unreal Insights timer 性能分析 GameThread Game Thread Wait For Task",
     "spokenForm": "Game Thread Wait For Task",
     "threadCategory": "GameThread",
@@ -1737,7 +1737,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 GameThreadWaitForTask 归入 GameThread 线程或轨道分类。",
-        "experience": "这里高通常代表游戏线程在等其他任务，不要只优化等待函数本身，要追踪被等待的任务。"
+        "experience": "当 GameThreadWaitForTask 持续偏高时，先确认其对应的工作内容（游戏线程等待异步任务或任务图工作完成，是可能造成卡顿的同步点）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -1748,9 +1748,9 @@
     "ipa": "",
     "zh": "垃圾回收",
     "category": "性能分析",
-    "definition": "垃圾回收。",
-    "example": "Inspect GC in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 GC。",
+    "definition": "记录 UObject 垃圾回收的标记、不可达对象收集和销毁阶段耗时。",
+    "example": "GC produced a long hitch after many temporary UObjects became unreachable.",
+    "exampleZh": "大量临时 UObject 变为不可达后，GC 产生了一次明显卡顿。",
     "tags": "Unreal Insights timer 性能分析 GameThread G C",
     "spokenForm": "G C",
     "threadCategory": "GameThread",
@@ -1761,7 +1761,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 GC 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 GC 持续偏高时，先确认其对应的工作内容（记录 UObject 垃圾回收的标记、不可达对象收集和销毁阶段耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -1951,9 +1951,9 @@
     "ipa": "",
     "zh": "视图初始化",
     "category": "性能分析",
-    "definition": "初始化视图。",
-    "example": "Inspect InitViews when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 InitViews。",
+    "definition": "初始化视图。剔除/可见性/LOD 计算。",
+    "example": "InitViews increased when the renderer processed more visible primitives and shadows.",
+    "exampleZh": "渲染器处理更多可见图元和阴影时，InitViews 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Init Views",
     "spokenForm": "Init Views",
     "threadCategory": "RenderThread",
@@ -1964,7 +1964,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 InitViews 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 InitViews 持续偏高时，先确认其对应的工作内容（初始化视图。剔除/可见性/LOD 计算）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -2034,9 +2034,9 @@
     "ipa": "",
     "zh": "I/O 调度器",
     "category": "性能分析",
-    "definition": "文件 IO 调度线程。",
-    "example": "Inspect IoDispatcher in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 IoDispatcher。",
+    "definition": "负责组织读取请求、合并 I/O 范围并把任务分派给底层存储服务。",
+    "example": "IoDispatcher queued many scattered reads during level streaming.",
+    "exampleZh": "关卡流送期间，IoDispatcher 排队了大量分散读取请求。",
     "tags": "Unreal Insights timer 性能分析 IO Io Dispatcher",
     "spokenForm": "Io Dispatcher",
     "threadCategory": "IO",
@@ -2049,7 +2049,7 @@
       {
         "phrase": "Unreal Insights · IO",
         "explanation": "CSV 将 IoDispatcher 归入 IO 线程或轨道分类。",
-        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+        "experience": "当 IoDispatcher 持续偏高时，先确认其对应的工作内容（负责组织读取请求、合并 I/O 范围并把任务分派给底层存储服务）是否因工作量增长而变重；检查请求数量、读取粒度、缓存命中、文件布局和同步等待。"
       }
     ],
     "usageNotes": [
@@ -2062,9 +2062,9 @@
     "ipa": "",
     "zh": "I/O 服务",
     "category": "性能分析",
-    "definition": "文件 IO 执行线程。",
-    "example": "Inspect IoService in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 IoService。",
+    "definition": "负责实际执行文件读取并把完成数据返回给 I/O Dispatcher。",
+    "example": "IoService became storage-bound while reading a large asset bundle.",
+    "exampleZh": "读取大型资产包时，IoService 受到存储性能限制。",
     "tags": "Unreal Insights timer 性能分析 IO Io Service",
     "spokenForm": "Io Service",
     "threadCategory": "IO",
@@ -2077,7 +2077,7 @@
       {
         "phrase": "Unreal Insights · IO",
         "explanation": "CSV 将 IoService 归入 IO 线程或轨道分类。",
-        "experience": "持续偏高时，检查读取请求数量、缓存命中、文件布局和随机 Seek。"
+        "experience": "当 IoService 持续偏高时，先确认其对应的工作内容（负责实际执行文件读取并把完成数据返回给 I/O Dispatcher）是否因工作量增长而变重；检查请求数量、读取粒度、缓存命中、文件布局和同步等待。"
       }
     ],
     "usageNotes": [
@@ -2090,9 +2090,9 @@
     "ipa": "",
     "zh": "潜在动作管理器",
     "category": "性能分析",
-    "definition": "Latent Action 管理器。",
-    "example": "Inspect LatentAction in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LatentAction。",
+    "definition": "Latent Action 管理器。Delay 节点等。",
+    "example": "LatentAction processed a large number of delayed Blueprint operations in one frame.",
+    "exampleZh": "LatentAction 在一帧中处理了大量延迟蓝图操作。",
     "tags": "Unreal Insights timer 性能分析 GameThread Latent Action",
     "spokenForm": "Latent Action",
     "threadCategory": "GameThread",
@@ -2103,7 +2103,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 LatentAction 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 LatentAction 持续偏高时，先确认其对应的工作内容（Latent Action 管理器。Delay 节点等）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -2148,9 +2148,9 @@
     "ipa": "/ˈlevəl ˈstriːmɪŋ/",
     "zh": "关卡流送",
     "category": "性能分析",
-    "definition": "关卡流送。",
-    "example": "Inspect LevelStreaming in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LevelStreaming。",
+    "definition": "关卡流送。LoadStreamLevel/UnloadStreamLevel。",
+    "example": "LevelStreaming spiked when a sublevel became visible near the player.",
+    "exampleZh": "玩家接近子关卡并触发其可见时，LevelStreaming 出现了尖峰。",
     "tags": "Unreal Insights timer 性能分析 GameThread Level Streaming",
     "spokenForm": "Level Streaming",
     "threadCategory": "GameThread",
@@ -2174,7 +2174,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 LevelStreaming 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 LevelStreaming 持续偏高时，先确认其对应的工作内容（关卡流送。LoadStreamLevel/UnloadStreamLevel）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -2221,9 +2221,9 @@
     "ipa": "",
     "zh": "加载对象",
     "category": "性能分析",
-    "definition": "加载 UObject 资产。",
-    "example": "Inspect LoadObject in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LoadObject。",
+    "definition": "同步加载 UObject 资产对象；在帧内调用可能阻塞游戏线程。",
+    "example": "LoadObject stalled the game thread while synchronously loading a referenced asset.",
+    "exampleZh": "LoadObject 同步加载引用资产时阻塞了游戏线程。",
     "tags": "Unreal Insights timer 性能分析 GameThread Load Object",
     "spokenForm": "Load Object",
     "threadCategory": "GameThread",
@@ -2234,7 +2234,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 LoadObject 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 LoadObject 持续偏高时，先确认其对应的工作内容（同步加载 UObject 资产对象；在帧内调用可能阻塞游戏线程）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -2247,9 +2247,9 @@
     "ipa": "",
     "zh": "同步加载资源包",
     "category": "性能分析",
-    "definition": "同步加载 Package（关卡/资产）。",
-    "example": "Inspect LoadPackage in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 LoadPackage。",
+    "definition": "同步加载 Package（关卡或资产）；发生在游戏线程时可能造成明显卡顿。",
+    "example": "LoadPackage caused a hitch when gameplay requested an uncached package.",
+    "exampleZh": "游戏逻辑请求未缓存的 Package 时，LoadPackage 导致了卡顿。",
     "tags": "Unreal Insights timer 性能分析 GameThread Load Package",
     "spokenForm": "Load Package",
     "threadCategory": "GameThread",
@@ -2276,7 +2276,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 LoadPackage 归入 GameThread 线程或轨道分类。",
-        "experience": "出现尖峰时检查是否在游戏线程进行了同步加载；优先改为异步加载或提前预热。"
+        "experience": "当 LoadPackage 持续偏高时，先确认其对应的工作内容（同步加载 Package（关卡或资产）；发生在游戏线程时可能造成明显卡顿）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -2287,9 +2287,9 @@
     "ipa": "/ˈluːmən/",
     "zh": "动态全局光照",
     "category": "性能分析",
-    "definition": "动态全局光照 Lumen。",
-    "example": "Inspect Lumen on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Lumen。",
+    "definition": "记录 Lumen 动态全局光照与反射在 GPU 上执行的相关通道耗时。",
+    "example": "Lumen became the largest GPU cost after the scene enabled dense dynamic lighting.",
+    "exampleZh": "场景启用密集动态光照后，Lumen 成为最大的 GPU 开销。",
     "tags": "Unreal Insights timer 性能分析 GPU Lumen",
     "spokenForm": "Lumen",
     "threadCategory": "GPU",
@@ -2300,7 +2300,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Lumen 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Lumen 持续偏高时，先确认其对应的工作内容（记录 Lumen 动态全局光照与反射在 GPU 上执行的相关通道耗时）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": []
@@ -2339,9 +2339,9 @@
     "ipa": "",
     "zh": "媒体纹理资源",
     "category": "性能分析",
-    "definition": "视频/媒体纹理更新。",
-    "example": "Inspect MediaTextureResource on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 MediaTextureResource。",
+    "definition": "记录视频帧或其他媒体内容上传并更新为 GPU 纹理资源的耗时。",
+    "example": "MediaTextureResource rose while several high-resolution videos uploaded new frames.",
+    "exampleZh": "多个高分辨率视频上传新帧时，MediaTextureResource 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GPU Media Texture Resource",
     "spokenForm": "Media Texture Resource",
     "threadCategory": "GPU",
@@ -2354,7 +2354,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 MediaTextureResource 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 MediaTextureResource 持续偏高时，先确认其对应的工作内容（记录视频帧或其他媒体内容上传并更新为 GPU 纹理资源的耗时）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": []
@@ -2592,9 +2592,9 @@
     "ipa": "",
     "zh": "合并到本地队列",
     "category": "性能分析",
-    "definition": "RenderCommand 通道。",
-    "example": "Inspect MergeIntoLocalQueue in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 MergeIntoLocalQueue。",
+    "definition": "把渲染命令合并到线程本地队列，供后续批量提交与执行。",
+    "example": "MergeIntoLocalQueue increased as the game thread produced more render commands.",
+    "exampleZh": "游戏线程生成更多渲染命令时，MergeIntoLocalQueue 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Merge Into Local Queue",
     "spokenForm": "Merge Into Local Queue",
     "threadCategory": "GameThread",
@@ -2605,7 +2605,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 MergeIntoLocalQueue 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 MergeIntoLocalQueue 持续偏高时，先确认其对应的工作内容（把渲染命令合并到线程本地队列，供后续批量提交与执行）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -2714,9 +2714,9 @@
     "ipa": "",
     "zh": "虚拟几何体",
     "category": "性能分析",
-    "definition": "虚拟几何体 Nanite。",
-    "example": "Inspect Nanite on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Nanite。",
+    "definition": "虚拟几何体 Nanite。自动 LOD 替代。",
+    "example": "Nanite cost increased when the view contained more detailed clusters.",
+    "exampleZh": "视图中包含更多高细节 Cluster 时，Nanite 的开销增加了。",
     "tags": "Unreal Insights timer 性能分析 GPU Nanite",
     "spokenForm": "Nanite",
     "threadCategory": "GPU",
@@ -2727,7 +2727,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Nanite 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Nanite 持续偏高时，先确认其对应的工作内容（虚拟几何体 Nanite。自动 LOD 替代）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -2923,9 +2923,9 @@
     "ipa": "",
     "zh": "Pak 预缓存器",
     "category": "性能分析",
-    "definition": ".pak 文件预缓存。",
-    "example": "Inspect PakPrecacher in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 PakPrecacher。",
+    "definition": ".pak 文件预缓存。减少 Seek 延迟。",
+    "example": "PakPrecacher missed its cache and issued additional reads from the package file.",
+    "exampleZh": "PakPrecacher 缓存未命中，并对包文件发起了额外读取。",
     "tags": "Unreal Insights timer 性能分析 IO Pak Precacher",
     "spokenForm": "Pak Precacher",
     "threadCategory": "IO",
@@ -2936,7 +2936,7 @@
       {
         "phrase": "Unreal Insights · IO",
         "explanation": "CSV 将 PakPrecacher 归入 IO 线程或轨道分类。",
-        "experience": "命中率低或 Seek 频繁时，检查资源布局、预取范围和磁盘读取模式。"
+        "experience": "当 PakPrecacher 持续偏高时，先确认其对应的工作内容（.pak 文件预缓存。减少 Seek 延迟）是否因工作量增长而变重；检查请求数量、读取粒度、缓存命中、文件布局和同步等待。"
       }
     ],
     "usageNotes": []
@@ -2947,9 +2947,9 @@
     "ipa": "/ˈpærəlel fɔːr/",
     "zh": "并行 For 循环",
     "category": "性能分析",
-    "definition": "并行 for 循环。",
-    "example": "Inspect ParallelFor in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ParallelFor。",
+    "definition": "把循环迭代分发给多个 Worker 并行执行，并在结束前等待所有分片完成。",
+    "example": "ParallelFor scaled poorly because each iteration performed too little work.",
+    "exampleZh": "由于每次迭代的工作量过小，ParallelFor 的扩展效率很差。",
     "tags": "Unreal Insights timer 性能分析 GameThread Parallel For",
     "spokenForm": "Parallel For",
     "threadCategory": "GameThread",
@@ -2960,7 +2960,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 ParallelFor 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 ParallelFor 持续偏高时，先确认其对应的工作内容（把循环迭代分发给多个 Worker 并行执行，并在结束前等待所有分片完成）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -3031,9 +3031,9 @@
     "ipa": "/ˈfɪzɪks/",
     "zh": "物理模拟",
     "category": "性能分析",
-    "definition": "物理模拟。",
-    "example": "Inspect Physics in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Physics。",
+    "definition": "物理模拟。Chaos Physics 计算在这里。",
+    "example": "Physics exceeded its budget when the scene simulated many active rigid bodies.",
+    "exampleZh": "场景模拟大量活动刚体时，Physics 超出了预算。",
     "tags": "Unreal Insights timer 性能分析 GameThread Physics",
     "spokenForm": "Physics",
     "threadCategory": "GameThread",
@@ -3044,7 +3044,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Physics 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Physics 持续偏高时，先确认其对应的工作内容（物理模拟。Chaos Physics 计算在这里）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -3106,9 +3106,9 @@
     "ipa": "/poʊst ˈprɑːsesɪŋ/",
     "zh": "后处理",
     "category": "性能分析",
-    "definition": "后处理。",
-    "example": "Inspect PostProcessing on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 PostProcessing。",
+    "definition": "后处理。Bloom/DOF/Tonemapping/TAA。",
+    "example": "PostProcessing grew after enabling expensive full-screen effects.",
+    "exampleZh": "启用高开销全屏效果后，PostProcessing 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GPU Post Processing",
     "spokenForm": "Post Processing",
     "threadCategory": "GPU",
@@ -3121,7 +3121,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 PostProcessing 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 PostProcessing 持续偏高时，先确认其对应的工作内容（后处理。Bloom/DOF/Tonemapping/TAA）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -3162,9 +3162,9 @@
     "ipa": "",
     "zh": "准备距离场",
     "category": "性能分析",
-    "definition": "准备距离场数据。",
-    "example": "Inspect PrepareDistanceField when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 PrepareDistanceField。",
+    "definition": "准备距离场数据。DFAO/DFShadow 用。",
+    "example": "PrepareDistanceField increased when many movable objects changed their distance-field data.",
+    "exampleZh": "大量可移动物体更新距离场数据时，PrepareDistanceField 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Prepare Distance Field",
     "spokenForm": "Prepare Distance Field",
     "threadCategory": "RenderThread",
@@ -3175,7 +3175,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 PrepareDistanceField 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 PrepareDistanceField 持续偏高时，先确认其对应的工作内容（准备距离场数据。DFAO/DFShadow 用）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -3188,9 +3188,9 @@
     "ipa": "/ˈpriːpæs/",
     "zh": "深度预通道",
     "category": "性能分析",
-    "definition": "深度预通道。",
-    "example": "Inspect Prepass on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Prepass。",
+    "definition": "深度预通道。先画深度再画颜色减少 overdraw。",
+    "example": "Prepass became expensive because the scene drew more geometry into the depth buffer.",
+    "exampleZh": "场景向深度缓冲绘制更多几何体时，Prepass 的开销变高了。",
     "tags": "Unreal Insights timer 性能分析 GPU Prepass",
     "spokenForm": "Prepass",
     "threadCategory": "GPU",
@@ -3203,7 +3203,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Prepass 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Prepass 持续偏高时，先确认其对应的工作内容（深度预通道。先画深度再画颜色减少 overdraw）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -3250,9 +3250,9 @@
     "ipa": "",
     "zh": "异步加载完成处理",
     "category": "性能分析",
-    "definition": "处理异步加载完成的资产。",
-    "example": "Inspect ProcessAsyncLoading in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 ProcessAsyncLoading。",
+    "definition": "在游戏线程处理异步加载完成后的资产注册与初始化工作。",
+    "example": "ProcessAsyncLoading spiked when many completed assets finalized on the game thread.",
+    "exampleZh": "大量已加载资产在游戏线程完成收尾时，ProcessAsyncLoading 出现了尖峰。",
     "tags": "Unreal Insights timer 性能分析 GameThread Process Async Loading",
     "spokenForm": "Process Async Loading",
     "threadCategory": "GameThread",
@@ -3274,7 +3274,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 ProcessAsyncLoading 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 ProcessAsyncLoading 持续偏高时，先确认其对应的工作内容（在游戏线程处理异步加载完成后的资产注册与初始化工作）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -3351,9 +3351,9 @@
     "ipa": "",
     "zh": "PSO 预编译池",
     "category": "性能分析",
-    "definition": "PSO 预编译线程池。",
-    "example": "Inspect PSOPrecompilePool in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 PSOPrecompilePool。",
+    "definition": "PSO 预编译线程池。首次运行预编译 PSO。",
+    "example": "PSOPrecompilePool remained busy while the build warmed new pipeline state objects.",
+    "exampleZh": "版本预热新的管线状态对象时，PSOPrecompilePool 一直处于忙碌状态。",
     "tags": "Unreal Insights timer 性能分析 AsyncWorker P S O Precompile Pool",
     "spokenForm": "P S O Precompile Pool",
     "threadCategory": "AsyncWorker",
@@ -3364,7 +3364,7 @@
       {
         "phrase": "Unreal Insights · AsyncWorker",
         "explanation": "CSV 将 PSOPrecompilePool 归入 AsyncWorker 线程或轨道分类。",
-        "experience": "检查任务是否过多、粒度是否过小，以及是否最终造成主线程等待。"
+        "experience": "当 PSOPrecompilePool 持续偏高时，先确认其对应的工作内容（PSO 预编译线程池。首次运行预编译 PSO）是否因工作量增长而变重；检查任务粒度、并发度以及预编译工作是否阻塞后续帧。"
       }
     ],
     "usageNotes": [
@@ -3405,9 +3405,9 @@
     "ipa": "",
     "zh": "执行渲染依赖图",
     "category": "性能分析",
-    "definition": "执行渲染依赖图 RDG。",
-    "example": "Inspect RDG_Execute when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 RDG_Execute。",
+    "definition": "执行渲染依赖图 RDG。所有 GPU Pass 在 RDG 里调度。",
+    "example": "RDG_Execute expanded after the frame added several dependent rendering passes.",
+    "exampleZh": "当前帧增加多个相互依赖的渲染 Pass 后，RDG_Execute 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread R D G Execute",
     "spokenForm": "R D G Execute",
     "threadCategory": "RenderThread",
@@ -3429,7 +3429,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 RDG_Execute 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 RDG_Execute 持续偏高时，先确认其对应的工作内容（执行渲染依赖图 RDG。所有 GPU Pass 在 RDG 里调度）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -3526,9 +3526,9 @@
     "ipa": "",
     "zh": "RDG 渲染器",
     "category": "性能分析",
-    "definition": "RDG 核心。",
-    "example": "Inspect Renderer_RDG when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 Renderer_RDG。",
+    "definition": "RDG 核心。所有渲染 Pass 在这之下。",
+    "example": "Renderer_RDG showed that render-graph setup dominated the render thread.",
+    "exampleZh": "Renderer_RDG 表明渲染图构建占用了渲染线程的主要时间。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Renderer R D G",
     "spokenForm": "Renderer R D G",
     "threadCategory": "RenderThread",
@@ -3545,7 +3545,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 Renderer_RDG 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 Renderer_RDG 持续偏高时，先确认其对应的工作内容（RDG 核心。所有渲染 Pass 在这之下）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -3558,9 +3558,9 @@
     "ipa": "",
     "zh": "刷新 RHI 命令列表",
     "category": "性能分析",
-    "definition": "刷新渲染命令队列。",
-    "example": "Inspect RHICmdList_Flush when the RHI Thread stalls.",
-    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHICmdList_Flush。",
+    "definition": "强制刷新 RHI 命令列表并推进命令执行，可能减少 CPU 与 GPU 的并行度。",
+    "example": "RHICmdList_Flush reduced parallelism by forcing queued commands to execute early.",
+    "exampleZh": "RHICmdList_Flush 强制队列命令提前执行，降低了并行度。",
     "tags": "Unreal Insights timer 性能分析 RHIThread R H I Cmd List Flush",
     "spokenForm": "R H I Cmd List Flush",
     "threadCategory": "RHIThread",
@@ -3582,7 +3582,7 @@
       {
         "phrase": "Unreal Insights · RHIThread",
         "explanation": "CSV 将 RHICmdList_Flush 归入 RHIThread 线程或轨道分类。",
-        "experience": "频繁 Flush 会减少并行度；检查资源创建、读回或显式同步是否发生在帧内。"
+        "experience": "当 RHICmdList_Flush 持续偏高时，先确认其对应的工作内容（强制刷新 RHI 命令列表并推进命令执行，可能减少 CPU 与 GPU 的并行度）是否因工作量增长而变重；检查资源创建频率、命令列表数量、显式 Flush 和图形驱动提交时间。"
       }
     ],
     "usageNotes": []
@@ -3593,9 +3593,9 @@
     "ipa": "",
     "zh": "提交 RHI 命令列表",
     "category": "性能分析",
-    "definition": "提交一批渲染命令给驱动。",
-    "example": "Inspect RHICmdList_Submit when the RHI Thread stalls.",
-    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHICmdList_Submit。",
+    "definition": "将一批 RHI 渲染命令提交给图形驱动和 GPU 命令队列。",
+    "example": "RHICmdList_Submit increased when the frame produced many small command lists.",
+    "exampleZh": "当前帧产生大量小型命令列表时，RHICmdList_Submit 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 RHIThread R H I Cmd List Submit",
     "spokenForm": "R H I Cmd List Submit",
     "threadCategory": "RHIThread",
@@ -3617,7 +3617,7 @@
       {
         "phrase": "Unreal Insights · RHIThread",
         "explanation": "CSV 将 RHICmdList_Submit 归入 RHIThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+        "experience": "当 RHICmdList_Submit 持续偏高时，先确认其对应的工作内容（将一批 RHI 渲染命令提交给图形驱动和 GPU 命令队列）是否因工作量增长而变重；检查资源创建频率、命令列表数量、显式 Flush 和图形驱动提交时间。"
       }
     ],
     "usageNotes": []
@@ -3628,9 +3628,9 @@
     "ipa": "",
     "zh": "RHI 线程提交",
     "category": "性能分析",
-    "definition": "提交渲染命令到 GPU 驱动。",
-    "example": "Inspect RHIThread_Submit when the RHI Thread stalls.",
-    "exampleZh": "当 RHI 线程发生阻塞时，检查 RHIThread_Submit。",
+    "definition": "记录 RHI 线程整理命令列表并提交给图形驱动和 GPU 队列的耗时。",
+    "example": "RHIThread_Submit stalled while the graphics driver processed a heavy submission.",
+    "exampleZh": "图形驱动处理高负载提交时，RHIThread_Submit 发生了阻塞。",
     "tags": "Unreal Insights timer 性能分析 RHIThread R H I Thread Submit",
     "spokenForm": "R H I Thread Submit",
     "threadCategory": "RHIThread",
@@ -3652,7 +3652,7 @@
       {
         "phrase": "Unreal Insights · RHIThread",
         "explanation": "CSV 将 RHIThread_Submit 归入 RHIThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查驱动提交、资源创建、命令队列刷新和 CPU/GPU 同步。"
+        "experience": "当 RHIThread_Submit 持续偏高时，先确认其对应的工作内容（记录 RHI 线程整理命令列表并提交给图形驱动和 GPU 队列的耗时）是否因工作量增长而变重；检查资源创建频率、命令列表数量、显式 Flush 和图形驱动提交时间。"
       }
     ],
     "usageNotes": []
@@ -3911,9 +3911,9 @@
     "ipa": "",
     "zh": "Slate 约束画布",
     "category": "性能分析",
-    "definition": "Slate 约束布局计算。",
-    "example": "Inspect SConstraintCanvas in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SConstraintCanvas。",
+    "definition": "记录 Slate 约束画布计算子控件尺寸、锚点和屏幕位置的布局耗时。",
+    "example": "SConstraintCanvas became costly when a complex widget tree recalculated its layout.",
+    "exampleZh": "复杂控件树重新计算布局时，SConstraintCanvas 的开销变高了。",
     "tags": "Unreal Insights timer 性能分析 GameThread S Constraint Canvas",
     "spokenForm": "S Constraint Canvas",
     "threadCategory": "GameThread",
@@ -3924,7 +3924,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 SConstraintCanvas 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 SConstraintCanvas 持续偏高时，先确认其对应的工作内容（记录 Slate 约束画布计算子控件尺寸、锚点和屏幕位置的布局耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -3935,9 +3935,9 @@
     "ipa": "/skriːn speɪs rɪˈflekʃənz/",
     "zh": "屏幕空间反射",
     "category": "性能分析",
-    "definition": "屏幕空间反射 SSR。",
-    "example": "Inspect ScreenSpaceReflections on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 ScreenSpaceReflections。",
+    "definition": "记录屏幕空间反射（SSR）根据当前帧深度和颜色缓冲计算反射的 GPU 耗时。",
+    "example": "ScreenSpaceReflections grew at high resolution with many reflective pixels.",
+    "exampleZh": "高分辨率下存在大量反射像素时，ScreenSpaceReflections 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GPU Screen Space Reflections",
     "spokenForm": "Screen Space Reflections",
     "threadCategory": "GPU",
@@ -3951,7 +3951,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 ScreenSpaceReflections 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 ScreenSpaceReflections 持续偏高时，先确认其对应的工作内容（记录屏幕空间反射（SSR）根据当前帧深度和颜色缓冲计算反射的 GPU 耗时）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": []
@@ -3990,9 +3990,9 @@
     "ipa": "/ˈʃædoʊz/",
     "zh": "阴影渲染",
     "category": "性能分析",
-    "definition": "阴影渲染。",
-    "example": "Inspect Shadows on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Shadows。",
+    "definition": "阴影渲染。ShadowDepths/ShadowProjection 的总称。",
+    "example": "Shadows became GPU-bound after adding more movable shadow-casting lights.",
+    "exampleZh": "增加更多投射阴影的可移动光源后，Shadows 受到 GPU 性能限制。",
     "tags": "Unreal Insights timer 性能分析 GPU Shadows",
     "spokenForm": "Shadows",
     "threadCategory": "GPU",
@@ -4003,7 +4003,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Shadows 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Shadows 持续偏高时，先确认其对应的工作内容（阴影渲染。ShadowDepths/ShadowProjection 的总称）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -4016,9 +4016,9 @@
     "ipa": "",
     "zh": "Slate 加载线程",
     "category": "性能分析",
-    "definition": "Slate 加载线程。",
-    "example": "Inspect SlateLoadingThread in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SlateLoadingThread。",
+    "definition": "Slate 加载线程。加载时更新 UI。",
+    "example": "SlateLoadingThread stayed active while UI resources loaded in the background.",
+    "exampleZh": "UI 资源在后台加载时，SlateLoadingThread 保持活跃。",
     "tags": "Unreal Insights timer 性能分析 Loading Slate Loading Thread",
     "spokenForm": "Slate Loading Thread",
     "threadCategory": "Loading",
@@ -4029,7 +4029,7 @@
       {
         "phrase": "Unreal Insights · Loading",
         "explanation": "CSV 将 SlateLoadingThread 归入 Loading 线程或轨道分类。",
-        "experience": "检查加载线程工作是否影响交互响应，以及是否存在与主线程的同步点。"
+        "experience": "当 SlateLoadingThread 持续偏高时，先确认其对应的工作内容（Slate 加载线程。加载时更新 UI）是否因工作量增长而变重；检查后台加载是否与 UI 或游戏线程存在同步点。"
       }
     ],
     "usageNotes": [
@@ -4042,9 +4042,9 @@
     "ipa": "",
     "zh": "Slate UI GPU 渲染",
     "category": "性能分析",
-    "definition": "UI 渲染。",
-    "example": "Inspect SlateUI_GPU on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 SlateUI_GPU。",
+    "definition": "UI 渲染。UMG/Slate 的 GPU 绘制。",
+    "example": "SlateUI_GPU increased when the interface drew more layers and translucent elements.",
+    "exampleZh": "界面绘制更多图层和半透明元素时，SlateUI_GPU 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GPU Slate U I G P U",
     "spokenForm": "Slate U I G P U",
     "threadCategory": "GPU",
@@ -4055,7 +4055,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 SlateUI_GPU 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 SlateUI_GPU 持续偏高时，先确认其对应的工作内容（UI 渲染。UMG/Slate 的 GPU 绘制）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -4116,9 +4116,9 @@
     "ipa": "",
     "zh": "静态加载对象",
     "category": "性能分析",
-    "definition": "同步加载单个 UObject。",
-    "example": "Inspect StaticLoadObject in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 StaticLoadObject。",
+    "definition": "在游戏线程同步查找或加载单个 UObject，并阻塞到对象完成初始化。",
+    "example": "StaticLoadObject caused a stall because the requested UObject was not resident.",
+    "exampleZh": "请求的 UObject 尚未驻留，因此 StaticLoadObject 导致了阻塞。",
     "tags": "Unreal Insights timer 性能分析 GameThread Static Load Object",
     "spokenForm": "Static Load Object",
     "threadCategory": "GameThread",
@@ -4129,7 +4129,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 StaticLoadObject 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 StaticLoadObject 持续偏高时，先确认其对应的工作内容（在游戏线程同步查找或加载单个 UObject，并阻塞到对象完成初始化）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4168,9 +4168,9 @@
     "ipa": "",
     "zh": "可流送资源管理器",
     "category": "性能分析",
-    "definition": "可流送资产管理器。",
-    "example": "Inspect StreamableManager in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 StreamableManager。",
+    "definition": "管理软引用资产的异步加载、句柄生命周期和加载完成回调。",
+    "example": "StreamableManager queued the soft-referenced assets required by the next area.",
+    "exampleZh": "StreamableManager 排队加载下一区域需要的软引用资产。",
     "tags": "Unreal Insights timer 性能分析 GameThread Streamable Manager",
     "spokenForm": "Streamable Manager",
     "threadCategory": "GameThread",
@@ -4192,7 +4192,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 StreamableManager 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 StreamableManager 持续偏高时，先确认其对应的工作内容（管理软引用资产的异步加载、句柄生命周期和加载完成回调）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4229,9 +4229,9 @@
     "ipa": "",
     "zh": "Slate 控件失效",
     "category": "性能分析",
-    "definition": "Slate Widget 标记重绘。",
-    "example": "Inspect SWidget::Invalidate in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 SWidget::Invalidate。",
+    "definition": "将 Slate 控件标记为布局、绘制或可见性状态失效，触发后续重新计算。",
+    "example": "SWidget::Invalidate spread through the widget tree after a layout property changed.",
+    "exampleZh": "布局属性变化后，SWidget::Invalidate 沿控件树传播。",
     "tags": "Unreal Insights timer 性能分析 GameThread S Widget Invalidate",
     "spokenForm": "S Widget Invalidate",
     "threadCategory": "GameThread",
@@ -4242,7 +4242,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 SWidget::Invalidate 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 SWidget::Invalidate 持续偏高时，先确认其对应的工作内容（将 Slate 控件标记为布局、绘制或可见性状态失效，触发后续重新计算）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4253,9 +4253,9 @@
     "ipa": "",
     "zh": "同步渲染线程",
     "category": "性能分析",
-    "definition": "游戏线程等待渲染线程。",
-    "example": "Inspect Sync_RenderingThread in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Sync_RenderingThread。",
+    "definition": "游戏线程等待渲染线程追上进度；持续偏高通常说明渲染线程存在瓶颈。",
+    "example": "Sync_RenderingThread showed the game thread waiting for the renderer to catch up.",
+    "exampleZh": "Sync_RenderingThread 表明游戏线程正在等待渲染线程追上进度。",
     "tags": "Unreal Insights timer 性能分析 GameThread Sync Rendering Thread",
     "spokenForm": "Sync Rendering Thread",
     "threadCategory": "GameThread",
@@ -4277,7 +4277,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Sync_RenderingThread 归入 GameThread 线程或轨道分类。",
-        "experience": "这里高说明游戏线程在等待渲染线程，继续对照 RenderThread 轨道寻找阻塞源。"
+        "experience": "当 Sync_RenderingThread 持续偏高时，先确认其对应的工作内容（游戏线程等待渲染线程追上进度；持续偏高通常说明渲染线程存在瓶颈）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4317,9 +4317,9 @@
     "ipa": "/tæsk ɡræf/",
     "zh": "任务图系统",
     "category": "性能分析",
-    "definition": "任务图系统。",
-    "example": "Inspect TaskGraph in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TaskGraph。",
+    "definition": "Unreal Engine 用于分发、排序和同步跨线程任务的任务图系统计时范围。",
+    "example": "TaskGraph exposed a dependency chain that delayed several worker tasks.",
+    "exampleZh": "TaskGraph 暴露了一条延迟多个 Worker 任务的依赖链。",
     "tags": "Unreal Insights timer 性能分析 AllThreads Task Graph",
     "spokenForm": "Task Graph",
     "threadCategory": "AllThreads",
@@ -4330,7 +4330,7 @@
       {
         "phrase": "Unreal Insights · AllThreads",
         "explanation": "CSV 将 TaskGraph 归入 AllThreads 线程或轨道分类。",
-        "experience": "从调用者和子任务两端分析，不要把跨线程聚合耗时直接归因于单一线程。"
+        "experience": "当 TaskGraph 持续偏高时，先确认其对应的工作内容（Unreal Engine 用于分发、排序和同步跨线程任务的任务图系统计时范围）是否因工作量增长而变重；追踪任务的生产者、依赖链和最终等待它的线程。"
       }
     ],
     "usageNotes": [
@@ -4343,9 +4343,9 @@
     "ipa": "",
     "zh": "动画 Tick",
     "category": "性能分析",
-    "definition": "动画蓝图更新。",
-    "example": "Inspect Tick_Animation in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_Animation。",
+    "definition": "记录动画蓝图更新、状态机求值、骨骼混合与 IK 等每帧动画工作。",
+    "example": "Tick_Animation increased when many characters evaluated animation graphs and IK.",
+    "exampleZh": "大量角色求值动画图和 IK 时，Tick_Animation 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Animation",
     "spokenForm": "Tick Animation",
     "threadCategory": "GameThread",
@@ -4362,7 +4362,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Tick_Animation 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Tick_Animation 持续偏高时，先确认其对应的工作内容（记录动画蓝图更新、状态机求值、骨骼混合与 IK 等每帧动画工作）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -4375,9 +4375,9 @@
     "ipa": "",
     "zh": "物理期间 Tick",
     "category": "性能分析",
-    "definition": "物理模拟期间的 Tick。",
-    "example": "Inspect Tick_DuringPhysics in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_DuringPhysics。",
+    "definition": "物理模拟期间的 Tick。布料/破碎等。",
+    "example": "Tick_DuringPhysics ran cloth and destruction updates alongside the physics simulation.",
+    "exampleZh": "Tick_DuringPhysics 在物理模拟期间执行了布料和破坏更新。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick During Physics",
     "spokenForm": "Tick During Physics",
     "threadCategory": "GameThread",
@@ -4404,7 +4404,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Tick_DuringPhysics 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Tick_DuringPhysics 持续偏高时，先确认其对应的工作内容（物理模拟期间的 Tick。布料/破碎等）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -4417,9 +4417,9 @@
     "ipa": "",
     "zh": "粒子系统 Tick",
     "category": "性能分析",
-    "definition": "粒子系统 Tick。",
-    "example": "Inspect Tick_Particle in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_Particle。",
+    "definition": "记录 Cascade 或 Niagara 粒子系统在游戏线程执行每帧模拟与组件更新的耗时。",
+    "example": "Tick_Particle grew when many CPU particle systems simulated at once.",
+    "exampleZh": "大量 CPU 粒子系统同时模拟时，Tick_Particle 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Particle",
     "spokenForm": "Tick Particle",
     "threadCategory": "GameThread",
@@ -4436,7 +4436,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Tick_Particle 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Tick_Particle 持续偏高时，先确认其对应的工作内容（记录 Cascade 或 Niagara 粒子系统在游戏线程执行每帧模拟与组件更新的耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4447,9 +4447,9 @@
     "ipa": "",
     "zh": "物理后 Tick",
     "category": "性能分析",
-    "definition": "物理模拟之后的 Tick。",
-    "example": "Inspect Tick_PostPhysics in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_PostPhysics。",
+    "definition": "记录物理模拟完成后执行的 Tick 组，常包含相机跟随和依赖最终物理结果的逻辑。",
+    "example": "Tick_PostPhysics updated the camera after final physics transforms were available.",
+    "exampleZh": "最终物理变换可用后，Tick_PostPhysics 更新了摄像机。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Post Physics",
     "spokenForm": "Tick Post Physics",
     "threadCategory": "GameThread",
@@ -4476,7 +4476,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Tick_PostPhysics 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Tick_PostPhysics 持续偏高时，先确认其对应的工作内容（记录物理模拟完成后执行的 Tick 组，常包含相机跟随和依赖最终物理结果的逻辑）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -4489,9 +4489,9 @@
     "ipa": "",
     "zh": "物理前 Tick",
     "category": "性能分析",
-    "definition": "物理模拟之前的所有 Tick。",
-    "example": "Inspect Tick_PrePhysics in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Tick_PrePhysics。",
+    "definition": "物理模拟之前的所有 Tick。动画/移动依赖这个阶段。",
+    "example": "Tick_PrePhysics prepared movement and animation state before physics began.",
+    "exampleZh": "物理开始前，Tick_PrePhysics 准备了移动和动画状态。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Pre Physics",
     "spokenForm": "Tick Pre Physics",
     "threadCategory": "GameThread",
@@ -4518,7 +4518,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Tick_PrePhysics 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Tick_PrePhysics 持续偏高时，先确认其对应的工作内容（物理模拟之前的所有 Tick。动画/移动依赖这个阶段）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -4531,9 +4531,9 @@
     "ipa": "",
     "zh": "Actor Tick 遍历",
     "category": "性能分析",
-    "definition": "遍历所有 Actor 执行 Tick。",
-    "example": "Inspect TickActors in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TickActors。",
+    "definition": "遍历所有 Actor 执行 Tick。Actor 越多越慢。",
+    "example": "TickActors became expensive because too many Actors had per-frame Tick enabled.",
+    "exampleZh": "过多 Actor 启用了逐帧 Tick，因此 TickActors 的开销变高了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Actors",
     "spokenForm": "Tick Actors",
     "threadCategory": "GameThread",
@@ -4550,7 +4550,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 TickActors 归入 GameThread 线程或轨道分类。",
-        "experience": "Actor 数量和启用 Tick 的比例都会放大这里的耗时，优先查找不必要的每帧 Tick。"
+        "experience": "当 TickActors 持续偏高时，先确认其对应的工作内容（遍历所有 Actor 执行 Tick。Actor 越多越慢）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4562,8 +4562,8 @@
     "zh": "组件 Tick 遍历",
     "category": "性能分析",
     "definition": "遍历所有 Component 执行 TickComponent。",
-    "example": "Inspect TickComponents in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TickComponents。",
+    "example": "TickComponents increased when many active components ran TickComponent.",
+    "exampleZh": "大量活动组件执行 TickComponent 时，TickComponents 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Tick Components",
     "spokenForm": "Tick Components",
     "threadCategory": "GameThread",
@@ -4580,7 +4580,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 TickComponents 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 TickComponents 持续偏高时，先确认其对应的工作内容（遍历所有 Component 执行 TickComponent）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4591,9 +4591,9 @@
     "ipa": "",
     "zh": "渲染后计时",
     "category": "性能分析",
-    "definition": "每帧渲染后的收尾工作。",
-    "example": "Inspect Timer_PostRender in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Timer_PostRender。",
+    "definition": "记录当前帧渲染提交后执行的游戏线程收尾、回调与状态清理工作。",
+    "example": "Timer_PostRender exposed expensive cleanup work after rendering was submitted.",
+    "exampleZh": "渲染提交后，Timer_PostRender 暴露了高开销收尾工作。",
     "tags": "Unreal Insights timer 性能分析 GameThread Timer Post Render",
     "spokenForm": "Timer Post Render",
     "threadCategory": "GameThread",
@@ -4604,7 +4604,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Timer_PostRender 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Timer_PostRender 持续偏高时，先确认其对应的工作内容（记录当前帧渲染提交后执行的游戏线程收尾、回调与状态清理工作）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4615,9 +4615,9 @@
     "ipa": "",
     "zh": "渲染前计时",
     "category": "性能分析",
-    "definition": "每帧渲染前的准备工作。",
-    "example": "Inspect Timer_PreRender in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 Timer_PreRender。",
+    "definition": "记录当前帧生成渲染命令前执行的可见性、状态同步和准备工作。",
+    "example": "Timer_PreRender grew while the frame prepared state for rendering.",
+    "exampleZh": "当前帧准备渲染状态时，Timer_PreRender 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GameThread Timer Pre Render",
     "spokenForm": "Timer Pre Render",
     "threadCategory": "GameThread",
@@ -4628,7 +4628,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 Timer_PreRender 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 Timer_PreRender 持续偏高时，先确认其对应的工作内容（记录当前帧生成渲染命令前执行的可见性、状态同步和准备工作）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4639,9 +4639,9 @@
     "ipa": "",
     "zh": "定时器管理器",
     "category": "性能分析",
-    "definition": "定时器管理器。",
-    "example": "Inspect TimerManager in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 TimerManager。",
+    "definition": "定时器管理器。SetTimer 的回调在这里执行。",
+    "example": "TimerManager processed a burst of callbacks that expired in the same frame.",
+    "exampleZh": "大量定时器在同一帧到期时，TimerManager 处理了一批回调。",
     "tags": "Unreal Insights timer 性能分析 GameThread Timer Manager",
     "spokenForm": "Timer Manager",
     "threadCategory": "GameThread",
@@ -4652,7 +4652,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 TimerManager 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 TimerManager 持续偏高时，先确认其对应的工作内容（定时器管理器。SetTimer 的回调在这里执行）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": [
@@ -4693,9 +4693,9 @@
     "ipa": "/trænzˈluːsənsi/",
     "zh": "半透明渲染",
     "category": "性能分析",
-    "definition": "半透明渲染通道。",
-    "example": "Inspect Translucency on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 Translucency。",
+    "definition": "记录玻璃、粒子和部分 UI 等半透明物体在 GPU 半透明通道中的渲染耗时。",
+    "example": "Translucency became expensive when overlapping particles covered most of the screen.",
+    "exampleZh": "重叠粒子覆盖大部分屏幕时，Translucency 的开销变高了。",
     "tags": "Unreal Insights timer 性能分析 GPU Translucency",
     "spokenForm": "Translucency",
     "threadCategory": "GPU",
@@ -4706,7 +4706,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 Translucency 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 Translucency 持续偏高时，先确认其对应的工作内容（记录玻璃、粒子和部分 UI 等半透明物体在 GPU 半透明通道中的渲染耗时）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
@@ -4775,9 +4775,9 @@
     "ipa": "",
     "zh": "重建输入键映射",
     "category": "性能分析",
-    "definition": "重建输入映射。",
-    "example": "Inspect UInputComponent_ConditionalBuildKeyMap in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 UInputComponent_ConditionalBuildKeyMap。",
+    "definition": "按需重建输入组件的按键到动作映射表，使后续输入事件能够正确分发。",
+    "example": "UInputComponent_ConditionalBuildKeyMap rebuilt bindings after the input configuration changed.",
+    "exampleZh": "输入配置变化后，UInputComponent_ConditionalBuildKeyMap 重建了绑定。",
     "tags": "Unreal Insights timer 性能分析 GameThread U Input Component Conditional Build Key Map",
     "spokenForm": "U Input Component Conditional Build Key Map",
     "threadCategory": "GameThread",
@@ -4788,7 +4788,7 @@
       {
         "phrase": "Unreal Insights · GameThread",
         "explanation": "CSV 将 UInputComponent_ConditionalBuildKeyMap 归入 GameThread 线程或轨道分类。",
-        "experience": "持续偏高时，展开子事件并检查蓝图逻辑、Actor Tick、同步加载和等待点。"
+        "experience": "当 UInputComponent_ConditionalBuildKeyMap 持续偏高时，先确认其对应的工作内容（按需重建输入组件的按键到动作映射表，使后续输入事件能够正确分发）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
     "usageNotes": []
@@ -4799,9 +4799,9 @@
     "ipa": "",
     "zh": "更新 GPU 场景",
     "category": "性能分析",
-    "definition": "更新 GPU 上的场景数据。",
-    "example": "Inspect UpdateGPUScene when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 UpdateGPUScene。",
+    "definition": "更新 GPU Scene 中的实例变换、图元和灯光等场景数据。",
+    "example": "UpdateGPUScene increased when many instances changed transforms in one frame.",
+    "exampleZh": "大量实例在同一帧改变变换时，UpdateGPUScene 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Update G P U Scene",
     "spokenForm": "Update G P U Scene",
     "threadCategory": "RenderThread",
@@ -4812,7 +4812,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 UpdateGPUScene 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 UpdateGPUScene 持续偏高时，先确认其对应的工作内容（更新 GPU Scene 中的实例变换、图元和灯光等场景数据）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -4851,9 +4851,9 @@
     "ipa": "",
     "zh": "虚拟纹理系统",
     "category": "性能分析",
-    "definition": "虚拟纹理系统更新。",
-    "example": "Inspect VirtualTextureSystem when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 VirtualTextureSystem。",
+    "definition": "记录虚拟纹理页请求、缓存更新和地形或贴花纹理流送的渲染线程耗时。",
+    "example": "VirtualTextureSystem processed a burst of page requests after the camera moved quickly.",
+    "exampleZh": "摄像机快速移动后，VirtualTextureSystem 处理了一批页面请求。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Virtual Texture System",
     "spokenForm": "Virtual Texture System",
     "threadCategory": "RenderThread",
@@ -4866,7 +4866,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 VirtualTextureSystem 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 VirtualTextureSystem 持续偏高时，先确认其对应的工作内容（记录虚拟纹理页请求、缓存更新和地形或贴花纹理流送的渲染线程耗时）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": [
@@ -4879,9 +4879,9 @@
     "ipa": "",
     "zh": "等待任务",
     "category": "性能分析",
-    "definition": "等待任务图完成。",
-    "example": "Inspect WaitForTasks when the Render Thread exceeds its frame budget.",
-    "exampleZh": "当渲染线程超过帧预算时，检查 WaitForTasks。",
+    "definition": "当前线程等待任务图中的依赖任务完成；耗时高时应追踪被等待的任务。",
+    "example": "WaitForTasks revealed that the render thread was blocked by unfinished dependencies.",
+    "exampleZh": "WaitForTasks 表明渲染线程被未完成的依赖任务阻塞。",
     "tags": "Unreal Insights timer 性能分析 RenderThread Wait For Tasks",
     "spokenForm": "Wait For Tasks",
     "threadCategory": "RenderThread",
@@ -4903,7 +4903,7 @@
       {
         "phrase": "Unreal Insights · RenderThread",
         "explanation": "CSV 将 WaitForTasks 归入 RenderThread 线程或轨道分类。",
-        "experience": "持续偏高时，检查可见性计算、场景数据更新、渲染命令生成及任务等待。"
+        "experience": "当 WaitForTasks 持续偏高时，先确认其对应的工作内容（当前线程等待任务图中的依赖任务完成；耗时高时应追踪被等待的任务）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
     "usageNotes": []
@@ -4940,9 +4940,9 @@
     "ipa": "",
     "zh": "世界 Tick",
     "category": "性能分析",
-    "definition": "关卡世界 Tick。",
-    "example": "Inspect WorldTick in Unreal Insights when profiling a slow frame.",
-    "exampleZh": "分析慢帧时，在 Unreal Insights 中检查 WorldTick。",
+    "definition": "执行游戏世界每帧更新，包含流送、AI、粒子和 Actor 等子系统工作。",
+    "example": "WorldTick grew as streaming, AI, particles, and Actor updates accumulated.",
+    "exampleZh": "流送、AI、粒子和 Actor 更新累积后，WorldTick 的耗时上升了。",
     "tags": "Unreal Insights timer 性能分析 GameThread/GPU World Tick",
     "spokenForm": "World Tick",
     "threadCategory": "GameThread/GPU",
@@ -4959,7 +4959,7 @@
       {
         "phrase": "Unreal Insights · GameThread/GPU",
         "explanation": "CSV 将 WorldTick 归入 GameThread/GPU 线程或轨道分类。",
-        "experience": "同时对照 GameThread 与 GPU 轨道，先判断瓶颈究竟位于 CPU 还是 GPU。"
+        "experience": "当 WorldTick 持续偏高时，先确认其对应的工作内容（执行游戏世界每帧更新，包含流送、AI、粒子和 Actor 等子系统工作）是否因工作量增长而变重；同时对照 GameThread 与 GPU 轨道，先确认瓶颈位于 CPU 还是 GPU。"
       }
     ],
     "usageNotes": [
@@ -4972,9 +4972,9 @@
     "ipa": "",
     "zh": "GPU 世界更新",
     "category": "性能分析",
-    "definition": "GPU 上的世界计算。",
-    "example": "Inspect WorldTick_GPU on the GPU track when the frame is GPU-bound.",
-    "exampleZh": "当帧受 GPU 限制时，在 GPU 轨道检查 WorldTick_GPU。",
+    "definition": "GPU 上的世界计算。GPU Scene 更新等。",
+    "example": "WorldTick_GPU increased when world updates generated more GPU work.",
+    "exampleZh": "世界更新产生更多 GPU 工作时，WorldTick_GPU 的耗时增加了。",
     "tags": "Unreal Insights timer 性能分析 GPU World Tick G P U",
     "spokenForm": "World Tick G P U",
     "threadCategory": "GPU",
@@ -4991,7 +4991,7 @@
       {
         "phrase": "Unreal Insights · GPU",
         "explanation": "CSV 将 WorldTick_GPU 归入 GPU 线程或轨道分类。",
-        "experience": "持续偏高时，展开具体 GPU Pass，并结合 GPU Visualizer 判断是否为 GPU Bound。"
+        "experience": "当 WorldTick_GPU 持续偏高时，先确认其对应的工作内容（GPU 上的世界计算。GPU Scene 更新等）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
     "usageNotes": [
