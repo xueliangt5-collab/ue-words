@@ -1,6 +1,6 @@
-# UE 术语随身学
+# 术语随身学
 
-面向 Unreal Engine 与游戏测试英语学习的可安装 PWA。
+面向 UE、游戏开发与技术英语学习的可安装 PWA。
 
 正式地址（发布后）：`https://xueliangt5-collab.github.io/ue-words/`
 

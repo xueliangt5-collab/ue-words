@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">UE 术语随身学</title>
+  <title id="title">术语随身学</title>
   <desc id="desc">深色方形图标，中间是 UE 字母与书页形状</desc>
   <rect width="512" height="512" rx="96" fill="#18181b"/>
   <path d="M104 112h128c35 0 64 29 64 64v224c-17-19-42-30-72-30H104V112Z" fill="#f7f7f5"/>

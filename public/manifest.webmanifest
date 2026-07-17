@@ -1,7 +1,7 @@
 {
-  "name": "UE 术语随身学",
-  "short_name": "UE 术语",
-  "description": "面向 Unreal Engine 与游戏测试的英语术语学习工具",
+  "name": "术语随身学",
+  "short_name": "术语随身学",
+  "description": "面向 UE、游戏开发与技术英语的术语学习工具",
   "id": "./",
   "start_url": "./",
   "scope": "./",

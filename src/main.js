@@ -95,6 +95,21 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function breakableTermMarkup(value) {
+  const breakMarker = '\u0000';
+  const breakable = String(value ?? '')
+    .replace(/([A-Z]?[a-z0-9]{4,})([A-Z][a-z]{3,})/g, `$1${breakMarker}$2`)
+    .replace(/(::|[_.+/\\-])/g, `$1${breakMarker}`);
+  return breakable.split(breakMarker).map(escapeHtml).join('<wbr>');
+}
+
+function termTitleLengthClass(value) {
+  const length = String(value ?? '').replace(/\s+/g, '').length;
+  if (length >= 30) return 'is-extra-long-term';
+  if (length >= 16) return 'is-long-term';
+  return '';
+}
+
 function textList(value) {
   if (Array.isArray(value)) return value.map(item => String(item || '').trim()).filter(Boolean);
   const item = String(value || '').trim();
@@ -191,9 +206,9 @@ function renderShell() {
   app.innerHTML = `
     <div class="app-shell">
       <header class="topbar">
-        <div class="brand" aria-label="UE 术语随身学">
+        <div class="brand" aria-label="术语随身学">
           <span class="brand-mark">UE</span>
-          <span class="brand-copy"><strong>UE 术语随身学</strong><span>Unreal Engine · Game QA</span></span>
+          <span class="brand-copy"><strong>术语随身学</strong><span>UE · 游戏开发 · 技术英语</span></span>
         </div>
         <nav class="main-nav" aria-label="主要导航">
           <button class="nav-button" type="button" data-view="library">${icon('library')}<span>词库</span></button>
@@ -564,12 +579,14 @@ function termDetailMarkup(term) {
   const contexts = contextRecords(term);
   const usageNotes = textList(term.usageNotes);
   const profilerMarker = isProfilerMarker(term);
+  const titleClass = termTitleLengthClass(term.term);
+  const titleMarkup = breakableTermMarkup(term.term);
   return `
     ${termHistoryMarkup()}
     <div class="term-detail-header">
       <div>
         ${profilerMarker ? '<p class="term-kind">Unreal Insights 计时标记</p>' : ''}
-        <h2 class="${profilerMarker ? 'is-profiler-marker' : ''}">${profilerMarker ? `<code>${escapeHtml(term.term)}</code>` : escapeHtml(term.term)}</h2>
+        <h2 class="term-title ${profilerMarker ? 'is-profiler-marker' : ''} ${titleClass}">${profilerMarker ? `<code>${titleMarkup}</code>` : titleMarkup}</h2>
         <p class="term-ipa">${escapeHtml(term.ipa || (term.spokenForm ? '代码标识符' : '暂无音标'))}</p>
         ${term.spokenForm ? `<p class="term-spoken">读法：${escapeHtml(term.spokenForm)}</p>` : ''}
       </div>
@@ -750,17 +767,20 @@ function reviewCardMarkup(term, intervals) {
   const front = englishFirst ? term.term : term.zh;
   const secondary = englishFirst ? term.ipa : term.category;
   const profilerMarker = isProfilerMarker(term);
+  const frontTitleClass = englishFirst ? termTitleLengthClass(front) : '';
+  const frontMarkup = englishFirst ? breakableTermMarkup(front) : escapeHtml(front);
+  const answerTermMarkup = breakableTermMarkup(term.term);
   return `
     <article class="review-card">
       <div class="review-card-front">
         <span class="term-category">${escapeHtml(profilerMarker ? 'Insights 计时标记' : term.category)}</span>
-        <h2 class="${profilerMarker && englishFirst ? 'is-profiler-marker' : ''}">${profilerMarker && englishFirst ? `<code>${escapeHtml(front)}</code>` : escapeHtml(front)}</h2>
+        <h2 class="term-title ${profilerMarker && englishFirst ? 'is-profiler-marker' : ''} ${frontTitleClass}">${profilerMarker && englishFirst ? `<code>${frontMarkup}</code>` : frontMarkup}</h2>
         <p class="term-ipa">${escapeHtml(secondary || '')}</p>
         <button class="icon-button" id="review-speak" type="button" aria-label="朗读英文">${icon('volume-2')}</button>
       </div>
       ${state.reviewRevealed ? `
         <div class="review-answer">
-          <h3>${profilerMarker && !englishFirst ? `<code>${escapeHtml(term.term)}</code>` : escapeHtml(englishFirst ? term.zh : term.term)}</h3>
+          <h3 class="${!englishFirst ? `term-title ${termTitleLengthClass(term.term)}` : ''}">${profilerMarker && !englishFirst ? `<code>${answerTermMarkup}</code>` : (englishFirst ? escapeHtml(term.zh) : answerTermMarkup)}</h3>
           ${!englishFirst && term.ipa ? `<p class="term-ipa">${escapeHtml(term.ipa)}</p>` : ''}
           <p>${escapeHtml(term.definition)}</p>
           ${term.example ? `<p class="muted" lang="en">${escapeHtml(term.example)}</p>` : ''}

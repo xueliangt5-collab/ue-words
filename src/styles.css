@@ -491,10 +491,33 @@ strong {
   margin-bottom: 24px;
 }
 
+.term-detail-header > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.term-detail-header > .inline-actions {
+  flex: 0 0 auto;
+}
+
 .term-detail h2 {
   margin-bottom: 5px;
   font-size: 30px;
-  overflow-wrap: anywhere;
+}
+
+.term-title {
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-height: 1.14;
+}
+
+.term-title.is-long-term {
+  font-size: 26px;
+}
+
+.term-title.is-extra-long-term {
+  font-size: 22px;
 }
 
 .term-kind {
@@ -514,7 +537,8 @@ strong {
 .review-answer h3 code {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-weight: 650;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .term-ipa {
@@ -739,7 +763,24 @@ strong {
   max-width: 100%;
   margin-bottom: 0;
   font-size: 38px;
-  overflow-wrap: anywhere;
+}
+
+.review-card-front h2.is-long-term {
+  font-size: 32px;
+}
+
+.review-card-front h2.is-extra-long-term {
+  font-size: 27px;
+}
+
+.term-detail h2.is-profiler-marker.is-long-term,
+.review-card-front h2.is-profiler-marker.is-long-term {
+  font-size: 22px;
+}
+
+.term-detail h2.is-profiler-marker.is-extra-long-term,
+.review-card-front h2.is-profiler-marker.is-extra-long-term {
+  font-size: 19px;
 }
 
 .review-card-front .term-ipa {
@@ -1284,6 +1325,14 @@ dialog::backdrop {
     font-size: 29px;
   }
 
+  .term-detail h2.is-long-term {
+    font-size: 24px;
+  }
+
+  .term-detail h2.is-extra-long-term {
+    font-size: 20px;
+  }
+
   .term-detail-header {
     align-items: center;
     margin-top: 24px;
@@ -1408,6 +1457,24 @@ dialog::backdrop {
     font-size: 31px;
   }
 
+  .review-card-front h2.is-long-term {
+    font-size: 27px;
+  }
+
+  .review-card-front h2.is-extra-long-term {
+    font-size: 23px;
+  }
+
+  .term-detail h2.is-profiler-marker.is-long-term,
+  .review-card-front h2.is-profiler-marker.is-long-term {
+    font-size: 21px;
+  }
+
+  .term-detail h2.is-profiler-marker.is-extra-long-term,
+  .review-card-front h2.is-profiler-marker.is-extra-long-term {
+    font-size: 18px;
+  }
+
   .review-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1483,6 +1550,16 @@ dialog::backdrop {
   .term-detail h2.is-profiler-marker,
   .review-card-front h2.is-profiler-marker {
     font-size: 22px;
+  }
+
+  .term-detail h2.is-profiler-marker.is-long-term,
+  .review-card-front h2.is-profiler-marker.is-long-term {
+    font-size: 20px;
+  }
+
+  .term-detail h2.is-profiler-marker.is-extra-long-term,
+  .review-card-front h2.is-profiler-marker.is-extra-long-term {
+    font-size: 17px;
   }
 
   .term-detail-header .inline-actions {
