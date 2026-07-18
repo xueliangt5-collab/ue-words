@@ -38,7 +38,9 @@ Run only `scripts/generate_speech_assets.py` for generation. Do not assemble an 
 
 ## Minimal local checks
 
-For a term-only update, do not reinstall dependencies and do not run the Skill validator.
+For a term-only update, do not reinstall dependencies and do not run the Skill validator. Run the application checks once after all terms and generated assets are final. When only Skill documentation or its publishing helpers changed, skip the application build.
+
+Do not run `Remove-Item` on `dist`, and do not request escalation to clean or build it. `dist` is ignored disposable output, Vite manages it during the build, and normal workspace permission is sufficient.
 
 Use the resolved Node executable directly:
 
