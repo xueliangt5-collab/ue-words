@@ -29,6 +29,8 @@ For Unreal Insights CSV exports with `TimerName`, `Category`, and `Explanation_C
 6. Generate aliases, examples, translations, tags, analysis experience, and only defensible semantic relations.
 7. Use the spreadsheet skill and `@oai/artifact-tool` to extract CSV rows into `{ headers, rows }` JSON, then run `scripts/enrich_insights_rows.mjs` to produce term records.
 
+The enhancer preserves the full `Explanation_CN`, makes diagnostic experience timer-specific, disambiguates repeated short Chinese labels, and rejects duplicate definitions, examples, or experiences. For a large profiler CSV, pass `--preserve-existing` to both merge commands so existing curated records remain unchanged; omit it only when the user explicitly requested refinement of existing terms.
+
 For unstructured text, identify symbols, ordinary terms, Chinese concepts, context, and experience from meaning rather than delimiter position. Keep one learnable concept per record and preserve useful combinations in `contexts`.
 
 ## Normalize Chinese-first input
@@ -100,8 +102,14 @@ Never install speech dependencies under `$env:TEMP`, a date-stamped path, or a t
 Stage the generated `src/speech-assets.json` and `public/audio` files with the term changes. Existing audio files are reused.
 4. After the batch content is final, run syntax checks and one Vite build through the resolved Node executable as described in `windows-publishing.md`. Do not remove `dist` manually, repeat the build, or request escalation for it; Vite manages its ignored output under normal workspace access. Skip the application build when only Skill documentation or tooling changed. Do not install dependencies unless the required executable is actually missing.
 5. Review `git diff --check`, the exact diff, and the staged file list. Commit only the glossary, generated speech assets, and any explicitly requested Skill or application files. Never use `git add -A` in a dirty worktree.
-6. Push `main` normally. If Git transport repeatedly resets but `api.github.com` is reachable, use `scripts/publish_commit_via_api.py` only after its dry run succeeds. The fallback refuses force pushes and only publishes one exact fast-forward commit whose parent is the remote branch.
-7. Verify that the GitHub Pages workflow completed for the expected SHA, then verify one live version marker such as the Service Worker cache name or a unique application string. Use browser testing only when the UI changed.
+6. After committing, request one remote-publication permission and run the single publish-and-verify entry point:
+
+```powershell
+python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo "C:\Users\tianxueliang\Documents\UE学习" --target HEAD --branch main --site-url "https://xueliangt5-collab.github.io/ue-words/" --git <git-executable> --node <node-executable> --confirm-push
+```
+
+The command makes one normal Git push attempt, switches automatically to resumable concurrent GitHub API publication when transport fails, waits for the matching Actions run, compares the live `release.json` commit, counts, and data hashes, and samples changed audio. Do not run separate `ls-remote`, branch API, fallback publisher, Actions, Pages, or `app.js` verification commands. Read `windows-publishing.md` for resume-state and large-batch behavior.
+7. Use browser testing only when the application UI changed; term-only batches rely on the deterministic release verification above.
 
 Do not edit the large core array in `src/terms.js`; public additions belong in `src/imported-terms.json`.
 

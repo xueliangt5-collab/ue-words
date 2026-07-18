@@ -188,6 +188,11 @@ function splitExplanation(value) {
   return String(value).split(/[。；]/).map(item => item.trim()).filter(Boolean);
 }
 
+function sentence(value) {
+  const normalized = String(value).trim();
+  return /[。！？]$/.test(normalized) ? normalized : `${normalized}。`;
+}
+
 function exampleFor(term, category) {
   if (category === 'GPU') return [`Inspect ${term} on the GPU track when the frame is GPU-bound.`, `当帧受 GPU 限制时，在 GPU 轨道检查 ${term}。`];
   if (category === 'RenderThread') return [`Inspect ${term} when the Render Thread exceeds its frame budget.`, `当渲染线程超过帧预算时，检查 ${term}。`];
@@ -201,13 +206,15 @@ if (JSON.stringify(input.headers) !== JSON.stringify(['TimerName', 'Category', '
   throw new Error('Expected TimerName, Category, Explanation_CN columns');
 }
 
-const knownNames = new Set(input.rows.map(row => String(row[0])));
+const knownNames = new Set(input.rows.map(row => String(row[0]).trim()));
 const terms = input.rows.map((row, index) => {
   const [term, threadCategory, rawExplanation] = row.map(value => String(value || '').trim());
   if (!term || !threadCategory || !rawExplanation) throw new Error(`Row ${index + 2} has an empty required field`);
   const parts = splitExplanation(rawExplanation);
-  const explicitNotes = parts.slice(1).map(note => `${note}。`);
-  const experience = EXPERIENCE[term] || CATEGORY_EXPERIENCE[threadCategory] || '结合相邻帧和子事件判断，不要只根据单个计时项下结论。';
+  if (!parts.length) throw new Error(`Row ${index + 2} has no usable explanation text`);
+  const categoryExperience = CATEGORY_EXPERIENCE[threadCategory] || '结合相邻帧和子事件判断，不要只根据单个计时项下结论。';
+  const experience = EXPERIENCE[term]
+    || `分析 ${term} 时先确认它记录的是“${rawExplanation.replace(/[。；]+$/g, '')}”；${categoryExperience}`;
   const related = new Set(RELATED[term] || []);
   if (/Tick/i.test(term) && term !== 'Tick') related.add('Tick');
   const relatedTerms = [...related]
@@ -222,7 +229,7 @@ const terms = input.rows.map((row, index) => {
     zh: ZH_NAMES[term] || parts[0],
     category: '性能分析',
     threadCategory,
-    definition: `${parts[0]}。`,
+    definition: sentence(rawExplanation),
     example,
     exampleZh,
     tags: `Unreal Insights timer 性能分析 ${threadCategory} ${splitIdentifier(term)}`,
@@ -233,10 +240,40 @@ const terms = input.rows.map((row, index) => {
       explanation: `CSV 将 ${term} 归入 ${threadCategory} 线程或轨道分类。`,
       experience,
     }],
-    usageNotes: EXPERIENCE[term] ? [] : explicitNotes,
+    usageNotes: [],
     source: 'UE5_Timer_Glossary.csv',
   };
 });
 
+const termsByZh = new Map();
+for (const record of terms) {
+  const group = termsByZh.get(record.zh) || [];
+  group.push(record);
+  termsByZh.set(record.zh, group);
+}
+for (const group of termsByZh.values()) {
+  if (group.length > 1) {
+    for (const record of group) record.zh = `${record.zh} · ${record.term}`;
+  }
+}
+
+for (const [label, values] of [
+  ['term', terms.map(record => record.term)],
+  ['zh', terms.map(record => record.zh)],
+  ['definition', terms.map(record => record.definition)],
+  ['example', terms.map(record => record.example)],
+  ['exampleZh', terms.map(record => record.exampleZh)],
+  ['experience', terms.map(record => record.contexts[0].experience)],
+]) {
+  if (new Set(values).size !== values.length) throw new Error(`Batch contains duplicate ${label} values`);
+}
+
 await writeFile(path.resolve(args.output), `${JSON.stringify(terms, null, 2)}\n`, 'utf8');
-console.log(JSON.stringify({ rows: input.rows.length, terms: terms.length, threadCategories: [...new Set(terms.map(term => term.threadCategory))].sort() }));
+console.log(JSON.stringify({
+  rows: input.rows.length,
+  terms: terms.length,
+  uniqueDefinitions: new Set(terms.map(term => term.definition)).size,
+  uniqueExamples: new Set(terms.map(term => term.example)).size,
+  uniqueExperiences: new Set(terms.map(term => term.contexts[0].experience)).size,
+  threadCategories: [...new Set(terms.map(term => term.threadCategory))].sort(),
+}));

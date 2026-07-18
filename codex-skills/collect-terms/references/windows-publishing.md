@@ -2,6 +2,14 @@
 
 Use this path for the glossary repository on Windows. Keep permission requests predictable and preserve unrelated worktree changes.
 
+## Contents
+
+- Stable locations and speech dependencies
+- Preflight and local checks
+- Permission and Git scope
+- Concurrent remote updates
+- Single-command publication and verification
+
 ## Stable locations and runtime discovery
 
 - Repository: `C:\Users\tianxueliang\Documents\UE学习`
@@ -9,6 +17,7 @@ Use this path for the glossary repository on Windows. Keep permission requests p
 - Installed Skill: `C:\Users\tianxueliang\.codex\skills\collect-terms`
 - Public glossary: `<repo>\src\imported-terms.json`
 - Public audio: `<repo>\public\audio` and `<repo>\src\speech-assets.json`
+- Generated release fingerprint: `<repo>\public\release.json` and deployed `/release.json`
 - Persistent speech dependencies: `<repo>\.tts-deps`
 
 Resolve Node, Python, and pnpm once with the workspace dependency loader. Do not hardcode a versioned cache path when the loader is available. Keep the resolved absolute paths for the whole task.
@@ -49,8 +58,10 @@ Use the resolved Node executable directly:
 & <node> --check src\db.js
 & <node> --check src\review.js
 & <node> --check src\sync.js
-& <node> node_modules\vite\bin\vite.js build --configLoader native
+& <node> scripts\build.mjs
 ```
+
+The build writes ignored `public\release.json` before Vite runs. It records the commit, term and audio counts, and hashes of the glossary and speech manifest for small, deterministic online verification.
 
 If `node_modules\vite\bin\vite.js` is missing, install once from the frozen lockfile. Ensure the Node directory is in the command-local `PATH` so the `esbuild` lifecycle script can find it. The repository must keep `allowBuilds.esbuild: true` and `onlyBuiltDependencies: [esbuild]`; do not use a broad allow-all-builds flag.
 
@@ -64,8 +75,7 @@ Request one narrow escalation only when the action reaches one of these gates:
 
 - **Dependency gate**: install missing locked dependencies only after their deterministic check fails. Scope approval to the exact pnpm command or the pinned speech install targeting `<repo>\.tts-deps`. A missing task-local or temporary directory is not evidence that speech dependencies are missing.
 - **Skill install gate**: copy the validated Skill from the repository to `C:\Users\tianxueliang\.codex\skills\collect-terms`. Skip this gate for ordinary vocabulary batches.
-- **Remote mutation gate**: retry an approved `git push` outside the sandbox only after a sandbox or transport failure.
-- **Network verification gate**: query GitHub Actions or Pages outside the sandbox only when the normal network request fails.
+- **Publication gate**: request one approval for the exact `publish_and_verify.py` command after the commit is ready. It owns the Git push, API fallback, Actions polling, Pages fingerprint check, and audio sampling. Do not split those operations into separate approvals.
 - **Concurrent-update gate**: fetch `origin/main` with a narrow Git command only when the remote moved during the task. If `.git` is read-only in the sandbox, request one exact local-metadata escalation for the verified fast-forward rather than broad filesystem access.
 
 Never request a blanket PowerShell, Python, or filesystem prefix. Prefer an exact executable plus script or subcommand. Before recursive cleanup, resolve the absolute target and prove it remains under the intended temporary or workspace directory.
@@ -103,28 +113,30 @@ Update only the local branch ref and index so matching worktree files are recogn
 
 ## Publish and fallback
 
-1. Run normal `git push origin main` once.
-2. On a connection reset, retry once with a narrow approved Git push command.
-3. If Git transport still fails, test the API fallback without mutation:
+After the commit is ready, run exactly one network entry point:
 
 ```powershell
-python <skill-dir>\scripts\publish_commit_via_api.py --repo <repo> --target HEAD --branch main --dry-run
+python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo <repo> --target HEAD --branch main --site-url "https://xueliangt5-collab.github.io/ue-words/" --git <git> --node <node> --confirm-push
 ```
 
-The dry run reads the public branch ref without loading a GitHub credential. The credential manager is consulted only after `--confirm-push` passes all fast-forward checks. Credential lookup is non-interactive and times out; the fallback must fail clearly instead of opening a login prompt or waiting indefinitely.
+Do not precede or follow it with separate `git ls-remote`, `Invoke-RestMethod`, branch API, Actions API, Pages, or app-bundle queries. The command attempts normal Git transport once. On transport failure it checks the remote parent and invokes the exact-commit API fallback internally.
 
-4. Publish only when the dry run reports either `already_published` or `ready`:
+The fallback:
 
-```powershell
-python <skill-dir>\scripts\publish_commit_via_api.py --repo <repo> --target HEAD --branch main --confirm-push
-```
+- uploads blobs concurrently;
+- retries temporary network and GitHub 5xx failures;
+- records every completed blob and tree batch under `<repo>\.git\codex-publish\<target-sha>.json`;
+- creates the target tree in batches of 50 paths to avoid large-tree timeouts;
+- resumes without re-uploading recorded blobs after interruption;
+- verifies blob, tree, commit, parent, and final branch SHA;
+- never force-pushes.
 
-The fallback rejects multiple-commit gaps, non-fast-forward updates, unsupported change types, tree mismatches, and commit SHA mismatches. Never add a force option.
+Use `publish_commit_via_api.py --dry-run` only while developing or diagnosing the publisher itself, not during an ordinary glossary release.
 
 ## Verification and cleanup
 
-- Confirm the workflow SHA equals the committed SHA and the conclusion is `success`.
-- Confirm one live marker from `sw.js` or `assets/app.js`; avoid repeated full downloads.
+- Treat the final JSON from `publish_and_verify.py` as the release evidence. It includes the workflow URL, live release metadata, and sampled audio URLs.
+- The live `/release.json` must match the target commit, term counts, audio counts, term-data hash, and speech-manifest hash. Do not download the full `app.js` to count terms.
 - Delete only temporary inputs and validation dependencies created by the current task.
 - Keep a local preview server only when the application UI changed and the user needs an inspection URL.
 - Report remaining unrelated changes rather than cleaning or committing them.

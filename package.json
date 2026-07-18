@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --configLoader native",
-    "build": "vite build --configLoader native",
+    "build": "node scripts/build.mjs",
     "preview": "vite preview --configLoader native",
     "check": "node --check src/main.js && node --check src/db.js && node --check src/review.js && node --check src/sync.js",
     "speech:texts": "node scripts/export_speech_texts.mjs"

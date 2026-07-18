@@ -8,8 +8,8 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const key = argv[index];
     if (!key.startsWith('--')) throw new Error(`Unexpected argument: ${key}`);
-    if (key === '--dry-run') {
-      args.dryRun = true;
+    if (key === '--dry-run' || key === '--preserve-existing') {
+      args[key === '--dry-run' ? 'dryRun' : 'preserveExisting'] = true;
       continue;
     }
     const value = argv[index + 1];
@@ -172,6 +172,7 @@ if (args['package-output']) {
   let added = 0;
   let updated = 0;
   let skipped = 0;
+  let preserved = 0;
 
   for (const term of incoming) {
     const keys = termIdentityKeys(term);
@@ -181,6 +182,10 @@ if (args['package-output']) {
     }
     const current = keys.map(key => identityIndex.get(key)).find(Boolean);
     if (current) {
+      if (args.preserveExisting) {
+        preserved += 1;
+        continue;
+      }
       const merged = {
         ...current,
         ...term,
@@ -206,5 +211,5 @@ if (args['package-output']) {
 
   const merged = [...records.values()].sort((left, right) => left.term.localeCompare(right.term, 'en'));
   await writeJson(targetPath, merged, args.dryRun);
-  console.log(JSON.stringify({ mode: 'published', target: targetPath, added, updated, skipped, total: merged.length, dryRun: Boolean(args.dryRun) }));
+  console.log(JSON.stringify({ mode: 'published', target: targetPath, added, updated, preserved, skipped, total: merged.length, dryRun: Boolean(args.dryRun) }));
 }
