@@ -73,11 +73,29 @@ node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents
 
 Resolve the bundled Node executable when `node` is not available on `PATH`.
 
-3. When a public term, `fullForm`, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. If `.tts-deps/edge_tts` is missing, install `scripts/speech-requirements.txt` into `.tts-deps`, then run:
+3. When a public term, `fullForm`, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. First run the read-only dependency check:
 
 ```powershell
-python scripts/generate_speech_assets.py --node <node-executable>
+python -X utf8 scripts/generate_speech_assets.py --check-dependencies
 ```
+
+When it reports `"ready": true`, do not run `pip`, request dependency permission, or create another dependency directory. Only when the check exits with code 2, install `scripts/speech-requirements.txt` once into the fixed repository cache `<repo>\.tts-deps`, then rerun the check:
+
+```powershell
+python -m pip install --upgrade -r scripts/speech-requirements.txt --target "<repo>\.tts-deps" --disable-pip-version-check
+python -X utf8 scripts/generate_speech_assets.py --check-dependencies
+```
+
+Plan and run generation with the repository script:
+
+```powershell
+python -X utf8 scripts/generate_speech_assets.py --plan --node <node-executable>
+python -X utf8 scripts/generate_speech_assets.py --node <node-executable>
+```
+
+Always run `--plan` before generation. When it reports `"missing": 0`, generation must not access the speech service; it only refreshes the manifest while reusing all audio. When files are missing, the repository script downloads only that missing count.
+
+Never install speech dependencies under `$env:TEMP`, a date-stamped path, or a task-specific directory. Do not set `TIMER_TTS_DEPS`, `PYTHONPATH`, or another dependency override. Generate speech only with the repository's `scripts/generate_speech_assets.py`; do not create an inline Python generator. Read `windows-publishing.md` for the persistent dependency and permission rules.
 
 Stage the generated `src/speech-assets.json` and `public/audio` files with the term changes. Existing audio files are reused.
 4. Run syntax checks and the Vite build through the resolved Node executable as described in `windows-publishing.md`. Do not install dependencies unless the required executable is actually missing.

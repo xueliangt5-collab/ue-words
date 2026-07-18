@@ -9,10 +9,23 @@ Use this path for the glossary repository on Windows. Keep permission requests p
 - Installed Skill: `C:\Users\tianxueliang\.codex\skills\collect-terms`
 - Public glossary: `<repo>\src\imported-terms.json`
 - Public audio: `<repo>\public\audio` and `<repo>\src\speech-assets.json`
+- Persistent speech dependencies: `<repo>\.tts-deps`
 
 Resolve Node, Python, and pnpm once with the workspace dependency loader. Do not hardcode a versioned cache path when the loader is available. Keep the resolved absolute paths for the whole task.
 
 When a Python helper reads UTF-8 Skill or glossary files on Windows, invoke it with `python -X utf8`. The default GBK locale can otherwise produce a misleading `UnicodeDecodeError` during validation.
+
+For a syntax-only Python check, read the source and call Python's in-memory `compile()` function. Do not use a check that creates `scripts\__pycache__`, and do not request permission to recursively delete Python bytecode caches. They are ignored by Git and may be left in place.
+
+## Persistent speech dependencies
+
+Before every audio generation, run `python -X utf8 scripts/generate_speech_assets.py --check-dependencies`. A successful result with `"ready": true` is authoritative: reuse `<repo>\.tts-deps` and do not invoke `pip` or request dependency permission.
+
+The speech requirements are pinned. Install or upgrade them only when the check exits with code 2, and always target the fixed `<repo>\.tts-deps` directory. Never use `$env:TEMP`, a date-stamped directory, or a task-specific dependency directory; those paths cause repeated downloads and approvals. Do not set `TIMER_TTS_DEPS`, `PYTHONPATH`, or another override to load speech dependencies. After the one-time installation, rerun the check before generating audio.
+
+Run `python -X utf8 scripts/generate_speech_assets.py --plan --node <node>` before generation. The plan is read-only and reports `total`, `reusable`, and `missing`. A zero `missing` count means the generation command must not access the speech service; it only refreshes the manifest. A nonzero count is the exact maximum number of files that may be downloaded.
+
+Run only `scripts/generate_speech_assets.py` for generation. Do not assemble an inline Python command or a batch-specific generator. The repository script imports from `<repo>\.tts-deps`, skips valid existing MP3 files, downloads only missing audio, and writes only repository audio outputs; with normal workspace access this must not request an extra dependency-directory permission.
 
 ## Preflight
 
@@ -47,7 +60,7 @@ Do not request escalation for repository reads, merge scripts, diffs, syntax che
 
 Request one narrow escalation only when the action reaches one of these gates:
 
-- **Dependency gate**: install missing locked dependencies. Scope approval to the exact pnpm install command and repository.
+- **Dependency gate**: install missing locked dependencies only after their deterministic check fails. Scope approval to the exact pnpm command or the pinned speech install targeting `<repo>\.tts-deps`. A missing task-local or temporary directory is not evidence that speech dependencies are missing.
 - **Skill install gate**: copy the validated Skill from the repository to `C:\Users\tianxueliang\.codex\skills\collect-terms`. Skip this gate for ordinary vocabulary batches.
 - **Remote mutation gate**: retry an approved `git push` outside the sandbox only after a sandbox or transport failure.
 - **Network verification gate**: query GitHub Actions or Pages outside the sandbox only when the normal network request fails.
