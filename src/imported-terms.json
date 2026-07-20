@@ -23,6 +23,58 @@
     ]
   },
   {
+    "id": "imported-3c-game-development",
+    "term": "3C",
+    "abbreviation": "3C",
+    "fullForm": "Character, Camera, and Controls",
+    "ipa": "",
+    "zh": "角色、镜头与操控",
+    "category": "游戏开发",
+    "definition": "游戏体验设计中的三个核心部分：Character 指玩家操纵的角色及其移动和能力，Camera 指镜头的取景、跟随与反馈，Controls 指输入映射、操作响应和手感。三者相互影响，共同决定玩家如何观察、操纵并感受游戏。",
+    "example": "The team refined the game's 3C before building the combat encounters.",
+    "exampleZh": "团队在设计战斗遭遇之前，先打磨了游戏的角色、镜头与操控。",
+    "tags": "3C 3Cs three Cs Character Camera Controls Control Controller 角色 镜头 相机 操控 操作 手感 游戏设计 game feel",
+    "spokenForm": "three C's",
+    "threadCategory": "",
+    "source": "Game development terminology",
+    "aliases": [
+      "3Cs",
+      "Three Cs"
+    ],
+    "wordParts": [
+      {
+        "word": "Character",
+        "zh": "角色"
+      },
+      {
+        "word": "Camera",
+        "zh": "镜头"
+      },
+      {
+        "word": "Controls",
+        "zh": "操控"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Game Feel",
+        "relation": "体验结果",
+        "explanation": "3C 的响应、反馈和协调程度直接影响玩家感受到的操作手感。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "3C design",
+        "explanation": "指围绕角色、镜头和操控进行整体设计与迭代。",
+        "experience": "评估 3C 时应把角色运动、镜头行为和输入响应放在同一实际玩法场景中测试。"
+      }
+    ],
+    "usageNotes": [
+      "第三个 C 最常写作 Controls，也有团队写作 Control 或 Controller；在游戏开发语境中通常表达同一组操控设计问题。",
+      "这里的 3C 不是消费电子领域常说的电脑、通信和消费电子。"
+    ]
+  },
+  {
     "id": "imported-actor-lifecycle",
     "term": "Actor Lifecycle",
     "abbreviation": "",
