@@ -1,9 +1,9 @@
 ---
 name: collect-terms
-description: Normalize Chinese nouns, descriptions, mixed Chinese-English notes, abbreviations with their full forms, English words, technical phrases, profiler markers, or Unreal Insights CSV rows into standard English glossary records, then explain, classify, relate, deduplicate, enrich, and publish them to the user's terminology learning PWA. Use when the user asks to translate technical concepts into English, expand or collect acronyms, or add, save, import, organize, enrich, or publish vocabulary, including "这个名词英文怎么说", "缩写与原词", "把这些中文名词整理成英文", "加入词库", "收录这个词", "导入术语", "把这些词分类", raw profiler text, and TimerName/Category/Explanation_CN CSV files. Supports UE, game development, QA, software engineering, graphics, AI, project management, and general English.
+description: Normalize terms, profiler data, bilingual articles, or Markdown files into deduplicated glossary records and paragraph-aligned bilingual article records, then classify, relate, validate, and publish them to the user's terminology learning PWA. Use when the user asks to translate, expand, collect, add, import, organize, enrich, or publish vocabulary or learning articles, including Chinese and mixed-language notes, abbreviations, technical phrases, Unreal Insights CSV rows, `.md` files, "加入词库", "收录文章", "导入术语", "处理这个 Markdown", or "把文章和术语关联". Supports UE, game development, QA, software engineering, graphics, AI, project management, hardware, and general English.
 ---
 
-# Collect Terms
+# Collect Terms and Articles
 
 Use the glossary repository at `C:\Users\tianxueliang\Documents\UE学习`. Locate it by its `src/imported-terms.json` file if the path changes.
 
@@ -11,8 +11,8 @@ On Windows, read [references/windows-publishing.md](references/windows-publishin
 
 ## Choose the destination
 
-- Default to **published mode** for non-sensitive technical vocabulary because the owner has authorized automatic enrichment and publication to this repository. Do not pause to request approval for each unambiguous batch.
-- Use **private package mode** when the user says the terms are private, should not be public, or only need to enter their personal synced library.
+- Default to **published mode** for non-sensitive technical vocabulary and learning articles because the owner has authorized automatic enrichment and publication to this repository. Do not pause to request approval for each unambiguous batch.
+- Use **private package mode** when the user says the terms or source article are private, should not be public, or only need to enter their personal synced library.
 - Switch to private package mode when the source contains personal, confidential, or project-sensitive details. Do not put those details in the public repository.
 
 ## Decompose automatically
@@ -32,6 +32,19 @@ For Unreal Insights CSV exports with `TimerName`, `Category`, and `Explanation_C
 The enhancer preserves the full `Explanation_CN`, makes diagnostic experience timer-specific, disambiguates repeated short Chinese labels, and rejects duplicate definitions, examples, or experiences. For a large profiler CSV, pass `--preserve-existing` to both merge commands so existing curated records remain unchanged; omit it only when the user explicitly requested refinement of existing terms.
 
 For unstructured text, identify symbols, ordinary terms, Chinese concepts, context, and experience from meaning rather than delimiter position. Keep one learnable concept per record and preserve useful combinations in `contexts`.
+
+## Prepare articles and Markdown
+
+Read [references/article-schema.md](references/article-schema.md) before processing an article, `.md` file, long-form note, tutorial, or bilingual reading material.
+
+1. Treat Markdown as source material, not as application-ready HTML. Extract headings and paragraphs, remove presentation-only markup, and preserve code identifiers, commands, and official product spelling.
+2. Build paragraph-aligned English and Chinese sections. Preserve an existing translation when sound; when one language is missing, translate each section faithfully without adding facts.
+3. Write concise bilingual titles and summaries, then classify the article with an existing topic category and a useful learning level.
+4. Search the glossary before linking. Add explicit section-level links only for terms that materially help comprehension, using the final glossary `termId` and exact visible `textEn` or `textZh`.
+5. Prefer the longest exact technical label. Do not automatically link common short words such as `Tick`, `Actor`, or `Component` when the surrounding sense is uncertain.
+6. If an important term is missing, prepare and merge that term first. Link the article only after its final ID is known.
+7. Preserve the original filename or public URL in `source`. Switch to private mode rather than publishing confidential project details, paths, metrics, or incidents.
+8. Do not generate article audio by default. Only start a separate paragraph-level audio workflow after explicit user approval and pronunciation review; term-level audio remains independent.
 
 ## Normalize Chinese-first input
 
@@ -66,7 +79,7 @@ Proceed automatically when the source is unambiguous. Ask only when spelling, co
 ## Published mode
 
 1. Snapshot `git status --short --branch`, the current commit, and all pre-existing changes. Treat them as user-owned and stage only files created or intentionally updated by this batch.
-2. Create the prepared-record JSON under the system temporary directory rather than the repository. Run a dry merge first, inspect the counts, then run the real merge:
+2. Create prepared JSON under the system temporary directory rather than the repository. For terms, run a dry merge first, inspect the counts, then run the real merge:
 
 ```powershell
 node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-json> --dry-run
@@ -75,7 +88,16 @@ node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents
 
 Resolve the bundled Node executable when `node` is not available on `PATH`.
 
-3. When a public term, `fullForm`, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Resolve the bundled Python and Node executables. First run the read-only dependency check:
+For articles or Markdown, first prepare article JSON using `references/article-schema.md`, then validate links and merge it:
+
+```powershell
+node <skill-dir>\scripts\merge_articles.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-article-json> --dry-run
+node <skill-dir>\scripts\merge_articles.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-article-json>
+```
+
+When one request adds both missing terms and an article, merge terms first and articles second so article link validation sees the final IDs.
+
+3. When a public term, `fullForm`, `spokenForm`, or example changes, regenerate the same-origin audio assets before building. Article-only changes must skip speech generation. Resolve the bundled Python and Node executables. First run the read-only dependency check:
 
 ```powershell
 python -X utf8 scripts/generate_speech_assets.py --check-dependencies
@@ -101,7 +123,7 @@ Never install speech dependencies under `$env:TEMP`, a date-stamped path, or a t
 
 Stage the generated `src/speech-assets.json` and `public/audio` files with the term changes. Existing audio files are reused.
 4. After the batch content is final, run syntax checks and one Vite build through the resolved Node executable as described in `windows-publishing.md`. Do not remove `dist` manually, repeat the build, or request escalation for it; Vite manages its ignored output under normal workspace access. Skip the application build when only Skill documentation or tooling changed. Do not install dependencies unless the required executable is actually missing.
-5. Review `git diff --check`, the exact diff, and the staged file list. Commit only the glossary, generated speech assets, and any explicitly requested Skill or application files. Never use `git add -A` in a dirty worktree.
+5. Review `git diff --check`, the exact diff, and the staged file list. Commit only the glossary, `src/imported-articles.json`, generated term speech assets, and any explicitly requested Skill or application files. Never use `git add -A` in a dirty worktree.
 6. After committing, request one remote-publication permission and run the single publish-and-verify entry point:
 
 ```powershell
@@ -114,6 +136,10 @@ The command makes one normal Git push attempt, switches automatically to resumab
 Do not edit the large core array in `src/terms.js`; public additions belong in `src/imported-terms.json`.
 
 ## Private package mode
+
+Private import currently supports glossary terms only. For a private article or Markdown source, prepare a local article JSON package following `references/article-schema.md`, do not merge or publish it, and report that private article import is not yet available in the PWA.
+
+For private terms:
 
 1. Create a temporary JSON file containing an array of prepared records.
 2. Write a user-visible package into the repository's `imports` folder:
@@ -129,4 +155,4 @@ Resolve the bundled Node executable when `node` is not available on `PATH`.
 
 ## Report
 
-State how many terms were added, updated, or skipped, list their categories, and say whether the result was published or kept private.
+State how many terms and articles were added, updated, or skipped; list their categories; summarize article-to-term link counts; and say whether the result was published or kept private. Explicitly state that article audio was skipped unless the user separately authorized it.

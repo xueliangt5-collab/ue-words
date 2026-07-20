@@ -16,6 +16,7 @@ Use this path for the glossary repository on Windows. Keep permission requests p
 - Skill source: `<repo>\codex-skills\collect-terms`
 - Installed Skill: `C:\Users\tianxueliang\.codex\skills\collect-terms`
 - Public glossary: `<repo>\src\imported-terms.json`
+- Public articles: `<repo>\src\imported-articles.json`
 - Public audio: `<repo>\public\audio` and `<repo>\src\speech-assets.json`
 - Generated release fingerprint: `<repo>\public\release.json` and deployed `/release.json`
 - Persistent speech dependencies: `<repo>\.tts-deps`
@@ -40,14 +41,14 @@ Run only `scripts/generate_speech_assets.py` for generation. Do not assemble an 
 
 1. Run `git status --short --branch`, `git rev-parse HEAD`, and `git remote -v`.
 2. Record all existing modified and untracked paths before writing. Assume they belong to the user.
-3. Decide whether this is a term-only update, an application update, or a Skill update.
+3. Decide whether this is a term-only update, an article-only update, an application update, or a Skill update.
 4. Put generated input JSON in the system temporary directory so it cannot be staged accidentally.
 5. Use `merge_terms.mjs --dry-run` before the real merge. Stop if added, updated, or skipped counts contradict the intended batch.
 6. Refresh and compare `origin/main` again immediately before committing. Another glossary task may publish audio, terms, or generated data while the current task is validating.
 
 ## Minimal local checks
 
-For a term-only update, do not reinstall dependencies and do not run the Skill validator. Run the application checks once after all terms and generated assets are final. When only Skill documentation or its publishing helpers changed, skip the application build.
+For a term-only or article-only update, do not reinstall dependencies and do not run the Skill validator. Run the application checks once after all content and generated term assets are final. Article-only updates skip speech dependency checks and generation. When only Skill documentation or its publishing helpers changed, skip the application build.
 
 Do not run `Remove-Item` on `dist`, and do not request escalation to clean or build it. `dist` is ignored disposable output, Vite manages it during the build, and normal workspace permission is sufficient.
 
@@ -95,6 +96,8 @@ For a public term batch, the usual scope is:
 - `src/imported-terms.json`
 - `src/speech-assets.json`
 - only the newly referenced files under `public/audio`
+
+For a public article batch, the usual content scope is `src/imported-articles.json`. Include glossary and term audio files only when the article required genuinely new terms.
 
 Add Skill or application files only when the user asked to change those systems.
 

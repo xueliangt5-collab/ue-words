@@ -35,22 +35,28 @@ export async function collectReleaseMetadata(root = process.cwd()) {
   });
 
   try {
-    const [{ BUILTIN_TERMS }, importedSource, speechSource] = await Promise.all([
+    const [{ BUILTIN_TERMS }, { ARTICLES }, importedSource, importedArticlesSource, speechSource] = await Promise.all([
       server.ssrLoadModule('/src/terms.js'),
+      server.ssrLoadModule('/src/articles.js'),
       readFile(path.join(root, 'src', 'imported-terms.json'), 'utf8'),
+      readFile(path.join(root, 'src', 'imported-articles.json'), 'utf8'),
       readFile(path.join(root, 'src', 'speech-assets.json'), 'utf8'),
     ]);
     const importedTerms = JSON.parse(importedSource);
+    const importedArticles = JSON.parse(importedArticlesSource);
     const speechAssets = JSON.parse(speechSource);
     return {
-      schemaVersion: 1,
+      schemaVersion: 2,
       commit: currentCommit(root),
       termCount: BUILTIN_TERMS.length,
       importedTermCount: importedTerms.length,
+      articleCount: ARTICLES.length,
+      importedArticleCount: importedArticles.length,
       categoryCount: new Set(BUILTIN_TERMS.map(term => term.category)).size,
       speechTextCount: Object.keys(speechAssets).length,
       audioFileCount: new Set(Object.values(speechAssets)).size,
       termDataHash: hash(BUILTIN_TERMS),
+      articleDataHash: hash(ARTICLES),
       speechManifestHash: hash(speechAssets),
     };
   } finally {

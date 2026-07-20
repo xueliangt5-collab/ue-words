@@ -1,4 +1,4 @@
 interface:
-  display_name: "术语入库"
-  short_description: "把中英文名词及缩写标准化、补全并去重导入多端词库"
-  default_prompt: "Use $collect-terms to turn the concepts and abbreviations I provide into complete, deduplicated glossary records with authoritative full forms."
+  display_name: "术语与文章入库"
+  short_description: "整理术语与双语文章，自动去重、关联并发布到学习应用"
+  default_prompt: "Use $collect-terms to turn the terms, notes, article, or Markdown file I provide into validated bilingual learning content with glossary links."

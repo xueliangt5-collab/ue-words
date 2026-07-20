@@ -45,7 +45,13 @@ def resolve_node(value=None):
 
 
 def expected_release_metadata(repo, node, target):
-    relevant = ["src/terms.js", "src/imported-terms.json", "src/speech-assets.json"]
+    relevant = [
+        "src/terms.js",
+        "src/imported-terms.json",
+        "src/articles.js",
+        "src/imported-articles.json",
+        "src/speech-assets.json",
+    ]
     dirty = publisher.run_git(repo, "diff", "--name-only", target, "--", *relevant)
     if dirty:
         raise RuntimeError(f"Release metadata files differ from target {target}: {dirty}")
@@ -127,10 +133,13 @@ def wait_for_release(site_url, expected, target, deadline, poll_interval):
         "commit",
         "termCount",
         "importedTermCount",
+        "articleCount",
+        "importedArticleCount",
         "categoryCount",
         "speechTextCount",
         "audioFileCount",
         "termDataHash",
+        "articleDataHash",
         "speechManifestHash",
     ]
     last = None

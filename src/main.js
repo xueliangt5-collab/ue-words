@@ -1,5 +1,6 @@
 import { createIcons, icons } from 'lucide';
 import './styles.css';
+import { ARTICLES } from './articles.js';
 import { BUILTIN_TERMS } from './terms.js';
 import SPEECH_ASSETS from './speech-assets.json';
 import {
@@ -71,6 +72,11 @@ const state = {
   category: '',
   threadCategory: '',
   listMode: 'all',
+  selectedArticleId: ARTICLES[0]?.id || '',
+  articleSearch: '',
+  articleLanguage: 'bilingual',
+  articleReturn: null,
+  articlePositions: new Map(),
   reviewSession: null,
   reviewRevealed: false,
   installPrompt: null,
@@ -252,6 +258,7 @@ function renderShell() {
         </div>
         <nav class="main-nav" aria-label="主要导航">
           <button class="nav-button" type="button" data-view="library">${icon('library')}<span>词库</span></button>
+          <button class="nav-button" type="button" data-view="articles">${icon('book-open-text')}<span>文章</span></button>
           <button class="nav-button" type="button" data-view="review">${icon('layers')}<span>复习</span></button>
           <button class="nav-button" type="button" data-view="progress">${icon('chart-no-axes-column-increasing')}<span>进度</span></button>
           <button class="nav-button" type="button" data-view="settings">${icon('settings-2')}<span>设置</span></button>
@@ -412,6 +419,7 @@ function returnFromReview() {
 function renderCurrentView() {
   updateChrome();
   if (state.view === 'library') renderLibrary();
+  if (state.view === 'articles') renderArticles();
   if (state.view === 'review') renderReview();
   if (state.view === 'progress') renderProgress();
   if (state.view === 'settings') renderSettings();
@@ -528,6 +536,7 @@ function renderLibrary() {
   }));
   document.querySelectorAll('[data-term-id]').forEach(button => button.addEventListener('click', () => {
     document.body.classList.remove('picker-open');
+    state.articleReturn = null;
     state.selectedId = button.dataset.termId;
     state.termHistory = [];
     renderLibrary();
@@ -540,6 +549,261 @@ function renderLibrary() {
   document.getElementById('close-term-picker-backdrop')?.addEventListener('click', closeMobileTermPicker);
   bindTermDetail(selected);
   bindMobileTermSwipe();
+  hydrateIcons();
+}
+
+function filteredArticles() {
+  const query = state.articleSearch.trim().toLocaleLowerCase();
+  if (!query) return ARTICLES;
+  return ARTICLES.filter(article => [
+    article.titleEn,
+    article.titleZh,
+    article.summaryEn,
+    article.summaryZh,
+    article.category,
+    article.level,
+    article.source,
+    ...(Array.isArray(article.tags) ? article.tags : []),
+    ...article.sections.flatMap(section => [section.headingEn, section.headingZh, section.en, section.zh]),
+  ].join(' ').toLocaleLowerCase().includes(query));
+}
+
+function articleById(articleId) {
+  return ARTICLES.find(article => article.id === articleId);
+}
+
+function articleReferencesForTerm(termId) {
+  return ARTICLES.flatMap(article => article.sections.flatMap(section => (
+    (Array.isArray(section.termLinks) ? section.termLinks : [])
+      .filter(link => link.termId === termId)
+      .map(link => ({ article, section, link }))
+  )));
+}
+
+function articleListItem(article) {
+  const linkCount = new Set(article.sections.flatMap(section => (
+    (Array.isArray(section.termLinks) ? section.termLinks : []).map(link => link.termId)
+  ))).size;
+  return `
+    <button class="article-list-item ${article.id === state.selectedArticleId ? 'is-selected' : ''}" type="button" data-article-id="${escapeHtml(article.id)}">
+      <span class="article-list-title">${escapeHtml(article.titleZh)}</span>
+      <span class="article-list-subtitle" lang="en">${escapeHtml(article.titleEn)}</span>
+      <span class="article-list-meta">${escapeHtml(article.category)} · ${article.sections.length} 节 · ${linkCount} 个术语</span>
+    </button>
+  `;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function articleTextMarkup(text, section, language) {
+  const source = String(text || '');
+  const links = (Array.isArray(section.termLinks) ? section.termLinks : [])
+    .map(link => ({
+      ...link,
+      label: String((language === 'zh' ? (link.textZh || link.textEn) : (link.textEn || link.textZh)) || '').trim(),
+    }))
+    .filter(link => link.label && state.terms.some(term => term.id === link.termId));
+  if (!links.length) return escapeHtml(source);
+  const labels = [...new Set(links.map(link => link.label))].sort((left, right) => right.length - left.length);
+  const matcher = new RegExp(labels.map(escapeRegExp).join('|'), 'gi');
+  let markup = '';
+  let start = 0;
+  for (const match of source.matchAll(matcher)) {
+    markup += escapeHtml(source.slice(start, match.index));
+    const link = links.find(item => item.label.toLocaleLowerCase() === match[0].toLocaleLowerCase());
+    markup += `<button class="article-term-token" type="button" data-article-term-id="${escapeHtml(link.termId)}" data-article-section-id="${escapeHtml(section.id)}">${escapeHtml(match[0])}</button>`;
+    start = match.index + match[0].length;
+  }
+  return `${markup}${escapeHtml(source.slice(start))}`;
+}
+
+function articleSectionMarkup(article, section) {
+  const showEnglish = state.articleLanguage !== 'zh';
+  const showChinese = state.articleLanguage !== 'en';
+  const heading = state.articleLanguage === 'en'
+    ? `<h3 lang="en">${escapeHtml(section.headingEn)}</h3>`
+    : state.articleLanguage === 'zh'
+      ? `<h3>${escapeHtml(section.headingZh)}</h3>`
+      : `<h3 lang="en">${escapeHtml(section.headingEn)}</h3><p class="article-heading-zh">${escapeHtml(section.headingZh)}</p>`;
+  return `
+    <section class="article-section" id="article-section-${escapeHtml(section.id)}" data-article-section="${escapeHtml(section.id)}">
+      ${heading}
+      <div class="article-paragraphs ${state.articleLanguage === 'bilingual' ? 'is-bilingual' : ''}">
+        ${showEnglish ? `<p lang="en">${articleTextMarkup(section.en, section, 'en')}</p>` : ''}
+        ${showChinese ? `<p class="article-translation">${articleTextMarkup(section.zh, section, 'zh')}</p>` : ''}
+      </div>
+    </section>
+  `;
+}
+
+function articleReaderMarkup(article) {
+  return `
+    <article class="article-content">
+      <header class="article-header">
+        <div class="article-kicker"><span>${escapeHtml(article.category)}</span><span>${escapeHtml(article.level)}</span></div>
+        <h2 lang="en">${escapeHtml(article.titleEn)}</h2>
+        <p class="article-title-zh">${escapeHtml(article.titleZh)}</p>
+        <p class="article-summary">${escapeHtml(state.articleLanguage === 'en' ? article.summaryEn : article.summaryZh)}</p>
+        <div class="article-tags">${article.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
+      </header>
+      <aside class="article-term-preview" id="article-term-preview" hidden aria-live="polite"></aside>
+      <div class="article-body">
+        ${article.sections.map(section => articleSectionMarkup(article, section)).join('')}
+      </div>
+      <footer class="article-source">来源：${escapeHtml(article.source)}</footer>
+    </article>
+  `;
+}
+
+function currentArticlePosition() {
+  if (isMobileLibrary()) return window.scrollY;
+  return document.querySelector('.article-reader')?.scrollTop || 0;
+}
+
+function rememberCurrentArticlePosition() {
+  if (!state.selectedArticleId || !document.querySelector('.article-layout')) return;
+  state.articlePositions.set(state.selectedArticleId, currentArticlePosition());
+}
+
+function restoreArticlePosition(articleId, { sectionId = '', position } = {}) {
+  window.requestAnimationFrame(() => {
+    const section = sectionId ? document.querySelector(`[data-article-section="${CSS.escape(sectionId)}"]`) : null;
+    if (isMobileLibrary()) {
+      if (section) section.scrollIntoView({ block: 'start' });
+      else window.scrollTo(0, Number.isFinite(position) ? position : (state.articlePositions.get(articleId) || 0));
+      return;
+    }
+    const reader = document.querySelector('.article-reader');
+    if (!reader) return;
+    if (section) reader.scrollTop = Math.max(0, section.offsetTop - 18);
+    else reader.scrollTop = Number.isFinite(position) ? position : (state.articlePositions.get(articleId) || 0);
+  });
+}
+
+function selectArticle(articleId) {
+  if (!articleById(articleId)) return;
+  rememberCurrentArticlePosition();
+  state.selectedArticleId = articleId;
+  renderArticles({ rememberPosition: false });
+}
+
+function openArticle(articleId, sectionId = '') {
+  if (!articleById(articleId)) return;
+  rememberCurrentArticlePosition();
+  state.selectedArticleId = articleId;
+  state.view = 'articles';
+  renderCurrentView();
+  restoreArticlePosition(articleId, { sectionId });
+}
+
+function renderArticles({ rememberPosition = true } = {}) {
+  if (rememberPosition) rememberCurrentArticlePosition();
+  const results = filteredArticles();
+  if (!results.some(article => article.id === state.selectedArticleId)) state.selectedArticleId = results[0]?.id || '';
+  const selected = results.find(article => article.id === state.selectedArticleId);
+  const root = document.getElementById('view-root');
+  const listScrollTop = root.querySelector('.article-list')?.scrollTop || 0;
+  root.innerHTML = `
+    <div class="view-header article-view-header">
+      <div><h1>双语文章</h1><p>共 ${ARTICLES.length} 篇，文章与术语双向关联</p></div>
+    </div>
+    <div class="article-toolbar">
+      <label class="search-field">
+        <span class="sr-only">搜索文章</span>
+        ${icon('search')}
+        <input class="field" id="article-search" type="search" value="${escapeHtml(state.articleSearch)}" placeholder="搜索标题、内容或标签">
+      </label>
+      <label class="mobile-article-picker">
+        <span class="sr-only">选择文章</span>
+        <select class="select" id="article-picker">
+          ${results.map(article => `<option value="${escapeHtml(article.id)}" ${article.id === state.selectedArticleId ? 'selected' : ''}>${escapeHtml(article.titleZh)}</option>`).join('')}
+        </select>
+      </label>
+      <div class="segmented-control article-language-control" aria-label="文章语言">
+        ${[['bilingual', '双语'], ['en', '英文'], ['zh', '中文']].map(([value, label]) => `<button class="segmented-button" type="button" data-article-language="${value}" aria-pressed="${state.articleLanguage === value}">${label}</button>`).join('')}
+      </div>
+    </div>
+    <div class="article-layout">
+      <aside class="article-list-panel" aria-label="文章列表">
+        <div class="result-count"><span>${results.length} 篇文章</span><span>双语材料</span></div>
+        <div class="article-list">
+          ${results.length ? results.map(articleListItem).join('') : '<div class="empty-list">没有匹配的文章</div>'}
+        </div>
+      </aside>
+      <section class="article-reader" aria-live="polite">
+        ${selected ? articleReaderMarkup(selected) : '<div class="empty-list">没有匹配的文章</div>'}
+      </section>
+    </div>
+  `;
+
+  const articleList = root.querySelector('.article-list');
+  if (articleList) articleList.scrollTop = listScrollTop;
+  if (selected) restoreArticlePosition(selected.id);
+
+  const search = document.getElementById('article-search');
+  search.addEventListener('input', event => {
+    state.articleSearch = event.target.value;
+    const position = event.target.selectionStart;
+    renderArticles();
+    const nextSearch = document.getElementById('article-search');
+    nextSearch.focus();
+    nextSearch.setSelectionRange(position, position);
+  });
+  document.getElementById('article-picker')?.addEventListener('change', event => selectArticle(event.target.value));
+  document.querySelectorAll('[data-article-id]').forEach(button => button.addEventListener('click', () => selectArticle(button.dataset.articleId)));
+  document.querySelectorAll('[data-article-language]').forEach(button => button.addEventListener('click', () => {
+    rememberCurrentArticlePosition();
+    state.articleLanguage = button.dataset.articleLanguage;
+    renderArticles();
+  }));
+  document.querySelectorAll('[data-article-term-id]').forEach(button => button.addEventListener('click', () => {
+    showArticleTermPreview(button.dataset.articleTermId, button.dataset.articleSectionId);
+  }));
+  hydrateIcons();
+}
+
+function showArticleTermPreview(termId, sectionId) {
+  const term = state.terms.find(item => item.id === termId);
+  const article = articleById(state.selectedArticleId);
+  const section = article?.sections.find(item => item.id === sectionId);
+  const link = section?.termLinks?.find(item => item.termId === termId);
+  const preview = document.getElementById('article-term-preview');
+  if (!term || !preview) return;
+  const readingPosition = currentArticlePosition();
+  preview.hidden = false;
+  preview.innerHTML = `
+    <div>
+      <span class="article-preview-label">关联术语</span>
+      <strong lang="en">${escapeHtml(term.term)}</strong>
+      <span>${escapeHtml(term.zh)}</span>
+      <p>${escapeHtml(link?.note || term.definition)}</p>
+    </div>
+    <div class="inline-actions">
+      <button class="button" id="open-article-term" type="button">${icon('library')}完整词卡</button>
+      <button class="icon-button" id="close-article-term" type="button" aria-label="关闭术语解释">${icon('x')}</button>
+    </div>
+  `;
+  document.getElementById('close-article-term').addEventListener('click', () => {
+    preview.hidden = true;
+  });
+  document.getElementById('open-article-term').addEventListener('click', () => {
+    state.articleReturn = {
+      articleId: article.id,
+      sectionId,
+      position: readingPosition,
+      language: state.articleLanguage,
+    };
+    state.selectedId = term.id;
+    state.search = '';
+    state.category = '';
+    state.threadCategory = '';
+    state.listMode = 'all';
+    state.view = 'library';
+    renderCurrentView();
+    scrollToTermDetail();
+  });
   hydrateIcons();
 }
 
@@ -666,6 +930,12 @@ function termHistoryMarkup() {
   return `<button class="term-history-back" id="term-history-back" type="button">${icon('arrow-left')}<span>返回 <strong>${escapeHtml(previous.term)}</strong></span></button>`;
 }
 
+function articleReturnMarkup() {
+  const article = articleById(state.articleReturn?.articleId);
+  if (!article) return '';
+  return `<button class="term-history-back" id="term-article-back" type="button">${icon('arrow-left')}<span>返回文章 <strong>${escapeHtml(article.titleZh)}</strong></span></button>`;
+}
+
 function termDetailMarkup(term) {
   const progress = state.progressMap.get(term.id);
   const abbreviation = termAbbreviation(term);
@@ -676,10 +946,12 @@ function termDetailMarkup(term) {
   const relatedTerms = relatedTermRecords(term);
   const contexts = contextRecords(term);
   const usageNotes = textList(term.usageNotes);
+  const articleReferences = articleReferencesForTerm(term.id);
   const profilerMarker = isProfilerMarker(term);
   const titleClass = termTitleLengthClass(term.term);
   const titleMarkup = breakableTermMarkup(term.term);
   return `
+    ${articleReturnMarkup()}
     ${termHistoryMarkup()}
     <div class="term-detail-header">
       <div>
@@ -732,6 +1004,19 @@ function termDetailMarkup(term) {
         </div>
       </section>
     ` : ''}
+    ${articleReferences.length ? `
+      <section class="knowledge-section" aria-label="相关文章">
+        <h3>${icon('book-open-text')}相关文章</h3>
+        <div class="article-reference-list">
+          ${articleReferences.map(({ article, section, link }) => `
+            <button class="article-reference-button" type="button" data-related-article="${escapeHtml(article.id)}" data-related-article-section="${escapeHtml(section.id)}">
+              <span><strong>${escapeHtml(article.titleZh)}</strong><small lang="en">${escapeHtml(article.titleEn)}</small></span>
+              <span class="article-reference-context">${escapeHtml(section.headingZh)}${link.note ? ` · ${escapeHtml(link.note)}` : ''}</span>
+            </button>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
     <div class="inline-actions">
       <button class="button primary" id="study-term" type="button">${icon('graduation-cap')}练习这个术语</button>
       ${term.example ? `<button class="button" id="speak-example" type="button">${icon('audio-lines')}朗读例句</button>` : ''}
@@ -754,6 +1039,18 @@ function bindTermDetail(term) {
   document.getElementById('speak-example')?.addEventListener('click', () => speak(term.example));
   document.getElementById('edit-term')?.addEventListener('click', () => openTermDialog(term));
   document.getElementById('delete-term')?.addEventListener('click', () => removeCustomTerm(term));
+  document.getElementById('term-article-back')?.addEventListener('click', () => {
+    const target = state.articleReturn;
+    if (!target || !articleById(target.articleId)) return;
+    state.articleLanguage = target.language || state.articleLanguage;
+    state.selectedArticleId = target.articleId;
+    state.view = 'articles';
+    renderCurrentView();
+    restoreArticlePosition(target.articleId, Number.isFinite(target.position)
+      ? { position: target.position }
+      : { sectionId: target.sectionId });
+    state.articleReturn = null;
+  });
   document.getElementById('term-history-back')?.addEventListener('click', () => {
     const previousId = state.termHistory.pop();
     if (!previousId || !state.terms.some(item => item.id === previousId)) return;
@@ -774,6 +1071,10 @@ function bindTermDetail(term) {
     }
     renderLibrary();
     scrollToTermDetail();
+  }));
+  document.querySelectorAll('[data-related-article]').forEach(button => button.addEventListener('click', () => {
+    state.articleReturn = null;
+    openArticle(button.dataset.relatedArticle, button.dataset.relatedArticleSection);
   }));
 }
 
