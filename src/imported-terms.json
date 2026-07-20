@@ -30,13 +30,13 @@
     "ipa": "",
     "zh": "角色、镜头与操控",
     "category": "游戏开发",
-    "definition": "游戏体验设计中的三个核心部分：Character 指玩家操纵的角色及其移动和能力，Camera 指镜头的取景、跟随与反馈，Controls 指输入映射、操作响应和手感。三者相互影响，共同决定玩家如何观察、操纵并感受游戏。",
+    "definition": "3C 不是三个孤立模块，而是围绕角色可达性、镜头可读性和输入响应建立的跨系统体验契约。Character 决定玩家能到哪里、以什么姿态移动；Camera 决定玩家看见什么、能否判断空间关系；Controls 决定意图多久被角色和武器反馈出来。三者必须在同一套状态、尺寸和速度规格下协同。",
     "example": "The team refined the game's 3C before building the combat encounters.",
     "exampleZh": "团队在设计战斗遭遇之前，先打磨了游戏的角色、镜头与操控。",
-    "tags": "3C 3Cs three Cs Character Camera Controls Control Controller 角色 镜头 相机 操控 操作 手感 游戏设计 game feel",
+    "tags": "3C 3Cs three Cs Character Camera Controls Control Controller 角色 镜头 相机 操控 操作 手感 游戏设计 game feel step height max step height playable area collision capsule traversal gait weapon pose movement speed animation blend space aim offset root motion stride warping",
     "spokenForm": "three C's",
     "threadCategory": "",
-    "source": "Game development terminology",
+    "source": "Game development terminology and practical 3C debugging",
     "aliases": [
       "3Cs",
       "Three Cs"
@@ -60,18 +60,51 @@
         "term": "Game Feel",
         "relation": "体验结果",
         "explanation": "3C 的响应、反馈和协调程度直接影响玩家感受到的操作手感。"
+      },
+      {
+        "term": "Character Movement Component",
+        "relation": "角色移动实现",
+        "explanation": "在 Unreal Engine 中，它通常承载步高、坡度、速度、加速度和移动模式等 3C 参数。"
+      },
+      {
+        "term": "Aim Offset",
+        "relation": "持枪姿态",
+        "explanation": "Aim Offset 用于根据瞄准方向修正上半身或武器姿态，是持枪动作与镜头反馈的一部分。"
+      },
+      {
+        "term": "Blend Space",
+        "relation": "速度到动画的映射",
+        "explanation": "Blend Space 可将速度、方向等输入映射到行走、奔跑和转向动画。"
       }
     ],
     "contexts": [
       {
         "phrase": "3C design",
         "explanation": "指围绕角色、镜头和操控进行整体设计与迭代。",
-        "experience": "评估 3C 时应把角色运动、镜头行为和输入响应放在同一实际玩法场景中测试。"
+        "experience": "评估 3C 时应把角色运动、镜头行为和输入响应放在同一实际玩法场景中测试，而不是分别看单个蓝图或单段动画。"
+      },
+      {
+        "phrase": "Step height and playable area",
+        "explanation": "步高是角色自动跨越障碍的上限；期望可玩区域则是关卡设计希望玩家能够到达、观察和操作的空间。两者需要共享明确的可达性规格。",
+        "experience": "在 Unreal Engine 中先用碰撞可视化检查胶囊体、Max Step Height、Walkable Floor Angle 和实际碰撞，而不要只看美术网格。可走台阶应略低于步高阈值；禁止区域要高于阈值或有明确阻挡；需要翻越或跳跃的边界应单独标记。测试还要覆盖斜坡、边缘、不同移动速度和网络权威移动，避免出现看起来能走却卡住，或低矮障碍被自动跨过。"
+      },
+      {
+        "phrase": "Weapon pose and movement speed",
+        "explanation": "持枪姿势不是单个动画，而是站立、慢走、快走、冲刺、瞄准等速度状态下的上半身叠加、武器 IK、瞄准修正、后坐力和镜头反馈。",
+        "experience": "先定义速度状态表，再检查步幅、动画播放速率、加减速、脚底接触和枪口稳定性。速度提高却继续使用瞄准或慢走姿势，会产生脚滑、武器漂移和镜头反馈不一致；不要只调播放速率，还要检查 Blend Space、Aim Offset、上半身 Layer、Root Motion 或 Stride Warping，以及 Camera Bob 和 FOV。"
+      },
+      {
+        "phrase": "3C debugging matrix",
+        "explanation": "用玩家意图、空间可达性、视觉可读性和输入响应组成测试矩阵，可以把“感觉不对”拆成可复现的问题。",
+        "experience": "每个状态至少记录目标速度、加速度、转向率、摄像机距离和 FOV、步高与坡度阈值、输入到动作反馈的延迟。若问题只发生在某个表面或方向，优先查碰撞；若所有表面和速度都不匹配，优先查移动状态或动画映射；若姿态正确但感觉迟钝，优先查输入、相机滞后和反馈。"
       }
     ],
     "usageNotes": [
       "第三个 C 最常写作 Controls，也有团队写作 Control 或 Controller；在游戏开发语境中通常表达同一组操控设计问题。",
-      "这里的 3C 不是消费电子领域常说的电脑、通信和消费电子。"
+      "这里的 3C 不是消费电子领域常说的电脑、通信和消费电子。",
+      "Max Step Height 是 Unreal Engine 中的参数名，不应脱离角色胶囊体尺寸、单位和移动模式单独设定。",
+      "不要把“可玩区域”理解为所有视觉上存在的地面；应明确区分 walkable、vaultable、jumpable 和 blocked，并让碰撞、镜头和引导共同表达这个边界。",
+      "移动速度应和动画步幅、状态切换、镜头反馈及武器姿态一起调试；单独修改其中一个数值通常会制造新的 3C 不一致。"
     ]
   },
   {
