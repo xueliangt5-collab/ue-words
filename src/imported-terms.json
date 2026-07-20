@@ -1,5 +1,28 @@
 [
   {
+    "id": "imported-12v-2x6",
+    "term": "12V-2x6",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "12V-2x6 显卡供电接口",
+    "category": "机箱与散热",
+    "definition": "用于高功率 PCIe 设备供电的连接器规格，包含大电流供电端子和感测触点。",
+    "example": "Make sure the 12V-2x6 connector is fully seated before closing the side panel.",
+    "exampleZh": "关闭侧板前，确认 12V-2x6 接头已经完全插入。",
+    "tags": "12V-2x6 GPU power connector PCIe power 显卡供电 接头 完全插入 侧板净空",
+    "spokenForm": "twelve volt two by six",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "线材弯折和净空应遵循显卡、电源与线材厂商要求，不使用跨品牌通用的固定弯折半径。"
+    ]
+  },
+  {
     "id": "imported-actor-lifecycle",
     "term": "Actor Lifecycle",
     "abbreviation": "",
@@ -281,6 +304,142 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-aio-liquid-cooler",
+    "term": "AIO Liquid Cooler",
+    "abbreviation": "AIO",
+    "fullForm": "All-in-One Liquid Cooler",
+    "ipa": "",
+    "zh": "一体式水冷散热器",
+    "category": "机箱与散热",
+    "definition": "出厂时已组装并密封冷头、泵、软管和冷排的一体化液冷散热系统。",
+    "example": "Mount the AIO so that air is less likely to collect inside the pump.",
+    "exampleZh": "安装一体式水冷时，应尽量减少空气聚集在泵内的可能。",
+    "tags": "AIO All-in-One Liquid Cooler 一体式水冷 冷头 水泵 冷排",
+    "spokenForm": "A I O liquid cooler",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "All-in-One",
+        "zh": "一体式"
+      },
+      {
+        "word": "Liquid",
+        "zh": "液体"
+      },
+      {
+        "word": "Cooler",
+        "zh": "散热器"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "一般应避免让泵成为回路最高点；具体水管方向仍要结合冷头结构、管长和机箱布局。"
+    ]
+  },
+  {
+    "id": "imported-air-recirculation",
+    "term": "Air Recirculation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "空气回流",
+    "category": "机箱与散热",
+    "definition": "已经受热或排出的空气重新进入散热器、显卡或机箱进风口的现象。",
+    "example": "Leaving space behind the case helps prevent external air recirculation.",
+    "exampleZh": "在机箱后方留出空间有助于避免外部空气回流。",
+    "tags": "air recirculation hot air recirculation 空气回流 热风回流 内部回流 外部回流",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Hot Air Recirculation"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "应区分机箱内部回流和排风被外部进风口重新吸入的外部回流。"
+    ]
+  },
+  {
+    "id": "imported-airflow",
+    "term": "Airflow",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "气流；风量",
+    "category": "机箱与散热",
+    "definition": "空气在机箱或散热设备中的流动；讨论风扇规格时也常指单位时间搬运的空气体积。",
+    "example": "Good airflow brings cool air to the GPU and removes heated air from the case.",
+    "exampleZh": "良好的气流会把冷空气送到显卡，并将热空气排出机箱。",
+    "tags": "airflow air flow 气流 风量 机箱风道 cooling ventilation",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Airflow 可泛指气流组织，也可指体积流量；技术比较时应结合上下文和单位。"
+    ]
+  },
+  {
+    "id": "imported-airflow-dead-zone",
+    "term": "Airflow Dead Zone",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "气流死区",
+    "category": "机箱与散热",
+    "definition": "空气交换明显弱于周围区域、容易积聚热量的局部空间。",
+    "example": "The drive cage creates an airflow dead zone behind the graphics card.",
+    "exampleZh": "硬盘架在显卡后方形成了气流死区。",
+    "tags": "airflow dead zone stagnant air zone stagnation zone 气流死区 滞流区 热量积聚",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Stagnant Air Zone",
+      "Stagnation Zone"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "死区是局部流动现象，不代表整个机箱风量不足。"
+    ]
+  },
+  {
+    "id": "imported-airflow-short-circuiting",
+    "term": "Airflow Short-Circuiting",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "气流短路",
+    "category": "机箱与散热",
+    "definition": "新鲜空气从邻近出口直接离开，没有有效扫过目标热源的气流旁路现象。",
+    "example": "The front top exhaust fan may cause airflow short-circuiting before air reaches the CPU cooler.",
+    "exampleZh": "前侧顶部排风扇可能在空气到达 CPU 散热器前造成气流短路。",
+    "tags": "airflow short-circuiting short circuit bypass flow 气流短路 气流旁路 风道",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Airflow Short Circuit",
+      "Bypass Flow"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "是否发生气流短路需要通过温度、烟雾或风速测试验证，不能仅凭布局推断。"
+    ]
   },
   {
     "id": "imported-akaudiodevice",
@@ -794,6 +953,38 @@
     "contexts": [],
     "usageNotes": [
       "CL 周期数必须结合数据率换算为纳秒；它不等于整机内存延迟。"
+    ]
+  },
+  {
+    "id": "imported-cfm",
+    "term": "CFM",
+    "abbreviation": "CFM",
+    "fullForm": "Cubic Feet per Minute",
+    "ipa": "",
+    "zh": "每分钟立方英尺",
+    "category": "机箱与散热",
+    "definition": "表示体积流量的单位，常用于标注风扇在特定测试条件下每分钟搬运的空气体积。",
+    "example": "The rated CFM does not equal the actual airflow behind a restrictive dust filter.",
+    "exampleZh": "标称 CFM 不等于风扇装在高阻力防尘网后的实际风量。",
+    "tags": "CFM Cubic Feet per Minute airflow unit 风量单位 每分钟立方英尺 风扇",
+    "spokenForm": "C F M",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Cubic Feet",
+        "zh": "立方英尺"
+      },
+      {
+        "word": "per Minute",
+        "zh": "每分钟"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "最大 CFM 通常在接近零静压的测试条件下获得。"
     ]
   },
   {
@@ -1474,6 +1665,32 @@
     ]
   },
   {
+    "id": "imported-computer-case",
+    "term": "Computer Case",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "电脑机箱",
+    "category": "机箱与散热",
+    "definition": "用于安装、固定和保护桌面电脑硬件，并组织气流、接口、线材和扩展空间的结构外壳。",
+    "example": "The computer case must support the motherboard, graphics card, power supply, and cooling system at the same time.",
+    "exampleZh": "电脑机箱必须同时支持主板、显卡、电源和散热系统。",
+    "tags": "computer case PC case chassis enclosure 电脑机箱 机箱 结构 装机",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "PC Case",
+      "Chassis"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Chassis 更强调承载硬件的结构框架，computer case 或 PC case 更常指完整消费级机箱。"
+    ]
+  },
+  {
     "id": "imported-conditionalbegindeferredpostload",
     "term": "ConditionalBeginDeferredPostLoad",
     "abbreviation": "",
@@ -1808,6 +2025,29 @@
     "contexts": [],
     "usageNotes": [
       ".uasset 不是普通文本文件，不能只靠文本搜索理解其内部引用。"
+    ]
+  },
+  {
+    "id": "imported-cpu-cooler-clearance",
+    "term": "CPU Cooler Clearance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "CPU 散热器净空",
+    "category": "机箱与散热",
+    "definition": "机箱和周边硬件为 CPU 散热器高度、宽度、风扇及安装夹具提供的可用空间。",
+    "example": "Raising the front fan may exceed the CPU cooler clearance.",
+    "exampleZh": "抬高前侧风扇后可能超过 CPU 散热器净空。",
+    "tags": "CPU cooler clearance heatsink clearance 散热器限高 塔式散热 内存避让 兼容",
+    "spokenForm": "C P U cooler clearance",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "双塔散热器还要检查内存、VRM 装甲、第一条 PCIe 插槽和侧板之间的关系。"
     ]
   },
   {
@@ -2321,6 +2561,38 @@
     "usageNotes": []
   },
   {
+    "id": "imported-dc-fan",
+    "term": "DC Fan",
+    "abbreviation": "DC",
+    "fullForm": "Direct Current",
+    "ipa": "",
+    "zh": "直流调压风扇",
+    "category": "机箱与散热",
+    "definition": "通常通过改变供电电压来调节转速的三针直流风扇。",
+    "example": "Set the motherboard header to DC mode for a three-pin fan.",
+    "exampleZh": "连接三针风扇时，应把主板接口设为 DC 模式。",
+    "tags": "DC fan Direct Current 3-pin fan 直流风扇 三针风扇 电压调速",
+    "spokenForm": "D C fan",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Direct",
+        "zh": "直流的"
+      },
+      {
+        "word": "Current",
+        "zh": "电流"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "将三针风扇接到四针接口不代表它自动获得 PWM 调速能力。"
+    ]
+  },
+  {
     "id": "imported-ddr-phy",
     "term": "DDR PHY",
     "abbreviation": "",
@@ -2380,6 +2652,31 @@
     "contexts": [],
     "usageNotes": [
       "两个 Subchannel 不等于主板的双通道模式。"
+    ]
+  },
+  {
+    "id": "imported-delta-t",
+    "term": "Delta T",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "温差",
+    "category": "机箱与散热",
+    "definition": "两个测量点之间的温度差；机箱测试中常指部件温度减去环境温度。",
+    "example": "Compare GPU delta T instead of raw temperature when room temperature changes.",
+    "exampleZh": "室温变化时，应比较显卡温差而不是只比较原始温度。",
+    "tags": "Delta T ΔT temperature delta 温差 温升 环境温度 散热测试",
+    "spokenForm": "delta T",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Temperature Delta"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Delta T 必须说明两个参考点，例如 GPU 核心相对环境温度。"
     ]
   },
   {
@@ -2597,6 +2894,31 @@
     ]
   },
   {
+    "id": "imported-dust-filter",
+    "term": "Dust Filter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "防尘滤网",
+    "category": "机箱与散热",
+    "definition": "安装在进风路径上、用于拦截空气中灰尘和纤维的可清洁过滤结构。",
+    "example": "A finer dust filter usually needs more frequent cleaning and creates more resistance.",
+    "exampleZh": "更细密的防尘滤网通常需要更频繁地清洁，并产生更大阻力。",
+    "tags": "dust filter air filter 防尘滤网 灰尘 进风 阻力 清洁",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Fan Filter"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "滤网的防尘能力、阻力和维护便利性需要一起评价。"
+    ]
+  },
+  {
     "id": "imported-dram",
     "term": "Dynamic Random-Access Memory",
     "abbreviation": "",
@@ -2793,6 +3115,54 @@
     "usageNotes": []
   },
   {
+    "id": "imported-exhaust-fan",
+    "term": "Exhaust Fan",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "排风风扇",
+    "category": "机箱与散热",
+    "definition": "将机箱内部空气主动排到外部的风扇。",
+    "example": "The rear exhaust fan creates a short path behind the tower cooler.",
+    "exampleZh": "后部排风风扇在塔式散热器后方形成了较短的排气路径。",
+    "tags": "exhaust fan outlet fan 排风风扇 排气 后排风 顶部排风",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Outlet Fan"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "排风滤网通常没有防尘收益，却会增加阻力。"
+    ]
+  },
+  {
+    "id": "imported-expansion-slot",
+    "term": "Expansion Slot",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "扩展槽位",
+    "category": "机箱与散热",
+    "definition": "机箱后部为显卡和其他 PCIe 扩展卡提供挡板出口与固定位置的槽位。",
+    "example": "The graphics card occupies four expansion slots in this case.",
+    "exampleZh": "这张显卡在该机箱中占用四个扩展槽位。",
+    "tags": "expansion slot PCIe slot case rear slot 扩展槽位 显卡槽位 挡板",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "显卡标称占用槽数不能代替毫米厚度；还要结合主板 PCIe 插槽的位置。"
+    ]
+  },
+  {
     "id": "imported-extended-profiles-for-overclocking",
     "term": "Extended Profiles for Overclocking",
     "abbreviation": "",
@@ -2853,6 +3223,54 @@
     "contexts": [],
     "usageNotes": [
       "XMP 属于超频配置，内存套装标称不代表任意 CPU 和主板组合都保证稳定。"
+    ]
+  },
+  {
+    "id": "imported-fan-curve",
+    "term": "Fan Curve",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "风扇控制曲线",
+    "category": "机箱与散热",
+    "definition": "根据温度或其他传感器读数设定风扇目标转速或占空比的控制关系。",
+    "example": "A smoother fan curve prevents the case fans from reacting to every brief CPU spike.",
+    "exampleZh": "更平滑的风扇控制曲线可以防止机箱风扇对每次短暂 CPU 温度尖峰都作出反应。",
+    "tags": "fan curve temperature curve 风扇曲线 控制曲线 转速 PWM BIOS",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Fan Curve 在控制语境中不是风压—风量 P-Q Curve；应明确传感器来源和保底转速。"
+    ]
+  },
+  {
+    "id": "imported-fan-hub",
+    "term": "Fan Hub",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "风扇集线器",
+    "category": "机箱与散热",
+    "definition": "把一个控制信号或主板风扇接口分配给多把风扇的连接设备，部分型号使用独立电源供电。",
+    "example": "The powered fan hub prevents several case fans from overloading one motherboard header.",
+    "exampleZh": "带独立供电的风扇集线器可避免多把机箱风扇让一个主板接口过载。",
+    "tags": "fan hub PWM hub fan splitter 风扇集线器 集线器 分线器 电流上限",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "PWM Hub"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "多数集线器只能向主板回传其中一把风扇的转速信号。"
     ]
   },
   {
@@ -3524,6 +3942,29 @@
     ]
   },
   {
+    "id": "imported-forced-convection",
+    "term": "Forced Convection",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "强制对流",
+    "category": "机箱与散热",
+    "definition": "由风扇、泵或其他外部驱动力推动流体运动并带走热量的传热方式。",
+    "example": "Forced convection from the case fans dominates natural convection inside a running PC.",
+    "exampleZh": "电脑运行时，机箱风扇形成的强制对流通常远强于内部的自然对流。",
+    "tags": "forced convection active cooling 强制对流 主动散热 风扇 气流 自然对流",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "顶部排风有效主要取决于风扇建立的路径和压差，不能只用热空气自然上升解释。"
+    ]
+  },
+  {
     "id": "imported-foreachobjectofclass",
     "term": "ForEachObjectOfClass",
     "abbreviation": "",
@@ -3579,6 +4020,29 @@
     ],
     "usageNotes": [
       "GC 可达性分析用。"
+    ]
+  },
+  {
+    "id": "imported-form-factor",
+    "term": "Form Factor",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "规格尺寸",
+    "category": "机箱与散热",
+    "definition": "定义硬件外形、安装孔位、接口位置或基础机械约束的一组规格，例如 ATX、microATX 和 SFX。",
+    "example": "Check the motherboard form factor before choosing a case.",
+    "exampleZh": "选择机箱前先确认主板的规格尺寸。",
+    "tags": "form factor 规格尺寸 版型 外形规范 安装孔位 motherboard case PSU",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "同一 form factor 内的产品仍可能有不同长度、高度和接口位置，不能替代实际尺寸图。"
     ]
   },
   {
@@ -4104,6 +4568,80 @@
     "usageNotes": []
   },
   {
+    "id": "imported-gpu-clearance",
+    "term": "GPU Clearance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "显卡净空",
+    "category": "机箱与散热",
+    "definition": "机箱为显卡本体、供电线、支架和进风间距提供的可用三维空间。",
+    "example": "The front radiator reduces the available GPU clearance.",
+    "exampleZh": "前置冷排会减少可用的显卡净空。",
+    "tags": "GPU clearance graphics card clearance 显卡净空 显卡限长 厚度 高度 兼容",
+    "spokenForm": "G P U clearance",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "GPU clearance 应分别核对长度、厚度、高度和供电接头空间，不能只看最大显卡长度。"
+    ]
+  },
+  {
+    "id": "imported-gpu-hotspot-temperature",
+    "term": "GPU Hotspot Temperature",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "GPU 热点温度",
+    "category": "机箱与散热",
+    "definition": "GPU 芯片多个内部温度传感区域中最高或接近最高的温度读数，用于观察局部热集中。",
+    "example": "A large gap between GPU temperature and hotspot temperature may justify further inspection.",
+    "exampleZh": "GPU 温度与热点温度差距很大时，可能需要进一步检查。",
+    "tags": "GPU hotspot temperature junction temperature 热点温度 结温 显卡 温度监控",
+    "spokenForm": "G P U hotspot temperature",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "GPU Junction Temperature"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "不同 GPU 和监控软件的传感器定义可能不同，不能使用一个跨型号固定差值判断故障。"
+    ]
+  },
+  {
+    "id": "imported-gpu-support-bracket",
+    "term": "GPU Support Bracket",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "显卡支撑架",
+    "category": "机箱与散热",
+    "definition": "用于承托较重显卡、减少下垂和插槽受力的机械支撑部件。",
+    "example": "Install the GPU support bracket without blocking the bottom intake fans.",
+    "exampleZh": "安装显卡支撑架时不要挡住底部进风风扇。",
+    "tags": "GPU support bracket anti-sag bracket graphics card support 显卡支撑架 防下垂",
+    "spokenForm": "G P U support bracket",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "GPU Anti-Sag Bracket",
+      "Graphics Card Support Bracket"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "支撑点应接触显卡结构件，不能顶住风扇叶片或脆弱装饰外壳。"
+    ]
+  },
+  {
     "id": "imported-gpuskincache-updateskinningbatches",
     "term": "GPUSkinCache_UpdateSkinningBatches",
     "abbreviation": "",
@@ -4256,6 +4794,31 @@
     "contexts": [],
     "usageNotes": [
       "Instigator 通常表示最初发起行为的 Pawn；不要默认它一定是武器、子弹或 Controller。"
+    ]
+  },
+  {
+    "id": "imported-intake-fan",
+    "term": "Intake Fan",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "进风风扇",
+    "category": "机箱与散热",
+    "definition": "将机箱外部空气主动送入机箱内部的风扇。",
+    "example": "The bottom intake fans supply cool air directly to the graphics card.",
+    "exampleZh": "底部进风风扇直接向显卡提供冷空气。",
+    "tags": "intake fan inlet fan 进风风扇 进气 底部进风 前部进风",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Inlet Fan"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "进风方向应结合风扇框体箭头或叶片结构确认，不能只看安装位置。"
     ]
   },
   {
@@ -5178,6 +5741,58 @@
     ]
   },
   {
+    "id": "imported-mesh-panel",
+    "term": "Mesh Panel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "网孔面板",
+    "category": "机箱与散热",
+    "definition": "通过大量开孔允许空气和声音直接通过的机箱面板。",
+    "example": "The mesh panel lowers intake restriction but provides little acoustic isolation.",
+    "exampleZh": "网孔面板降低了进风阻力，但几乎不提供声学隔离。",
+    "tags": "mesh panel perforated panel 网孔面板 冲孔面板 机箱 风阻 散热",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Perforated Panel"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "网孔会增加被动流动路径，但主动风扇仍可建立主气流。"
+    ]
+  },
+  {
+    "id": "imported-microatx",
+    "term": "microATX",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "微型 ATX 主板规格",
+    "category": "机箱与散热",
+    "definition": "一种常见桌面主板规格，尺寸通常小于标准 ATX，并减少部分扩展槽空间。",
+    "example": "This microATX case supports four expansion slots.",
+    "exampleZh": "这款 microATX 机箱支持四个扩展槽。",
+    "tags": "microATX Micro-ATX mATX M-ATX 主板规格 微型ATX 机箱",
+    "spokenForm": "micro A T X",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Micro-ATX",
+      "mATX",
+      "M-ATX"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "机箱写明支持 microATX 只表示基础主板孔位兼容，仍需检查走线孔、冷排和底边接口。"
+    ]
+  },
+  {
     "id": "imported-module",
     "term": "Module",
     "abbreviation": "",
@@ -5312,6 +5927,29 @@
     ]
   },
   {
+    "id": "imported-negative-pressure",
+    "term": "Negative Pressure",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "负压",
+    "category": "机箱与散热",
+    "definition": "机箱内部平均压力低于外部，使空气倾向从未主动排风的缝隙进入机箱的状态。",
+    "example": "Strong negative pressure may pull dust through unfiltered gaps.",
+    "exampleZh": "较强负压可能通过没有滤网的缝隙吸入灰尘。",
+    "tags": "negative pressure case pressure 负压 机箱压力 灰尘 排风",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "负压并不必然代表散热差，局部热源的进风温度和排热路径更关键。"
+    ]
+  },
+  {
     "id": "imported-netbroadcastticktime",
     "term": "NetBroadcastTickTime",
     "abbreviation": "",
@@ -5343,6 +5981,54 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-noise-floor",
+    "term": "Noise Floor",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "环境底噪",
+    "category": "机箱与散热",
+    "definition": "测量环境和设备自身在目标信号之外形成的基础噪声水平，限制低噪声测量的可信度。",
+    "example": "The room noise floor was too high to compare the fans at idle.",
+    "exampleZh": "房间环境底噪过高，无法可靠比较风扇待机噪声。",
+    "tags": "noise floor ambient noise acoustic measurement 环境底噪 噪声测量 分贝 风扇",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "记录机箱噪声时应同时说明测量距离、方向和环境底噪。"
+    ]
+  },
+  {
+    "id": "imported-noise-normalized-performance",
+    "term": "Noise-Normalized Performance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "同噪声性能",
+    "category": "机箱与散热",
+    "definition": "把不同散热配置调到相同噪声水平后比较温度或散热能力的方法。",
+    "example": "Noise-normalized performance is more useful than maximum-speed temperature for a quiet build.",
+    "exampleZh": "对于静音装机，同噪声性能比满速温度更有参考价值。",
+    "tags": "noise-normalized performance normalized noise thermal test 同噪声性能 噪声归一化 散热测试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Noise Normalized Performance"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "也可以反向使用相同温度目标比较噪声，但必须统一功耗和环境条件。"
+    ]
   },
   {
     "id": "imported-on-message-received",
@@ -5443,6 +6129,54 @@
     ]
   },
   {
+    "id": "imported-open-area-ratio",
+    "term": "Open Area Ratio",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "开孔率",
+    "category": "机箱与散热",
+    "definition": "面板或格栅中真正允许空气通过的有效开口面积占总面积的比例。",
+    "example": "A low open area ratio can make a large fan mount unexpectedly restrictive.",
+    "exampleZh": "较低的开孔率可能让大型风扇位产生意外的高阻力。",
+    "tags": "open area ratio free area ratio 开孔率 有效开口 面板 格栅 风阻",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Free Area Ratio"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "开孔率相同的两种格栅仍可能因孔形、厚度和与扇叶的距离产生不同噪声。"
+    ]
+  },
+  {
+    "id": "imported-operating-point",
+    "term": "Operating Point",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "工作点",
+    "category": "机箱与散热",
+    "definition": "风扇性能曲线与系统阻力曲线相交后形成的实际风量和压力状态。",
+    "example": "Removing the front panel moves the fan to a higher-flow operating point.",
+    "exampleZh": "拆除前面板会让风扇移动到风量更高的工作点。",
+    "tags": "operating point fan system curve 工作点 风扇曲线 系统阻力 实际风量",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "同一风扇安装在不同面板、滤网或冷排后会具有不同工作点。"
+    ]
+  },
+  {
     "id": "imported-output-log",
     "term": "Output Log",
     "abbreviation": "",
@@ -5512,6 +6246,31 @@
     ],
     "usageNotes": [
       "UE 网络语境中的 Actor Owner 还有复制和连接相关含义，需要结合上下文判断。"
+    ]
+  },
+  {
+    "id": "imported-pq-curve",
+    "term": "P-Q Curve",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "风压—风量曲线",
+    "category": "机箱与散热",
+    "definition": "表示风扇在不同风量下能够建立多少压力的性能曲线，其中 P 表示压力，Q 表示体积流量。",
+    "example": "Use the P-Q curve to compare fans across the resistance range of a radiator.",
+    "exampleZh": "可以用风压—风量曲线比较风扇在冷排阻力范围内的表现。",
+    "tags": "P-Q curve pressure flow curve fan curve 风压风量曲线 PQ曲线 风扇性能",
+    "spokenForm": "P Q curve",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Pressure-Flow Curve"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "P-Q Curve 描述空气动力性能，不要与按温度设定转速的 fan curve 混淆。"
     ]
   },
   {
@@ -5722,6 +6481,31 @@
     "usageNotes": []
   },
   {
+    "id": "imported-pcie-riser-cable",
+    "term": "PCIe Riser Cable",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "PCIe 延长转接线",
+    "category": "机箱与散热",
+    "definition": "把主板 PCIe 插槽连接到异位安装扩展卡的柔性或刚性转接部件，常用于显卡竖装和紧凑机箱。",
+    "example": "A poor PCIe riser cable can cause link errors at higher generations.",
+    "exampleZh": "质量不佳的 PCIe 延长转接线可能在较高代际下引发链路错误。",
+    "tags": "PCIe riser cable PCI Express extension vertical GPU 延长转接线 显卡竖装",
+    "spokenForm": "P C I Express riser cable",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "PCI Express Riser Cable"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "使用时要核对长度、弯折、屏蔽、PCIe 代际和 BIOS 链路设置。"
+    ]
+  },
+  {
     "id": "imported-performreachabilityanalysisonobjectsinternal",
     "term": "PerformReachabilityAnalysisOnObjectsInternal",
     "abbreviation": "",
@@ -5858,6 +6642,29 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-positive-pressure",
+    "term": "Positive Pressure",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "正压",
+    "category": "机箱与散热",
+    "definition": "机箱内部平均压力高于外部，使空气倾向从未主动进风的缝隙向外流出的状态。",
+    "example": "Slight positive pressure can make dust entry paths easier to control.",
+    "exampleZh": "轻微正压可以让灰尘进入路径更容易控制。",
+    "tags": "positive pressure case pressure 正压 机箱压力 防尘 进排风平衡",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "应比较安装阻力下的有效进排风量，而不是简单计算风扇数量或 RPM。"
+    ]
   },
   {
     "id": "imported-postprocessing",
@@ -6322,6 +7129,88 @@
     ]
   },
   {
+    "id": "imported-pwm-fan",
+    "term": "PWM Fan",
+    "abbreviation": "PWM",
+    "fullForm": "Pulse-Width Modulation",
+    "ipa": "",
+    "zh": "PWM 调速风扇",
+    "category": "机箱与散热",
+    "definition": "通常通过第四根控制线接收脉宽调制信号来调节转速的四针风扇。",
+    "example": "The PWM fan keeps a stable supply voltage while the control signal changes its speed.",
+    "exampleZh": "PWM 风扇通常保持稳定供电电压，并通过控制信号改变转速。",
+    "tags": "PWM fan Pulse-Width Modulation 4-pin fan PWM风扇 四针风扇 调速",
+    "spokenForm": "P W M fan",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Pulse",
+        "zh": "脉冲"
+      },
+      {
+        "word": "Width",
+        "zh": "宽度"
+      },
+      {
+        "word": "Modulation",
+        "zh": "调制"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "不同风扇的最低稳定占空比、启动占空比和停转能力并不相同。"
+    ]
+  },
+  {
+    "id": "imported-radiator",
+    "term": "Radiator",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "水冷排",
+    "category": "机箱与散热",
+    "definition": "液冷回路中让冷却液通过鳍片和气流向空气释放热量的换热器。",
+    "example": "The radiator performs better when it receives cooler intake air.",
+    "exampleZh": "冷排吸入温度更低的进风时通常表现更好。",
+    "tags": "radiator liquid cooling 水冷排 冷排 换热器 风扇 AIO",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "电脑水冷语境中的 radiator 通常译为冷排，不是取暖设备的暖气片。"
+    ]
+  },
+  {
+    "id": "imported-radiator-clearance",
+    "term": "Radiator Clearance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "冷排净空",
+    "category": "机箱与散热",
+    "definition": "机箱为冷排本体、风扇、端水室、接头和水管转弯提供的完整安装空间。",
+    "example": "The top radiator clearance depends on the motherboard heatsinks and memory height.",
+    "exampleZh": "顶部冷排净空取决于主板散热装甲和内存高度。",
+    "tags": "radiator clearance 冷排净空 水冷兼容 冷排厚度 风扇厚度 端水室",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "240、280 或 360 只描述名义风扇组合，不能代表冷排本体的精确外形尺寸。"
+    ]
+  },
+  {
     "id": "imported-rank-interleaving",
     "term": "Rank Interleaving",
     "abbreviation": "",
@@ -6545,6 +7434,29 @@
     ],
     "usageNotes": [
       "所有渲染 Pass 在这之下。"
+    ]
+  },
+  {
+    "id": "imported-resonance",
+    "term": "Resonance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "共振",
+    "category": "机箱与散热",
+    "definition": "外部周期性激励接近结构固有频率时，振动幅度明显增大的现象。",
+    "example": "A hard-drive vibration caused resonance in the loose side panel.",
+    "exampleZh": "机械硬盘的振动让松动的侧板产生了共振。",
+    "tags": "resonance vibration panel resonance 共振 振动 面板 硬盘 风扇 噪声",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "改变紧固、接触点、减振材料或激励转速都可能避开共振。"
     ]
   },
   {
@@ -8216,6 +9128,42 @@
     ]
   },
   {
+    "id": "imported-small-form-factor",
+    "term": "Small Form Factor",
+    "abbreviation": "SFF",
+    "fullForm": "Small Form Factor",
+    "ipa": "",
+    "zh": "小型规格电脑",
+    "category": "机箱与散热",
+    "definition": "以显著缩小整机体积为目标的电脑规格或装机类别，通常需要更严格地核对毫米级兼容、热耦合和装配顺序。",
+    "example": "An SFF build needs a precise compatibility check before any parts are purchased.",
+    "exampleZh": "小型规格装机在购买任何部件前都需要精确检查兼容性。",
+    "tags": "SFF Small Form Factor 小型规格 小机箱 紧凑型电脑 compact PC",
+    "spokenForm": "S F F",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Small",
+        "zh": "小型"
+      },
+      {
+        "word": "Form",
+        "zh": "形态"
+      },
+      {
+        "word": "Factor",
+        "zh": "规格"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "SFF 没有适用于所有厂商的单一体积边界，实际语境通常强调紧凑布局。"
+    ]
+  },
+  {
     "id": "imported-source-code",
     "term": "Source Code",
     "abbreviation": "",
@@ -8268,6 +9216,29 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-static-pressure",
+    "term": "Static Pressure",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "静压",
+    "category": "机箱与散热",
+    "definition": "风扇建立压差并克服冷排、滤网、密集格栅和狭窄间隙阻力的能力。",
+    "example": "A radiator fan needs useful static pressure at the intended noise level.",
+    "exampleZh": "冷排风扇需要在目标噪声水平下保持有效静压。",
+    "tags": "static pressure fan pressure mmH2O Pa 静压 风扇 冷排 滤网",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "最大静压在接近零风量时测得，不能与最大风量同时达到。"
+    ]
   },
   {
     "id": "imported-staticloadobject",
@@ -8568,6 +9539,32 @@
     "usageNotes": []
   },
   {
+    "id": "imported-system-resistance",
+    "term": "System Resistance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "系统阻力",
+    "category": "机箱与散热",
+    "definition": "面板、滤网、格栅、冷排、线材和狭窄通道等结构对气流形成的总阻碍。",
+    "example": "Adding a dense filter increases system resistance and shifts the fan operating point.",
+    "exampleZh": "增加细密滤网会提高系统阻力，并改变风扇工作点。",
+    "tags": "system resistance airflow resistance system impedance 系统阻力 系统阻抗 风阻 风扇",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Airflow Resistance",
+      "System Impedance"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "在风扇工程语境中，系统阻力通常会随流量增加而非保持常数。"
+    ]
+  },
+  {
     "id": "imported-t-topology",
     "term": "T-Topology",
     "abbreviation": "",
@@ -8655,6 +9652,56 @@
     ],
     "usageNotes": [
       "空闲状态。"
+    ]
+  },
+  {
+    "id": "imported-temperature-hysteresis",
+    "term": "Temperature Hysteresis",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "温度迟滞",
+    "category": "机箱与散热",
+    "definition": "让风扇升速和降速采用不同触发边界或延时，避免温度在阈值附近波动时频繁改变转速的控制机制。",
+    "example": "Temperature hysteresis stops the fan from hunting around a threshold.",
+    "exampleZh": "温度迟滞可以防止风扇在阈值附近反复调速。",
+    "tags": "temperature hysteresis fan hysteresis 温度迟滞 风扇控制 升降速延时 阈值",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Fan Hysteresis"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "迟滞可以通过不同温度阈值、时间延迟或两者结合实现。"
+    ]
+  },
+  {
+    "id": "imported-thermal-equilibrium",
+    "term": "Thermal Equilibrium",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "热平衡",
+    "category": "机箱与散热",
+    "definition": "在持续负载下，系统产热与散热趋于平衡、各处温度不再明显持续上升的状态。",
+    "example": "Wait for thermal equilibrium before comparing steady-state temperatures.",
+    "exampleZh": "比较稳态温度前，应等待系统达到热平衡。",
+    "tags": "thermal equilibrium steady state 热平衡 稳态温度 压力测试 测试时长",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [
+      "Thermal Steady State"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "短时间温度峰值适合观察瞬态，达到热平衡后的数据更适合比较持续散热。"
     ]
   },
   {
@@ -9413,6 +10460,29 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-turbulence",
+    "term": "Turbulence",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "湍流",
+    "category": "机箱与散热",
+    "definition": "速度和方向发生不规则波动的流动状态，在机箱中常由格栅、狭窄间距或相邻风扇扰动引起。",
+    "example": "A fan mounted too close to a stamped grille may produce audible turbulence.",
+    "exampleZh": "风扇距离冲压格栅过近时可能产生可听见的湍流噪声。",
+    "tags": "turbulence turbulent flow 湍流 乱流 风噪 格栅 风扇间距",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "湍流不等于气流完全无效，但可能增加压损和宽频噪声。"
+    ]
   },
   {
     "id": "imported-two-dimms-per-channel",
