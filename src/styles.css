@@ -381,6 +381,8 @@ strong {
 .library-layout {
   display: grid;
   grid-template-columns: minmax(290px, 0.85fr) minmax(420px, 1.5fr);
+  height: max(590px, calc(100dvh - 225px));
+  max-height: 760px;
   min-height: 590px;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -389,7 +391,11 @@ strong {
 }
 
 .term-list-panel {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  min-height: 0;
+  overflow: hidden;
   border-right: 1px solid var(--border);
 }
 
@@ -406,6 +412,9 @@ strong {
 
 .term-list {
   display: grid;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .list-item {
@@ -458,6 +467,9 @@ strong {
 
 .term-detail {
   min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 28px;
   scroll-margin-top: 70px;
 }
@@ -1398,6 +1410,8 @@ dialog::backdrop {
 
   .library-layout {
     grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
     min-height: 0;
     overflow: visible;
   }
@@ -1408,6 +1422,7 @@ dialog::backdrop {
 
   .term-detail {
     min-height: min(650px, calc(100dvh - 92px));
+    overflow: visible;
     padding: 0 24px 28px;
     touch-action: pan-y;
   }

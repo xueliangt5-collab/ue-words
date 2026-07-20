@@ -389,7 +389,12 @@ function setView(view) {
   renderCurrentView();
 }
 
+function isMobileLibrary() {
+  return window.matchMedia('(max-width: 720px)').matches;
+}
+
 function scrollToTermDetail() {
+  if (!isMobileLibrary()) return;
   window.requestAnimationFrame(() => {
     document.getElementById('term-detail')?.scrollIntoView({ block: 'start' });
   });
@@ -432,6 +437,9 @@ function renderLibrary() {
   if (!results.some(term => term.id === state.selectedId)) state.selectedId = results[0]?.id || '';
   const selected = results.find(term => term.id === state.selectedId);
   const root = document.getElementById('view-root');
+  const restorePagePosition = Boolean(root.querySelector('.library-layout')) && !isMobileLibrary();
+  const pagePosition = { left: window.scrollX, top: window.scrollY };
+  const listScrollTop = root.querySelector('.term-list')?.scrollTop || 0;
   root.innerHTML = `
     <div class="view-header">
       <div><h1>术语词库</h1><p>共 ${state.terms.length} 条，个人词条 ${state.customTerms.length} 条</p></div>
@@ -488,6 +496,12 @@ function renderLibrary() {
       </section>
     </div>
   `;
+
+  const termList = root.querySelector('.term-list');
+  if (termList) termList.scrollTop = listScrollTop;
+  if (restorePagePosition) {
+    window.requestAnimationFrame(() => window.scrollTo(pagePosition.left, pagePosition.top));
+  }
 
   document.getElementById('add-term').addEventListener('click', () => openTermDialog());
   document.getElementById('start-review').addEventListener('click', () => setView('review'));
