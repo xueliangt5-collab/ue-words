@@ -13,7 +13,7 @@
     "tags": "12V-2x6 GPU power connector PCIe power 显卡供电 接头 完全插入 侧板净空",
     "spokenForm": "twelve volt two by six",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -404,7 +404,7 @@
     "tags": "AIO All-in-One Liquid Cooler 一体式水冷 冷头 水泵 冷排",
     "spokenForm": "A I O liquid cooler",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [
       {
@@ -440,7 +440,7 @@
     "tags": "air recirculation hot air recirculation 空气回流 热风回流 内部回流 外部回流",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Hot Air Recirculation"
     ],
@@ -465,7 +465,7 @@
     "tags": "airflow air flow 气流 风量 机箱风道 cooling ventilation",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -488,7 +488,7 @@
     "tags": "airflow dead zone stagnant air zone stagnation zone 气流死区 滞流区 热量积聚",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Stagnant Air Zone",
       "Stagnation Zone"
@@ -514,7 +514,7 @@
     "tags": "airflow short-circuiting short circuit bypass flow 气流短路 气流旁路 风道",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Airflow Short Circuit",
       "Bypass Flow"
@@ -1054,7 +1054,7 @@
     "tags": "CFM Cubic Feet per Minute airflow unit 风量单位 每分钟立方英尺 风扇",
     "spokenForm": "C F M",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [
       {
@@ -1763,7 +1763,7 @@
     "tags": "computer case PC case chassis enclosure 电脑机箱 机箱 结构 装机",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "PC Case",
       "Chassis"
@@ -2126,7 +2126,7 @@
     "tags": "CPU cooler clearance heatsink clearance 散热器限高 塔式散热 内存避让 兼容",
     "spokenForm": "C P U cooler clearance",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -2659,7 +2659,7 @@
     "tags": "DC fan Direct Current 3-pin fan 直流风扇 三针风扇 电压调速",
     "spokenForm": "D C fan",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [
       {
@@ -2753,7 +2753,7 @@
     "tags": "Delta T ΔT temperature delta 温差 温升 环境温度 散热测试",
     "spokenForm": "delta T",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Temperature Delta"
     ],
@@ -2992,7 +2992,7 @@
     "tags": "dust filter air filter 防尘滤网 灰尘 进风 阻力 清洁",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Fan Filter"
     ],
@@ -3213,7 +3213,7 @@
     "tags": "exhaust fan outlet fan 排风风扇 排气 后排风 顶部排风",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Outlet Fan"
     ],
@@ -3238,7 +3238,7 @@
     "tags": "expansion slot PCIe slot case rear slot 扩展槽位 显卡槽位 挡板",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -3324,7 +3324,7 @@
     "tags": "fan curve temperature curve 风扇曲线 控制曲线 转速 PWM BIOS",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -3347,7 +3347,7 @@
     "tags": "fan hub PWM hub fan splitter 风扇集线器 集线器 分线器 电流上限",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "PWM Hub"
     ],
@@ -4040,7 +4040,7 @@
     "tags": "forced convection active cooling 强制对流 主动散热 风扇 气流 自然对流",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -4121,7 +4121,7 @@
     "tags": "form factor 规格尺寸 版型 外形规范 安装孔位 motherboard case PSU",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -4666,7 +4666,7 @@
     "tags": "GPU clearance graphics card clearance 显卡净空 显卡限长 厚度 高度 兼容",
     "spokenForm": "G P U clearance",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -4689,7 +4689,7 @@
     "tags": "GPU hotspot temperature junction temperature 热点温度 结温 显卡 温度监控",
     "spokenForm": "G P U hotspot temperature",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "GPU Junction Temperature"
     ],
@@ -4714,7 +4714,7 @@
     "tags": "GPU support bracket anti-sag bracket graphics card support 显卡支撑架 防下垂",
     "spokenForm": "G P U support bracket",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "GPU Anti-Sag Bracket",
       "Graphics Card Support Bracket"
@@ -4895,7 +4895,7 @@
     "tags": "intake fan inlet fan 进风风扇 进气 底部进风 前部进风",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Inlet Fan"
     ],
@@ -5839,7 +5839,7 @@
     "tags": "mesh panel perforated panel 网孔面板 冲孔面板 机箱 风阻 散热",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Perforated Panel"
     ],
@@ -5864,7 +5864,7 @@
     "tags": "microATX Micro-ATX mATX M-ATX 主板规格 微型ATX 机箱",
     "spokenForm": "micro A T X",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Micro-ATX",
       "mATX",
@@ -6025,7 +6025,7 @@
     "tags": "negative pressure case pressure 负压 机箱压力 灰尘 排风",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -6081,7 +6081,7 @@
     "tags": "noise floor ambient noise acoustic measurement 环境底噪 噪声测量 分贝 风扇",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -6104,7 +6104,7 @@
     "tags": "noise-normalized performance normalized noise thermal test 同噪声性能 噪声归一化 散热测试",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Noise Normalized Performance"
     ],
@@ -6227,7 +6227,7 @@
     "tags": "open area ratio free area ratio 开孔率 有效开口 面板 格栅 风阻",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Free Area Ratio"
     ],
@@ -6252,7 +6252,7 @@
     "tags": "operating point fan system curve 工作点 风扇曲线 系统阻力 实际风量",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -6347,7 +6347,7 @@
     "tags": "P-Q curve pressure flow curve fan curve 风压风量曲线 PQ曲线 风扇性能",
     "spokenForm": "P Q curve",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Pressure-Flow Curve"
     ],
@@ -6579,7 +6579,7 @@
     "tags": "PCIe riser cable PCI Express extension vertical GPU 延长转接线 显卡竖装",
     "spokenForm": "P C I Express riser cable",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "PCI Express Riser Cable"
     ],
@@ -6742,7 +6742,7 @@
     "tags": "positive pressure case pressure 正压 机箱压力 防尘 进排风平衡",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -7227,7 +7227,7 @@
     "tags": "PWM fan Pulse-Width Modulation 4-pin fan PWM风扇 四针风扇 调速",
     "spokenForm": "P W M fan",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [
       {
@@ -7263,7 +7263,7 @@
     "tags": "radiator liquid cooling 水冷排 冷排 换热器 风扇 AIO",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -7286,7 +7286,7 @@
     "tags": "radiator clearance 冷排净空 水冷兼容 冷排厚度 风扇厚度 端水室",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -7535,7 +7535,7 @@
     "tags": "resonance vibration panel resonance 共振 振动 面板 硬盘 风扇 噪声",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -9226,7 +9226,7 @@
     "tags": "SFF Small Form Factor 小型规格 小机箱 紧凑型电脑 compact PC",
     "spokenForm": "S F F",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [
       {
@@ -9316,7 +9316,7 @@
     "tags": "static pressure fan pressure mmH2O Pa 静压 风扇 冷排 滤网",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -9637,7 +9637,7 @@
     "tags": "system resistance airflow resistance system impedance 系统阻力 系统阻抗 风阻 风扇",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Airflow Resistance",
       "System Impedance"
@@ -9753,7 +9753,7 @@
     "tags": "temperature hysteresis fan hysteresis 温度迟滞 风扇控制 升降速延时 阈值",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Fan Hysteresis"
     ],
@@ -9778,7 +9778,7 @@
     "tags": "thermal equilibrium steady state 热平衡 稳态温度 压力测试 测试时长",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [
       "Thermal Steady State"
     ],
@@ -10560,7 +10560,7 @@
     "tags": "turbulence turbulent flow 湍流 乱流 风噪 格栅 风扇间距",
     "spokenForm": "",
     "threadCategory": "",
-    "source": "机箱风道与硬件兼容-拆分稿.md",
+    "source": "机箱知识体系.md",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
