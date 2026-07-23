@@ -732,6 +732,50 @@
     "usageNotes": []
   },
   {
+    "id": "imported-atx",
+    "term": "ATX",
+    "abbreviation": "ATX",
+    "fullForm": "Advanced Technology eXtended",
+    "ipa": "",
+    "zh": "ATX 主板规格",
+    "category": "机箱与散热",
+    "definition": "常见的桌面主板外形规格，规定了主板的大致尺寸、安装孔位和扩展槽布局，也是机箱兼容性标注的基础规格之一。",
+    "example": "This case supports a full-size ATX motherboard.",
+    "exampleZh": "这款机箱支持标准尺寸的 ATX 主板。",
+    "tags": "ATX motherboard form factor 主板规格 机箱兼容 安装孔位",
+    "spokenForm": "A T X",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Standard ATX"
+    ],
+    "wordParts": [
+      {
+        "word": "Advanced",
+        "zh": "先进的"
+      },
+      {
+        "word": "Technology",
+        "zh": "技术"
+      },
+      {
+        "word": "eXtended",
+        "zh": "扩展的"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "microATX",
+        "relation": "尺寸变体",
+        "explanation": "microATX 通常比 ATX 更短，并减少部分扩展槽位置。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "机箱写明支持 ATX 只代表基础孔位和空间兼容，仍需检查冷排、线材与显卡冲突。"
+    ]
+  },
+  {
     "id": "imported-basepass",
     "term": "Basepass",
     "abbreviation": "",
@@ -760,6 +804,37 @@
     ],
     "usageNotes": [
       "画几何体的颜色/法线/材质。"
+    ]
+  },
+  {
+    "id": "imported-beat-frequency",
+    "term": "Beat Frequency",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "拍频",
+    "category": "机箱与散热",
+    "definition": "两个频率接近的周期性声音叠加后产生的缓慢强弱起伏，其频率等于两个原始频率之差。",
+    "example": "Slightly offsetting the two fan speeds removes the audible beat frequency.",
+    "exampleZh": "把两把风扇的转速稍微错开后，可听见的拍频消失了。",
+    "tags": "beat frequency 拍频 风扇转速 音调 周期起伏",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Acoustic Beating"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Tonal Noise",
+        "relation": "叠加现象",
+        "explanation": "两组接近的音调噪声可能形成周期性拍频。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "多把同型号风扇运行在接近但不完全相同的转速时，拍频可能比单把风扇更明显。"
     ]
   },
   {
@@ -887,6 +962,68 @@
     "contexts": [],
     "usageNotes": [
       "Burst Length 描述数据拍数，不是以字节直接表示的长度。"
+    ]
+  },
+  {
+    "id": "imported-cable-bend-radius",
+    "term": "Cable Bend Radius",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "线材弯曲半径",
+    "category": "机箱与散热",
+    "definition": "线材转弯时形成的弧度半径，用于描述导线、端子和护套在不受过度机械应力时需要的弯折空间。",
+    "example": "Leave enough cable bend radius before closing the side panel over the GPU connector.",
+    "exampleZh": "在侧板盖住显卡接头前，应为线材保留足够的弯曲半径。",
+    "tags": "cable bend radius 线材弯曲半径 显卡供电 12V-2x6 侧板净空",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Minimum Bend Radius"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "12V-2x6",
+        "relation": "布线关注点",
+        "explanation": "高功率显卡供电接头附近应避免侧向拉力和急弯。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "具体要求应遵循线材、显卡和电源厂商说明，不能套用一个跨产品的固定数值。"
+    ]
+  },
+  {
+    "id": "imported-cable-management",
+    "term": "Cable Management",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "机箱理线",
+    "category": "机箱与散热",
+    "definition": "规划、布置和固定机箱内电源线、数据线及风扇线，使接头受力、气流、侧板闭合和后续维护都保持合理。",
+    "example": "Good cable management keeps the front intake path clear without pulling on connectors.",
+    "exampleZh": "良好的机箱理线既能保持前部进风通畅，也不会拉扯接头。",
+    "tags": "cable management 理线 走线 背线 接头应力 气流",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Cable Routing"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Cable Bend Radius",
+        "relation": "布线约束",
+        "explanation": "理线时必须为高功率线材和粗线束保留合理弯曲空间。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "理线目标不是完全隐藏线材，而是避免拉扯、挤压、刮碰风扇并便于维护。"
     ]
   },
   {
@@ -1038,6 +1175,38 @@
     "contexts": [],
     "usageNotes": [
       "CL 周期数必须结合数据率换算为纳秒；它不等于整机内存延迟。"
+    ]
+  },
+  {
+    "id": "imported-case-fan",
+    "term": "Case Fan",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "机箱风扇",
+    "category": "机箱与散热",
+    "definition": "安装在机箱进风口、排风口或内部位置，用来推动机箱空气交换和引导气流经过热源的风扇。",
+    "example": "The rear case fan exhausts warm air from the CPU cooler.",
+    "exampleZh": "后部机箱风扇把 CPU 散热器排出的热空气送出机箱。",
+    "tags": "case fan chassis fan 机箱风扇 进风 排风 风道",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Chassis Fan",
+      "System Fan"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Intake Fan",
+        "relation": "安装方向",
+        "explanation": "作为进风使用的机箱风扇把外部空气送入机箱。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "风扇数量和转速不能直接代表有效风量，安装阻力和气流路径同样重要。"
     ]
   },
   {
@@ -3060,6 +3229,38 @@
     "usageNotes": []
   },
   {
+    "id": "imported-drive-cage",
+    "term": "Drive Cage",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "硬盘架",
+    "category": "机箱与散热",
+    "definition": "用于安装 2.5 英寸或 3.5 英寸存储设备的支架结构，可能占用电源线材、显卡、风扇或冷排空间。",
+    "example": "Removing the unused drive cage improves cable space and front airflow.",
+    "exampleZh": "拆掉未使用的硬盘架可以改善线材空间和前部气流。",
+    "tags": "drive cage HDD cage 硬盘架 3.5英寸 2.5英寸 机箱空间",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "HDD Cage",
+      "Storage Cage"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Airflow Dead Zone",
+        "relation": "可能成因",
+        "explanation": "大型硬盘架可能在其后方形成空气交换较弱的区域。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "机械硬盘安装还要考虑振动传递和局部散热。"
+    ]
+  },
+  {
     "id": "imported-dimm",
     "term": "Dual In-line Memory Module",
     "abbreviation": "",
@@ -3145,6 +3346,37 @@
     "contexts": [],
     "usageNotes": [
       "日常所说的内存条是由 DRAM 颗粒、PCB、SPD Hub 和其他器件组成的模块。"
+    ]
+  },
+  {
+    "id": "imported-e-atx",
+    "term": "E-ATX",
+    "abbreviation": "E-ATX",
+    "fullForm": "Extended ATX",
+    "ipa": "",
+    "zh": "扩展型 ATX 主板规格",
+    "category": "机箱与散热",
+    "definition": "比标准 ATX 更宽或更大的主板规格称呼；市场上对 E-ATX 尺寸的使用并不完全统一，因此必须核对主板实际长宽。",
+    "example": "Measure the E-ATX board before assuming that the cable grommets will remain accessible.",
+    "exampleZh": "不要直接假定走线孔仍可使用，应先测量这块 E-ATX 主板。",
+    "tags": "E-ATX Extended ATX 主板规格 宽板 机箱兼容 走线孔",
+    "spokenForm": "E A T X",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Extended ATX"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "ATX",
+        "relation": "扩展规格",
+        "explanation": "E-ATX 通常在 ATX 基础上增加主板宽度或整体尺寸。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "E-ATX 的商品标注不是可靠的统一毫米尺寸，应以主板和机箱官方尺寸图为准。"
     ]
   },
   {
@@ -3444,6 +3676,70 @@
     "contexts": [],
     "usageNotes": [
       "Fan Curve 在控制语境中不是风压—风量 P-Q Curve；应明确传感器来源和保底转速。"
+    ]
+  },
+  {
+    "id": "imported-fan-grille",
+    "term": "Fan Grille",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "风扇格栅",
+    "category": "机箱与散热",
+    "definition": "位于风扇开口处、用于防护或加强结构的网格；格栅形状、开孔率和与扇叶的距离会影响阻力与湍流噪声。",
+    "example": "The tightly stamped fan grille creates turbulence at high speed.",
+    "exampleZh": "密集冲压的风扇格栅在高转速下产生了湍流。",
+    "tags": "fan grille fan grill 风扇格栅 冲压网孔 湍流 风阻",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Fan Grill",
+      "Fan Guard"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Open Area Ratio",
+        "relation": "几何指标",
+        "explanation": "格栅开孔率会影响可供空气通过的有效面积。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "格栅靠近扇叶时，即使开孔看起来很大，也可能产生明显音调噪声。"
+    ]
+  },
+  {
+    "id": "imported-fan-header",
+    "term": "Fan Header",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "风扇针脚接口",
+    "category": "机箱与散热",
+    "definition": "主板或控制器上为风扇供电并提供转速控制、转速反馈的三针或四针接口。",
+    "example": "Check the current limit before connecting three fans to one fan header.",
+    "exampleZh": "把三把风扇接到同一个风扇接口前，应先检查电流上限。",
+    "tags": "fan header motherboard header 风扇接口 4-pin 3-pin 电流上限",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Motherboard Fan Header",
+      "Chassis Fan Header"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Fan Hub",
+        "relation": "扩展设备",
+        "explanation": "风扇集线器可以让多个风扇共享一个控制信号。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "多个风扇共用接口时应累加最大电流，并确认集线器是否使用独立供电。"
     ]
   },
   {
@@ -4390,6 +4686,47 @@
     "contexts": [],
     "usageNotes": [
       "Friendly Fire 描述友方之间的伤害，不等同于队友对敌人造成的普通伤害。"
+    ]
+  },
+  {
+    "id": "imported-front-io",
+    "term": "Front I/O",
+    "abbreviation": "I/O",
+    "fullForm": "Input/Output",
+    "ipa": "",
+    "zh": "机箱前置输入输出接口",
+    "category": "机箱与散热",
+    "definition": "位于机箱前部或顶部、通过内部线缆连接主板的 USB、音频、按键和指示灯等接口集合。",
+    "example": "Verify that the motherboard has the header required by the case's front I/O.",
+    "exampleZh": "确认主板具备机箱前置接口所需的针脚。",
+    "tags": "Front I/O front panel 前置接口 USB-C HD Audio 主板针脚",
+    "spokenForm": "Front I O",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Front Panel I/O",
+      "Case I/O"
+    ],
+    "wordParts": [
+      {
+        "word": "Input",
+        "zh": "输入"
+      },
+      {
+        "word": "Output",
+        "zh": "输出"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Cable Management",
+        "relation": "内部连接",
+        "explanation": "前置 I/O 线材通常需要穿过主板底边或侧边的走线孔。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "机箱提供 USB-C 接口不代表主板一定有匹配速度和规格的内部接头。"
     ]
   },
   {
@@ -6024,6 +6361,37 @@
     ]
   },
   {
+    "id": "imported-mini-itx",
+    "term": "Mini-ITX",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Mini-ITX 主板规格",
+    "category": "机箱与散热",
+    "definition": "常用于紧凑型电脑的小尺寸主板规格，通常只提供一个主要 PCIe 扩展槽，对机箱体积利用和装配顺序要求较高。",
+    "example": "The Mini-ITX board leaves little room around the CPU socket in this compact case.",
+    "exampleZh": "在这款紧凑机箱中，Mini-ITX 主板的 CPU 插槽周围空间很有限。",
+    "tags": "Mini-ITX ITX 主板规格 小机箱 SFF 紧凑装机",
+    "spokenForm": "Mini I T X",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Mini ITX"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Small Form Factor",
+        "relation": "常见平台",
+        "explanation": "Mini-ITX 主板常用于 SFF 紧凑型主机。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "主板尺寸小不代表整机一定小，显卡、电源和散热器仍可能决定机箱体积。"
+    ]
+  },
+  {
     "id": "imported-module",
     "term": "Module",
     "abbreviation": "",
@@ -6126,6 +6494,38 @@
     "contexts": [],
     "usageNotes": [
       "C++ include 路径正确但编译仍失败时，应检查对应模块依赖是否已加入 Build.cs。"
+    ]
+  },
+  {
+    "id": "imported-motherboard-standoff",
+    "term": "Motherboard Standoff",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "主板铜柱",
+    "category": "机箱与散热",
+    "definition": "安装在机箱主板托盘与主板之间的螺柱，用于支撑、定位并保持主板背面与金属托盘的安全距离。",
+    "example": "Remove any motherboard standoff that does not align with a mounting hole.",
+    "exampleZh": "移除所有没有对准主板安装孔的铜柱。",
+    "tags": "motherboard standoff brass standoff 主板铜柱 安装孔 短路",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Mainboard Standoff",
+      "Case Standoff"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Form Factor",
+        "relation": "孔位依据",
+        "explanation": "主板规格决定应使用哪些铜柱孔位。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "多余铜柱可能接触主板背面焊点并造成短路。"
     ]
   },
   {
@@ -7072,6 +7472,50 @@
     ]
   },
   {
+    "id": "imported-power-supply-unit",
+    "term": "Power Supply Unit",
+    "abbreviation": "PSU",
+    "fullForm": "Power Supply Unit",
+    "ipa": "",
+    "zh": "电源供应器",
+    "category": "机箱与散热",
+    "definition": "把市电转换为电脑部件所需直流电并提供供电线的设备；机箱兼容需要同时检查规格、长度、安装档位、接口和出线空间。",
+    "example": "Move the power supply unit to the upper mounting position to clear the graphics card.",
+    "exampleZh": "把电源供应器移到较高安装档位，为显卡腾出空间。",
+    "tags": "PSU Power Supply Unit 电源供应器 机箱兼容 模组线",
+    "spokenForm": "Power Supply Unit",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Computer Power Supply"
+    ],
+    "wordParts": [
+      {
+        "word": "Power",
+        "zh": "电力"
+      },
+      {
+        "word": "Supply",
+        "zh": "供应"
+      },
+      {
+        "word": "Unit",
+        "zh": "设备"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Form Factor",
+        "relation": "机械规格",
+        "explanation": "ATX、SFX 和 SFX-L 等规格影响电源能否安装及其空间占用。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "模组接口外形相似不代表针脚定义相同，不要跨品牌或跨型号混用电源模组线。"
+    ]
+  },
+  {
     "id": "imported-preparedistancefield",
     "term": "PrepareDistanceField",
     "abbreviation": "",
@@ -7608,6 +8052,37 @@
     "contexts": [],
     "usageNotes": [
       "240、280 或 360 只描述名义风扇组合，不能代表冷排本体的精确外形尺寸。"
+    ]
+  },
+  {
+    "id": "imported-radiator-thickness",
+    "term": "Radiator Thickness",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "冷排厚度",
+    "category": "机箱与散热",
+    "definition": "水冷排本体从安装面到另一侧的厚度，是判断冷排与风扇组合是否会碰到主板装甲、内存或显卡的重要尺寸。",
+    "example": "The radiator thickness leaves only two millimeters above the memory modules.",
+    "exampleZh": "这块冷排的厚度使其与内存条之间只剩两毫米间隙。",
+    "tags": "radiator thickness 冷排厚度 风扇厚度 顶置冷排 兼容",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Radiator Depth"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Radiator Clearance",
+        "relation": "尺寸组成",
+        "explanation": "冷排净空应同时容纳冷排厚度、风扇厚度和周边硬件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "240、280 或 360 只描述名义风扇尺寸组合，不能代替冷排本体厚度和外形尺寸。"
     ]
   },
   {
@@ -8515,6 +8990,50 @@
     "usageNotes": []
   },
   {
+    "id": "imported-rpm",
+    "term": "RPM",
+    "abbreviation": "RPM",
+    "fullForm": "Revolutions Per Minute",
+    "ipa": "",
+    "zh": "每分钟转数",
+    "category": "机箱与散热",
+    "definition": "表示风扇或水泵每分钟旋转次数的转速单位；它描述机械转速，不直接等于风量、静压或噪声。",
+    "example": "Two fans running at the same RPM can produce different airflow and noise.",
+    "exampleZh": "两把风扇即使转速相同，也可能产生不同的风量和噪声。",
+    "tags": "RPM revolutions per minute 转速 风扇 水泵 风量 噪声",
+    "spokenForm": "R P M",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Fan Speed"
+    ],
+    "wordParts": [
+      {
+        "word": "Revolutions",
+        "zh": "转数"
+      },
+      {
+        "word": "Per",
+        "zh": "每"
+      },
+      {
+        "word": "Minute",
+        "zh": "分钟"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Fan Curve",
+        "relation": "控制输出",
+        "explanation": "风扇曲线通常根据温度调节目标转速或控制占空比。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "跨尺寸、跨型号比较风扇时，不应只比较 RPM。"
+    ]
+  },
+  {
     "id": "imported-runtime",
     "term": "Runtime",
     "abbreviation": "",
@@ -8742,6 +9261,69 @@
     ]
   },
   {
+    "id": "imported-sfx",
+    "term": "SFX",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "SFX 电源规格",
+    "category": "机箱与散热",
+    "definition": "面向紧凑型电脑的电源外形规格，截面和体积通常小于标准 ATX 电源，可为显卡、冷排或线材释放空间。",
+    "example": "An SFX power supply creates more cable clearance behind the graphics card.",
+    "exampleZh": "SFX 电源为显卡后方腾出了更多线材净空。",
+    "tags": "SFX PSU power supply 电源规格 小电源 紧凑机箱",
+    "spokenForm": "S F X",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "SFX PSU"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "SFX-L",
+        "relation": "加长变体",
+        "explanation": "SFX-L 保留相近截面，但机身通常更长。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "这里的 SFX 是电源机械规格，不等同于描述紧凑型整机的 SFF 类别。",
+      "使用转接架安装 SFX 电源时，还要检查插座方向、风扇进风面和模组线空间。"
+    ]
+  },
+  {
+    "id": "imported-sfx-l",
+    "term": "SFX-L",
+    "abbreviation": "SFX-L",
+    "fullForm": "Small Form Factor - Long",
+    "ipa": "",
+    "zh": "加长型 SFX 电源规格",
+    "category": "机箱与散热",
+    "definition": "在 SFX 截面基础上增加机身长度的电源规格，通常可容纳更大的风扇，但会减少紧凑机箱中的线材和硬件空间。",
+    "example": "The SFX-L unit fits, but its modular connectors touch the drive cage.",
+    "exampleZh": "这台 SFX-L 电源能装入，但模组接口会碰到硬盘架。",
+    "tags": "SFX-L PSU power supply 电源规格 加长电源 兼容",
+    "spokenForm": "S F X L",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "SFX L"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "SFX",
+        "relation": "基础规格",
+        "explanation": "SFX-L 与 SFX 截面相近，但长度通常更大。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "机箱支持 SFX 不一定支持 SFX-L，应核对电源长度和插头后的总占用空间。"
+    ]
+  },
+  {
     "id": "imported-shadows",
     "term": "Shadows",
     "abbreviation": "",
@@ -8768,6 +9350,69 @@
     ],
     "usageNotes": [
       "ShadowDepths/ShadowProjection 的总称。"
+    ]
+  },
+  {
+    "id": "imported-side-panel",
+    "term": "Side Panel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "机箱侧板",
+    "category": "机箱与散热",
+    "definition": "封闭机箱侧面的可拆卸面板，可能采用钢板、网孔或钢化玻璃，并影响气流边界、噪声传播、结构保护和线材净空。",
+    "example": "The GPU temperature drops when the restrictive side panel is removed.",
+    "exampleZh": "拆下限制进风的侧板后，GPU 温度下降了。",
+    "tags": "side panel 机箱侧板 tempered glass mesh panel 侧透 风道",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Case Side Panel"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Mesh Panel",
+        "relation": "面板类型",
+        "explanation": "网孔侧板允许更多被动空气交换，但也更容易传出噪声。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "开侧板测试适合诊断风阻，但不能直接代表长期使用条件。"
+    ]
+  },
+  {
+    "id": "imported-single-variable-testing",
+    "term": "Single-Variable Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "单变量测试",
+    "category": "机箱与散热",
+    "definition": "在环境、负载和其他配置尽量不变时，每轮只改变一个风扇方向、转速或面板状态，以识别该因素真实影响的测试方法。",
+    "example": "Use single-variable testing to compare the top fan as intake and exhaust.",
+    "exampleZh": "使用单变量测试比较顶部风扇进风和排风时的差异。",
+    "tags": "single-variable testing 单变量测试 A/B test 风道 温度 噪声",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "One-Variable-at-a-Time Testing",
+      "OVAT Testing"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Delta T",
+        "relation": "比较指标",
+        "explanation": "单变量测试可以用部件相对环境温度的温升比较不同方案。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "改变风扇位置时应保持功耗、风扇曲线、侧板状态和测试时长一致。"
     ]
   },
   {
@@ -10105,6 +10750,37 @@
     ]
   },
   {
+    "id": "imported-thermal-load",
+    "term": "Thermal Load",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "热负载",
+    "category": "机箱与散热",
+    "definition": "散热系统在给定时间内需要处理的发热量，通常与 CPU、GPU 及其他部件的实际功耗和负载持续时间相关。",
+    "example": "A combined CPU and GPU workload creates a higher thermal load inside the case.",
+    "exampleZh": "CPU 与 GPU 混合负载会在机箱内产生更高的热负载。",
+    "tags": "thermal load 热负载 功耗 CPU GPU 散热测试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Heat Load"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Thermal Equilibrium",
+        "relation": "测试状态",
+        "explanation": "持续热负载下，系统最终可能接近输入热量与排出热量平衡的状态。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "比较机箱温度时应记录实际功耗，不能只使用相同的软件名称作为负载依据。"
+    ]
+  },
+  {
     "id": "imported-tick-animation",
     "term": "Tick_Animation",
     "abbreviation": "",
@@ -10721,6 +11397,69 @@
     ]
   },
   {
+    "id": "imported-tonal-noise",
+    "term": "Tonal Noise",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "音调噪声",
+    "category": "机箱与散热",
+    "definition": "能在宽频背景声中听出明确音高或窄频峰值的噪声，可能来自风扇叶片通过频率、电机、泵或结构共振。",
+    "example": "The fan produces tonal noise only around 900 RPM.",
+    "exampleZh": "这把风扇只在约 900 RPM 时产生明显音调噪声。",
+    "tags": "tonal noise 音调噪声 窄频 风扇 电机 共振",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Tone Noise"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Resonance",
+        "relation": "可能成因",
+        "explanation": "结构共振可能放大某个频率，使噪声呈现明显音调。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "相同分贝下，明显音调通常比平稳宽频风噪更容易被察觉。"
+    ]
+  },
+  {
+    "id": "imported-tower-cooler",
+    "term": "Tower Cooler",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "塔式 CPU 散热器",
+    "category": "机箱与散热",
+    "definition": "让热管把 CPU 热量传到竖直鳍片塔，再由风扇沿水平方向吹过鳍片的风冷散热器。",
+    "example": "Align the tower cooler with the rear exhaust fan to create a continuous airflow path.",
+    "exampleZh": "让塔式散热器对准后部排风风扇，形成连续气流路径。",
+    "tags": "tower cooler CPU air cooler 塔式散热器 风冷 高度兼容",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Tower CPU Cooler",
+      "Tower Air Cooler"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "CPU Cooler Clearance",
+        "relation": "安装限制",
+        "explanation": "塔式散热器的总高度和宽度必须满足机箱与主板周边净空。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "前置风扇为避让内存而抬高时，应把增加后的总高度计入兼容检查。"
+    ]
+  },
+  {
     "id": "imported-trace-stub",
     "term": "Trace Stub",
     "abbreviation": "",
@@ -11140,6 +11879,38 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-vibration-isolation",
+    "term": "Vibration Isolation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "振动隔离",
+    "category": "机箱与散热",
+    "definition": "通过橡胶垫、柔性固定或结构解耦，减少风扇、水泵和机械硬盘振动传递到机箱面板的措施。",
+    "example": "Rubber mounts improve vibration isolation between the hard drive and the case.",
+    "exampleZh": "橡胶安装件改善了机械硬盘与机箱之间的振动隔离。",
+    "tags": "vibration isolation anti-vibration 振动隔离 减振 风扇 水泵 硬盘",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "机箱知识体系.md",
+    "aliases": [
+      "Anti-Vibration Mounting",
+      "Vibration Decoupling"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Resonance",
+        "relation": "抑制目标",
+        "explanation": "减少振动耦合可以降低面板被激发产生共振的概率。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "减振材料不能解决所有电机或轴承噪声，应先区分空气声和结构传递声。"
+    ]
   },
   {
     "id": "imported-victim",
