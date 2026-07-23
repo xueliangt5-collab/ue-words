@@ -1550,6 +1550,59 @@
     ]
   },
   {
+    "id": "imported-ckd",
+    "term": "CKD",
+    "abbreviation": "CKD",
+    "fullForm": "Client Clock Driver",
+    "ipa": "",
+    "zh": "客户端时钟驱动器",
+    "category": "内存与架构",
+    "definition": "位于 CUDIMM 上的时钟器件，接收平台提供的 DDR5 时钟并重新驱动，以改善高数据率下到 DRAM 颗粒的时钟质量。",
+    "example": "The CKD redrives the clock before it reaches the DRAM devices on the CUDIMM.",
+    "exampleZh": "CKD 会在时钟到达 CUDIMM 上的 DRAM 颗粒之前重新驱动该信号。",
+    "tags": "CKD Client Clock Driver CUDIMM DDR5 时钟驱动器 信号完整性",
+    "spokenForm": "C K D",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Client",
+        "zh": "客户端"
+      },
+      {
+        "word": "Clock",
+        "zh": "时钟"
+      },
+      {
+        "word": "Driver",
+        "zh": "驱动器"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "CUDIMM",
+        "relation": "所属模块",
+        "explanation": "CKD 是 CUDIMM 区别于普通 UDIMM 的关键组件之一。"
+      },
+      {
+        "term": "DDR PHY",
+        "relation": "信号链路",
+        "explanation": "CKD 位于 DDR PHY 与模块上 DRAM 颗粒之间的时钟路径。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "CKD bypass mode",
+        "explanation": "兼容模式可能绕过 CKD 的完整时钟重驱动能力。",
+        "experience": "看到 CUDIMM 能启动时，还要确认平台是否真正启用了受支持的 CKD 工作模式。"
+      }
+    ],
+    "usageNotes": [
+      "CKD 改善的是时钟路径，不会消除 CPU IMC、主板走线、容量和 Rank 带来的限制。"
+    ]
+  },
+  {
     "id": "imported-clearconstructedobjects",
     "term": "ClearConstructedObjects",
     "abbreviation": "",
@@ -2269,6 +2322,66 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-cudimm",
+    "term": "CUDIMM",
+    "abbreviation": "CUDIMM",
+    "fullForm": "Clocked Unbuffered Dual In-Line Memory Module",
+    "ipa": "",
+    "zh": "带时钟驱动器的无缓冲内存模块",
+    "category": "内存与架构",
+    "definition": "一种在普通无缓冲桌面 DIMM 基础上加入客户端时钟驱动器的 DDR5 模块，用重新驱动的时钟信号改善高数据率下的信号完整性。",
+    "example": "The motherboard must support CUDIMM before the module can use its intended high-speed mode.",
+    "exampleZh": "主板必须支持 CUDIMM，模块才能使用其目标高速模式。",
+    "tags": "CUDIMM Clocked Unbuffered DIMM DDR5 带时钟驱动器内存 高频内存",
+    "spokenForm": "C U DIMM",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Clocked UDIMM"
+    ],
+    "wordParts": [
+      {
+        "word": "Clocked",
+        "zh": "带时钟驱动"
+      },
+      {
+        "word": "Unbuffered",
+        "zh": "无缓冲"
+      },
+      {
+        "word": "Dual In-Line",
+        "zh": "双列直插式"
+      },
+      {
+        "word": "Memory Module",
+        "zh": "内存模块"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "CKD",
+        "relation": "板载组件",
+        "explanation": "CUDIMM 使用 CKD 接收并重新驱动时钟信号。"
+      },
+      {
+        "term": "Dual In-line Memory Module",
+        "relation": "模块家族",
+        "explanation": "CUDIMM 是 DIMM 家族中面向客户端高数据率平台的一种模块。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "CUDIMM platform support",
+        "explanation": "CPU、主板和 BIOS 都需要对 CUDIMM 的工作方式提供支持。",
+        "experience": "能够点亮不等于能够启用目标数据率；购买前应核对主板内存支持列表和 BIOS 说明。"
+      }
+    ],
+    "usageNotes": [
+      "CUDIMM 不是 RDIMM，不能因为都带额外芯片就把两者视为同一种缓冲结构。",
+      "部分不完整支持的平台可能只能让 CUDIMM 以兼容或旁路方式运行。"
+    ]
   },
   {
     "id": "imported-d3d12-allocatepoolresource",
@@ -5610,8 +5723,8 @@
   {
     "id": "imported-memory-context-restore",
     "term": "Memory Context Restore",
-    "abbreviation": "",
-    "fullForm": "",
+    "abbreviation": "MCR",
+    "fullForm": "Memory Context Restore",
     "ipa": "",
     "zh": "内存上下文恢复",
     "category": "内存与架构",
@@ -5619,13 +5732,26 @@
     "example": "Disabling Memory Context Restore can help diagnose unstable cold boots.",
     "exampleZh": "关闭内存上下文恢复有助于诊断不稳定的冷启动。",
     "tags": "Memory Context Restore MCR AMD BIOS 启动 内存训练",
-    "spokenForm": "",
+    "spokenForm": "memory context restore",
     "threadCategory": "",
     "source": "内存知识体系.md",
     "aliases": [
       "MCR"
     ],
-    "wordParts": [],
+    "wordParts": [
+      {
+        "word": "Memory",
+        "zh": "内存"
+      },
+      {
+        "word": "Context",
+        "zh": "上下文"
+      },
+      {
+        "word": "Restore",
+        "zh": "恢复"
+      }
+    ],
     "relatedTerms": [
       {
         "term": "Memory Training",
@@ -5712,7 +5838,7 @@
     "definition": "一组同时响应片选信号并共同提供完整通道数据位宽的 DRAM 颗粒。",
     "example": "A dual-rank DIMM can interleave requests between its two ranks.",
     "exampleZh": "双 Rank DIMM 可以在两个 Rank 之间交错处理请求。",
-    "tags": "Memory Rank 内存Rank 单Rank 双Rank DRAM",
+    "tags": "Memory Rank 内存Rank 单Rank 双Rank 1Rx8 2Rx8 DRAM",
     "spokenForm": "",
     "threadCategory": "",
     "source": "内存知识体系.md",
@@ -5728,9 +5854,17 @@
         "explanation": "控制器可在一个 Rank 忙碌时向另一个 Rank 调度请求。"
       }
     ],
-    "contexts": [],
+    "contexts": [
+      {
+        "phrase": "1Rx8 and 2Rx8",
+        "explanation": "1R/2R 表示 Rank 数量，x8 表示单颗 DRAM 器件的数据位宽。",
+        "experience": "阅读 QVL 时应使用 1Rx8/2Rx8 判断逻辑组织，不能用 SS/DS 直接代替 Rank。"
+      }
+    ],
     "usageNotes": [
-      "Rank 数量、DIMM 数量和内存通道数量是三个不同概念。"
+      "Rank 数量、DIMM 数量和内存通道数量是三个不同概念。",
+      "32GB DIMM 既可能是 1Rx8，也可能是 2Rx8，应按完整料号或 SPD 核实。",
+      "SS/DS 描述颗粒的物理面数，不等同于 Single Rank/Dual Rank。"
     ]
   },
   {
@@ -5775,7 +5909,7 @@
     "definition": "系统启动时为当前 CPU、主板和 DIMM 组合校准读写采样、信号延迟、终端和驱动参数的过程。",
     "example": "The first boot takes longer because the firmware is training the memory.",
     "exampleZh": "首次启动耗时更长，因为固件正在训练内存。",
-    "tags": "Memory Training 内存训练 POST DDR PHY BIOS",
+    "tags": "Memory Training 内存训练 POST DDR PHY BIOS DIMM-by-slot",
     "spokenForm": "",
     "threadCategory": "",
     "source": "内存知识体系.md",
@@ -5789,11 +5923,23 @@
         "term": "Memory Context Restore",
         "relation": "结果复用",
         "explanation": "Memory Context Restore 尝试复用已有训练结果以缩短启动时间。"
+      },
+      {
+        "term": "ODT",
+        "relation": "训练参数",
+        "explanation": "训练过程可能为当前 DIMM 拓扑选择合适的 ODT 配置。"
       }
     ],
-    "contexts": [],
+    "contexts": [
+      {
+        "phrase": "DIMM-by-slot isolation test",
+        "explanation": "给套装中的 DIMM 标记 A/B，再分别测试 A2/B2，可以判断故障跟随内存条还是插槽。",
+        "experience": "测试中必须记录 DIMM、插槽、等待时间和 POST 代码，避免换条时混淆对象而得到错误结论。"
+      }
+    ],
     "usageNotes": [
-      "训练失败可能来自 IMC、主板布线、插槽、BIOS 或参数，不一定是 DIMM 损坏。"
+      "训练失败可能来自 IMC、主板布线、插槽、BIOS 或参数，不一定是 DIMM 损坏。",
+      "同一根 DIMM 在多个已知正常插槽都失败，而另一根在相同插槽正常时，应优先怀疑该 DIMM。"
     ]
   },
   {
@@ -6116,6 +6262,57 @@
     ]
   },
   {
+    "id": "imported-on-die-termination",
+    "term": "ODT",
+    "abbreviation": "ODT",
+    "fullForm": "On-Die Termination",
+    "ipa": "",
+    "zh": "片上终端匹配",
+    "category": "内存与架构",
+    "definition": "集成在内存相关芯片内部的可配置终端电阻机制，用于抑制高速总线反射并改善信号完整性。",
+    "example": "Memory training may select different ODT values for a two-DIMM configuration.",
+    "exampleZh": "内存训练可能会为双条配置选择不同的 ODT 数值。",
+    "tags": "ODT On-Die Termination 片上终端匹配 终端电阻 DDR5 信号反射",
+    "spokenForm": "O D T",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "On Die Termination"
+    ],
+    "wordParts": [
+      {
+        "word": "On-Die",
+        "zh": "芯片内部"
+      },
+      {
+        "word": "Termination",
+        "zh": "终端匹配"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "训练参数",
+        "explanation": "固件可能在训练过程中选择适合当前拓扑的 ODT 配置。"
+      },
+      {
+        "term": "DDR PHY",
+        "relation": "信号完整性",
+        "explanation": "ODT 与 PHY 驱动强度、主板走线和 DIMM 负载共同影响信号质量。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "DDR5 ODT settings",
+        "explanation": "BIOS 中可能显示多组与控制器、DIMM 或不同 Rank 有关的终端参数。",
+        "experience": "没有平台专用依据时不要照抄另一代 CPU 或另一种 DIMM 组织的 ODT 数值。"
+      }
+    ],
+    "usageNotes": [
+      "ODT 不是越高或越低越好，目标是在当前走线和负载下获得足够的信号裕量。"
+    ]
+  },
+  {
     "id": "imported-on-message-received",
     "term": "On Message Received",
     "abbreviation": "",
@@ -6185,8 +6382,8 @@
   {
     "id": "imported-one-dimm-per-channel",
     "term": "One DIMM Per Channel",
-    "abbreviation": "",
-    "fullForm": "",
+    "abbreviation": "1DPC",
+    "fullForm": "One DIMM Per Channel",
     "ipa": "",
     "zh": "每通道一根内存",
     "category": "内存与架构",
@@ -6194,13 +6391,26 @@
     "example": "A two-DIMM kit uses one DIMM per channel on a dual-channel board.",
     "exampleZh": "在双通道主板上，两条套装采用每通道一根 DIMM。",
     "tags": "1DPC One DIMM Per Channel 每通道一根 DDR5",
-    "spokenForm": "One Dimm Per Channel",
+    "spokenForm": "one DIMM per channel",
     "threadCategory": "",
     "source": "内存知识体系.md",
     "aliases": [
       "1DPC"
     ],
-    "wordParts": [],
+    "wordParts": [
+      {
+        "word": "One",
+        "zh": "一根"
+      },
+      {
+        "word": "DIMM",
+        "zh": "内存模块"
+      },
+      {
+        "word": "Per Channel",
+        "zh": "每个通道"
+      }
+    ],
     "relatedTerms": [
       {
         "term": "Two DIMMs Per Channel",
@@ -6752,6 +6962,54 @@
     ]
   },
   {
+    "id": "imported-post-code",
+    "term": "POST Code",
+    "abbreviation": "POST",
+    "fullForm": "Power-On Self-Test",
+    "ipa": "",
+    "zh": "开机自检代码",
+    "category": "内存与架构",
+    "definition": "主板在开机自检过程中显示的阶段或故障代码，用于定位启动停在 CPU、内存、显卡或其他初始化环节。",
+    "example": "The board stopped at a memory-related POST code during DIMM training.",
+    "exampleZh": "主板在 DIMM 训练期间停在了与内存相关的开机自检代码。",
+    "tags": "POST Code Power-On Self-Test 开机自检代码 Q-Code Debug Code C1 C5 55 DRAM",
+    "spokenForm": "post code",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Debug Code",
+      "Q-Code"
+    ],
+    "wordParts": [
+      {
+        "word": "Power-On",
+        "zh": "开机"
+      },
+      {
+        "word": "Self-Test",
+        "zh": "自检"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Memory Training",
+        "relation": "诊断阶段",
+        "explanation": "内存训练失败时，主板可能停留在与 DRAM 初始化有关的 POST 代码。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "DIMM-by-slot POST test matrix",
+        "explanation": "给两根 DIMM 编号后分别测试 A2/B2，并记录每次的 POST 代码。",
+        "experience": "故障始终跟随同一根 DIMM 时优先怀疑内存条；故障始终跟随同一插槽或通道时再检查主板、CPU 插座和安装。"
+      }
+    ],
+    "usageNotes": [
+      "C1、C5、55 等代码的含义由主板厂商和型号定义，不能跨品牌直接套用。",
+      "POST 代码说明故障停留阶段，不一定直接等于最终损坏部件。"
+    ]
+  },
+  {
     "id": "imported-postprocessing",
     "term": "PostProcessing",
     "abbreviation": "",
@@ -7247,6 +7505,63 @@
     "contexts": [],
     "usageNotes": [
       "不同风扇的最低稳定占空比、启动占空比和停转能力并不相同。"
+    ]
+  },
+  {
+    "id": "imported-qualified-vendor-list",
+    "term": "QVL",
+    "abbreviation": "QVL",
+    "fullForm": "Qualified Vendor List",
+    "ipa": "",
+    "zh": "合格供应商列表",
+    "category": "内存与架构",
+    "definition": "主板或平台厂商在特定 CPU、BIOS、容量和插条条件下验证过的内存型号清单。",
+    "example": "Check the exact kit part number in the motherboard memory QVL.",
+    "exampleZh": "请在主板内存 QVL 中核对套装的完整料号。",
+    "tags": "QVL Qualified Vendor List Qualified Vendors List 内存兼容列表 主板料号",
+    "spokenForm": "Q V L",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Qualified Vendors List",
+      "Memory QVL"
+    ],
+    "wordParts": [
+      {
+        "word": "Qualified",
+        "zh": "经过验证的"
+      },
+      {
+        "word": "Vendor",
+        "zh": "供应商"
+      },
+      {
+        "word": "List",
+        "zh": "列表"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Extreme Memory Profile",
+        "relation": "验证配置",
+        "explanation": "QVL 可能记录套装在特定平台上验证过的 XMP 配置和插条数量。"
+      },
+      {
+        "term": "Extended Profiles for Overclocking",
+        "relation": "验证配置",
+        "explanation": "AMD 平台 QVL 可能记录套装的 EXPO 配置和验证条件。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "memory QVL lookup",
+        "explanation": "应核对完整料号、单条容量、套装数量、Rank、测试 CPU 和 BIOS。",
+        "experience": "16GB 单条的 QVL 记录不能直接证明同系列 32GB 单条套装已经验证。"
+      }
+    ],
+    "usageNotes": [
+      "QVL 是经过测试的样本清单，不是所有兼容内存的完整白名单。",
+      "进入 QVL 不代表在任意 CPU 个体、BIOS 或超频参数下必定稳定。"
     ]
   },
   {
@@ -10406,6 +10721,49 @@
     ]
   },
   {
+    "id": "imported-trace-stub",
+    "term": "Trace Stub",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "走线支路",
+    "category": "内存与架构",
+    "definition": "从高速主信号路径分出但没有继续连接到活动接收端的短走线支路，会形成阻抗不连续并产生信号反射。",
+    "example": "An unused DIMM slot can leave a trace stub on the memory channel.",
+    "exampleZh": "未使用的 DIMM 插槽可能在内存通道上留下走线支路。",
+    "tags": "Trace Stub Signal Stub 走线支路 残线 阻抗不连续 信号反射 DDR5",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "内存知识体系.md",
+    "aliases": [
+      "Signal Stub",
+      "Stub"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "DDR PHY",
+        "relation": "信号路径",
+        "explanation": "DDR PHY 发出的高速信号会受到主板走线支路和阻抗变化影响。"
+      },
+      {
+        "term": "One DIMM Per Channel",
+        "relation": "拓扑影响",
+        "explanation": "专用双槽板减少不使用插槽及其支路，通常更容易追求极限数据率。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "unused DIMM slot stub",
+        "explanation": "四槽 Daisy Chain 主板在某些插条方式下会保留未使用插槽相关的电气支路。",
+        "experience": "两条内存应优先插主板说明书指定的 A2/B2，而不是只按离 CPU 最近的位置判断。"
+      }
+    ],
+    "usageNotes": [
+      "Stub 的实际影响取决于长度、拓扑、终端和数据率，不能只凭是否存在支路判断主板优劣。"
+    ]
+  },
+  {
     "id": "imported-translation-lookaside-buffer",
     "term": "Translation Lookaside Buffer",
     "abbreviation": "",
@@ -10572,8 +10930,8 @@
   {
     "id": "imported-two-dimms-per-channel",
     "term": "Two DIMMs Per Channel",
-    "abbreviation": "",
-    "fullForm": "",
+    "abbreviation": "2DPC",
+    "fullForm": "Two DIMMs Per Channel",
     "ipa": "",
     "zh": "每通道两根内存",
     "category": "内存与架构",
@@ -10581,13 +10939,26 @@
     "example": "Two DIMMs per channel may require a lower data rate for reliable training.",
     "exampleZh": "每通道两根 DIMM 可能需要降低数据率才能可靠训练。",
     "tags": "2DPC Two DIMMs Per Channel 四条内存 DDR5",
-    "spokenForm": "Two Dimms Per Channel",
+    "spokenForm": "two DIMMs per channel",
     "threadCategory": "",
     "source": "内存知识体系.md",
     "aliases": [
       "2DPC"
     ],
-    "wordParts": [],
+    "wordParts": [
+      {
+        "word": "Two",
+        "zh": "两根"
+      },
+      {
+        "word": "DIMMs",
+        "zh": "内存模块"
+      },
+      {
+        "word": "Per Channel",
+        "zh": "每个通道"
+      }
+    ],
     "relatedTerms": [
       {
         "term": "One DIMM Per Channel",
