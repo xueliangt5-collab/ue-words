@@ -1,1 +1,215 @@
-[]
+[
+  {
+    "id": "timing-panel-slow-frame-workflow",
+    "titleEn": "Using the Timing Panel to Investigate Slow Frames",
+    "titleZh": "使用 Timing Panel 定位慢帧",
+    "summaryEn": "A bilingual study guide adapted from Epic's Timing Panel documentation. It connects frame selection, timing tracks, event costs, filters, trace channels, and task scheduling into one repeatable Unreal Insights workflow.",
+    "summaryZh": "这是一篇根据 Epic Timing Panel 文档整理的双语学习指南，把选慢帧、看计时轨道、分析事件耗时、使用筛选器、检查追踪通道和任务调度串成一套可复现的 Unreal Insights 流程。",
+    "category": "性能分析",
+    "level": "入门",
+    "tags": [
+      "Unreal Insights",
+      "Timing Insights",
+      "慢帧",
+      "CPU",
+      "GPU",
+      "线程",
+      "Trace"
+    ],
+    "source": "https://dev.epicgames.com/documentation/unreal-engine/using-the-timing-panel-in-unreal-insights-for-unreal-engine?application_version=5.5&lang=en-US",
+    "sections": [
+      {
+        "id": "read-the-timeline",
+        "headingEn": "Read the timeline before reading the code",
+        "headingZh": "先读时间线，再读代码",
+        "en": "The Timing Panel is the main timeline for a trace. In Unreal Insights, each Timing Track represents a processing thread or group, while the width of a Timer Event shows how long that event kept the track busy. A wide event is evidence of cost, but it is not proof of the final root cause.",
+        "zh": "Timing Panel 是阅读性能轨迹的主要时间线。在 Unreal Insights 中，每条 Timing Track 代表一个处理线程或线程组，而 Timer Event 的宽度表示它占用了这条轨道多长时间。事件很宽说明它有成本，但不能单凭这一点断定最终根因。",
+        "termLinks": [
+          {
+            "termId": "imported-timing-panel",
+            "textEn": "Timing Panel",
+            "textZh": "Timing Panel",
+            "note": "显示 CPU、GPU 和线程事件的主要时间线。"
+          },
+          {
+            "termId": "imported-unreal-insights",
+            "textEn": "Unreal Insights",
+            "textZh": "Unreal Insights",
+            "note": "这里指用于读取性能轨迹的工具。"
+          },
+          {
+            "termId": "imported-timing-track",
+            "textEn": "Timing Track",
+            "textZh": "Timing Track",
+            "note": "按线程或线程组组织事件的轨道。"
+          },
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "带有持续时间的轨迹事件。"
+          }
+        ]
+      },
+      {
+        "id": "select-a-slow-frame",
+        "headingEn": "Start with a real slow frame",
+        "headingZh": "从一帧真实的慢帧开始",
+        "en": "Start in the Frames Panel. Select a slow frame or a time range, then return to the Timing Panel and zoom into that interval. For an engine-loop investigation, FEngineLoop::Tick is a useful parent landmark before you expand its child events. This keeps the investigation tied to a reproducible frame instead of a vague average.",
+        "zh": "先从 Frames Panel 开始，选择一帧慢帧或一个时间范围，再回到 Timing Panel 放大这段区间。分析引擎主循环时，可以先把 FEngineLoop::Tick 当作父级定位点，再展开它的子事件。这样分析会绑定到可复现的具体帧，而不是模糊的平均值。",
+        "termLinks": [
+          {
+            "termId": "imported-frames-panel",
+            "textEn": "Frames Panel",
+            "textZh": "Frames Panel",
+            "note": "先从帧级视图找出慢帧。"
+          },
+          {
+            "termId": "imported-timing-panel",
+            "textEn": "Timing Panel",
+            "textZh": "Timing Panel",
+            "note": "把选中的帧放大到事件时间线。"
+          },
+          {
+            "termId": "imported-fengineloop-tick",
+            "textEn": "FEngineLoop::Tick",
+            "textZh": "FEngineLoop::Tick",
+            "note": "引擎主循环的父级定位点。"
+          }
+        ]
+      },
+      {
+        "id": "compare-events-and-values",
+        "headingEn": "Compare events with timers and counters",
+        "headingZh": "结合计时器和计数器比较事件",
+        "en": "Click an event to highlight it, or double-click to isolate its other instances. Use the Timer Event list to compare costs and Inclusive Time, and use the Counter list for values that changed during the same range. A large inclusive value can include child work, so expand the hierarchy before blaming a leaf function.",
+        "zh": "点击事件可以将它突出显示，双击则可以隔离它的其他实例。使用 Timer Event 列表比较耗时和 Inclusive Time，使用 Counter 列表查看同一时间范围内发生变化的数值。较大的包含时间可能包括子事件工作，因此在归咎于某个叶子函数前要先展开层级。",
+        "termLinks": [
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "按持续时间比较事件成本。"
+          },
+          {
+            "termId": "imported-inclusive-time",
+            "textEn": "Inclusive Time",
+            "textZh": "Inclusive Time",
+            "note": "包含事件自身及子事件的耗时统计。"
+          },
+          {
+            "termId": "imported-counter",
+            "textEn": "Counter",
+            "textZh": "Counter",
+            "note": "对照观察数量或数值变化。"
+          }
+        ]
+      },
+      {
+        "id": "filter-the-question",
+        "headingEn": "Use filters to ask a narrower question",
+        "headingZh": "用筛选器提出更具体的问题",
+        "en": "Use filters to reduce noise. An Exact Match filter helps separate a long timer name from similarly named events. A Metadata Filter can narrow the result by fields such as AssetPath or SizeInBytes. A filter changes the visible set of events; it does not change the original trace, so record the filter values with your result.",
+        "zh": "使用筛选器减少噪声。Exact Match 适合把长计时器名称与相似名称的事件分开；Metadata Filter 则可以按 AssetPath 或 SizeInBytes 等字段缩小结果。筛选器只改变当前可见的事件集合，不会修改原始轨迹，因此要把筛选值和分析结果一起记录。",
+        "termLinks": [
+          {
+            "termId": "imported-exact-match",
+            "textEn": "Exact Match",
+            "textZh": "Exact Match",
+            "note": "限制为名称完全匹配的事件。"
+          },
+          {
+            "termId": "imported-metadata-filter",
+            "textEn": "Metadata Filter",
+            "textZh": "Metadata Filter",
+            "note": "按事件附带字段筛选。"
+          }
+        ]
+      },
+      {
+        "id": "check-trace-channels",
+        "headingEn": "Check the trace channels before diagnosing missing data",
+        "headingZh": "诊断数据缺失前先检查追踪通道",
+        "en": "Trace data is only available when its Trace Channel was recorded. The Regions Channel can provide long-duration regions, and a Plugin may expose additional tracks. If a channel is missing, check the capture preset and the command line before concluding that the frame never performed the work.",
+        "zh": "只有在录制时启用了对应的 Trace Channel，相关追踪数据才会出现。Regions Channel 可以提供长时间区域，Plugin 也可能暴露额外轨道。如果某个通道完全缺失，要先检查采集预设和命令行，再判断这一帧是否真的没有执行相关工作。",
+        "termLinks": [
+          {
+            "termId": "imported-trace-channel",
+            "textEn": "Trace Channel",
+            "textZh": "Trace Channel",
+            "note": "决定哪些追踪数据会被采集。"
+          },
+          {
+            "termId": "imported-plugin",
+            "textEn": "Plugin",
+            "textZh": "Plugin",
+            "note": "可能提供额外轨道的扩展模块。"
+          }
+        ]
+      },
+      {
+        "id": "inspect-context-switches",
+        "headingEn": "Use context switches as scheduling evidence",
+        "headingZh": "把上下文切换当作调度证据",
+        "en": "A Context Switch view adds scheduling evidence to CPU and GPU tracks. It can show when a thread stopped running and which task resumed, but the feature must be enabled when the trace is recorded. On Windows, permissions can also affect whether the channel takes effect.",
+        "zh": "Context Switch 视图可以为 CPU 和 GPU 轨道补充调度证据。它能显示线程何时停止运行、哪个任务随后恢复，但必须在录制轨迹时启用该功能。在 Windows 上，权限设置也可能影响通道是否生效。",
+        "termLinks": [
+          {
+            "termId": "imported-context-switch",
+            "textEn": "Context Switch",
+            "textZh": "Context Switch",
+            "note": "观察线程停止和恢复运行的调度信息。"
+          }
+        ]
+      },
+      {
+        "id": "follow-task-relationships",
+        "headingEn": "Follow work across the task graph",
+        "headingZh": "沿任务图追踪跨线程工作",
+        "en": "Task Graph Insights is useful when work moves between threads. Enable task events, then inspect the relationships between tasks to follow the flow of logic instead of reading one thread in isolation. This helps when a parent event looks cheap on one track but waits for work elsewhere.",
+        "zh": "当工作在线程之间转移时，Task Graph Insights 很有用。启用任务事件后，检查任务之间的关系，沿逻辑流向追踪工作，而不是孤立地阅读一条线程。当某条轨道上的父事件看起来不重，却在等待其他地方的工作时，这种视图尤其有帮助。",
+        "termLinks": [
+          {
+            "termId": "imported-task-graph-insights",
+            "textEn": "Task Graph Insights",
+            "textZh": "Task Graph Insights",
+            "note": "查看任务之间的关系和跨线程流转。"
+          }
+        ]
+      },
+      {
+        "id": "repeatable-workflow",
+        "headingEn": "Keep the investigation reproducible",
+        "headingZh": "让分析过程可以复现",
+        "en": "A practical loop is: find a slow frame, select its Timing Track, isolate a Timer Event, compare Inclusive Time or Counter values, and widen the view only when the trace raises a scheduling or capture question. Keep the selected frame, filter settings, and trace setup in your notes so another run can reproduce the same conclusion.",
+        "zh": "一套实用流程是：找到慢帧，选择对应的 Timing Track，隔离一个 Timer Event，比较 Inclusive Time 或 Counter 数值，只有当轨迹提出调度或采集问题时才扩大观察范围。把选中的帧、筛选设置和追踪配置记录下来，下一次运行才能复现同一个结论。",
+        "termLinks": [
+          {
+            "termId": "imported-timing-track",
+            "textEn": "Timing Track",
+            "textZh": "Timing Track",
+            "note": "固定要分析的线程或资源轨道。"
+          },
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "固定要比较的耗时事件。"
+          },
+          {
+            "termId": "imported-inclusive-time",
+            "textEn": "Inclusive Time",
+            "textZh": "Inclusive Time",
+            "note": "比较包含子事件的耗时。"
+          },
+          {
+            "termId": "imported-counter",
+            "textEn": "Counter",
+            "textZh": "Counter",
+            "note": "对照记录数量或数值变化。"
+          }
+        ]
+      }
+    ]
+  }
+]

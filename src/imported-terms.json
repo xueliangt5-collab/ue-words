@@ -2362,6 +2362,40 @@
     ]
   },
   {
+    "id": "imported-context-switch",
+    "term": "Context Switch",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "上下文切换",
+    "category": "性能分析",
+    "definition": "操作系统或调度器在可运行任务之间切换执行上下文的过程；在 Insights 中可用于解释线程何时停止或恢复运行。",
+    "example": "Context Switch data can explain why a thread was not running during part of the frame.",
+    "exampleZh": "Context Switch 数据可以解释线程为何在帧的一部分时间内没有运行。",
+    "tags": "Context Switch Unreal Insights 上下文切换 调度 CPU 线程",
+    "spokenForm": "Context Switch",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Trace Channel",
+        "relation": "采集前提",
+        "explanation": "上下文切换数据必须在录制时通过对应通道采集。"
+      },
+      {
+        "term": "Timing Track",
+        "relation": "时间线显示",
+        "explanation": "Context Switch 信息可以补充 Timing Track 上的线程运行状态。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Context Switch 能解释线程调度状态，但不能单独证明某个函数就是根因；仍要回到事件耗时和等待关系。"
+    ]
+  },
+  {
     "id": "imported-control-rig",
     "term": "Control Rig",
     "abbreviation": "",
@@ -2387,6 +2421,40 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-counter",
+    "term": "Counter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计数器",
+    "category": "性能分析",
+    "definition": "在 Unreal Insights 中记录数值随时间变化的统计项，可与 Timer Event 一起用于解释慢帧。",
+    "example": "Use a Counter to compare the number of active objects during the selected range.",
+    "exampleZh": "使用 Counter 比较选定时间范围内的活动对象数量。",
+    "tags": "Counter Unreal Insights counters 计数器 统计值 数值",
+    "spokenForm": "Counter",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Timer Event",
+        "relation": "耗时对照",
+        "explanation": "Timer Event 说明花了多久，Counter 可以说明数量或数值是否同时增长。"
+      },
+      {
+        "term": "Timing Panel",
+        "relation": "联动面板",
+        "explanation": "Timing Panel 选中的时间范围会影响 Counters 列表的统计范围。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Counter 的增长可以帮助解释耗时上升，但相关性仍需结合事件层级和实际工作内容确认。"
+    ]
   },
   {
     "id": "imported-cpu-cooler-clearance",
@@ -4715,6 +4783,40 @@
     "usageNotes": []
   },
   {
+    "id": "imported-frames-panel",
+    "term": "Frames Panel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "帧面板",
+    "category": "性能分析",
+    "definition": "以帧为单位展示总耗时的面板，用于发现慢帧、帧时间尖峰和需要进一步放大的时间范围。",
+    "example": "Select a frame in the Frames Panel before zooming into the Timing Panel.",
+    "exampleZh": "先在 Frames Panel 中选择一帧，再放大 Timing Panel。",
+    "tags": "Frames Panel Unreal Insights 帧面板 慢帧 帧时间 尖峰",
+    "spokenForm": "Frames Panel",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Timing Panel",
+        "relation": "深入查看",
+        "explanation": "选定帧后可以回到 Timing Panel 查看该帧内部事件。"
+      },
+      {
+        "term": "Game Frame",
+        "relation": "帧级单位",
+        "explanation": "Frames Panel 以 Game Frame 的总耗时帮助比较运行表现。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "先固定具体慢帧，再分析局部事件，通常比直接看全程平均值更容易复现问题。"
+    ]
+  },
+  {
     "id": "imported-frendercommandfence-beginfence",
     "term": "FRenderCommandFence::BeginFence",
     "abbreviation": "",
@@ -6651,6 +6753,40 @@
     "contexts": [],
     "usageNotes": [
       "网孔会增加被动流动路径，但主动风扇仍可建立主气流。"
+    ]
+  },
+  {
+    "id": "imported-metadata-filter",
+    "term": "Metadata Filter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "元数据筛选器",
+    "category": "性能分析",
+    "definition": "按追踪事件附带的键、类型和值筛选事件的工具，例如按 AssetPath 或 SizeInBytes 缩小分析范围。",
+    "example": "Add a Metadata Filter for AssetPath to isolate events from one asset.",
+    "exampleZh": "添加 AssetPath 的 Metadata Filter，隔离某个资源产生的事件。",
+    "tags": "Metadata Filter Unreal Insights metadata filter 元数据筛选 AssetPath SizeInBytes",
+    "spokenForm": "Metadata Filter",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Exact Match",
+        "relation": "匹配方式",
+        "explanation": "Exact Match 适合限制名称匹配，Metadata Filter 适合限制事件附带字段。"
+      },
+      {
+        "term": "Timer Event",
+        "relation": "筛选对象",
+        "explanation": "Metadata Filter 可以缩小要分析的 Timer Event 集合。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "筛选器改变的是可见事件集合，不会改变原始轨迹；记录筛选条件才能让分析结果可复现。"
     ]
   },
   {
@@ -11222,6 +11358,45 @@
     ]
   },
   {
+    "id": "imported-task-graph-insights",
+    "term": "Task Graph Insights",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "任务图分析",
+    "category": "性能分析",
+    "definition": "用于查看任务图任务及其关系的 Unreal Insights 分析视图，帮助追踪工作在线程之间的流转。",
+    "example": "Use Task Graph Insights to follow a task that moves away from the Game Thread.",
+    "exampleZh": "使用 Task Graph Insights 跟踪一个从 Game Thread 转移出去的任务。",
+    "tags": "Task Graph Insights Unreal Insights task graph 任务图 并行任务 线程关系",
+    "spokenForm": "Task Graph Insights",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Trace Channel",
+        "relation": "数据来源",
+        "explanation": "任务图分析依赖录制时采集的任务相关追踪数据。"
+      },
+      {
+        "term": "Context Switch",
+        "relation": "调度补充",
+        "explanation": "Context Switch 可以补充任务在 CPU 线程上的实际调度状态。"
+      },
+      {
+        "term": "Timing Track",
+        "relation": "线程时间线",
+        "explanation": "任务图关系可以帮助解释多个 Timing Track 之间的工作转移。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "当父事件看起来不重但线程出现等待时，任务图关系可以帮助继续追踪真正执行工作的线程。"
+    ]
+  },
+  {
     "id": "imported-taskgraph",
     "term": "TaskGraph",
     "abbreviation": "",
@@ -11923,6 +12098,45 @@
     "usageNotes": []
   },
   {
+    "id": "imported-timer-event",
+    "term": "Timer Event",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计时事件",
+    "category": "性能分析",
+    "definition": "被 Unreal Insights 记录并带有持续时间的计时事件，可在 Timing Panel 和 Timers 列表中分析。",
+    "example": "Highlight the Timer Event and compare its inclusive time across frames.",
+    "exampleZh": "突出显示这个 Timer Event，并比较它在不同帧中的包含时间。",
+    "tags": "Timer Event Unreal Insights timer 计时事件 耗时 Timers",
+    "spokenForm": "Timer Event",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Inclusive Time",
+        "relation": "耗时统计",
+        "explanation": "Inclusive Time 统计事件自身及其子事件占用的时间。"
+      },
+      {
+        "term": "Timing Track",
+        "relation": "事件位置",
+        "explanation": "Timer Event 会出现在对应的 Timing Track 上。"
+      },
+      {
+        "term": "Counter",
+        "relation": "统计对照",
+        "explanation": "Counter 记录数值变化，Timer Event 记录带持续时间的事件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "父 Timer Event 的耗时可能包含大量子事件，定位根因时要继续展开层级。"
+    ]
+  },
+  {
     "id": "imported-timer-instance",
     "term": "Timer Instance",
     "abbreviation": "",
@@ -12060,6 +12274,79 @@
     "usageNotes": []
   },
   {
+    "id": "imported-timing-panel",
+    "term": "Timing Panel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计时面板",
+    "category": "性能分析",
+    "definition": "Unreal Insights 中按时间线显示 CPU、GPU 和各线程事件的主要面板，用来观察事件的先后关系与耗时。",
+    "example": "Open the Timing Panel and inspect the events inside the slow frame.",
+    "exampleZh": "打开 Timing Panel，检查慢帧中的事件。",
+    "tags": "Timing Panel Unreal Insights 计时面板 时间线 CPU GPU 线程",
+    "spokenForm": "Timing Panel",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Timing Insights",
+        "relation": "所属分析视图",
+        "explanation": "Timing Panel 是 Timing Insights 窗口中的核心面板。"
+      },
+      {
+        "term": "Frames Panel",
+        "relation": "慢帧定位",
+        "explanation": "Frames Panel 用于先选出需要深入检查的帧或时间范围。"
+      },
+      {
+        "term": "Timing Track",
+        "relation": "轨道组成",
+        "explanation": "Timing Panel 由多个按线程或资源分组的 Timing Track 组成。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "事件条带越宽表示在该轨道上占用的时间越长，但不能单凭父事件宽度断定最终根因。"
+    ]
+  },
+  {
+    "id": "imported-timing-track",
+    "term": "Timing Track",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计时轨道",
+    "category": "性能分析",
+    "definition": "Timing Panel 中代表一个线程、线程组或资源处理流的时间线轨道，轨道上的事件条展示处理顺序和耗时。",
+    "example": "Compare the GameThread Timing Track with the GPU track for the same frame.",
+    "exampleZh": "比较同一帧的 GameThread Timing Track 和 GPU 轨道。",
+    "tags": "Timing Track Unreal Insights 计时轨道 线程轨道 GameThread GPU",
+    "spokenForm": "Timing Track",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Game Thread",
+        "relation": "线程轨道",
+        "explanation": "Game Thread 可以作为 Timing Track 中的一类执行轨道。"
+      },
+      {
+        "term": "Timer Event",
+        "relation": "轨道内容",
+        "explanation": "Timer Event 以事件条的形式出现在 Timing Track 上。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不同轨道的事件可能互相等待；不要只看一条轨道就判断整个帧的瓶颈。"
+    ]
+  },
+  {
     "id": "imported-tonal-noise",
     "term": "Tonal Noise",
     "abbreviation": "",
@@ -12120,6 +12407,40 @@
     "contexts": [],
     "usageNotes": [
       "前置风扇为避让内存而抬高时，应把增加后的总高度计入兼容检查。"
+    ]
+  },
+  {
+    "id": "imported-trace-channel",
+    "term": "Trace Channel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "追踪通道",
+    "category": "性能分析",
+    "definition": "控制 Unreal Insights 采集哪些类型追踪数据的通道；未启用对应通道时，相关事件不会出现在轨迹中。",
+    "example": "Enable the ContextSwitch Trace Channel before recording the session.",
+    "exampleZh": "录制会话前启用 ContextSwitch Trace Channel。",
+    "tags": "Trace Channel Unreal Insights trace 追踪通道 采集 配置",
+    "spokenForm": "Trace Channel",
+    "threadCategory": "",
+    "source": "Epic Games: Using the Timing Panel in Unreal Insights",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Context Switch",
+        "relation": "采集对象",
+        "explanation": "Context Switch 数据需要在录制时启用对应 Trace Channel。"
+      },
+      {
+        "term": "Task Graph Insights",
+        "relation": "任务采集",
+        "explanation": "Task Graph Insights 也依赖录制时提供任务相关追踪数据。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "发现某类事件完全缺失时，先检查录制预设和 -trace 参数，不要立即把缺失当成运行时没有执行。"
     ]
   },
   {
