@@ -108,6 +108,33 @@
     ]
   },
   {
+    "id": "imported-ab-test",
+    "term": "A/B Test",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "A/B对比测试",
+    "category": "游戏测试",
+    "definition": "除目标变量外保持场景、路线、镜头、对象数量和采样方法一致，对两个版本或配置进行受控比较。",
+    "example": "Run an A/B Test with URO disabled and enabled in the same scene.",
+    "exampleZh": "在相同场景中分别关闭和开启 URO 进行 A/B 对比测试。",
+    "tags": "A/B Test controlled comparison 性能复测 对比测试 URO",
+    "spokenForm": "A B Test",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Run-to-Run Variance",
+        "relation": "需要控制的误差",
+        "explanation": "重复运行可以区分真实收益和自然波动。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-actor-lifecycle",
     "term": "Actor Lifecycle",
     "abbreviation": "",
@@ -2335,6 +2362,33 @@
     ]
   },
   {
+    "id": "imported-control-rig",
+    "term": "Control Rig",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "控制绑定",
+    "category": "动画与碰撞",
+    "definition": "Unreal Engine 的程序化角色绑定和动画系统，可在运行时计算控制器、骨骼约束和姿势。",
+    "example": "Control Rig may continue to tick even when basic animation updates are reduced.",
+    "exampleZh": "即使基础动画更新降频，Control Rig 仍可能继续 Tick。",
+    "tags": "Control Rig 控制绑定 procedural rig animation",
+    "spokenForm": "Control Rig",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "URO",
+        "relation": "覆盖边界",
+        "explanation": "需要确认 Control Rig 是否随 URO 一起降频。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-cpu-cooler-clearance",
     "term": "CPU Cooler Clearance",
     "abbreviation": "",
@@ -2925,6 +2979,33 @@
         "experience": "记录每一步的输入、输出和拥有者，可以快速发现数据在哪一段丢失。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-data-layer",
+    "term": "Data Layer",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "数据层",
+    "category": "资源与渲染",
+    "definition": "World Partition 中用于组织并控制一组场景对象加载、激活和可见状态的逻辑层。",
+    "example": "Activating the Data Layer caused several cells to become visible.",
+    "exampleZh": "激活 Data Layer 后，多个Cell变为可见。",
+    "tags": "Data Layer World Partition 数据层 streaming activation",
+    "spokenForm": "Data Layer",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "World Partition",
+        "relation": "所属系统",
+        "explanation": "Data Layer 与 World Partition 的场景流送和激活机制协同工作。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -3542,6 +3623,33 @@
         "experience": "排查监听失败时，可以临时改为较宽泛的匹配方式验证是否存在标签层级差异。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-exclusive-time",
+    "term": "Exclusive Time",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "独占时间",
+    "category": "性能分析",
+    "definition": "仅统计 Timer 自身代码、不包含任何嵌套子调用的时间，用于区分包装层开销与实际子任务成本。",
+    "example": "The phase has low Exclusive Time because most work is performed by child timers.",
+    "exampleZh": "该阶段的独占时间很低，因为大部分工作由子 Timer 完成。",
+    "tags": "Exclusive Time Excl 独占时间 self time Timer",
+    "spokenForm": "Exclusive Time",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Inclusive Time",
+        "relation": "对比概念",
+        "explanation": "Inclusive Time 包含所有嵌套子调用。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -4575,6 +4683,38 @@
     "usageNotes": []
   },
   {
+    "id": "imported-fparallel-animation-evaluation-task",
+    "term": "FParallelAnimationEvaluationTask",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "并行动画求值任务",
+    "category": "性能分析",
+    "definition": "Unreal Engine 在工作线程上并行计算骨骼动画姿势的任务；其每帧数量和累计 CPU 时间是验证 URO 的重要指标。",
+    "example": "URO should reduce the number of FParallelAnimationEvaluationTask instances per frame.",
+    "exampleZh": "URO 应降低每帧 FParallelAnimationEvaluationTask 的实例数量。",
+    "tags": "FParallelAnimationEvaluationTask animation evaluation TaskGraph URO 动画求值",
+    "spokenForm": "F Parallel Animation Evaluation Task",
+    "threadCategory": "TaskGraph",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "URO",
+        "relation": "受优化对象",
+        "explanation": "URO 通过降低动画求值频率减少任务数量。"
+      },
+      {
+        "term": "STAT_RefreshBoneTransforms",
+        "relation": "后续阶段",
+        "explanation": "姿势求值后可能需要刷新骨骼变换。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-frendercommandfence-beginfence",
     "term": "FRenderCommandFence::BeginFence",
     "abbreviation": "",
@@ -4730,6 +4870,33 @@
     ]
   },
   {
+    "id": "imported-fstreamable-delegate-delay-helper",
+    "term": "FStreamableDelegateDelayHelper",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "流式加载完成回调延迟辅助器",
+    "category": "性能分析",
+    "definition": "Unreal Engine 中延后派发 Streamable 加载完成委托的辅助机制；多个回调同帧执行时可能集中触发Spawn和初始化。",
+    "example": "Several callbacks under FStreamableDelegateDelayHelper initialized characters in one frame.",
+    "exampleZh": "FStreamableDelegateDelayHelper 下的多个回调在同一帧初始化了角色。",
+    "tags": "FStreamableDelegateDelayHelper Streamable callback async loading 完成回调",
+    "spokenForm": "F Streamable Delegate Delay Helper",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Spawn Actor",
+        "relation": "后续操作",
+        "explanation": "加载完成回调经常继续执行 Actor 生成和组件初始化。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-fxsystem",
     "term": "FXSystem",
     "abbreviation": "",
@@ -4755,6 +4922,56 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-game-frame",
+    "term": "Game Frame",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "游戏帧",
+    "category": "性能分析",
+    "definition": "以一次游戏线程帧为边界的统计单位；在 Timing Insights 中按 Game Frame 聚合可把同一帧内的多个 Timer 实例合并。",
+    "example": "Normalize the timer count by the number of Game Frames.",
+    "exampleZh": "用游戏帧数量对 Timer 次数进行归一化。",
+    "tags": "Game Frame frame aggregation 游戏帧 每帧统计",
+    "spokenForm": "Game Frame",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Timer Instance",
+        "relation": "对比单位",
+        "explanation": "Instance 统计单次调用，Game Frame 统计每帧累计值。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-game-thread",
+    "term": "Game Thread",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "游戏线程",
+    "category": "性能分析",
+    "definition": "Unreal Engine 中执行大部分游戏逻辑、Actor Tick、组件更新和对象生命周期工作的主线程。",
+    "example": "The synchronous load blocked the Game Thread.",
+    "exampleZh": "同步加载阻塞了游戏线程。",
+    "tags": "Game Thread GameThread 游戏线程 main gameplay thread",
+    "spokenForm": "Game Thread",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "在 Unreal Engine 性能语境中优先使用 Game Thread，而不是笼统的 Main Thread。"
+    ]
   },
   {
     "id": "imported-gameplay-message",
@@ -4867,22 +5084,37 @@
   },
   {
     "id": "imported-gc",
-    "term": "GC",
-    "abbreviation": "",
-    "fullForm": "",
+    "term": "Garbage Collection",
+    "abbreviation": "GC",
+    "fullForm": "Garbage Collection",
     "ipa": "",
     "zh": "垃圾回收",
     "category": "性能分析",
-    "definition": "记录 UObject 垃圾回收的标记、不可达对象收集和销毁阶段耗时。",
-    "example": "GC produced a long hitch after many temporary UObjects became unreachable.",
-    "exampleZh": "大量临时 UObject 变为不可达后，GC 产生了一次明显卡顿。",
-    "tags": "Unreal Insights timer 性能分析 GameThread G C",
+    "definition": "识别并清理不再可达对象的内存管理过程；大量对象创建、复制和销毁可能使后续GC产生帧尖刺。",
+    "example": "The burst of temporary objects increased the next Garbage Collection cost.",
+    "exampleZh": "临时对象的集中产生增加了下一次垃圾回收的成本。",
+    "tags": "Garbage Collection GC 垃圾回收 UObject ReachabilityAnalysis Purge",
     "spokenForm": "G C",
-    "threadCategory": "GameThread",
-    "source": "UE5_Timer_Glossary.csv",
+    "threadCategory": "GC_Memory",
+    "source": "Conversation: Unreal Engine performance analysis",
     "aliases": [],
-    "wordParts": [],
-    "relatedTerms": [],
+    "wordParts": [
+      {
+        "word": "Garbage",
+        "zh": "无用对象"
+      },
+      {
+        "word": "Collection",
+        "zh": "回收"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Spawn Actor",
+        "relation": "可能的上游来源",
+        "explanation": "集中创建和销毁Actor会增加对象数量和后续GC压力。"
+      }
+    ],
     "contexts": [
       {
         "phrase": "Unreal Insights · GameThread",
@@ -5272,6 +5504,33 @@
     "usageNotes": []
   },
   {
+    "id": "imported-inclusive-time",
+    "term": "Inclusive Time",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "包含时间",
+    "category": "性能分析",
+    "definition": "Timer 自身执行时间与其所有嵌套子调用时间之和，适合衡量一整段调用链占用的总成本。",
+    "example": "Use Inclusive Time to measure the total cost of the animation evaluation task.",
+    "exampleZh": "使用包含时间衡量动画求值任务的总成本。",
+    "tags": "Inclusive Time Incl I.Avg I.Max 包含时间 Timer",
+    "spokenForm": "Inclusive Time",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Exclusive Time",
+        "relation": "对比概念",
+        "explanation": "Exclusive Time 排除所有嵌套子调用。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-initviews",
     "term": "InitViews",
     "abbreviation": "",
@@ -5532,6 +5791,38 @@
     "usageNotes": [
       "Delay 节点等。"
     ]
+  },
+  {
+    "id": "imported-level-sequence",
+    "term": "Level Sequence",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "关卡序列",
+    "category": "资源与渲染",
+    "definition": "Unreal Engine Sequencer 使用的过场和时间轴资产，可驱动Actor、动画、镜头、事件和可生成对象。",
+    "example": "Preload the Level Sequence before the overlap trigger fires.",
+    "exampleZh": "在重叠触发器触发前预加载 Level Sequence。",
+    "tags": "Level Sequence Sequencer 关卡序列 过场 timeline",
+    "spokenForm": "Level Sequence",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "MovieScene",
+        "relation": "底层系统",
+        "explanation": "MovieScene 负责序列的求值和轨道执行。"
+      },
+      {
+        "term": "Spawnable",
+        "relation": "序列对象",
+        "explanation": "Level Sequence 可以在播放时创建 Spawnable 对象。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-level-transition",
@@ -5965,6 +6256,35 @@
     "usageNotes": [
       "不要把 DDR5-6000 的 6000MT/s 直接称为 6000MHz MCLK。"
     ]
+  },
+  {
+    "id": "imported-median",
+    "term": "Median",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "中位数",
+    "category": "性能分析",
+    "definition": "将样本排序后位于中间位置的值，也称 P50；一半样本不高于它，另一半不低于它。",
+    "example": "The median frame time represents the typical workload better than the maximum.",
+    "exampleZh": "中位帧时间比最大值更能代表典型负载。",
+    "tags": "Median P50 中位数 percentile statistics",
+    "spokenForm": "Median",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "P50"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "P95",
+        "relation": "百分位指标",
+        "explanation": "P95 更适合观察较慢的尾部帧。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-mediatextureresource",
@@ -6529,6 +6849,33 @@
     ]
   },
   {
+    "id": "imported-moviescene",
+    "term": "MovieScene",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "电影场景系统",
+    "category": "资源与渲染",
+    "definition": "Unreal Engine 中负责 Sequencer 时间轴、轨道求值、Spawnables 和播放阶段调度的底层运行时系统。",
+    "example": "MovieScene created several Spawnables when the sequence started.",
+    "exampleZh": "序列启动时，MovieScene 创建了多个 Spawnable。",
+    "tags": "MovieScene Sequencer RunnerFlush SpawnPhase TrackEvaluator 电影场景",
+    "spokenForm": "Movie Scene",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Level Sequence",
+        "relation": "运行时关系",
+        "explanation": "Level Sequence 通过 MovieScene 系统完成求值。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-nanite",
     "term": "Nanite",
     "abbreviation": "",
@@ -6966,6 +7313,38 @@
     "contexts": [],
     "usageNotes": [
       "P-Q Curve 描述空气动力性能，不要与按温度设定转速的 fan curve 混淆。"
+    ]
+  },
+  {
+    "id": "imported-p95",
+    "term": "P95",
+    "abbreviation": "P95",
+    "fullForm": "95th Percentile",
+    "ipa": "",
+    "zh": "第95百分位数",
+    "category": "性能分析",
+    "definition": "排序后有95%的样本不高于该值的百分位指标，常用于衡量性能分布中较慢的尾部帧。",
+    "example": "The optimization must reduce both the average frame time and the P95.",
+    "exampleZh": "优化必须同时降低平均帧时间和 P95。",
+    "tags": "P95 95th Percentile 第95百分位 尾延迟 frame time",
+    "spokenForm": "P ninety-five",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "95th",
+        "zh": "第95"
+      },
+      {
+        "word": "Percentile",
+        "zh": "百分位数"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "P95 不是最大值，也不是平均值；需要基于逐帧样本分布计算。"
     ]
   },
   {
@@ -8746,6 +9125,33 @@
     "usageNotes": []
   },
   {
+    "id": "imported-riglogic",
+    "term": "RigLogic",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "绑定逻辑",
+    "category": "动画与碰撞",
+    "definition": "用于根据控制参数计算复杂角色绑定结果的运行时逻辑，常见于高精度面部或角色动画管线。",
+    "example": "RigLogic remained active after the base animation update was skipped.",
+    "exampleZh": "基础动画更新被跳过后，RigLogic 仍然保持运行。",
+    "tags": "RigLogic Rig Logic facial animation 绑定逻辑",
+    "spokenForm": "Rig Logic",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Control Rig",
+        "relation": "相关动画系统",
+        "explanation": "两者都可能增加角色运行时绑定计算成本。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-row-active-time",
     "term": "Row Active Time",
     "abbreviation": "",
@@ -9031,6 +9437,35 @@
     "contexts": [],
     "usageNotes": [
       "跨尺寸、跨型号比较风扇时，不应只比较 RPM。"
+    ]
+  },
+  {
+    "id": "imported-run-to-run-variance",
+    "term": "Run-to-Run Variance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "运行间波动",
+    "category": "游戏测试",
+    "definition": "相同测试在不同录制或运行之间，由调度、对象状态、路线、缓存和后台活动造成的自然结果差异。",
+    "example": "The measured gain was smaller than the Run-to-Run Variance.",
+    "exampleZh": "测得的收益小于运行间波动。",
+    "tags": "Run-to-Run Variance recording variance 运行波动 测试误差 performance",
+    "spokenForm": "Run to Run Variance",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "A/B Test",
+        "relation": "控制方法",
+        "explanation": "受控A/B测试和重复采样用于降低运行间波动的影响。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "小幅性能变化必须与多次基线波动比较，不能只依赖单次录制。"
     ]
   },
   {
@@ -9414,6 +9849,35 @@
     "usageNotes": [
       "改变风扇位置时应保持功耗、风扇曲线、侧板状态和测试时长一致。"
     ]
+  },
+  {
+    "id": "imported-skeletal-mesh-component",
+    "term": "Skeletal Mesh Component",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "骨骼网格体组件",
+    "category": "动画与碰撞",
+    "definition": "负责显示骨骼网格体并驱动动画、骨骼姿势、蒙皮及部分物理行为的 Unreal Engine 组件。",
+    "example": "Enable URO on the Skeletal Mesh Component used by distant NPCs.",
+    "exampleZh": "为远距离 NPC 使用的骨骼网格体组件启用 URO。",
+    "tags": "Skeletal Mesh Component USkeletalMeshComponent 骨骼网格体组件 animation",
+    "spokenForm": "Skeletal Mesh Component",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "USkeletalMeshComponent"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "URO",
+        "relation": "优化机制",
+        "explanation": "URO 控制骨骼网格组件的动画更新和求值频率。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-skinning-allocbufferspace",
@@ -10263,6 +10727,122 @@
     "usageNotes": []
   },
   {
+    "id": "imported-spawn-actor",
+    "term": "Spawn Actor",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "生成Actor",
+    "category": "UE 基础",
+    "definition": "在运行时创建 Actor 实例的操作，通常伴随构造、组件注册、BeginPlay 和首次 Tick 等后续阶段。",
+    "example": "Splitting Spawn Actor across frames did not cover the later initialization work.",
+    "exampleZh": "对 Spawn Actor 进行分帧并没有覆盖后续初始化工作。",
+    "tags": "Spawn Actor SpawnActor Actor生成 Construction BeginPlay",
+    "spokenForm": "Spawn Actor",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "SpawnActor"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "FStreamableDelegateDelayHelper",
+        "relation": "常见触发链",
+        "explanation": "异步加载完成回调可能集中触发 Actor 创建和初始化。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "SpawnActor 本体分帧不等于组件注册、动画初始化和首次 Tick 都已分帧。"
+    ]
+  },
+  {
+    "id": "imported-spawnable",
+    "term": "Spawnable",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "可生成对象",
+    "category": "资源与渲染",
+    "definition": "由 Sequencer 在序列播放期间创建和管理的对象，而不是关卡中预先存在并被引用的对象。",
+    "example": "A sequence with many Spawnables can create a large startup hitch.",
+    "exampleZh": "包含大量 Spawnable 的序列可能在启动时产生明显尖刺。",
+    "tags": "Spawnable Sequencer MovieScene SpawnablesSystem 可生成对象",
+    "spokenForm": "Spawnable",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Level Sequence",
+        "relation": "所属系统",
+        "explanation": "Spawnable 的生命周期由序列求值系统管理。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-stat-refresh-bone-transforms",
+    "term": "STAT_RefreshBoneTransforms",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "刷新骨骼变换统计",
+    "category": "性能分析",
+    "definition": "统计骨骼网格组件根据最新姿势刷新骨骼变换及相关数据的 Timer，可用于观察动画求值后的骨骼刷新成本。",
+    "example": "RefreshBoneTransforms remained expensive because some components were forced to refresh every frame.",
+    "exampleZh": "部分组件被强制每帧刷新，因此 RefreshBoneTransforms 仍然较贵。",
+    "tags": "STAT_RefreshBoneTransforms RefreshBoneTransforms bone transform URO 骨骼刷新",
+    "spokenForm": "Stat Refresh Bone Transforms",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "RefreshBoneTransforms"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "FParallelAnimationEvaluationTask",
+        "relation": "动画管线关联",
+        "explanation": "并行求值生成姿势后，组件需要把结果应用到骨骼变换。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-stat-update-animation",
+    "term": "STAT_UpdateAnimation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动画更新统计",
+    "category": "性能分析",
+    "definition": "统计 AnimInstance 更新阶段的 Timer，可能包含原生更新、蓝图更新、线程安全更新及后处理更新。",
+    "example": "STAT_UpdateAnimation decreased after the animation update rate was reduced.",
+    "exampleZh": "降低动画更新频率后，STAT_UpdateAnimation 的成本下降了。",
+    "tags": "STAT_UpdateAnimation UpdateAnimation AnimInstance profiler 动画更新",
+    "spokenForm": "Stat Update Animation",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "UpdateAnimation"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Animation Blueprint",
+        "relation": "执行内容",
+        "explanation": "动画蓝图的更新逻辑会计入该阶段。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-static-pressure",
     "term": "Static Pressure",
     "abbreviation": "",
@@ -10722,6 +11302,35 @@
     "contexts": [],
     "usageNotes": [
       "迟滞可以通过不同温度阈值、时间延迟或两者结合实现。"
+    ]
+  },
+  {
+    "id": "imported-tg-prephysics",
+    "term": "TG_PrePhysics",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "物理前Tick组",
+    "category": "性能分析",
+    "definition": "Unreal Engine 在物理模拟之前执行的 Tick Group；角色动画、移动、组件 Tick 和任务等待经常集中在该阶段。",
+    "example": "The URO change reduced the average cost of TG_PrePhysics.",
+    "exampleZh": "URO 修改降低了 TG_PrePhysics 的平均成本。",
+    "tags": "TG_PrePhysics Tick Group PrePhysics GameThread 物理前Tick组",
+    "spokenForm": "T G Pre Physics",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "TickActors",
+        "relation": "所属阶段",
+        "explanation": "TG_PrePhysics 通常位于 Actor Tick 调度范围内。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "TG_PrePhysics 的 Inclusive Time 包含其子任务；不要与父级 TickActors 直接相加。"
     ]
   },
   {
@@ -11314,6 +11923,33 @@
     "usageNotes": []
   },
   {
+    "id": "imported-timer-instance",
+    "term": "Timer Instance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计时器实例",
+    "category": "性能分析",
+    "definition": "Trace 中某个 Timer 的一次实际调用事件；Instance 模式下平均值表示单次调用的平均耗时。",
+    "example": "Instance mode reports the average duration of each timer invocation.",
+    "exampleZh": "Instance 模式显示每次 Timer 调用的平均持续时间。",
+    "tags": "Timer Instance Instance mode 调用实例 Unreal Insights",
+    "spokenForm": "Timer Instance",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Game Frame",
+        "relation": "统计模式对比",
+        "explanation": "Game Frame 模式把同一帧中的多个实例合并。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-timer-postrender",
     "term": "Timer_PostRender",
     "abbreviation": "",
@@ -11395,6 +12031,33 @@
     "usageNotes": [
       "SetTimer 的回调在这里执行。"
     ]
+  },
+  {
+    "id": "imported-timing-insights",
+    "term": "Timing Insights",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "计时分析视图",
+    "category": "性能分析",
+    "definition": "Unreal Insights 中用于查看线程时间线、Timer、调用关系、任务和帧区间统计的分析界面。",
+    "example": "Open Timing Insights and select the same stable range for both captures.",
+    "exampleZh": "打开 Timing Insights，并为两次录制选择相同的稳定区间。",
+    "tags": "Timing Insights Timers Callers Callees CPU timeline 计时分析",
+    "spokenForm": "Timing Insights",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Game Frame",
+        "relation": "聚合单位",
+        "explanation": "Timer 可以按 Game Frame 聚合后比较每帧成本。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-tonal-noise",
@@ -11798,6 +12461,33 @@
     ]
   },
   {
+    "id": "imported-unreal-insights",
+    "term": "Unreal Insights",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "虚幻引擎性能分析工具",
+    "category": "性能分析",
+    "definition": "Unreal Engine 的追踪和性能分析工具，用于查看 CPU、GPU、任务、加载、内存及帧时间等 Trace 数据。",
+    "example": "We used Unreal Insights to compare animation costs before and after the change.",
+    "exampleZh": "我们使用 Unreal Insights 对比修改前后的动画成本。",
+    "tags": "Unreal Insights UE Trace 性能分析 profiler",
+    "spokenForm": "Unreal Insights",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Timing Insights",
+        "relation": "功能模块",
+        "explanation": "Timing Insights 是 Unreal Insights 中分析计时事件的主要视图。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-uobjectbaseutility-createcluster",
     "term": "UObjectBaseUtility::CreateCluster",
     "abbreviation": "",
@@ -11878,6 +12568,77 @@
         "experience": "当 UpdateGPUScene_Lights 持续偏高时，先确认其对应的工作内容（更新 GPU 场景数据）是否因工作量增长而变重；继续检查可见性、场景数据更新、渲染命令生成和任务等待。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-uro",
+    "term": "URO",
+    "abbreviation": "URO",
+    "fullForm": "Update Rate Optimization",
+    "ipa": "",
+    "zh": "更新频率优化",
+    "category": "动画与碰撞",
+    "definition": "Unreal Engine 的骨骼动画降频机制，根据可见性、距离或重要性跳过部分动画更新和姿势求值，以降低大量角色的 CPU 成本。",
+    "example": "URO reduced the animation update frequency for distant characters.",
+    "exampleZh": "URO 降低了远距离角色的动画更新频率。",
+    "tags": "URO Update Rate Optimization 更新频率优化 动画降频 skeletal animation",
+    "spokenForm": "U R O",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Update",
+        "zh": "更新"
+      },
+      {
+        "word": "Rate",
+        "zh": "频率"
+      },
+      {
+        "word": "Optimization",
+        "zh": "优化"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "FParallelAnimationEvaluationTask",
+        "relation": "验证指标",
+        "explanation": "URO 生效后，每帧动画求值任务数量通常应下降。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "URO 的主要证据是更新或求值次数下降，而不只是某次调用耗时缩短。"
+    ]
+  },
+  {
+    "id": "imported-uskeletalmeshcomponent-tickanimation",
+    "term": "USkeletalMeshComponent_TickAnimation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "骨骼网格组件动画Tick",
+    "category": "性能分析",
+    "definition": "Unreal Insights 中表示骨骼网格组件执行动画 Tick 的 Timer 名称；URO 生效后其每帧调用数量通常应下降。",
+    "example": "Compare USkeletalMeshComponent_TickAnimation in Game Frame mode.",
+    "exampleZh": "在 Game Frame 模式下对比 USkeletalMeshComponent_TickAnimation。",
+    "tags": "USkeletalMeshComponent TickAnimation Skeletal Mesh URO Timer 动画Tick",
+    "spokenForm": "U Skeletal Mesh Component Tick Animation",
+    "threadCategory": "GameThread",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [
+      "USkeletalMeshComponent::TickAnimation"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "STAT_UpdateAnimation",
+        "relation": "内部阶段",
+        "explanation": "TickAnimation 会驱动 AnimInstance 的更新逻辑。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -12176,6 +12937,33 @@
         "experience": "蓝图逻辑不执行时，先在 World Outliner 中确认实例存在，比立即检查复杂节点更高效。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-world-partition",
+    "term": "World Partition",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "世界分区",
+    "category": "资源与渲染",
+    "definition": "Unreal Engine 的大型世界自动分区和流送系统，根据空间位置及规则加载或卸载Cell中的Actor。",
+    "example": "World Partition streamed the cell before the player entered the area.",
+    "exampleZh": "World Partition 在玩家进入区域前流送了该Cell。",
+    "tags": "World Partition 世界分区 Cell streaming AddToWorld",
+    "spokenForm": "World Partition",
+    "threadCategory": "",
+    "source": "Conversation: Unreal Engine performance analysis",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Data Layer",
+        "relation": "场景组织机制",
+        "explanation": "Data Layer 可以控制分区内容的运行时激活状态。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
