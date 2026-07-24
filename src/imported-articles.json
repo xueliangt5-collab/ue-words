@@ -1,5 +1,627 @@
 [
   {
+    "id": "slow-frame-to-root-cause-unreal-insights",
+    "titleEn": "From Slow Frame to Root Cause in Unreal Insights",
+    "titleZh": "从慢帧到根因：Unreal Insights 全流程分析",
+    "summaryEn": "An original bilingual workflow for turning one reproducible slow frame into a defensible root-cause conclusion across engine Tick, tasks, rendering, loading, garbage collection, Chaos physics, and Wwise audio.",
+    "summaryZh": "一套原创双语分析流程：从一帧可复现的慢帧出发，沿引擎 Tick、任务、渲染、加载、垃圾回收、Chaos 物理和 Wwise 音频逐层取证，最终形成可验证的根因结论。",
+    "category": "性能分析",
+    "level": "进阶",
+    "tags": [
+      "Unreal Insights",
+      "慢帧",
+      "根因分析",
+      "CPU",
+      "GPU",
+      "Tick",
+      "TaskGraph",
+      "Wwise"
+    ],
+    "source": "术语随身学原创",
+    "sections": [
+      {
+        "id": "fix-frame-and-range",
+        "headingEn": "Fix the frame and time range",
+        "headingZh": "固定帧与时间范围",
+        "en": "Open Timing Insights and begin in the Frames Panel, where a long Game Frame gives you a concrete sample instead of a vague average. Select that frame, move to the Timing Panel, and zoom until the relevant Timing Track and each Timer Event are readable. Compare Inclusive Time with Exclusive Time to distinguish child work from local work, and keep a nearby Counter visible when a changing value may explain the spike.",
+        "zh": "打开 Timing Insights，先在 Frames Panel 中寻找较长的 Game Frame，用具体样本代替模糊的平均值。选中该帧后进入 Timing Panel，放大到能够读清相关 Timing Track 和每个 Timer Event。对比 Inclusive Time 与 Exclusive Time，区分子事件耗时和当前事件自身耗时；如果某个变化中的数值可能解释尖峰，就同时保留附近的 Counter。",
+        "termLinks": [
+          {
+            "termId": "imported-timing-insights",
+            "textEn": "Timing Insights",
+            "textZh": "Timing Insights",
+            "note": "作为整次慢帧调查的分析入口。"
+          },
+          {
+            "termId": "imported-frames-panel",
+            "textEn": "Frames Panel",
+            "textZh": "Frames Panel",
+            "note": "用于先锁定异常帧，而不是从全局平均值猜测。"
+          },
+          {
+            "termId": "imported-game-frame",
+            "textEn": "Game Frame",
+            "textZh": "Game Frame",
+            "note": "定义本次分析要解释的具体帧样本。"
+          },
+          {
+            "termId": "imported-timing-panel",
+            "textEn": "Timing Panel",
+            "textZh": "Timing Panel",
+            "note": "承载线程轨道和计时事件的主要时间线。"
+          },
+          {
+            "termId": "imported-timing-track",
+            "textEn": "Timing Track",
+            "textZh": "Timing Track",
+            "note": "确定成本发生在哪条执行轨道。"
+          },
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "定位时间线上可展开和比较的计时事件。"
+          },
+          {
+            "termId": "imported-inclusive-time",
+            "textEn": "Inclusive Time",
+            "textZh": "Inclusive Time",
+            "note": "包含当前事件及其子事件的总成本。"
+          },
+          {
+            "termId": "imported-exclusive-time",
+            "textEn": "Exclusive Time",
+            "textZh": "Exclusive Time",
+            "note": "观察当前事件自身实际消耗的时间。"
+          },
+          {
+            "termId": "imported-counter",
+            "textEn": "Counter",
+            "textZh": "Counter",
+            "note": "把事件耗时与同一时段的数值变化对照。"
+          }
+        ]
+      },
+      {
+        "id": "enter-engine-loop",
+        "headingEn": "Enter through the engine loop",
+        "headingZh": "从引擎主循环进入",
+        "en": "On the Game Thread, use FEngineLoop::Tick as the first parent landmark. Check whether the cost clusters near BeginFrame + EndFrame or inside WorldTick, then expand WorldTick toward TickActors. The goal is not to blame the largest parent block; it is to identify the first child branch whose duration actually grows with the slow frame.",
+        "zh": "在 Game Thread 上，把 FEngineLoop::Tick 作为第一个父级定位点。先判断成本集中在 BeginFrame + EndFrame 附近，还是进入了 WorldTick，再从 WorldTick 向下展开到 TickActors。不要因为某个父级块最大就直接归因，而要找出第一个会随慢帧一起变长的子分支。",
+        "termLinks": [
+          {
+            "termId": "imported-game-thread",
+            "textEn": "Game Thread",
+            "textZh": "Game Thread",
+            "note": "确认主线程是否承担了慢帧的关键路径。"
+          },
+          {
+            "termId": "imported-fengineloop-tick",
+            "textEn": "FEngineLoop::Tick",
+            "textZh": "FEngineLoop::Tick",
+            "note": "用作每帧引擎主循环的顶层定位点。"
+          },
+          {
+            "termId": "imported-beginframe-endframe",
+            "textEn": "BeginFrame + EndFrame",
+            "textZh": "BeginFrame + EndFrame",
+            "note": "检查帧边界阶段是否出现异常成本。"
+          },
+          {
+            "termId": "imported-worldtick",
+            "textEn": "WorldTick",
+            "textZh": "WorldTick",
+            "note": "判断世界更新是否是主要扩张分支。"
+          },
+          {
+            "termId": "imported-tickactors",
+            "textEn": "TickActors",
+            "textZh": "TickActors",
+            "note": "继续深入 Actor 更新阶段寻找具体成本。"
+          }
+        ]
+      },
+      {
+        "id": "split-tick-stages",
+        "headingEn": "Split Tick into meaningful stages",
+        "headingZh": "按阶段拆开 Tick",
+        "en": "Read Tick by phase rather than as one opaque block. Compare TG_PrePhysics, Tick_DuringPhysics, and Tick_PostPhysics, then inspect TickComponents inside the phase that expanded. CharacterMovement often points to movement simulation, USkeletalMeshComponent_TickAnimation points to animation work, and Tick_Particle points to particle updates. Their names are leads; the frame-to-frame duration pattern is the evidence.",
+        "zh": "不要把 Tick 看成一个不透明的整体，而要按阶段阅读。先比较 TG_PrePhysics、Tick_DuringPhysics 和 Tick_PostPhysics，再进入变长阶段中的 TickComponents。CharacterMovement 往往指向移动模拟，USkeletalMeshComponent_TickAnimation 指向动画更新，Tick_Particle 指向粒子更新。名称只是线索，跨帧的耗时变化才是证据。",
+        "termLinks": [
+          {
+            "termId": "imported-tg-prephysics",
+            "textEn": "TG_PrePhysics",
+            "textZh": "TG_PrePhysics",
+            "note": "检查物理模拟前的 Tick 工作。"
+          },
+          {
+            "termId": "imported-tick-duringphysics",
+            "textEn": "Tick_DuringPhysics",
+            "textZh": "Tick_DuringPhysics",
+            "note": "检查与物理模拟并行或交错的更新。"
+          },
+          {
+            "termId": "imported-tick-postphysics",
+            "textEn": "Tick_PostPhysics",
+            "textZh": "Tick_PostPhysics",
+            "note": "检查物理结果产生后的 Tick 工作。"
+          },
+          {
+            "termId": "imported-tickcomponents",
+            "textEn": "TickComponents",
+            "textZh": "TickComponents",
+            "note": "从阶段成本继续下钻到组件更新。"
+          },
+          {
+            "termId": "imported-charactermovement",
+            "textEn": "CharacterMovement",
+            "textZh": "CharacterMovement",
+            "note": "用于识别角色移动模拟相关成本。"
+          },
+          {
+            "termId": "imported-uskeletalmeshcomponent-tickanimation",
+            "textEn": "USkeletalMeshComponent_TickAnimation",
+            "textZh": "USkeletalMeshComponent_TickAnimation",
+            "note": "用于识别骨骼网格动画 Tick 成本。"
+          },
+          {
+            "termId": "imported-tick-particle",
+            "textEn": "Tick_Particle",
+            "textZh": "Tick_Particle",
+            "note": "用于识别粒子系统逐帧更新成本。"
+          }
+        ]
+      },
+      {
+        "id": "recognize-task-waits",
+        "headingEn": "Recognize task waits and scheduling",
+        "headingZh": "识别任务等待与调度",
+        "en": "A wide parent event may be waiting rather than computing. Use TaskGraph and Task Graph Insights to follow work across threads when GameThreadWaitForTask or FAsyncTask::SyncCompletion appears. Expand ParallelFor and compare it with ParallelFor.Wait: the first represents distributed work, while the second exposes the join cost. A Context Switch can explain why a ready thread did not run, but only if the required Trace Channel was captured.",
+        "zh": "一个很宽的父事件可能是在等待，而不是持续计算。当出现 GameThreadWaitForTask 或 FAsyncTask::SyncCompletion 时，使用 TaskGraph 和 Task Graph Insights 跨线程追踪工作。展开 ParallelFor，并与 ParallelFor.Wait 对照：前者表示分发出去的并行工作，后者暴露汇合等待成本。Context Switch 可以解释一个已就绪线程为什么没有运行，但前提是录制时启用了所需的 Trace Channel。",
+        "termLinks": [
+          {
+            "termId": "imported-taskgraph",
+            "textEn": "TaskGraph",
+            "textZh": "TaskGraph",
+            "note": "把父事件关联到实际执行任务。"
+          },
+          {
+            "termId": "imported-task-graph-insights",
+            "textEn": "Task Graph Insights",
+            "textZh": "Task Graph Insights",
+            "note": "用于可视化任务依赖和跨线程流转。"
+          },
+          {
+            "termId": "imported-gamethreadwaitfortask",
+            "textEn": "GameThreadWaitForTask",
+            "textZh": "GameThreadWaitForTask",
+            "note": "提示游戏线程正在等待其他任务完成。"
+          },
+          {
+            "termId": "imported-fasynctask-synccompletion",
+            "textEn": "FAsyncTask::SyncCompletion",
+            "textZh": "FAsyncTask::SyncCompletion",
+            "note": "提示异步任务在同步点阻塞调用方。"
+          },
+          {
+            "termId": "imported-parallelfor",
+            "textEn": "ParallelFor",
+            "textZh": "ParallelFor",
+            "note": "观察并行工作本体的分布和总量。"
+          },
+          {
+            "termId": "imported-parallelfor-wait",
+            "textEn": "ParallelFor.Wait",
+            "textZh": "ParallelFor.Wait",
+            "note": "判断并行任务汇合是否拖住关键路径。"
+          },
+          {
+            "termId": "imported-context-switch",
+            "textEn": "Context Switch",
+            "textZh": "Context Switch",
+            "note": "补充操作系统调度层的等待证据。"
+          },
+          {
+            "termId": "imported-trace-channel",
+            "textEn": "Trace Channel",
+            "textZh": "Trace Channel",
+            "note": "确认诊断所需的追踪数据是否被录制。"
+          }
+        ]
+      },
+      {
+        "id": "follow-rendering-pipeline",
+        "headingEn": "Follow the rendering pipeline",
+        "headingZh": "沿渲染流水线追踪",
+        "en": "If the render branch grows, follow the work in pipeline order. InitViews prepares visibility, ComputeLightGrid organizes lighting data, and UpdateGPUScene refreshes scene data for the GPU. Prepass and Basepass show major raster stages, while RDG_Execute reveals Render Dependency Graph execution. Continue through RHI_SubmitToGPU and D3D12_Present to separate CPU submission from presentation. A long FlushRenderingCommands usually means the caller is waiting for rendering work, so inspect the render thread before treating the flush itself as the root cause.",
+        "zh": "如果渲染分支变长，就按流水线顺序追踪。InitViews 准备可见性，ComputeLightGrid 组织光照数据，UpdateGPUScene 为 GPU 刷新场景数据。Prepass 和 Basepass 展示主要光栅阶段，RDG_Execute 展示 Render Dependency Graph 的执行。继续查看 RHI_SubmitToGPU 和 D3D12_Present，以区分 CPU 提交与呈现阶段。较长的 FlushRenderingCommands 通常表示调用方正在等待渲染工作，因此要先检查渲染线程，再决定是否把 flush 本身视为根因。",
+        "termLinks": [
+          {
+            "termId": "imported-initviews",
+            "textEn": "InitViews",
+            "textZh": "InitViews",
+            "note": "定位视图初始化和可见性准备成本。"
+          },
+          {
+            "termId": "imported-computelightgrid",
+            "textEn": "ComputeLightGrid",
+            "textZh": "ComputeLightGrid",
+            "note": "观察光照网格计算是否异常增长。"
+          },
+          {
+            "termId": "imported-updategpuscene",
+            "textEn": "UpdateGPUScene",
+            "textZh": "UpdateGPUScene",
+            "note": "检查 GPU 场景数据更新成本。"
+          },
+          {
+            "termId": "imported-prepass",
+            "textEn": "Prepass",
+            "textZh": "Prepass",
+            "note": "定位深度预处理阶段的工作。"
+          },
+          {
+            "termId": "imported-basepass",
+            "textEn": "Basepass",
+            "textZh": "Basepass",
+            "note": "定位基础材质和几何渲染成本。"
+          },
+          {
+            "termId": "imported-rdg-execute",
+            "textEn": "RDG_Execute",
+            "textZh": "RDG_Execute",
+            "note": "从渲染图执行入口追踪具体 Pass。"
+          },
+          {
+            "termId": "imported-rhi-submittogpu",
+            "textEn": "RHI_SubmitToGPU",
+            "textZh": "RHI_SubmitToGPU",
+            "note": "区分命令提交成本与 GPU 执行成本。"
+          },
+          {
+            "termId": "imported-d3d12-present",
+            "textEn": "D3D12_Present",
+            "textZh": "D3D12_Present",
+            "note": "检查呈现或帧同步是否占据关键路径。"
+          },
+          {
+            "termId": "imported-flushrenderingcommands",
+            "textEn": "FlushRenderingCommands",
+            "textZh": "FlushRenderingCommands",
+            "note": "把同步等待追溯到真正未完成的渲染工作。"
+          }
+        ]
+      },
+      {
+        "id": "separate-loading-execution",
+        "headingEn": "Separate loading from execution",
+        "headingZh": "区分加载与执行",
+        "en": "A streaming hitch can mix file I/O, package work, and world integration. Start with AsyncLoadingTime, then compare FAsyncLoadingThread with ProcessAsyncLoading. If FlushAsyncLoading appears on the critical path, find what forced asynchronous work to become synchronous. IoDispatcher and IoDispatcherWaitForIo distinguish request management from actual I/O waiting; LoadPackageInternal points to package construction. For map changes, follow LevelStreaming through AddToWorld so that disk latency is not confused with the cost of registering loaded content in the world.",
+        "zh": "一次流送卡顿可能混合文件 I/O、包处理和世界接入成本。先看 AsyncLoadingTime，再比较 FAsyncLoadingThread 与 ProcessAsyncLoading。如果关键路径上出现 FlushAsyncLoading，要找出是谁迫使异步工作转为同步等待。IoDispatcher 和 IoDispatcherWaitForIo 可以区分请求管理与真实 I/O 等待，LoadPackageInternal 则指向包构建。处理地图变化时，从 LevelStreaming 继续跟到 AddToWorld，避免把磁盘延迟与已加载内容注册到世界中的成本混为一谈。",
+        "termLinks": [
+          {
+            "termId": "imported-asyncloadingtime",
+            "textEn": "AsyncLoadingTime",
+            "textZh": "AsyncLoadingTime",
+            "note": "作为异步加载分支的总入口。"
+          },
+          {
+            "termId": "imported-fasyncloadingthread",
+            "textEn": "FAsyncLoadingThread",
+            "textZh": "FAsyncLoadingThread",
+            "note": "检查异步加载线程上的实际工作。"
+          },
+          {
+            "termId": "imported-processasyncloading",
+            "textEn": "ProcessAsyncLoading",
+            "textZh": "ProcessAsyncLoading",
+            "note": "观察异步加载任务的处理阶段。"
+          },
+          {
+            "termId": "imported-flushasyncloading",
+            "textEn": "FlushAsyncLoading",
+            "textZh": "FlushAsyncLoading",
+            "note": "识别异步加载被强制同步完成的时刻。"
+          },
+          {
+            "termId": "imported-iodispatcher",
+            "textEn": "IoDispatcher",
+            "textZh": "IoDispatcher",
+            "note": "定位 I/O 请求调度和管理成本。"
+          },
+          {
+            "termId": "imported-iodispatcherwaitforio",
+            "textEn": "IoDispatcherWaitForIo",
+            "textZh": "IoDispatcherWaitForIo",
+            "note": "确认关键路径是否真的在等待存储 I/O。"
+          },
+          {
+            "termId": "imported-loadpackageinternal",
+            "textEn": "LoadPackageInternal",
+            "textZh": "LoadPackageInternal",
+            "note": "把加载成本下钻到包解析和构建阶段。"
+          },
+          {
+            "termId": "imported-levelstreaming",
+            "textEn": "LevelStreaming",
+            "textZh": "LevelStreaming",
+            "note": "追踪关卡内容的流入和流出。"
+          },
+          {
+            "termId": "imported-addtoworld",
+            "textEn": "AddToWorld",
+            "textZh": "AddToWorld",
+            "note": "识别加载后内容接入世界的主线程成本。"
+          }
+        ]
+      },
+      {
+        "id": "identify-gc-pauses",
+        "headingEn": "Identify garbage collection pauses",
+        "headingZh": "识别垃圾回收停顿",
+        "en": "When Garbage Collection overlaps the slow frame, expand CollectGarbageInternal before deciding that GC as a whole is the problem. GC.GatherUnreachable finds unreachable objects, GC.MarkClusteredObjectsAsReachable handles cluster reachability, and GC.DissolveUnreachableClusters updates clusters that can no longer survive. UnhashUnreachableObjects removes dead objects from lookup structures. The expensive child phase tells you whether to reduce object churn, review clusters, or change when collection is allowed to run.",
+        "zh": "当 Garbage Collection 与慢帧重叠时，先展开 CollectGarbageInternal，再判断是否能把问题归因于整个 GC。GC.GatherUnreachable 查找不可达对象，GC.MarkClusteredObjectsAsReachable 处理簇的可达性，GC.DissolveUnreachableClusters 更新无法继续存活的簇，UnhashUnreachableObjects 则从查找结构中移除死亡对象。最昂贵的子阶段会决定你应该减少对象抖动、检查簇设计，还是调整允许回收发生的时机。",
+        "termLinks": [
+          {
+            "termId": "imported-gc",
+            "textEn": "Garbage Collection",
+            "textZh": "Garbage Collection",
+            "note": "确认垃圾回收周期是否与慢帧重叠。"
+          },
+          {
+            "termId": "imported-collectgarbageinternal",
+            "textEn": "CollectGarbageInternal",
+            "textZh": "CollectGarbageInternal",
+            "note": "从 GC 总入口展开到具体阶段。"
+          },
+          {
+            "termId": "imported-gc-gatherunreachable",
+            "textEn": "GC.GatherUnreachable",
+            "textZh": "GC.GatherUnreachable",
+            "note": "观察不可达对象收集阶段。"
+          },
+          {
+            "termId": "imported-gc-markclusteredobjectsasreachable",
+            "textEn": "GC.MarkClusteredObjectsAsReachable",
+            "textZh": "GC.MarkClusteredObjectsAsReachable",
+            "note": "检查对象簇可达性标记成本。"
+          },
+          {
+            "termId": "imported-gc-dissolveunreachableclusters",
+            "textEn": "GC.DissolveUnreachableClusters",
+            "textZh": "GC.DissolveUnreachableClusters",
+            "note": "检查不可达对象簇拆解成本。"
+          },
+          {
+            "termId": "imported-unhashunreachableobjects",
+            "textEn": "UnhashUnreachableObjects",
+            "textZh": "UnhashUnreachableObjects",
+            "note": "检查从查找结构移除死亡对象的成本。"
+          }
+        ]
+      },
+      {
+        "id": "read-chaos-physics",
+        "headingEn": "Read Chaos physics work",
+        "headingZh": "阅读 Chaos 物理工作",
+        "en": "For a physics-heavy frame, enter through Chaos.PF or ChaosPushData and keep simulation work separate from data transfer. Chaos_RunBroadPhase finds possible collision pairs, while Chaos_RunNarrowPhase resolves detailed contacts. Chaos_PhysicsParallelFor distributes solver work, and Chaos_ApplyCallbacks_Internal runs callbacks that can pull gameplay code back onto the path. Finish at SyncBodies to see the cost of copying solved body state back to engine objects.",
+        "zh": "分析物理负载较重的帧时，从 Chaos.PF 或 ChaosPushData 进入，并把模拟工作与数据传递分开。Chaos_RunBroadPhase 查找潜在碰撞对，Chaos_RunNarrowPhase 解析详细接触。Chaos_PhysicsParallelFor 分发求解器工作，Chaos_ApplyCallbacks_Internal 执行可能把玩法代码重新带回关键路径的回调。最后查看 SyncBodies，判断已求解刚体状态写回引擎对象的成本。",
+        "termLinks": [
+          {
+            "termId": "imported-chaos-pf",
+            "textEn": "Chaos.PF",
+            "textZh": "Chaos.PF",
+            "note": "用于定位 Chaos 物理并行工作。"
+          },
+          {
+            "termId": "imported-chaospushdata",
+            "textEn": "ChaosPushData",
+            "textZh": "ChaosPushData",
+            "note": "检查游戏侧向物理侧推送数据的成本。"
+          },
+          {
+            "termId": "imported-chaos-runbroadphase",
+            "textEn": "Chaos_RunBroadPhase",
+            "textZh": "Chaos_RunBroadPhase",
+            "note": "定位宽阶段碰撞候选搜索成本。"
+          },
+          {
+            "termId": "imported-chaos-runnarrowphase",
+            "textEn": "Chaos_RunNarrowPhase",
+            "textZh": "Chaos_RunNarrowPhase",
+            "note": "定位窄阶段接触生成成本。"
+          },
+          {
+            "termId": "imported-chaos-physicsparallelfor",
+            "textEn": "Chaos_PhysicsParallelFor",
+            "textZh": "Chaos_PhysicsParallelFor",
+            "note": "观察物理求解并行化后的工作分布。"
+          },
+          {
+            "termId": "imported-chaos-applycallbacks-internal",
+            "textEn": "Chaos_ApplyCallbacks_Internal",
+            "textZh": "Chaos_ApplyCallbacks_Internal",
+            "note": "检查物理回调是否引入额外玩法工作。"
+          },
+          {
+            "termId": "imported-syncbodies",
+            "textEn": "SyncBodies",
+            "textZh": "SyncBodies",
+            "note": "检查物理结果同步回引擎对象的成本。"
+          }
+        ]
+      },
+      {
+        "id": "trace-wwise-audio",
+        "headingEn": "Trace Wwise audio cost",
+        "headingZh": "追踪 Wwise 音频成本",
+        "en": "Audio hitches need the same parent-to-child discipline. Begin with AkAudioDevice, then inspect AkComponent::TickComponent when component updates scale with active emitters. WwiseSoundEngine CAkAudioMgr::ProcessAllCommands and WwiseSoundEngine CAkAudioMgr::ProcessMsgQueue reveal command traffic. Deeper in the audio engine, WwiseSoundEngine CAkLEngine::AnalyzeMixingGraph, WwiseSoundEngine CAkLEngine::DispatchBusGraphAsync, and WwiseSoundEngine CAkLEngine::PreprocessSources separate graph analysis, asynchronous bus work, and source preparation.",
+        "zh": "音频卡顿也要遵循从父级到子级的分析纪律。先从 AkAudioDevice 开始；如果组件更新会随活动发声体数量增长，再检查 AkComponent::TickComponent。WwiseSoundEngine CAkAudioMgr::ProcessAllCommands 和 WwiseSoundEngine CAkAudioMgr::ProcessMsgQueue 用于暴露命令流量。继续深入音频引擎后，可用 WwiseSoundEngine CAkLEngine::AnalyzeMixingGraph、WwiseSoundEngine CAkLEngine::DispatchBusGraphAsync 和 WwiseSoundEngine CAkLEngine::PreprocessSources 区分混音图分析、异步总线工作和音源预处理。",
+        "termLinks": [
+          {
+            "termId": "imported-akaudiodevice",
+            "textEn": "AkAudioDevice",
+            "textZh": "AkAudioDevice",
+            "note": "作为 Unreal 与 Wwise 音频工作的上层入口。"
+          },
+          {
+            "termId": "imported-akcomponent-tickcomponent",
+            "textEn": "AkComponent::TickComponent",
+            "textZh": "AkComponent::TickComponent",
+            "note": "检查 Ak 组件逐帧更新是否随实例数量增长。"
+          },
+          {
+            "termId": "imported-wwisesoundengine-cakaudiomgr-processallcommands",
+            "textEn": "WwiseSoundEngine CAkAudioMgr::ProcessAllCommands",
+            "textZh": "WwiseSoundEngine CAkAudioMgr::ProcessAllCommands",
+            "note": "观察音频命令批量处理成本。"
+          },
+          {
+            "termId": "imported-wwisesoundengine-cakaudiomgr-processmsgqueue",
+            "textEn": "WwiseSoundEngine CAkAudioMgr::ProcessMsgQueue",
+            "textZh": "WwiseSoundEngine CAkAudioMgr::ProcessMsgQueue",
+            "note": "观察音频消息队列处理成本。"
+          },
+          {
+            "termId": "imported-wwisesoundengine-caklengine-analyzemixinggraph",
+            "textEn": "WwiseSoundEngine CAkLEngine::AnalyzeMixingGraph",
+            "textZh": "WwiseSoundEngine CAkLEngine::AnalyzeMixingGraph",
+            "note": "定位混音图分析阶段。"
+          },
+          {
+            "termId": "imported-wwisesoundengine-caklengine-dispatchbusgraphasync",
+            "textEn": "WwiseSoundEngine CAkLEngine::DispatchBusGraphAsync",
+            "textZh": "WwiseSoundEngine CAkLEngine::DispatchBusGraphAsync",
+            "note": "定位异步分发总线图工作的阶段。"
+          },
+          {
+            "termId": "imported-wwisesoundengine-caklengine-preprocesssources",
+            "textEn": "WwiseSoundEngine CAkLEngine::PreprocessSources",
+            "textZh": "WwiseSoundEngine CAkLEngine::PreprocessSources",
+            "note": "定位播放前的音源准备成本。"
+          }
+        ]
+      },
+      {
+        "id": "filter-with-context",
+        "headingEn": "Use filters without losing context",
+        "headingZh": "筛选时不要丢失上下文",
+        "en": "Use Exact Match when a short label would otherwise collect unrelated timers, and use a Metadata Filter to isolate an asset, object, or size range. Keep one unfiltered view beside the filtered result. A filter can prove which Timer Event instances match your question, but it cannot by itself show whether their Inclusive Time came from local computation, child work, or waiting.",
+        "zh": "当短名称会混入无关计时器时使用 Exact Match；需要按资产、对象或大小范围缩小结果时使用 Metadata Filter。同时保留一个未筛选视图作为参照。筛选器可以证明哪些 Timer Event 实例符合问题，但不能单独说明它们的 Inclusive Time 来自本地计算、子事件还是等待。",
+        "termLinks": [
+          {
+            "termId": "imported-exact-match",
+            "textEn": "Exact Match",
+            "textZh": "Exact Match",
+            "note": "避免短名称和相似名称造成误匹配。"
+          },
+          {
+            "termId": "imported-metadata-filter",
+            "textEn": "Metadata Filter",
+            "textZh": "Metadata Filter",
+            "note": "按事件携带的结构化字段缩小样本。"
+          },
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "筛选后仍以具体事件实例作为证据。"
+          },
+          {
+            "termId": "imported-inclusive-time",
+            "textEn": "Inclusive Time",
+            "textZh": "Inclusive Time",
+            "note": "提醒筛选结果仍需展开父子层级解释。"
+          }
+        ]
+      },
+      {
+        "id": "verify-controlled-runs",
+        "headingEn": "Verify the change with controlled runs",
+        "headingZh": "用受控运行验证修改",
+        "en": "After a fix, run an A/B Test with the same scene, route, camera, warm-up, build configuration, and trace channels. Compare the same Game Frame region and the same Counter values rather than selecting whichever frame looks best. Run-to-Run Variance is expected, so collect several runs and require the target event to improve consistently without moving equivalent cost to another thread or subsystem.",
+        "zh": "修改后进行 A/B Test，保持场景、路线、相机、预热过程、构建配置和追踪通道一致。比较同一段 Game Frame 区域和相同的 Counter 数值，不要挑选看起来最好的那一帧。Run-to-Run Variance 客观存在，因此要采集多次运行，并要求目标事件持续改善，同时确认等量成本没有被转移到其他线程或子系统。",
+        "termLinks": [
+          {
+            "termId": "imported-ab-test",
+            "textEn": "A/B Test",
+            "textZh": "A/B Test",
+            "note": "在控制其他变量的前提下比较修改前后。"
+          },
+          {
+            "termId": "imported-game-frame",
+            "textEn": "Game Frame",
+            "textZh": "Game Frame",
+            "note": "确保前后比较使用等价帧区间。"
+          },
+          {
+            "termId": "imported-counter",
+            "textEn": "Counter",
+            "textZh": "Counter",
+            "note": "用对象数、请求量等数值检查负载是否等价。"
+          },
+          {
+            "termId": "imported-run-to-run-variance",
+            "textEn": "Run-to-Run Variance",
+            "textZh": "Run-to-Run Variance",
+            "note": "通过多次采样避免把自然波动误判为优化收益。"
+          }
+        ]
+      },
+      {
+        "id": "build-evidence-chain",
+        "headingEn": "Build a reproducible evidence chain",
+        "headingZh": "建立可复现的证据链",
+        "en": "A defensible conclusion should name the selected frame, the growing parent-to-child path, the responsible thread, and the controlled comparison. Preserve the Trace Channel setup, Exact Match or Metadata Filter values, screenshots of the Timing Track, and the relevant Task Graph Insights or Context Switch evidence. Then another person can start from the same Timer Event, reproduce your reasoning, and challenge the root cause without repeating the entire capture session.",
+        "zh": "一个站得住脚的结论应明确记录所选帧、逐级变长的父子路径、负责线程以及受控对比条件。保留 Trace Channel 配置、Exact Match 或 Metadata Filter 的取值、Timing Track 截图，以及相关的 Task Graph Insights 或 Context Switch 证据。这样，其他人就能从同一个 Timer Event 出发复现你的推理，并在不重做整个采集过程的情况下检验根因。",
+        "termLinks": [
+          {
+            "termId": "imported-trace-channel",
+            "textEn": "Trace Channel",
+            "textZh": "Trace Channel",
+            "note": "记录数据采集范围，避免因通道差异产生假结论。"
+          },
+          {
+            "termId": "imported-exact-match",
+            "textEn": "Exact Match",
+            "textZh": "Exact Match",
+            "note": "保存可复现的名称筛选条件。"
+          },
+          {
+            "termId": "imported-metadata-filter",
+            "textEn": "Metadata Filter",
+            "textZh": "Metadata Filter",
+            "note": "保存可复现的元数据筛选条件。"
+          },
+          {
+            "termId": "imported-timing-track",
+            "textEn": "Timing Track",
+            "textZh": "Timing Track",
+            "note": "保留问题所在线程或资源轨道的上下文。"
+          },
+          {
+            "termId": "imported-task-graph-insights",
+            "textEn": "Task Graph Insights",
+            "textZh": "Task Graph Insights",
+            "note": "保存跨线程任务依赖证据。"
+          },
+          {
+            "termId": "imported-context-switch",
+            "textEn": "Context Switch",
+            "textZh": "Context Switch",
+            "note": "保存操作系统调度层证据。"
+          },
+          {
+            "termId": "imported-timer-event",
+            "textEn": "Timer Event",
+            "textZh": "Timer Event",
+            "note": "让复现者从相同计时事件开始验证。"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "timing-panel-slow-frame-workflow",
     "titleEn": "Using the Timing Panel to Investigate Slow Frames",
     "titleZh": "使用 Timing Panel 定位慢帧",
