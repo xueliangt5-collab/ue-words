@@ -23,6 +23,31 @@
     ]
   },
   {
+    "id": "imported-3-2-1-backup-rule",
+    "term": "3-2-1 Backup Rule",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "3-2-1 备份原则",
+    "category": "存储与数据",
+    "definition": "至少保留 3 份数据、使用 2 类不同介质或故障域，并让至少 1 份位于异地或离线的备份规划原则。",
+    "example": "The 3-2-1 backup rule reduces the chance that one incident destroys every copy.",
+    "exampleZh": "3-2-1 备份原则可以降低单次事故毁掉所有副本的概率。",
+    "tags": "3-2-1 backup rule backup restore offline offsite 备份 异地 离线",
+    "spokenForm": "Three Two One Backup Rule",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "3-2-1 Rule"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "备份还需要定期验证任务结果并实际进行恢复测试。"
+    ]
+  },
+  {
     "id": "imported-3c-game-development",
     "term": "3C",
     "abbreviation": "3C",
@@ -105,6 +130,29 @@
       "Max Step Height 是 Unreal Engine 中的参数名，不应脱离角色胶囊体尺寸、单位和移动模式单独设定。",
       "不要把“可玩区域”理解为所有视觉上存在的地面；应明确区分 walkable、vaultable、jumpable 和 blocked，并让碰撞、镜头和引导共同表达这个边界。",
       "移动速度应和动画步幅、状态切换、镜头反馈及武器姿态一起调试；单独修改其中一个数值通常会制造新的 3C 不一致。"
+    ]
+  },
+  {
+    "id": "imported-3d-nand",
+    "term": "3D NAND",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "三维 NAND 闪存",
+    "category": "存储与数据",
+    "definition": "把 NAND 存储单元在垂直方向堆叠的结构；3D 描述几何结构，不说明每单元存储位数。",
+    "example": "A 3D NAND device may use TLC or QLC cells.",
+    "exampleZh": "一颗 3D NAND 器件可以使用 TLC 或 QLC 单元。",
+    "tags": "3D NAND vertical stacking layers 三维 闪存 堆叠",
+    "spokenForm": "Three D NAND",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "3D NAND 与 TLC、QLC 是不同维度的分类。"
     ]
   },
   {
@@ -415,6 +463,44 @@
         "experience": "当 AddToWorld_UpdateComponents 持续偏高时，先确认其对应的工作内容（注册并更新新加入 Actor 的组件，使其参与渲染、物理和 Tick）是否因工作量增长而变重；继续检查可见性、场景数据更新、渲染命令生成和任务等待。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ahci",
+    "term": "AHCI",
+    "abbreviation": "AHCI",
+    "fullForm": "Advanced Host Controller Interface",
+    "ipa": "",
+    "zh": "高级主机控制器接口",
+    "category": "存储与数据",
+    "definition": "面向传统 SATA 存储控制器的主机接口规范，设计背景偏向机械硬盘，队列能力弱于 NVMe。",
+    "example": "The SATA controller operates in AHCI mode.",
+    "exampleZh": "该 SATA 控制器工作在 AHCI 模式。",
+    "tags": "AHCI SATA host controller interface 主机控制器",
+    "spokenForm": "A H C I",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Advanced",
+        "zh": "高级"
+      },
+      {
+        "word": "Host",
+        "zh": "主机"
+      },
+      {
+        "word": "Controller",
+        "zh": "控制器"
+      },
+      {
+        "word": "Interface",
+        "zh": "接口"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -891,6 +977,29 @@
     ],
     "usageNotes": [
       "CSV 中 FrameTime 从这算。"
+    ]
+  },
+  {
+    "id": "imported-bitlocker",
+    "term": "BitLocker",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "BitLocker 全盘加密",
+    "category": "存储与数据",
+    "definition": "Windows 的卷加密功能，可降低设备丢失后的数据泄露风险，但恢复密钥必须独立保存，加密本身不是备份。",
+    "example": "Store the BitLocker recovery key separately from the encrypted laptop.",
+    "exampleZh": "应把 BitLocker 恢复密钥与加密笔记本分开保存。",
+    "tags": "BitLocker Windows encryption recovery key 全盘加密 恢复密钥",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "加密不能防止误删、勒索软件或文件损坏，也不能替代备份。"
     ]
   },
   {
@@ -1826,6 +1935,40 @@
     "usageNotes": [
       "GC 清理阶段。"
     ]
+  },
+  {
+    "id": "imported-cmr",
+    "term": "CMR",
+    "abbreviation": "CMR",
+    "fullForm": "Conventional Magnetic Recording",
+    "ipa": "",
+    "zh": "传统磁记录",
+    "category": "存储与数据",
+    "definition": "相邻磁道不以瓦片式重叠的硬盘记录方式，通常更适合持续随机写、阵列重建和 NAS 工作负载。",
+    "example": "Choose a CMR drive for a workload with frequent random writes.",
+    "exampleZh": "对于频繁随机写入的负载，应选择 CMR 硬盘。",
+    "tags": "CMR conventional magnetic recording HDD NAS RAID 传统磁记录",
+    "spokenForm": "C M R",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Conventional",
+        "zh": "传统"
+      },
+      {
+        "word": "Magnetic",
+        "zh": "磁性"
+      },
+      {
+        "word": "Recording",
+        "zh": "记录"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-collectgarbagefull",
@@ -3258,6 +3401,29 @@
     ]
   },
   {
+    "id": "imported-disk-cloning",
+    "term": "Disk Cloning",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "整盘克隆",
+    "category": "存储与数据",
+    "definition": "复制整块磁盘及其分区布局、启动配置和隐藏区域的迁移方式，与普通文件复制不同。",
+    "example": "Verify that the cloned system disk boots independently before erasing the source disk.",
+    "exampleZh": "擦除源盘前，应验证克隆后的系统盘能独立启动。",
+    "tags": "disk cloning clone migration EFI partition system disk 整盘克隆 迁移",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Whole-Disk Cloning"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-distortion",
     "term": "Distortion",
     "abbreviation": "",
@@ -3410,6 +3576,29 @@
     ]
   },
   {
+    "id": "imported-drive-letter",
+    "term": "Drive Letter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "盘符",
+    "category": "存储与数据",
+    "definition": "Windows 用字母加冒号表示卷或映射位置的访问入口，例如 C: 或 D:；移除盘符通常不等于删除卷。",
+    "example": "Removing the drive letter does not normally erase the volume data.",
+    "exampleZh": "移除盘符通常不会擦除卷中的数据。",
+    "tags": "drive letter 盘符 C: D: Windows volume mount",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "操作前仍需确认它是盘符、目录挂载、网络映射还是虚拟映射。"
+    ]
+  },
+  {
     "id": "imported-dimm",
     "term": "Dual In-line Memory Module",
     "abbreviation": "",
@@ -3465,6 +3654,40 @@
     "usageNotes": [
       "滤网的防尘能力、阻力和维护便利性需要一起评价。"
     ]
+  },
+  {
+    "id": "imported-dwpd",
+    "term": "DWPD",
+    "abbreviation": "DWPD",
+    "fullForm": "Drive Writes Per Day",
+    "ipa": "",
+    "zh": "每日整盘写入次数",
+    "category": "存储与数据",
+    "definition": "在保修期内允许每天写入多少个整盘容量的耐久指标，常用于企业级 SSD。",
+    "example": "A one-DWPD rating allows one full drive write per day during the warranty period.",
+    "exampleZh": "1 DWPD 表示在保修期内每天可写入一个整盘容量。",
+    "tags": "DWPD drive writes per day enterprise SSD endurance 每日整盘写入",
+    "spokenForm": "D W P D",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Drive",
+        "zh": "整盘"
+      },
+      {
+        "word": "Writes",
+        "zh": "写入"
+      },
+      {
+        "word": "Per Day",
+        "zh": "每天"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-dram",
@@ -3717,6 +3940,36 @@
         "explanation": "Inclusive Time 包含所有嵌套子调用。"
       }
     ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-exfat",
+    "term": "exFAT",
+    "abbreviation": "exFAT",
+    "fullForm": "Extensible File Allocation Table",
+    "ipa": "",
+    "zh": "exFAT 文件系统",
+    "category": "存储与数据",
+    "definition": "面向闪存和移动介质的文件系统，支持大文件且跨平台兼容较好，但功能比 NTFS 简化。",
+    "example": "The portable SSD uses exFAT for cross-platform file exchange.",
+    "exampleZh": "这块移动 SSD 使用 exFAT 进行跨平台文件交换。",
+    "tags": "exFAT extensible file allocation table portable drive 跨平台 文件系统",
+    "spokenForm": "Ex F A T",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Extensible",
+        "zh": "可扩展"
+      },
+      {
+        "word": "File Allocation Table",
+        "zh": "文件分配表"
+      }
+    ],
+    "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
   },
@@ -4035,6 +4288,36 @@
         "experience": "当 FAsyncTask::SyncCompletion 持续偏高时，先确认其对应的工作内容（记录当前线程等待异步任务完成并同步其结果的阻塞时间）是否因工作量增长而变重；在 RenderThread 轨道展开直接子事件，并核对可见性、场景更新与渲染命令生成量。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-fat32",
+    "term": "FAT32",
+    "abbreviation": "FAT32",
+    "fullForm": "File Allocation Table 32",
+    "ipa": "",
+    "zh": "FAT32 文件系统",
+    "category": "存储与数据",
+    "definition": "兼容性广的旧式文件系统，但单个文件通常不能超过 4 GiB，常用于固件和旧设备。",
+    "example": "The device requires a FAT32 partition for firmware updates.",
+    "exampleZh": "该设备要求使用 FAT32 分区进行固件更新。",
+    "tags": "FAT32 file allocation table 32 4GiB firmware 文件系统 兼容",
+    "spokenForm": "F A T Thirty Two",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "File Allocation Table",
+        "zh": "文件分配表"
+      },
+      {
+        "word": "32",
+        "zh": "32 位表项体系"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -4999,6 +5282,40 @@
     "usageNotes": []
   },
   {
+    "id": "imported-ftl",
+    "term": "FTL",
+    "abbreviation": "FTL",
+    "fullForm": "Flash Translation Layer",
+    "ipa": "",
+    "zh": "闪存转换层",
+    "category": "存储与数据",
+    "definition": "SSD 控制器中把主机看到的逻辑块地址映射到 NAND 物理位置的软件与数据结构层。",
+    "example": "The FTL remaps logical blocks as the NAND wears.",
+    "exampleZh": "随着 NAND 磨损，FTL 会重新映射逻辑块。",
+    "tags": "FTL flash translation layer LBA mapping SSD 映射 闪存转换层",
+    "spokenForm": "F T L",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Flash",
+        "zh": "闪存"
+      },
+      {
+        "word": "Translation",
+        "zh": "转换"
+      },
+      {
+        "word": "Layer",
+        "zh": "层"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-fxsystem",
     "term": "FXSystem",
     "abbreviation": "",
@@ -5437,6 +5754,40 @@
     "usageNotes": []
   },
   {
+    "id": "imported-gpt",
+    "term": "GPT",
+    "abbreviation": "GPT",
+    "fullForm": "GUID Partition Table",
+    "ipa": "",
+    "zh": "GUID 分区表",
+    "category": "存储与数据",
+    "definition": "现代分区表方案，支持大容量磁盘和更多分区，并保存主表、备份表及校验信息。",
+    "example": "Initialize the large data disk as GPT to use its full capacity.",
+    "exampleZh": "将这块大容量数据盘初始化为 GPT，以使用全部容量。",
+    "tags": "GPT GUID partition table 分区表 UEFI 大容量",
+    "spokenForm": "G P T",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "GUID",
+        "zh": "全局唯一标识符"
+      },
+      {
+        "word": "Partition",
+        "zh": "分区"
+      },
+      {
+        "word": "Table",
+        "zh": "表"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-gpu-clearance",
     "term": "GPU Clearance",
     "abbreviation": "",
@@ -5570,6 +5921,36 @@
     ]
   },
   {
+    "id": "imported-hdd",
+    "term": "HDD",
+    "abbreviation": "HDD",
+    "fullForm": "Hard Disk Drive",
+    "ipa": "",
+    "zh": "机械硬盘",
+    "category": "存储与数据",
+    "definition": "使用旋转盘片和移动磁头以磁性方式保存数据的存储设备，随机访问会受到寻道和旋转延迟影响。",
+    "example": "The HDD is suitable for large archives that do not require low random-access latency.",
+    "exampleZh": "该机械硬盘适合不要求低随机访问延迟的大容量归档。",
+    "tags": "HDD hard disk drive mechanical disk 机械硬盘 磁盘",
+    "spokenForm": "H D D",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Hard Disk",
+        "zh": "硬盘"
+      },
+      {
+        "word": "Drive",
+        "zh": "驱动器"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-health",
     "term": "Health",
     "abbreviation": "",
@@ -5603,6 +5984,40 @@
         "experience": "比较前后值可以验证实际扣血是否与消息中的 Damage Amount 一致。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-hmb",
+    "term": "HMB",
+    "abbreviation": "HMB",
+    "fullForm": "Host Memory Buffer",
+    "ipa": "",
+    "zh": "主机内存缓冲区",
+    "category": "存储与数据",
+    "definition": "部分无独立 DRAM 的 NVMe SSD 借用少量系统内存保存映射信息的机制，容量和延迟不同于板载 DRAM。",
+    "example": "The DRAM-less NVMe SSD uses HMB for part of its mapping table.",
+    "exampleZh": "这块无 DRAM 的 NVMe SSD 使用 HMB 保存部分映射表。",
+    "tags": "HMB host memory buffer DRAM-less NVMe SSD 主机内存缓冲",
+    "spokenForm": "H M B",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Host",
+        "zh": "主机"
+      },
+      {
+        "word": "Memory",
+        "zh": "内存"
+      },
+      {
+        "word": "Buffer",
+        "zh": "缓冲区"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -5835,6 +6250,40 @@
     "usageNotes": []
   },
   {
+    "id": "imported-iops",
+    "term": "IOPS",
+    "abbreviation": "IOPS",
+    "fullForm": "Input/Output Operations Per Second",
+    "ipa": "",
+    "zh": "每秒输入输出操作数",
+    "category": "存储与数据",
+    "definition": "存储设备每秒完成的 I/O 请求数量；必须结合请求大小、读写比例、队列深度和延迟理解。",
+    "example": "Small random reads depend more on latency and IOPS than on peak sequential bandwidth.",
+    "exampleZh": "小块随机读取更依赖延迟和 IOPS，而不是峰值顺序带宽。",
+    "tags": "IOPS input output operations per second 每秒操作数 存储性能",
+    "spokenForm": "I O P S",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Input/Output",
+        "zh": "输入输出"
+      },
+      {
+        "word": "Operations",
+        "zh": "操作"
+      },
+      {
+        "word": "Per Second",
+        "zh": "每秒"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-ioservice",
     "term": "IoService",
     "abbreviation": "",
@@ -5866,6 +6315,40 @@
     ]
   },
   {
+    "id": "imported-jbod",
+    "term": "JBOD",
+    "abbreviation": "JBOD",
+    "fullForm": "Just a Bunch of Disks",
+    "ipa": "",
+    "zh": "磁盘简单聚合",
+    "category": "存储与数据",
+    "definition": "把多块磁盘独立呈现或拼接使用、通常不提供 RAID 式冗余的组织方式；具体故障影响取决于实现。",
+    "example": "The enclosure exposes each drive independently in JBOD mode.",
+    "exampleZh": "该硬盘柜在 JBOD 模式下独立呈现每块磁盘。",
+    "tags": "JBOD disks spanning concatenation 磁盘聚合 拼接 无冗余",
+    "spokenForm": "J B O D",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Just",
+        "zh": "仅仅"
+      },
+      {
+        "word": "a Bunch of",
+        "zh": "一组"
+      },
+      {
+        "word": "Disks",
+        "zh": "磁盘"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-latentaction",
     "term": "LatentAction",
     "abbreviation": "",
@@ -5893,6 +6376,70 @@
     "usageNotes": [
       "Delay 节点等。"
     ]
+  },
+  {
+    "id": "imported-lba",
+    "term": "LBA",
+    "abbreviation": "LBA",
+    "fullForm": "Logical Block Address",
+    "ipa": "",
+    "zh": "逻辑块地址",
+    "category": "存储与数据",
+    "definition": "主机用来标识存储设备逻辑数据块的位置编号；SSD 的 FTL 会把它映射到实际 NAND 物理位置。",
+    "example": "The host writes to an LBA without knowing the physical NAND page.",
+    "exampleZh": "主机向某个 LBA 写入时并不知道对应的 NAND 物理页。",
+    "tags": "LBA logical block address 逻辑块地址 FTL mapping",
+    "spokenForm": "L B A",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Logical",
+        "zh": "逻辑"
+      },
+      {
+        "word": "Block",
+        "zh": "块"
+      },
+      {
+        "word": "Address",
+        "zh": "地址"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ldpc",
+    "term": "LDPC",
+    "abbreviation": "LDPC",
+    "fullForm": "Low-Density Parity-Check",
+    "ipa": "",
+    "zh": "低密度奇偶校验码",
+    "category": "存储与数据",
+    "definition": "现代 SSD 常用的强纠错码，通过稀疏校验关系提高从受噪声和磨损影响的 NAND 中恢复数据的能力。",
+    "example": "LDPC correction helps the SSD read aging NAND cells reliably.",
+    "exampleZh": "LDPC 纠错帮助 SSD 可靠读取老化的 NAND 单元。",
+    "tags": "LDPC low-density parity-check ECC NAND 低密度奇偶校验",
+    "spokenForm": "L D P C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Low-Density",
+        "zh": "低密度"
+      },
+      {
+        "word": "Parity-Check",
+        "zh": "奇偶校验"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-level-sequence",
@@ -6275,6 +6822,31 @@
     "usageNotes": []
   },
   {
+    "id": "imported-m2",
+    "term": "M.2",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "M.2 外形与连接器规格",
+    "category": "存储与数据",
+    "definition": "一种卡式设备外形与连接器规格，可承载 PCIe/NVMe、SATA 等不同信号，不能单凭 M.2 判断协议和速度。",
+    "example": "Check whether the M.2 slot supports SATA, PCIe, or both.",
+    "exampleZh": "请确认该 M.2 插槽支持 SATA、PCIe，还是两者都支持。",
+    "tags": "M.2 form factor connector 2230 2242 2260 2280 22110 外形 连接器",
+    "spokenForm": "M Two",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "M2"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "M.2 是外形和连接器规格，不等同于 NVMe。"
+    ]
+  },
+  {
     "id": "imported-makeuniqueobjectname",
     "term": "MakeUniqueObjectName",
     "abbreviation": "",
@@ -6326,6 +6898,40 @@
         "experience": "当 Malloc_UpdateStats 持续偏高时，先确认其对应的工作内容（汇总内存分配器的分配量、峰值和池使用等统计信息）是否因工作量增长而变重；继续检查对象数量、引用关系、分配频率和垃圾回收阶段。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-mbr",
+    "term": "MBR",
+    "abbreviation": "MBR",
+    "fullForm": "Master Boot Record",
+    "ipa": "",
+    "zh": "主引导记录分区方案",
+    "category": "存储与数据",
+    "definition": "较旧的磁盘分区与启动结构，常见限制包括约 2 TiB 的可寻址空间和主分区数量约束。",
+    "example": "The old disk uses MBR and cannot expose all of its capacity in this layout.",
+    "exampleZh": "这块旧磁盘使用 MBR，在当前布局下无法显示全部容量。",
+    "tags": "MBR master boot record partition table BIOS 2TiB 主引导记录",
+    "spokenForm": "M B R",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Master",
+        "zh": "主"
+      },
+      {
+        "word": "Boot",
+        "zh": "引导"
+      },
+      {
+        "word": "Record",
+        "zh": "记录"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -6848,6 +7454,42 @@
     ]
   },
   {
+    "id": "imported-mlc",
+    "term": "MLC",
+    "abbreviation": "MLC",
+    "fullForm": "Multi-Level Cell",
+    "ipa": "",
+    "zh": "多层单元闪存",
+    "category": "存储与数据",
+    "definition": "广义上指每单元存储多于 1 bit 的 NAND；消费级产品语境中常特指每单元 2 bit。",
+    "example": "Two-bit MLC balances density and endurance better than older SLC designs.",
+    "exampleZh": "两比特 MLC 在密度与耐久之间比早期 SLC 设计更均衡。",
+    "tags": "MLC multi-level cell NAND 2 bit 多层单元",
+    "spokenForm": "M L C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Multi",
+        "zh": "多"
+      },
+      {
+        "word": "Level",
+        "zh": "电平层级"
+      },
+      {
+        "word": "Cell",
+        "zh": "存储单元"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "在常见 SSD 产品标注中，MLC 通常指每单元 2 bit；从字面技术分类看，TLC 和 QLC 也属于多电平单元。"
+    ]
+  },
+  {
     "id": "imported-module",
     "term": "Module",
     "abbreviation": "",
@@ -6985,6 +7627,27 @@
     ]
   },
   {
+    "id": "imported-mount-point",
+    "term": "Mount Point",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "挂载点",
+    "category": "存储与数据",
+    "definition": "文件系统层次中用来访问某个卷的位置；Windows 除盘符外，也可把卷挂载到 NTFS 文件夹。",
+    "example": "The backup volume uses an NTFS folder as its mount point.",
+    "exampleZh": "备份卷使用一个 NTFS 文件夹作为挂载点。",
+    "tags": "mount point 挂载点 NTFS folder volume drive letter",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-moviescene",
     "term": "MovieScene",
     "abbreviation": "",
@@ -7008,6 +7671,94 @@
         "explanation": "Level Sequence 通过 MovieScene 系统完成求值。"
       }
     ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nand-block",
+    "term": "NAND Block",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 擦除块",
+    "category": "存储与数据",
+    "definition": "由多个 NAND 页组成的擦除单位；闪存必须以块为单位擦除，粒度通常大于读写页。",
+    "example": "Valid pages are moved before the old NAND block is erased.",
+    "exampleZh": "旧 NAND 块擦除前，其中的有效页会被搬走。",
+    "tags": "NAND block erase block 擦除块 页",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nand-flash",
+    "term": "NAND Flash",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 闪存",
+    "category": "存储与数据",
+    "definition": "SSD、U 盘和存储卡常用的非易失性半导体存储介质，通常按页读取和编程、按块擦除。",
+    "example": "The controller distributes writes across multiple NAND flash dies.",
+    "exampleZh": "控制器会把写入分散到多颗 NAND 闪存 Die 上。",
+    "tags": "NAND flash 非易失 闪存 SSD die page block",
+    "spokenForm": "NAND Flash",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "NAND"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nand-garbage-collection",
+    "term": "NAND Garbage Collection",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 垃圾回收",
+    "category": "存储与数据",
+    "definition": "SSD 控制器搬移仍有效的数据并擦除含无效页的块，以重新获得可写空闲块的后台过程。",
+    "example": "Heavy NAND garbage collection can increase write latency on a nearly full SSD.",
+    "exampleZh": "在接近满盘的 SSD 上，大量 NAND 垃圾回收可能提高写入延迟。",
+    "tags": "NAND garbage collection GC SSD 垃圾回收 空闲块",
+    "spokenForm": "NAND Garbage Collection",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "这是闪存管理过程，不是编程语言或 Unreal Engine 的对象垃圾回收。"
+    ]
+  },
+  {
+    "id": "imported-nand-page",
+    "term": "NAND Page",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 页",
+    "category": "存储与数据",
+    "definition": "NAND 闪存进行读取和编程的基本数据单位；修改数据时通常不能像内存一样直接原位覆盖。",
+    "example": "The controller programs data into an empty NAND page.",
+    "exampleZh": "控制器把数据编程到一个空闲 NAND 页中。",
+    "tags": "NAND page program read 页 编程 读取",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
   },
@@ -7039,6 +7790,36 @@
     "usageNotes": [
       "自动 LOD 替代。"
     ]
+  },
+  {
+    "id": "imported-nas-storage",
+    "term": "NAS",
+    "abbreviation": "NAS",
+    "fullForm": "Network-Attached Storage",
+    "ipa": "",
+    "zh": "网络附加存储",
+    "category": "存储与数据",
+    "definition": "通过网络向多台设备提供文件或其他存储服务的专用设备或系统，仍需要独立备份和恢复验证。",
+    "example": "The NAS stores shared project files and replicates backups offsite.",
+    "exampleZh": "该 NAS 保存共享项目文件，并把备份复制到异地。",
+    "tags": "NAS network-attached storage file server 网络附加存储 共享 备份",
+    "spokenForm": "N A S",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Network-Attached",
+        "zh": "网络附加"
+      },
+      {
+        "word": "Storage",
+        "zh": "存储"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-negative-pressure",
@@ -7143,6 +7924,91 @@
     "usageNotes": [
       "也可以反向使用相同温度目标比较噪声，但必须统一功耗和环境条件。"
     ]
+  },
+  {
+    "id": "imported-ntfs",
+    "term": "NTFS",
+    "abbreviation": "NTFS",
+    "fullForm": "New Technology File System",
+    "ipa": "",
+    "zh": "NTFS 文件系统",
+    "category": "存储与数据",
+    "definition": "Windows 常用的日志文件系统，支持权限、压缩、加密、大文件和文件夹挂载点等功能。",
+    "example": "Use NTFS when the Windows volume needs permissions and journaling.",
+    "exampleZh": "当 Windows 卷需要权限和日志功能时可使用 NTFS。",
+    "tags": "NTFS New Technology File System Windows 文件系统 日志 权限",
+    "spokenForm": "N T F S",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "New Technology",
+        "zh": "新技术"
+      },
+      {
+        "word": "File System",
+        "zh": "文件系统"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nvme",
+    "term": "NVMe",
+    "abbreviation": "NVMe",
+    "fullForm": "Non-Volatile Memory Express",
+    "ipa": "",
+    "zh": "非易失性内存高速协议",
+    "category": "存储与数据",
+    "definition": "针对低延迟、并行非易失存储设计的协议，通常运行在 PCIe 上并支持大量提交与完成队列。",
+    "example": "NVMe supports much deeper parallel queues than AHCI.",
+    "exampleZh": "NVMe 支持比 AHCI 深得多的并行队列。",
+    "tags": "NVMe Non-Volatile Memory Express PCIe SSD 非易失存储 协议",
+    "spokenForm": "N V M Express",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Non-Volatile",
+        "zh": "非易失性"
+      },
+      {
+        "word": "Memory",
+        "zh": "内存或存储介质"
+      },
+      {
+        "word": "Express",
+        "zh": "高速"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nvme-critical-warning",
+    "term": "NVMe Critical Warning",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NVMe 严重警告",
+    "category": "存储与数据",
+    "definition": "NVMe SMART/Health 信息中的关键状态位集合，可提示备用空间不足、温度异常、可靠性下降或介质进入只读等严重状态。",
+    "example": "Back up the data immediately when the NVMe Critical Warning field is nonzero.",
+    "exampleZh": "当 NVMe Critical Warning 字段非零时，应立即备份数据。",
+    "tags": "NVMe Critical Warning SMART health spare temperature read-only 严重警告",
+    "spokenForm": "N V M Express Critical Warning",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-on-die-termination",
@@ -7390,6 +8256,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-over-provisioning",
+    "term": "Over-Provisioning",
+    "abbreviation": "OP",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "预留空间",
+    "category": "存储与数据",
+    "definition": "SSD 控制器保留、不直接暴露给用户的 NAND 容量，用于坏块替换、垃圾回收、磨损均衡和维持性能。",
+    "example": "Additional over-provisioning can improve sustained write consistency.",
+    "exampleZh": "增加预留空间可以改善持续写入一致性。",
+    "tags": "over-provisioning OP SSD spare area 预留空间 备用块",
+    "spokenForm": "Over Provisioning",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Overprovisioning"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-ownership",
     "term": "Ownership",
     "abbreviation": "",
@@ -7627,6 +8516,27 @@
     ]
   },
   {
+    "id": "imported-partition",
+    "term": "Partition",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "分区",
+    "category": "存储与数据",
+    "definition": "依据分区表在物理磁盘上划定的一段逻辑地址范围，可用于创建卷和文件系统。",
+    "example": "Create a partition only after confirming the correct physical disk.",
+    "exampleZh": "确认物理磁盘无误后再创建分区。",
+    "tags": "partition 分区 GPT MBR disk volume",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-payload",
     "term": "Payload",
     "abbreviation": "",
@@ -7691,6 +8601,44 @@
     "usageNotes": []
   },
   {
+    "id": "imported-pcie",
+    "term": "PCIe",
+    "abbreviation": "PCIe",
+    "fullForm": "Peripheral Component Interconnect Express",
+    "ipa": "",
+    "zh": "高速串行扩展总线",
+    "category": "存储与数据",
+    "definition": "连接显卡、NVMe SSD、网卡等设备的高速串行总线，其代际与通道宽度共同决定可用带宽。",
+    "example": "This M.2 slot provides four PCIe lanes to the SSD.",
+    "exampleZh": "这个 M.2 插槽为 SSD 提供四条 PCIe 通道。",
+    "tags": "PCIe PCI Express 总线 通道 lane x4 NVMe",
+    "spokenForm": "P C I Express",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Peripheral",
+        "zh": "外围"
+      },
+      {
+        "word": "Component",
+        "zh": "组件"
+      },
+      {
+        "word": "Interconnect",
+        "zh": "互连"
+      },
+      {
+        "word": "Express",
+        "zh": "高速"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-pcie-riser-cable",
     "term": "PCIe Riser Cable",
     "abbreviation": "",
@@ -7714,6 +8662,29 @@
     "usageNotes": [
       "使用时要核对长度、弯折、屏蔽、PCIe 代际和 BIOS 链路设置。"
     ]
+  },
+  {
+    "id": "imported-pending-sector",
+    "term": "Pending Sector",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "待定扇区",
+    "category": "存储与数据",
+    "definition": "设备当前无法可靠读取、等待后续重写或重映射判定的扇区；出现或增长时应优先备份重要数据。",
+    "example": "The pending sector count increased after repeated read errors.",
+    "exampleZh": "反复读取错误后，待定扇区计数增加了。",
+    "tags": "pending sector current pending sector SMART HDD 待定扇区 读取错误",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Current Pending Sector"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-performreachabilityanalysisonobjectsinternal",
@@ -7740,6 +8711,27 @@
         "experience": "当 PerformReachabilityAnalysisOnObjectsInternal 持续偏高时，先确认其对应的工作内容（对 UObject 执行内部可达性分析，标记仍被引用的对象）是否因工作量增长而变重；继续核对采样范围和统计开销，避免把分析工具本身误判为业务瓶颈。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-physical-disk",
+    "term": "Physical Disk",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "物理磁盘",
+    "category": "存储与数据",
+    "definition": "操作系统识别到的一块实际存储设备，可包含一个或多个分区和卷。",
+    "example": "The physical disk contains an EFI partition and a data volume.",
+    "exampleZh": "这块物理磁盘包含一个 EFI 分区和一个数据卷。",
+    "tags": "physical disk disk drive 物理磁盘 分区 卷 Windows",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -7797,6 +8789,38 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-plp",
+    "term": "PLP",
+    "abbreviation": "PLP",
+    "fullForm": "Power Loss Protection",
+    "ipa": "",
+    "zh": "断电保护",
+    "category": "存储与数据",
+    "definition": "存储设备在突然断电时保护缓存数据和关键映射元数据的机制；完整 PLP 常依赖电容提供短时供电。",
+    "example": "Enterprise SSDs use PLP capacitors to flush critical data after power loss.",
+    "exampleZh": "企业级 SSD 使用 PLP 电容在断电后落盘关键数据。",
+    "tags": "PLP power loss protection SSD capacitor 断电保护 电容",
+    "spokenForm": "P L P",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Power Loss",
+        "zh": "断电"
+      },
+      {
+        "word": "Protection",
+        "zh": "保护"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "普通写缓存或有限的固件保护不等同于完整 PLP。"
+    ]
   },
   {
     "id": "imported-plugin",
@@ -8467,6 +9491,86 @@
     ]
   },
   {
+    "id": "imported-qlc",
+    "term": "QLC",
+    "abbreviation": "QLC",
+    "fullForm": "Quad-Level Cell",
+    "ipa": "",
+    "zh": "四层单元闪存",
+    "category": "存储与数据",
+    "definition": "每个 NAND 单元存储 4 bit 数据的类型，容量成本有优势，但原生写入速度和耐久压力通常更大。",
+    "example": "The QLC drive slows down significantly after its dynamic SLC cache fills.",
+    "exampleZh": "这块 QLC 硬盘在动态 SLC 缓存写满后会明显降速。",
+    "tags": "QLC quad-level cell NAND 4 bit 四层单元",
+    "spokenForm": "Q L C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Quad",
+        "zh": "四重"
+      },
+      {
+        "word": "Level",
+        "zh": "电平层级"
+      },
+      {
+        "word": "Cell",
+        "zh": "存储单元"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-queue-depth",
+    "term": "Queue Depth",
+    "abbreviation": "QD",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "队列深度",
+    "category": "存储与数据",
+    "definition": "某一时刻等待存储设备处理的 I/O 请求数量；高队列深度更能体现并行上限，低队列深度更贴近日常桌面交互。",
+    "example": "QD1 latency is often more relevant to desktop responsiveness than a high-QD score.",
+    "exampleZh": "与高 QD 分数相比，QD1 延迟通常更能反映桌面响应。",
+    "tags": "queue depth QD QD1 队列深度 存储测试 并发",
+    "spokenForm": "Queue Depth",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "I/O Queue Depth"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-quick-format",
+    "term": "Quick Format",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "快速格式化",
+    "category": "存储与数据",
+    "definition": "快速重建卷上的文件系统元数据、而不逐字节覆盖全部旧内容的格式化方式。",
+    "example": "A quick format does not securely erase all previous file contents.",
+    "exampleZh": "快速格式化不会安全擦除所有旧文件内容。",
+    "tags": "quick format 快速格式化 filesystem metadata 数据恢复",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "快速格式化不等于安全擦除。"
+    ]
+  },
+  {
     "id": "imported-qualified-vendor-list",
     "term": "QVL",
     "abbreviation": "QVL",
@@ -8601,6 +9705,172 @@
     ]
   },
   {
+    "id": "imported-raid",
+    "term": "RAID",
+    "abbreviation": "RAID",
+    "fullForm": "Redundant Array of Independent Disks",
+    "ipa": "",
+    "zh": "独立磁盘冗余阵列",
+    "category": "存储与数据",
+    "definition": "把多块磁盘按条带、镜像或校验等方式组合，以提高容量利用、性能或可用性的技术。",
+    "example": "RAID improves availability, but it does not replace an independent backup.",
+    "exampleZh": "RAID 可以提高可用性，但不能替代独立备份。",
+    "tags": "RAID redundant array disks mirror stripe parity 阵列 冗余",
+    "spokenForm": "Raid",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Redundant",
+        "zh": "冗余"
+      },
+      {
+        "word": "Array",
+        "zh": "阵列"
+      },
+      {
+        "word": "Independent Disks",
+        "zh": "独立磁盘"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "RAID 会同步误删、损坏和勒索结果，因此不是备份。"
+    ]
+  },
+  {
+    "id": "imported-raid-0",
+    "term": "RAID 0",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "RAID 0 条带阵列",
+    "category": "存储与数据",
+    "definition": "把数据条带化分布到多块磁盘以提高容量利用和吞吐，但不提供冗余，任一成员故障可导致整个阵列失效。",
+    "example": "RAID 0 increases throughput but provides no fault tolerance.",
+    "exampleZh": "RAID 0 能提高吞吐，但不提供容错。",
+    "tags": "RAID 0 striping 条带 无冗余 吞吐",
+    "spokenForm": "Raid Zero",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-raid-1",
+    "term": "RAID 1",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "RAID 1 镜像阵列",
+    "category": "存储与数据",
+    "definition": "在多个成员上保存相同数据的镜像布局，可容忍部分成员故障，但可用容量降低且逻辑错误会同步。",
+    "example": "RAID 1 keeps a mirror on both drives, but deleted files disappear from both copies.",
+    "exampleZh": "RAID 1 在两块盘上保存镜像，但被删除的文件也会从两份镜像中消失。",
+    "tags": "RAID 1 mirroring mirror 镜像 冗余",
+    "spokenForm": "Raid One",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-raid-10",
+    "term": "RAID 10",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "RAID 10 镜像条带阵列",
+    "category": "存储与数据",
+    "definition": "先建立镜像组、再在镜像组之间条带化的布局，兼顾性能和冗余，但需要更多磁盘且容错取决于故障组合。",
+    "example": "RAID 10 combines mirrored pairs with striping across the pairs.",
+    "exampleZh": "RAID 10 把镜像对与跨镜像对的条带化结合起来。",
+    "tags": "RAID 10 RAID 1+0 mirror stripe 镜像 条带",
+    "spokenForm": "Raid Ten",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "RAID 1+0"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-raid-5",
+    "term": "RAID 5",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "RAID 5 单校验阵列",
+    "category": "存储与数据",
+    "definition": "使用数据条带和分布式单校验的阵列布局，通常可容忍一块成员盘故障，但重建压力和写入校验开销较大。",
+    "example": "A degraded RAID 5 array should be backed up before a stressful rebuild.",
+    "exampleZh": "降级的 RAID 5 阵列在高压力重建前应先备份。",
+    "tags": "RAID 5 parity striping single parity 单校验 重建",
+    "spokenForm": "Raid Five",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-raid-6",
+    "term": "RAID 6",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "RAID 6 双校验阵列",
+    "category": "存储与数据",
+    "definition": "使用条带和双校验的阵列布局，通常可容忍两块成员盘故障，但容量与写入性能代价高于 RAID 5。",
+    "example": "RAID 6 trades more capacity for protection against two drive failures.",
+    "exampleZh": "RAID 6 以更多容量为代价，提供对两块硬盘故障的保护。",
+    "tags": "RAID 6 dual parity 双校验 重建 容错",
+    "spokenForm": "Raid Six",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-random-io",
+    "term": "Random I/O",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "随机读写",
+    "category": "存储与数据",
+    "definition": "在分散逻辑地址间进行大量请求的读写模式，常用于衡量系统盘、小文件、数据库和虚拟机负载。",
+    "example": "The operating system generates many small random I/O requests during startup.",
+    "exampleZh": "操作系统启动时会产生大量小块随机 I/O 请求。",
+    "tags": "random I/O 4K random read write 随机读写 小文件 延迟",
+    "spokenForm": "Random I O",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Random Read/Write"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-rank-interleaving",
     "term": "Rank Interleaving",
     "abbreviation": "",
@@ -8670,6 +9940,29 @@
     "usageNotes": [
       "所有 GPU Pass 在 RDG 里调度。"
     ]
+  },
+  {
+    "id": "imported-reallocated-sector",
+    "term": "Reallocated Sector",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "重映射扇区",
+    "category": "存储与数据",
+    "definition": "设备发现原扇区不可靠后，用备用区域替代并更新映射的扇区；数量增长可能表示介质状态恶化。",
+    "example": "An increasing reallocated sector count is a reason to secure the data first.",
+    "exampleZh": "重映射扇区数量持续增长时，应先保护数据。",
+    "tags": "reallocated sector remapped sector SMART HDD 重映射扇区 坏扇区",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Remapped Sector"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-reference-viewer",
@@ -9288,6 +10581,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-rotational-latency",
+    "term": "Rotational Latency",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "旋转延迟",
+    "category": "存储与数据",
+    "definition": "机械硬盘磁头到达目标磁道后，等待目标扇区旋转到磁头下方所需的时间。",
+    "example": "A higher spindle speed usually reduces average rotational latency.",
+    "exampleZh": "更高的主轴转速通常会降低平均旋转延迟。",
+    "tags": "rotational latency HDD RPM spindle sector 旋转延迟 转速 扇区",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-row-active-time",
     "term": "Row Active Time",
     "abbreviation": "",
@@ -9636,6 +10950,99 @@
     ]
   },
   {
+    "id": "imported-smart-storage",
+    "term": "S.M.A.R.T.",
+    "abbreviation": "SMART",
+    "fullForm": "Self-Monitoring, Analysis and Reporting Technology",
+    "ipa": "",
+    "zh": "磁盘自监测分析与报告技术",
+    "category": "存储与数据",
+    "definition": "存储设备暴露健康、错误和使用统计信息的监测体系，需要结合趋势、错误日志、实际症状和备份状态判断。",
+    "example": "Review the SMART trend instead of relying on a single health percentage.",
+    "exampleZh": "应查看 SMART 趋势，而不是只依赖一个健康百分比。",
+    "tags": "SMART S.M.A.R.T. health monitoring HDD SSD 健康监控 硬盘",
+    "spokenForm": "Smart",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Self-Monitoring",
+        "zh": "自我监测"
+      },
+      {
+        "word": "Analysis",
+        "zh": "分析"
+      },
+      {
+        "word": "Reporting",
+        "zh": "报告"
+      },
+      {
+        "word": "Technology",
+        "zh": "技术"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "SMART 不是精确寿命倒计时，健康度 100% 也不能排除突发故障。"
+    ]
+  },
+  {
+    "id": "imported-sanitize-command",
+    "term": "Sanitize Command",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "净化擦除命令",
+    "category": "存储与数据",
+    "definition": "由存储标准定义的设备级数据清除命令，具体支持的块擦除、加密擦除或覆盖方式取决于设备。",
+    "example": "Check the controller documentation before issuing a Sanitize command.",
+    "exampleZh": "执行 Sanitize 命令前应查看控制器文档。",
+    "tags": "sanitize command NVMe SSD block erase crypto erase 净化 擦除",
+    "spokenForm": "Sanitize Command",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Sanitize"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sata",
+    "term": "SATA",
+    "abbreviation": "SATA",
+    "fullForm": "Serial ATA",
+    "ipa": "",
+    "zh": "串行 ATA 接口",
+    "category": "存储与数据",
+    "definition": "常用于 2.5 英寸 SSD 和机械硬盘的存储接口与传输体系；SATA III 标称链路速率为 6 Gb/s。",
+    "example": "The SATA SSD is limited by the interface even when its NAND is faster.",
+    "exampleZh": "即使 NAND 更快，这块 SATA SSD 仍会受到接口限制。",
+    "tags": "SATA Serial ATA 串行接口 SSD HDD 6Gbps",
+    "spokenForm": "S A T A",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Serial",
+        "zh": "串行"
+      },
+      {
+        "word": "ATA",
+        "zh": "高级技术附件接口"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-sceneculling-post-updateinstances",
     "term": "SceneCulling_Post_UpdateInstances",
     "abbreviation": "",
@@ -9798,6 +11205,71 @@
         "experience": "当 ScreenSpaceReflections 持续偏高时，先确认其对应的工作内容（记录屏幕空间反射（SSR）根据当前帧深度和颜色缓冲计算反射的 GPU 耗时）是否因工作量增长而变重；在 GPU Visualizer 中检查分辨率、可见像素、材质复杂度和相关 Pass 的工作量。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-secure-erase",
+    "term": "Secure Erase",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "安全擦除",
+    "category": "存储与数据",
+    "definition": "通过设备或控制器支持的正规命令清除存储介质数据的流程，目标是比普通删除或快速格式化更完整地消除可恢复内容。",
+    "example": "Use the vendor-supported Secure Erase procedure before retiring the SSD.",
+    "exampleZh": "淘汰 SSD 前应使用厂商支持的 Secure Erase 流程。",
+    "tags": "Secure Erase SSD data sanitization 安全擦除 ATA",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-seek-time",
+    "term": "Seek Time",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "寻道时间",
+    "category": "存储与数据",
+    "definition": "机械硬盘执行器将磁头移动到目标磁道所需的时间，是随机访问延迟的重要组成部分。",
+    "example": "Fragmented random access increases the impact of seek time on an HDD.",
+    "exampleZh": "分散的随机访问会放大寻道时间对机械硬盘的影响。",
+    "tags": "seek time HDD head track 寻道时间 磁头 磁道",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sequential-io",
+    "term": "Sequential I/O",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "顺序读写",
+    "category": "存储与数据",
+    "definition": "按连续逻辑地址处理较大块数据的读写模式，常用于观察大文件传输和接口带宽。",
+    "example": "Video export workloads can benefit from high sequential I/O throughput.",
+    "exampleZh": "视频导出负载可从较高的顺序 I/O 吞吐中受益。",
+    "tags": "sequential I/O sequential read write 顺序读写 大文件 带宽",
+    "spokenForm": "Sequential I O",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Sequential Read/Write"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -10773,6 +12245,63 @@
     ]
   },
   {
+    "id": "imported-slc",
+    "term": "SLC",
+    "abbreviation": "SLC",
+    "fullForm": "Single-Level Cell",
+    "ipa": "",
+    "zh": "单层单元闪存",
+    "category": "存储与数据",
+    "definition": "每个 NAND 单元存储 1 bit 数据的类型，电压状态少，通常速度快、耐久高，但单位容量成本高。",
+    "example": "Native SLC NAND offers high endurance but low density.",
+    "exampleZh": "原生 SLC NAND 具有高耐久，但存储密度较低。",
+    "tags": "SLC single-level cell NAND 1 bit 单层单元",
+    "spokenForm": "S L C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Single",
+        "zh": "单一"
+      },
+      {
+        "word": "Level",
+        "zh": "电平层级"
+      },
+      {
+        "word": "Cell",
+        "zh": "存储单元"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-slc-cache",
+    "term": "SLC Cache",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "SLC 缓存",
+    "category": "存储与数据",
+    "definition": "消费级 TLC 或 QLC SSD 将部分 NAND 临时以较少电压状态工作，用来吸收高速突发写入的缓存机制。",
+    "example": "Sustained write speed drops after the SLC cache is exhausted.",
+    "exampleZh": "SLC 缓存耗尽后，持续写入速度会下降。",
+    "tags": "SLC cache pseudo-SLC dynamic cache sustained write SLC 缓存 持续写入",
+    "spokenForm": "S L C Cache",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Pseudo-SLC Cache"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-small-form-factor",
     "term": "Small Form Factor",
     "abbreviation": "SFF",
@@ -10806,6 +12335,65 @@
     "contexts": [],
     "usageNotes": [
       "SFF 没有适用于所有厂商的单一体积边界，实际语境通常强调紧凑布局。"
+    ]
+  },
+  {
+    "id": "imported-smr",
+    "term": "SMR",
+    "abbreviation": "SMR",
+    "fullForm": "Shingled Magnetic Recording",
+    "ipa": "",
+    "zh": "叠瓦式磁记录",
+    "category": "存储与数据",
+    "definition": "让相邻磁道部分重叠以提高面密度的硬盘记录方式，重写已用区域时可能需要整理并重写更大的带区。",
+    "example": "The SMR drive slowed down after its write cache filled.",
+    "exampleZh": "这块 SMR 硬盘在写缓存耗尽后明显降速。",
+    "tags": "SMR shingled magnetic recording HDD archive 叠瓦式磁记录",
+    "spokenForm": "S M R",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Shingled",
+        "zh": "叠瓦式"
+      },
+      {
+        "word": "Magnetic",
+        "zh": "磁性"
+      },
+      {
+        "word": "Recording",
+        "zh": "记录"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "SMR 不等于不可用，但持续随机写和阵列重建需要谨慎评估。"
+    ]
+  },
+  {
+    "id": "imported-snapshot",
+    "term": "Snapshot",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "快照",
+    "category": "存储与数据",
+    "definition": "记录数据在某个时间点状态的机制，可用于快速回滚，但若与源数据处于同一故障域，不能替代独立备份。",
+    "example": "The snapshot provides a quick rollback point before the upgrade.",
+    "exampleZh": "该快照为升级前提供了一个快速回滚点。",
+    "tags": "snapshot point in time rollback 快照 时间点 回滚 备份",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "同设备、同账号或同故障域内的快照不是独立备份。"
     ]
   },
   {
@@ -10917,6 +12505,59 @@
         "explanation": "Spawnable 的生命周期由序列求值系统管理。"
       }
     ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ssd",
+    "term": "SSD",
+    "abbreviation": "SSD",
+    "fullForm": "Solid-State Drive",
+    "ipa": "",
+    "zh": "固态硬盘",
+    "category": "存储与数据",
+    "definition": "主要使用闪存保存数据、没有机械寻道部件的存储设备，其性能和寿命由控制器、NAND、固件、缓存与工作负载共同决定。",
+    "example": "The SSD handles small random reads with much lower latency than an HDD.",
+    "exampleZh": "该 SSD 处理小块随机读取时的延迟远低于机械硬盘。",
+    "tags": "SSD solid-state drive 固态硬盘 NAND controller",
+    "spokenForm": "S S D",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Solid-State",
+        "zh": "固态"
+      },
+      {
+        "word": "Drive",
+        "zh": "驱动器"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ssd-dram-cache",
+    "term": "SSD DRAM Cache",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "SSD 板载 DRAM 缓存",
+    "category": "存储与数据",
+    "definition": "SSD 上的独立高速内存，常用于保存 FTL 映射和缓存元数据；它只是整体架构的一部分，不能单独决定整盘质量。",
+    "example": "The SSD uses its DRAM cache to keep frequently accessed mapping data.",
+    "exampleZh": "该 SSD 使用 DRAM 缓存保存常用映射数据。",
+    "tags": "SSD DRAM cache mapping metadata 板载缓存 映射表",
+    "spokenForm": "S S D D RAM Cache",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "DRAM Cache"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
   },
@@ -11053,6 +12694,135 @@
         "experience": "当 StaticLoadObjectInternal 持续偏高时，先确认其对应的工作内容（同步加载资产对象）是否因工作量增长而变重；继续检查磁盘读取、解压、资源依赖以及游戏线程上的同步等待。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-crc-error-storage",
+    "term": "Storage CRC Error",
+    "abbreviation": "CRC",
+    "fullForm": "Cyclic Redundancy Check",
+    "ipa": "",
+    "zh": "存储接口 CRC 错误",
+    "category": "存储与数据",
+    "definition": "存储链路传输数据未通过循环冗余校验的错误；SATA 场景中常需检查数据线、接口和接触状况。",
+    "example": "A rising SATA CRC error count may indicate a bad data cable.",
+    "exampleZh": "SATA CRC 错误计数上升可能说明数据线有问题。",
+    "tags": "CRC cyclic redundancy check SATA cable interface error 循环冗余校验 接口错误",
+    "spokenForm": "C R C Error",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Cyclic",
+        "zh": "循环"
+      },
+      {
+        "word": "Redundancy",
+        "zh": "冗余"
+      },
+      {
+        "word": "Check",
+        "zh": "校验"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-ecc-storage",
+    "term": "Storage ECC",
+    "abbreviation": "ECC",
+    "fullForm": "Error Correction Code",
+    "ipa": "",
+    "zh": "存储纠错码",
+    "category": "存储与数据",
+    "definition": "存储控制器用于检测并纠正介质位错误的编码机制，闪存密度和磨损增加时对纠错能力要求更高。",
+    "example": "The controller uses ECC to recover data from weak NAND cells.",
+    "exampleZh": "控制器使用 ECC 从状态较弱的 NAND 单元恢复数据。",
+    "tags": "ECC error correction code NAND storage 纠错码 位错误",
+    "spokenForm": "E C C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Error",
+        "zh": "错误"
+      },
+      {
+        "word": "Correction",
+        "zh": "纠正"
+      },
+      {
+        "word": "Code",
+        "zh": "编码"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-storage-io",
+    "term": "Storage I/O",
+    "abbreviation": "",
+    "fullForm": "Storage Input/Output",
+    "ipa": "",
+    "zh": "存储输入输出",
+    "category": "存储与数据",
+    "definition": "应用、操作系统与存储设备之间读写数据的请求和传输过程，涵盖文件系统、驱动、协议、控制器与介质。",
+    "example": "The benchmark separates cached memory traffic from real storage I/O.",
+    "exampleZh": "该基准测试会区分内存缓存流量与真实存储 I/O。",
+    "tags": "storage I/O input output 存储 输入 输出 读写 请求",
+    "spokenForm": "Storage I O",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "Storage IO"
+    ],
+    "wordParts": [
+      {
+        "word": "Storage",
+        "zh": "存储"
+      },
+      {
+        "word": "Input",
+        "zh": "输入"
+      },
+      {
+        "word": "Output",
+        "zh": "输出"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "这里指存储链路中的 I/O，不是机箱前置 I/O 接口。"
+    ]
+  },
+  {
+    "id": "imported-thermal-throttling-storage",
+    "term": "Storage Thermal Throttling",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "存储热降频",
+    "category": "存储与数据",
+    "definition": "SSD 控制器或其他存储器件温度过高时，固件主动降低性能以保护硬件的行为。",
+    "example": "The NVMe SSD entered thermal throttling during a long write test.",
+    "exampleZh": "该 NVMe SSD 在长时间写入测试中触发了热降频。",
+    "tags": "thermal throttling NVMe SSD temperature heatsink 热降频 温度 散热",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [
+      "SSD Thermal Throttling"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -11453,6 +13223,36 @@
     "usageNotes": [
       "空闲状态。"
     ]
+  },
+  {
+    "id": "imported-tbw",
+    "term": "TBW",
+    "abbreviation": "TBW",
+    "fullForm": "Terabytes Written",
+    "ipa": "",
+    "zh": "标称总写入量",
+    "category": "存储与数据",
+    "definition": "SSD 保修条件中常见的累计主机写入量指标之一，通常以 TB 表示，不是达到数值后立即损坏的倒计时。",
+    "example": "The warranty covers five years or the rated TBW, whichever comes first.",
+    "exampleZh": "保修以五年或达到标称 TBW 为限，先到者为准。",
+    "tags": "TBW terabytes written SSD endurance warranty 总写入量 耐久",
+    "spokenForm": "T B W",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Terabytes",
+        "zh": "太字节"
+      },
+      {
+        "word": "Written",
+        "zh": "已写入"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-temperature-hysteresis",
@@ -12347,6 +14147,40 @@
     ]
   },
   {
+    "id": "imported-tlc",
+    "term": "TLC",
+    "abbreviation": "TLC",
+    "fullForm": "Triple-Level Cell",
+    "ipa": "",
+    "zh": "三层单元闪存",
+    "category": "存储与数据",
+    "definition": "每个 NAND 单元存储 3 bit 数据的类型，是当前消费级 SSD 的常见主流方案。",
+    "example": "The TLC SSD maintains better native write speed after the SLC cache is exhausted.",
+    "exampleZh": "这块 TLC SSD 在 SLC 缓存耗尽后仍保持较好的原生写入速度。",
+    "tags": "TLC triple-level cell NAND 3 bit 三层单元",
+    "spokenForm": "T L C",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Triple",
+        "zh": "三重"
+      },
+      {
+        "word": "Level",
+        "zh": "电平层级"
+      },
+      {
+        "word": "Cell",
+        "zh": "存储单元"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-tonal-noise",
     "term": "Tonal Noise",
     "abbreviation": "",
@@ -12628,6 +14462,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-trim",
+    "term": "TRIM",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "TRIM 回收提示命令",
+    "category": "存储与数据",
+    "definition": "操作系统通知 SSD 哪些逻辑块已不再包含有效数据的命令，使控制器能更高效地安排后续垃圾回收。",
+    "example": "TRIM tells the SSD that deleted file blocks can be reclaimed.",
+    "exampleZh": "TRIM 会告诉 SSD，已删除文件占用的块可以回收。",
+    "tags": "TRIM SSD reclaim deleted blocks 垃圾回收 删除",
+    "spokenForm": "Trim",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "TRIM 不等于立即安全擦除每个已删除文件。"
+    ]
+  },
+  {
     "id": "imported-turbulence",
     "term": "Turbulence",
     "abbreviation": "",
@@ -12750,6 +14607,27 @@
         "experience": "当 UInputComponent_ConditionalBuildKeyMap 持续偏高时，先确认其对应的工作内容（按需重建输入组件的按键到动作映射表，使后续输入事件能够正确分发）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-uncorrectable-sector",
+    "term": "Uncorrectable Sector",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "不可校正扇区",
+    "category": "存储与数据",
+    "definition": "设备的纠错机制无法恢复其数据的扇区，通常表示存在实际数据丢失风险。",
+    "example": "An uncorrectable sector can cause a file read to fail.",
+    "exampleZh": "不可校正扇区可能导致文件读取失败。",
+    "tags": "uncorrectable sector SMART HDD ECC 不可校正扇区 数据错误",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -13084,6 +14962,27 @@
     ]
   },
   {
+    "id": "imported-volume",
+    "term": "Volume",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "卷",
+    "category": "存储与数据",
+    "definition": "操作系统提供给文件系统和应用使用的逻辑存储区域，通常可分配盘符或挂载到文件夹。",
+    "example": "The volume is mounted without a drive letter.",
+    "exampleZh": "该卷在没有盘符的情况下被挂载。",
+    "tags": "volume 卷 partition filesystem drive letter mount point Windows",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-waitformovietofinish",
     "term": "WaitForMovieToFinish",
     "abbreviation": "",
@@ -13202,6 +15101,27 @@
         "experience": "当 WaitUntilTasksComplete 持续偏高时，先确认其对应的工作内容（等待所有任务完成）是否因工作量增长而变重；继续检查任务粒度、依赖链、Worker 饱和度以及主线程等待点。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-wear-leveling",
+    "term": "Wear Leveling",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "磨损均衡",
+    "category": "存储与数据",
+    "definition": "SSD 控制器分散 NAND 块擦写次数，避免少数块因反复写入而过早耗尽的管理机制。",
+    "example": "Wear leveling distributes erase cycles across the available NAND blocks.",
+    "exampleZh": "磨损均衡会把擦除周期分散到可用 NAND 块上。",
+    "tags": "wear leveling NAND endurance P/E cycles 磨损均衡 寿命",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -13356,6 +15276,27 @@
     "usageNotes": [
       "GPU Scene 更新等。"
     ]
+  },
+  {
+    "id": "imported-write-amplification",
+    "term": "Write Amplification",
+    "abbreviation": "WA",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "写入放大",
+    "category": "存储与数据",
+    "definition": "NAND 实际写入量高于主机请求写入量的现象，常由垃圾回收、映射更新和数据搬移引起。",
+    "example": "A nearly full drive may experience higher write amplification.",
+    "exampleZh": "接近满盘的设备可能出现更高的写入放大。",
+    "tags": "write amplification WA NAND host writes NAND writes 写入放大",
+    "spokenForm": "Write Amplification",
+    "threadCategory": "",
+    "source": "存储知识体系.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-wwise-akaudio-aakacousticportal-ctor",
