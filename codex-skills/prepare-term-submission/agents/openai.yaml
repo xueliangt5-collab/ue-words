@@ -1,0 +1,4 @@
+interface:
+  display_name: "术语投稿生成器"
+  short_description: "把零散中英文技术名词整理成可投稿的标准 JSON 或 CSV 文件"
+  default_prompt: "Use $prepare-term-submission to turn my raw technical terms and notes into a validated JSON or CSV contribution file."

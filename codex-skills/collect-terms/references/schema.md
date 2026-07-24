@@ -48,6 +48,22 @@ Optional fields: `id`, `abbreviation`, `fullForm`, `wordParts`, `spokenForm`, `i
 
 Use a stable lowercase `imported-` ID with ASCII letters, digits, and hyphens. The merge script generates one when omitted.
 
+## Collaborator submission envelope
+
+The distributable `prepare-term-submission` Skill wraps draft records as:
+
+```json
+{
+  "format": "ue-words-term-submission",
+  "version": 1,
+  "contributor": "optional display name",
+  "visibility": "public-review",
+  "terms": []
+}
+```
+
+Accept only version `1`. Validate the package before semantic review. `public-review` means the batch may be considered for the public glossary; it is not publication authorization. Route `private-review` to private handling. The merge script reads the `terms` array and ignores envelope metadata, so retain contributor and visibility separately for review and reporting.
+
 ## Category guidance
 
 Prefer these existing categories when they fit:
