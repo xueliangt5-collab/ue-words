@@ -760,6 +760,42 @@
     ]
   },
   {
+    "id": "imported-archive-build",
+    "term": "Archive",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈɑːrkaɪv/",
+    "zh": "归档构建产物",
+    "category": "构建",
+    "definition": "将 Stage 结果复制到用户指定输出目录的 AutomationTool 阶段，便于保存、交付或上传构建版本。",
+    "example": "Archive copied the staged build to the package output directory.",
+    "exampleZh": "Archive 把暂存包复制到了指定的包输出目录。",
+    "tags": "Archive archivedirectory AutomationTool Stage 输出目录 归档 构建产物",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Build Archive"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Stage",
+        "relation": "输入",
+        "explanation": "Archive 复制已经整理好的 Stage 结果。"
+      },
+      {
+        "term": "Build Artifact",
+        "relation": "产物管理",
+        "explanation": "归档目录中的包属于可保存或发布的构建产物。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "同时保留 Stage 和 Archive 会在磁盘上产生两份完整包。"
+    ]
+  },
+  {
     "id": "imported-asset-audit",
     "term": "Asset Audit",
     "abbreviation": "",
@@ -886,6 +922,86 @@
     "contexts": [],
     "usageNotes": [
       "机箱写明支持 ATX 只代表基础孔位和空间兼容，仍需检查冷排、线材与显卡冲突。"
+    ]
+  },
+  {
+    "id": "imported-authentication",
+    "term": "Authentication",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ɔːˌθentɪˈkeɪʃən/",
+    "zh": "身份认证",
+    "category": "网络",
+    "definition": "验证用户、客户端、服务或节点所声明身份是否真实的过程，常使用密码、令牌、密钥、证书或签名。",
+    "example": "Agent Authentication failed because the secret did not match the node name.",
+    "exampleZh": "由于 Secret 与节点名称不匹配，Agent 身份认证失败。",
+    "tags": "Authentication auth 身份认证 credential password token secret key certificate",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Auth"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "TLS",
+        "relation": "可组合机制",
+        "explanation": "TLS 可认证服务器证书，也可通过双向 TLS 认证客户端。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Authentication 回答是谁；Authorization 回答已认证身份可以做什么。"
+    ]
+  },
+  {
+    "id": "imported-automation-tool",
+    "term": "AutomationTool",
+    "abbreviation": "UAT",
+    "fullForm": "Unreal Automation Tool",
+    "ipa": "",
+    "zh": "虚幻自动化工具",
+    "category": "构建",
+    "definition": "Unreal Engine 的自动化程序，用于组织构建、Cook、Stage、Pak、Archive、SDK 检查和其他发布步骤。",
+    "example": "AutomationTool stopped because the cook command returned a nonzero exit code.",
+    "exampleZh": "由于 Cook 命令返回了非零退出码，AutomationTool 停止运行。",
+    "tags": "AutomationTool UAT Unreal Automation Tool UE 自动化 BuildCookRun RunUAT",
+    "spokenForm": "Unreal Automation Tool",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Unreal AutomationTool"
+    ],
+    "wordParts": [
+      {
+        "word": "Unreal",
+        "zh": "虚幻引擎"
+      },
+      {
+        "word": "Automation",
+        "zh": "自动化"
+      },
+      {
+        "word": "Tool",
+        "zh": "工具"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "UnrealBuildTool",
+        "relation": "调用工具",
+        "explanation": "AutomationTool 在 Build 阶段调用 UnrealBuildTool 编译目标。"
+      },
+      {
+        "term": "BuildCookRun",
+        "relation": "命令",
+        "explanation": "BuildCookRun 串联常见的游戏构建和打包阶段。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UAT 在 UE 语境中通常指 Unreal Automation Tool，不要与用户验收测试的同名缩写混淆。"
     ]
   },
   {
@@ -1066,6 +1182,143 @@
     ],
     "usageNotes": [
       "在英文调试语境中，hit a breakpoint 表示命中断点，不是发生碰撞。"
+    ]
+  },
+  {
+    "id": "imported-build-artifact",
+    "term": "Build Artifact",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/bɪld ˈɑːrtɪfækt/",
+    "zh": "构建产物",
+    "category": "构建",
+    "definition": "构建流程生成并可保存、测试或交付的文件，例如可执行程序、库、安装包、符号、资源包和构建报告。",
+    "example": "The CI job uploaded the packaged game as a Build Artifact.",
+    "exampleZh": "CI 任务把打包后的游戏作为构建产物上传。",
+    "tags": "Build Artifact artifact CI Jenkins binary package symbol report 构建产物",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "CI and Unreal Engine packaging workflow",
+    "aliases": [
+      "Build Output"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Archive",
+        "relation": "保存阶段",
+        "explanation": "Archive 把可运行的 Stage 结果复制到构建产物目录。"
+      },
+      {
+        "term": "Jenkins Agent",
+        "relation": "生成节点",
+        "explanation": "Jenkins Agent 执行任务并生成构建产物。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Intermediate 中的临时对象文件也是构建输出，但通常不作为需要交付的 Artifact。"
+    ]
+  },
+  {
+    "id": "imported-build-configuration",
+    "term": "Build Configuration",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/bɪld kənˌfɪɡjəˈreɪʃən/",
+    "zh": "构建配置",
+    "category": "构建",
+    "definition": "控制优化、调试信息、检查和运行时功能开关的一组编译设置；Unreal Engine 常见配置包括 Debug、Development、Test 和 Shipping。",
+    "example": "The package uses the Test Build Configuration.",
+    "exampleZh": "这个包使用 Test 构建配置。",
+    "tags": "Build Configuration Debug Development Test Shipping 编译配置 优化 调试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Build Config"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Test Build",
+        "relation": "配置实例",
+        "explanation": "Test Build 是使用 Test 构建配置生成的版本。"
+      },
+      {
+        "term": "Build Target",
+        "relation": "组合维度",
+        "explanation": "最终构建由 Target、Platform 和 Configuration 等维度共同确定。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UnrealPak 使用 Development 配置并不意味着被打包的游戏也是 Development；应查看游戏 Target 的配置。"
+    ]
+  },
+  {
+    "id": "imported-build-target",
+    "term": "Build Target",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/bɪld ˈtɑːrɡɪt/",
+    "zh": "构建目标",
+    "category": "构建",
+    "definition": "由 TargetRules 定义的一组编译输出和模块集合，例如游戏、编辑器、服务器或独立工具目标。",
+    "example": "RGameEditor and RGame are different Build Targets.",
+    "exampleZh": "RGameEditor 和 RGame 是不同的构建目标。",
+    "tags": "Build Target TargetRules Game Editor Server Tool UnrealBuildTool 构建目标",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Target"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Build Configuration",
+        "relation": "组合维度",
+        "explanation": "一个构建目标还需要与 Development、Test 或 Shipping 等配置组合。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Build Target 不等于 Target Platform；前者描述要构建什么，后者描述为哪个平台构建。"
+    ]
+  },
+  {
+    "id": "imported-build-cook-run",
+    "term": "BuildCookRun",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "构建烘焙运行流水线命令",
+    "category": "构建",
+    "definition": "AutomationTool 中串联 Build、Cook、Stage、Pak 和 Archive 等常见游戏打包阶段的命令。实际执行哪些阶段由命令行参数决定。",
+    "example": "BuildCookRun created a staged Test build for Windows.",
+    "exampleZh": "BuildCookRun 为 Windows 创建了一个已暂存的 Test 构建。",
+    "tags": "BuildCookRun Build Cook Run UAT AutomationTool UE 打包 流水线",
+    "spokenForm": "build cook run",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Stage",
+        "relation": "阶段",
+        "explanation": "Stage 将运行所需文件整理到暂存目录。"
+      },
+      {
+        "term": "Archive",
+        "relation": "阶段",
+        "explanation": "Archive 将 Stage 结果复制到指定输出目录。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "BuildCookRun 名称中的 Run 不表示一定会自动启动游戏。"
     ]
   },
   {
@@ -1971,6 +2224,44 @@
     "usageNotes": []
   },
   {
+    "id": "imported-code-signing",
+    "term": "Code Signing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/koʊd ˈsaɪnɪŋ/",
+    "zh": "代码签名",
+    "category": "构建",
+    "definition": "使用数字证书和私钥为可执行文件、安装包或脚本添加签名，以验证发布者身份并检测文件是否被篡改。",
+    "example": "The local Test build skips Code Signing for the Windows executable.",
+    "exampleZh": "本地 Test 包跳过了 Windows 可执行文件的代码签名。",
+    "tags": "Code Signing digital signature certificate executable Windows NoCodeSign 发布者 完整性",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Executable Signing",
+      "Binary Signing"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Pak File",
+        "relation": "区别概念",
+        "explanation": "Pak 签名保护资源容器；代码签名验证可执行文件发布者与完整性。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "-NoCodeSign",
+        "explanation": "告诉打包流程跳过平台可执行文件的代码签名。",
+        "experience": "看到 -NoCodeSign 时仍需单独检查 Pak 是否启用了 -sign 或索引加密。"
+      }
+    ],
+    "usageNotes": [
+      "代码签名、Pak 签名和资源加密是三个不同概念。"
+    ]
+  },
+  {
     "id": "imported-collectgarbagefull",
     "term": "CollectGarbageFull",
     "abbreviation": "",
@@ -2445,6 +2736,78 @@
     "usageNotes": []
   },
   {
+    "id": "imported-connection-refused",
+    "term": "Connection Refused",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/kəˈnekʃən rɪˈfjuːzd/",
+    "zh": "连接被拒绝",
+    "category": "网络",
+    "definition": "目标主机可达，但指定端口没有可接受连接的服务，或网络设备主动拒绝连接时返回的错误。",
+    "example": "Connection Refused indicated that no service was listening on the configured port.",
+    "exampleZh": "连接被拒绝说明配置端口上没有服务在监听。",
+    "tags": "Connection Refused ECONNREFUSED 连接拒绝 listen port service TCP",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "ECONNREFUSED"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Connection Timeout",
+        "relation": "区别错误",
+        "explanation": "拒绝通常立即返回；超时通常是在等待后结束。"
+      },
+      {
+        "term": "Network Port",
+        "relation": "诊断对象",
+        "explanation": "确认目标服务是否监听正确端口是首要检查。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Connection Refused 通常比 Timeout 更能说明目标主机已经收到连接尝试。"
+    ]
+  },
+  {
+    "id": "imported-connection-timeout",
+    "term": "Connection Timeout",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/kəˈnekʃən ˈtaɪmaʊt/",
+    "zh": "连接超时",
+    "category": "网络",
+    "definition": "客户端在规定时间内未能完成连接建立或未收到预期响应而终止等待的错误。",
+    "example": "The agent reported a Connection Timeout while contacting the controller.",
+    "exampleZh": "Agent 联系 Controller 时报告连接超时。",
+    "tags": "Connection Timeout timeout 连接超时 packet loss route firewall service unreachable",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Connect Timeout"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Connection Refused",
+        "relation": "区别错误",
+        "explanation": "超时通常表示没有及时响应；拒绝表示目标明确返回无法建立连接。"
+      },
+      {
+        "term": "Firewall",
+        "relation": "可能原因",
+        "explanation": "防火墙静默丢弃连接数据包时常产生超时。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "连接超时不能单独证明服务器宕机，也可能由路由、DNS、代理、防火墙或网络拥塞导致。"
+    ]
+  },
+  {
     "id": "imported-consolidatethreadedcaches",
     "term": "ConsolidateThreadedCaches",
     "abbreviation": "",
@@ -2620,6 +2983,38 @@
     "contexts": [],
     "usageNotes": [
       "双塔散热器还要检查内存、VRM 装甲、第一条 PCIe 插槽和侧板之间的关系。"
+    ]
+  },
+  {
+    "id": "imported-crash-reporter",
+    "term": "Crash Reporter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/kræʃ rɪˈpɔːrtər/",
+    "zh": "崩溃报告器",
+    "category": "构建",
+    "definition": "在程序崩溃后收集崩溃上下文、日志、调用栈和用户说明，并将报告保存或发送到配置端点的组件。",
+    "example": "The packaged build includes the Crash Reporter client.",
+    "exampleZh": "打包版本包含崩溃报告客户端。",
+    "tags": "Crash Reporter CrashReportClient crash dump call stack UE 崩溃报告",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "CrashReportClient",
+      "Crash Reporter Client"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Build Artifact",
+        "relation": "诊断输出",
+        "explanation": "崩溃日志和转储文件属于构建运行后的诊断产物。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "包含 Crash Reporter 不等于自动上传成功；还需要正确的服务地址、网络和符号处理流程。"
     ]
   },
   {
@@ -3376,6 +3771,50 @@
     ]
   },
   {
+    "id": "imported-derived-data-cache",
+    "term": "Derived Data Cache",
+    "abbreviation": "DDC",
+    "fullForm": "Derived Data Cache",
+    "ipa": "",
+    "zh": "派生数据缓存",
+    "category": "构建",
+    "definition": "缓存纹理、着色器和其他源资源经过平台相关处理后的派生数据，以避免编辑器和 Cook 重复执行昂贵计算。",
+    "example": "A warm Derived Data Cache significantly reduced the second cook time.",
+    "exampleZh": "预热后的派生数据缓存显著缩短了第二次 Cook 时间。",
+    "tags": "Derived Data Cache DDC UE cache Cook shader texture Zen 缓存",
+    "spokenForm": "D D C",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Unreal DDC"
+    ],
+    "wordParts": [
+      {
+        "word": "Derived",
+        "zh": "派生的"
+      },
+      {
+        "word": "Data",
+        "zh": "数据"
+      },
+      {
+        "word": "Cache",
+        "zh": "缓存"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Iterative Cooking",
+        "relation": "加速基础",
+        "explanation": "增量 Cook 会结合已有 Cook 输出和 DDC 命中减少重复处理。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DDC 可以重新生成，不属于项目源资源；删除后通常不会丢失内容，但会显著增加后续处理时间。"
+    ]
+  },
+  {
     "id": "imported-directory",
     "term": "Directory",
     "abbreviation": "",
@@ -3450,6 +3889,50 @@
     ],
     "usageNotes": [
       "爆炸/热浪等折射效果。"
+    ]
+  },
+  {
+    "id": "imported-dns",
+    "term": "DNS",
+    "abbreviation": "DNS",
+    "fullForm": "Domain Name System",
+    "ipa": "",
+    "zh": "域名系统",
+    "category": "网络",
+    "definition": "把域名解析为 IP 地址并提供其他名称记录的分布式系统，使客户端可以通过稳定名称访问网络服务。",
+    "example": "The build machine could not resolve the Jenkins hostname because DNS was unavailable.",
+    "exampleZh": "由于 DNS 不可用，打包机无法解析 Jenkins 主机名。",
+    "tags": "DNS Domain Name System domain hostname resolve IP 域名解析",
+    "spokenForm": "D N S",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Domain Name Service"
+    ],
+    "wordParts": [
+      {
+        "word": "Domain",
+        "zh": "域名"
+      },
+      {
+        "word": "Name",
+        "zh": "名称"
+      },
+      {
+        "word": "System",
+        "zh": "系统"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Network Connectivity",
+        "relation": "前置条件",
+        "explanation": "域名解析失败会让服务表现为不可达，即使目标主机本身在线。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Ping 域名失败时，应区分 DNS 解析失败与目标 IP 不可达。"
     ]
   },
   {
@@ -4774,6 +5257,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-firewall",
+    "term": "Firewall",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈfaɪərwɔːl/",
+    "zh": "防火墙",
+    "category": "网络",
+    "definition": "根据地址、端口、协议、方向和连接状态等规则允许或阻止网络流量的安全控制系统。",
+    "example": "The Firewall blocked the inbound connection to the agent port.",
+    "exampleZh": "防火墙阻止了到 Agent 端口的入站连接。",
+    "tags": "Firewall 防火墙 rule inbound outbound allow block port security",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Network Firewall"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Network Port",
+        "relation": "规则对象",
+        "explanation": "防火墙常按端口和协议配置允许或拒绝规则。"
+      },
+      {
+        "term": "Connection Timeout",
+        "relation": "可能症状",
+        "explanation": "静默丢弃数据包的防火墙规则经常表现为连接超时。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "本机防火墙、服务器防火墙和中间网络设备都可能独立过滤连接。"
+    ]
+  },
+  {
     "id": "imported-flushasyncloading",
     "term": "FlushAsyncLoading",
     "abbreviation": "",
@@ -6021,6 +6540,144 @@
     "usageNotes": []
   },
   {
+    "id": "imported-http",
+    "term": "HTTP",
+    "abbreviation": "HTTP",
+    "fullForm": "Hypertext Transfer Protocol",
+    "ipa": "",
+    "zh": "超文本传输协议",
+    "category": "网络",
+    "definition": "客户端与服务器之间传输请求和响应的应用层协议，是 Web API、网页和许多工具服务接口的基础。",
+    "example": "The agent downloaded its JAR file over HTTP.",
+    "exampleZh": "Agent 通过 HTTP 下载了 JAR 文件。",
+    "tags": "HTTP Hypertext Transfer Protocol request response web API URL 明文",
+    "spokenForm": "H T T P",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Hypertext",
+        "zh": "超文本"
+      },
+      {
+        "word": "Transfer",
+        "zh": "传输"
+      },
+      {
+        "word": "Protocol",
+        "zh": "协议"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "HTTPS",
+        "relation": "安全变体",
+        "explanation": "HTTPS 使用 TLS 保护 HTTP 通信。"
+      },
+      {
+        "term": "WebSocket",
+        "relation": "升级协议",
+        "explanation": "WebSocket 连接通常通过 HTTP Upgrade 握手建立。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "普通 HTTP 不提供传输加密，不应在不可信网络中传输 Secret 或凭据。"
+    ]
+  },
+  {
+    "id": "imported-https",
+    "term": "HTTPS",
+    "abbreviation": "HTTPS",
+    "fullForm": "Hypertext Transfer Protocol Secure",
+    "ipa": "",
+    "zh": "安全超文本传输协议",
+    "category": "网络",
+    "definition": "通过 TLS 加密和认证保护的 HTTP，可降低通信被窃听、篡改或冒充服务端的风险。",
+    "example": "Use HTTPS for the Jenkins URL to protect agent credentials.",
+    "exampleZh": "Jenkins URL 应使用 HTTPS 来保护 Agent 凭据。",
+    "tags": "HTTPS HTTP over TLS secure web certificate encryption 安全传输",
+    "spokenForm": "H T T P S",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "HTTP over TLS"
+    ],
+    "wordParts": [
+      {
+        "word": "Hypertext",
+        "zh": "超文本"
+      },
+      {
+        "word": "Transfer",
+        "zh": "传输"
+      },
+      {
+        "word": "Protocol",
+        "zh": "协议"
+      },
+      {
+        "word": "Secure",
+        "zh": "安全的"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "HTTP",
+        "relation": "基础协议",
+        "explanation": "HTTPS 保留 HTTP 语义，并使用 TLS 保护传输。"
+      },
+      {
+        "term": "TLS",
+        "relation": "安全层",
+        "explanation": "TLS 为 HTTPS 提供加密、完整性和证书认证。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "HTTPS 保护传输过程，但不能自动修复应用自身的鉴权或权限设计问题。"
+    ]
+  },
+  {
+    "id": "imported-inbound-agent",
+    "term": "Inbound Agent",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "入站构建代理",
+    "category": "构建",
+    "definition": "由工作机上的 Agent 进程主动连接 Jenkins Controller 的代理模式，常通过 WebSocket 或 Jenkins 的 TCP Agent 端口通信。",
+    "example": "The Windows build machine connects as an Inbound Agent over WebSocket.",
+    "exampleZh": "Windows 打包机通过 WebSocket 作为入站构建代理连接。",
+    "tags": "Inbound Agent Jenkins 入站代理 WebSocket JNLP agent.jar build node",
+    "spokenForm": "inbound agent",
+    "threadCategory": "",
+    "source": "Jenkins agent troubleshooting workflow",
+    "aliases": [
+      "Inbound Jenkins Agent",
+      "JNLP Agent"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Jenkins Agent",
+        "relation": "上位概念",
+        "explanation": "Inbound Agent 是 Jenkins Agent 的一种连接和启动模式。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Connection was broken",
+        "explanation": "表示之前建立的 Agent 通信通道已经断开。",
+        "experience": "检查 Agent 进程是否退出、WebSocket 代理配置、Controller 地址和网络稳定性。"
+      }
+    ],
+    "usageNotes": [
+      "Inbound 描述连接发起方向，不表示构建流量只会单向传输。"
+    ]
+  },
+  {
     "id": "imported-inclusive-time",
     "term": "Inclusive Time",
     "abbreviation": "",
@@ -6046,6 +6703,48 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-incremental-build",
+    "term": "Incremental Build",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˌɪŋkrəˈmentəl bɪld/",
+    "zh": "增量构建",
+    "category": "构建",
+    "definition": "复用仍然有效的编译输出，只重新执行输入、依赖或构建参数发生变化的 Action。",
+    "example": "The Incremental Build compiled only the affected modules.",
+    "exampleZh": "增量构建只编译了受影响的模块。",
+    "tags": "Incremental Build 增量编译 object file dependency Action up to date",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Incremental Compilation"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Build Artifact",
+        "relation": "复用对象",
+        "explanation": "增量构建会复用仍与输入匹配的中间产物。"
+      },
+      {
+        "term": "Iterative Cooking",
+        "relation": "相似策略",
+        "explanation": "Iterative Cooking 是资源处理阶段的增量策略。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Target is up to date",
+        "explanation": "构建系统判定目标不需要执行新的编译 Action。",
+        "experience": "保持相同 Target、Configuration、工具链和 Intermediate，才能稳定复用编译结果。"
+      }
+    ],
+    "usageNotes": [
+      "重新显示从 1 开始的进度编号，不代表所有已完成输出都被丢弃。"
+    ]
   },
   {
     "id": "imported-initviews",
@@ -6315,6 +7014,78 @@
     ]
   },
   {
+    "id": "imported-io-store",
+    "term": "IoStore",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "IoStore 资源容器系统",
+    "category": "构建",
+    "definition": "Unreal Engine 的运行时资源容器和读取系统，通常生成描述目录的 .utoc 文件与保存数据的 .ucas 文件。",
+    "example": "IoStore generated the global container for the Windows package.",
+    "exampleZh": "IoStore 为 Windows 包生成了全局容器。",
+    "tags": "IoStore I/O Store utoc ucas container Unreal Engine 资源容器 Package Store",
+    "spokenForm": "I O store",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "I/O Store"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Pak File",
+        "relation": "相关格式",
+        "explanation": "Pak 与 IoStore 都用于组织打包后的运行时资源，但容器结构不同。"
+      },
+      {
+        "term": "UnrealPak",
+        "relation": "生成工具",
+        "explanation": "UnrealPak 可在打包阶段创建 IoStore 容器。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      ".utoc 主要保存目录和元数据，.ucas 主要保存容器数据。"
+    ]
+  },
+  {
+    "id": "imported-iterative-cooking",
+    "term": "Iterative Cooking",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈɪtəreɪtɪv ˈkʊkɪŋ/",
+    "zh": "增量资源烘焙",
+    "category": "构建",
+    "definition": "复用已有 Cook 输出，只重新处理新增、修改及受影响资源的 Cook 模式，用于缩短本地重复打包时间。",
+    "example": "Use Iterative Cooking for a quick local asset validation build.",
+    "exampleZh": "本地快速验证资源时使用增量资源烘焙。",
+    "tags": "Iterative Cooking iterative cook -iterate 增量 Cook 本地打包 Saved Cooked",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Iterative Cook"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Derived Data Cache",
+        "relation": "缓存",
+        "explanation": "DDC 命中可以进一步减少派生数据生成时间。"
+      },
+      {
+        "term": "Incremental Build",
+        "relation": "相似策略",
+        "explanation": "两者都通过复用有效输出减少重复工作，但分别作用于资源与代码。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "删除或重命名大量资源、改变序列化或 Cook 规则后，应执行一次完整 Cook 验证。"
+    ]
+  },
+  {
     "id": "imported-jbod",
     "term": "JBOD",
     "abbreviation": "JBOD",
@@ -6347,6 +7118,49 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-jenkins-agent",
+    "term": "Jenkins Agent",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Jenkins 构建代理",
+    "category": "构建",
+    "definition": "连接 Jenkins Controller 并在指定机器上执行流水线步骤、编译或打包任务的工作节点。Agent 可以是常驻机器、虚拟机、容器或临时节点。",
+    "example": "The Jenkins Agent runs the Windows packaging job.",
+    "exampleZh": "Jenkins 构建代理负责执行 Windows 打包任务。",
+    "tags": "Jenkins Agent 构建代理 构建节点 build node CI executor controller",
+    "spokenForm": "Jenkins agent",
+    "threadCategory": "",
+    "source": "Jenkins agent troubleshooting workflow",
+    "aliases": [
+      "Jenkins Build Agent",
+      "Jenkins Node"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Inbound Agent",
+        "relation": "连接方式",
+        "explanation": "Inbound Agent 是 Jenkins Agent 主动连接 Controller 的一种启动方式。"
+      },
+      {
+        "term": "Build Artifact",
+        "relation": "输出",
+        "explanation": "Agent 执行构建后通常会生成并归档构建产物。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Agent is offline",
+        "explanation": "表示 Controller 当前无法通过通信通道使用该构建节点。",
+        "experience": "先检查节点日志、Agent 进程、网络、Java、磁盘空间和启动凭据。"
+      }
+    ],
+    "usageNotes": [
+      "Jenkins Controller 负责任务调度；Jenkins Agent 负责在工作机上执行任务。"
+    ]
   },
   {
     "id": "imported-latentaction",
@@ -7878,6 +8692,79 @@
     "usageNotes": []
   },
   {
+    "id": "imported-network-connectivity",
+    "term": "Network Connectivity",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈnetwɜːrk ˌkɑːnekˈtɪvəti/",
+    "zh": "网络连通性",
+    "category": "网络",
+    "definition": "两个端点能否通过所需路径、协议和端口互相到达并交换数据的状态。",
+    "example": "Test Network Connectivity from the agent to the controller before restarting the service.",
+    "exampleZh": "重启服务前，先测试 Agent 到 Controller 的网络连通性。",
+    "tags": "Network Connectivity connectivity reachability 网络连通性 route DNS port Test-NetConnection",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Network Reachability"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Ping",
+        "relation": "基础测试",
+        "explanation": "Ping 可以测试部分 IP 可达性，但不能证明应用端口可用。"
+      },
+      {
+        "term": "Network Port",
+        "relation": "服务检查",
+        "explanation": "应用连通性测试应验证具体协议和端口。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "能 Ping 通不等于 TCP 端口、TLS 握手或应用请求一定成功。"
+    ]
+  },
+  {
+    "id": "imported-network-port",
+    "term": "Network Port",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈnetwɜːrk pɔːrt/",
+    "zh": "网络端口",
+    "category": "网络",
+    "definition": "传输层中用于标识主机上具体服务或进程的逻辑编号；TCP 与 UDP 各自拥有 0 到 65535 的端口号空间。",
+    "example": "Check whether the Jenkins service is listening on the expected Network Port.",
+    "exampleZh": "检查 Jenkins 服务是否正在预期的网络端口上监听。",
+    "tags": "Network Port TCP UDP listen service 端口号 监听 8080 50000",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Port",
+      "Port Number"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "TCP",
+        "relation": "传输协议",
+        "explanation": "TCP 连接由源和目标 IP 地址及端口号共同标识。"
+      },
+      {
+        "term": "Firewall",
+        "relation": "访问控制",
+        "explanation": "防火墙规则可以允许或阻止指定端口的流量。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "开放端口表示允许流量通过，不代表目标服务一定已启动并正确响应。"
+    ]
+  },
+  {
     "id": "imported-noise-floor",
     "term": "Noise Floor",
     "abbreviation": "",
@@ -8404,6 +9291,43 @@
     ]
   },
   {
+    "id": "imported-pak-file",
+    "term": "Pak File",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Pak 资源包文件",
+    "category": "构建",
+    "definition": "Unreal Engine 用于集中存放 Cook 后资源和非松散内容的容器文件，常见扩展名为 .pak，并可应用压缩、索引加密和签名。",
+    "example": "UnrealPak compressed the cooked assets into a Pak File.",
+    "exampleZh": "UnrealPak 把 Cook 后资源压缩进 Pak 文件。",
+    "tags": "Pak File .pak UnrealPak UE 资源容器 压缩 encryptindex sign",
+    "spokenForm": "pak file",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "PAK File",
+      "Pak Archive"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "UnrealPak",
+        "relation": "生成工具",
+        "explanation": "UnrealPak 可创建、检查或提取 Pak 文件。"
+      },
+      {
+        "term": "IoStore",
+        "relation": "相关容器系统",
+        "explanation": "现代 UE 项目可能同时使用 Pak 与 IoStore 容器。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Pak 签名与 Windows 可执行文件的代码签名是不同机制。"
+    ]
+  },
+  {
     "id": "imported-pakprecacher",
     "term": "PakPrecacher",
     "abbreviation": "",
@@ -8791,6 +9715,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-ping",
+    "term": "Ping",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/pɪŋ/",
+    "zh": "网络探测",
+    "category": "网络",
+    "definition": "通常指使用 ICMP Echo Request 和 Echo Reply 测试目标 IP 可达性及往返时间的工具或操作。",
+    "example": "Ping succeeded, but the Jenkins TCP port was still blocked.",
+    "exampleZh": "Ping 测试成功，但 Jenkins 的 TCP 端口仍然被阻止。",
+    "tags": "Ping ICMP echo request reply latency reachability 网络探测 往返时间",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "ICMP Ping"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Network Connectivity",
+        "relation": "局部测试",
+        "explanation": "Ping 只能验证部分网络可达性，不能覆盖所有应用协议。"
+      },
+      {
+        "term": "Connection Timeout",
+        "relation": "诊断关系",
+        "explanation": "Ping 正常但连接超时，常需要继续检查端口、防火墙和应用服务。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "许多主机或防火墙会禁用 ICMP，因此 Ping 失败不一定表示应用服务不可达。"
+    ]
+  },
+  {
     "id": "imported-plp",
     "term": "PLP",
     "abbreviation": "PLP",
@@ -9052,6 +10012,52 @@
     "contexts": [],
     "usageNotes": [
       "模组接口外形相似不代表针脚定义相同，不要跨品牌或跨型号混用电源模组线。"
+    ]
+  },
+  {
+    "id": "imported-precompiled-header",
+    "term": "Precompiled Header",
+    "abbreviation": "PCH",
+    "fullForm": "Precompiled Header",
+    "ipa": "",
+    "zh": "预编译头文件",
+    "category": "构建",
+    "definition": "把大量稳定且重复包含的头文件预先解析为编译器可复用的中间形式，以减少后续 C++ 编译时间。",
+    "example": "The compiler reused the Precompiled Header for several modules.",
+    "exampleZh": "编译器为多个模块复用了预编译头文件。",
+    "tags": "Precompiled Header PCH C++ compiler header compile time SharedPCH",
+    "spokenForm": "P C H",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Shared PCH"
+    ],
+    "wordParts": [
+      {
+        "word": "Precompiled",
+        "zh": "预先编译的"
+      },
+      {
+        "word": "Header",
+        "zh": "头文件"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Unity Build",
+        "relation": "编译加速技术",
+        "explanation": "PCH 与 Unity Build 都通过减少重复解析来缩短 C++ 编译时间。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Failed to remap SharedPCH",
+        "explanation": "构建执行器无法正确映射共享 PCH，可能伴随内存或缓存问题。",
+        "experience": "先排除内存压力和并发过高，再考虑清理受影响目标的生成缓存。"
+      }
+    ],
+    "usageNotes": [
+      "PCH 失效可能让大量看似无关的源文件重新编译。"
     ]
   },
   {
@@ -10143,6 +11149,42 @@
     ]
   },
   {
+    "id": "imported-reverse-proxy",
+    "term": "Reverse Proxy",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/rɪˈvɜːrs ˈprɑːksi/",
+    "zh": "反向代理",
+    "category": "网络",
+    "definition": "位于客户端与后端服务之间，接收客户端请求并转发到一个或多个上游服务的代理，可承担 TLS 终止、路由、鉴权和负载均衡。",
+    "example": "The Reverse Proxy must forward the WebSocket upgrade headers.",
+    "exampleZh": "反向代理必须转发 WebSocket Upgrade 头。",
+    "tags": "Reverse Proxy 反向代理 upstream Nginx IIS TLS termination routing load balancing",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "Reverse HTTP Proxy"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "WebSocket",
+        "relation": "代理协议",
+        "explanation": "反向代理需要显式支持并转发 WebSocket Upgrade。"
+      },
+      {
+        "term": "TLS",
+        "relation": "终止位置",
+        "explanation": "TLS 可以在反向代理处终止，再转发到内部后端。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "反向代理代表服务端接收外部请求；正向代理代表客户端访问外部服务。"
+    ]
+  },
+  {
     "id": "imported-rhi-closechain",
     "term": "RHI_CloseChain",
     "abbreviation": "",
@@ -10950,6 +11992,43 @@
     ]
   },
   {
+    "id": "imported-runuat",
+    "term": "RunUAT",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "UAT 启动脚本",
+    "category": "构建",
+    "definition": "Unreal Engine 用来初始化环境并启动 AutomationTool 的平台脚本；Windows 上通常是 RunUAT.bat。",
+    "example": "RunUAT invokes BuildCookRun for the Win64 package.",
+    "exampleZh": "RunUAT 调用 BuildCookRun 生成 Win64 包。",
+    "tags": "RunUAT RunUAT.bat UAT Unreal Engine 自动化 打包脚本 AutomationTool",
+    "spokenForm": "run U A T",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "RunUAT.bat",
+      "RunUAT.sh"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "AutomationTool",
+        "relation": "启动对象",
+        "explanation": "RunUAT 负责准备环境并启动 AutomationTool。"
+      },
+      {
+        "term": "BuildCookRun",
+        "relation": "常用命令",
+        "explanation": "BuildCookRun 是通过 RunUAT 调用的常见自动化命令。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "RunUAT 是入口脚本，真正的构建流程由 AutomationTool 命令执行。"
+    ]
+  },
+  {
     "id": "imported-smart-storage",
     "term": "S.M.A.R.T.",
     "abbreviation": "SMART",
@@ -11364,6 +12443,37 @@
     "contexts": [],
     "usageNotes": [
       "机箱支持 SFX 不一定支持 SFX-L，应核对电源长度和插头后的总占用空间。"
+    ]
+  },
+  {
+    "id": "imported-shader-compile-worker",
+    "term": "ShaderCompileWorker",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "着色器编译工作进程",
+    "category": "构建",
+    "definition": "Unreal Engine 用来在独立进程中执行着色器编译任务的程序，可由编辑器或 Cook 流程并行启动。",
+    "example": "ShaderCompileWorker compiled the material shaders during the cook.",
+    "exampleZh": "ShaderCompileWorker 在 Cook 期间编译了材质着色器。",
+    "tags": "ShaderCompileWorker shader compile worker UE Cook material shader process",
+    "spokenForm": "shader compile worker",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Shader Compile Worker"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Derived Data Cache",
+        "relation": "缓存",
+        "explanation": "已编译着色器的派生数据可通过 DDC 复用。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "C++ 编译 Action 与 ShaderCompileWorker 执行的着色器编译是不同阶段。"
     ]
   },
   {
@@ -12562,6 +13672,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-stage-build",
+    "term": "Stage",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/steɪdʒ/",
+    "zh": "暂存构建文件",
+    "category": "构建",
+    "definition": "将可执行文件、Cook 后资源、配置、运行库和其他运行所需文件整理到一个可运行目录的打包阶段。",
+    "example": "The Stage step copied the executable and cooked content into the Windows directory.",
+    "exampleZh": "Stage 阶段把可执行文件和 Cook 后内容复制到 Windows 目录。",
+    "tags": "Stage staging directory StagedBuilds UE 打包 暂存 可运行目录",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Staging"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Archive",
+        "relation": "后续阶段",
+        "explanation": "Archive 通常把 Stage 目录复制到用户指定的交付位置。"
+      },
+      {
+        "term": "BuildCookRun",
+        "relation": "所属流程",
+        "explanation": "Stage 是 BuildCookRun 可启用的阶段之一。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Stage 目录本身通常已经可以运行；Archive 不是生成可运行包的必要前提。"
+    ]
+  },
+  {
     "id": "imported-stat-refresh-bone-transforms",
     "term": "STAT_RefreshBoneTransforms",
     "abbreviation": "",
@@ -13255,6 +14401,53 @@
     "usageNotes": []
   },
   {
+    "id": "imported-tcp",
+    "term": "TCP",
+    "abbreviation": "TCP",
+    "fullForm": "Transmission Control Protocol",
+    "ipa": "",
+    "zh": "传输控制协议",
+    "category": "网络",
+    "definition": "提供面向连接、可靠且有序字节流传输的传输层协议，负责确认、重传、流量控制和拥塞控制。",
+    "example": "The agent could not open a TCP connection to the configured port.",
+    "exampleZh": "Agent 无法与配置的端口建立 TCP 连接。",
+    "tags": "TCP Transmission Control Protocol 传输层 可靠传输 connection port socket",
+    "spokenForm": "T C P",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Transmission",
+        "zh": "传输"
+      },
+      {
+        "word": "Control",
+        "zh": "控制"
+      },
+      {
+        "word": "Protocol",
+        "zh": "协议"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Network Port",
+        "relation": "寻址维度",
+        "explanation": "TCP 使用端口号区分同一主机上的不同服务。"
+      },
+      {
+        "term": "Connection Refused",
+        "relation": "连接错误",
+        "explanation": "目标主机明确拒绝 TCP 连接时可能出现 Connection Refused。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "TCP 保证传输顺序和可靠性，但不保证应用层请求一定成功。"
+    ]
+  },
+  {
     "id": "imported-temperature-hysteresis",
     "term": "Temperature Hysteresis",
     "abbreviation": "",
@@ -13277,6 +14470,42 @@
     "contexts": [],
     "usageNotes": [
       "迟滞可以通过不同温度阈值、时间延迟或两者结合实现。"
+    ]
+  },
+  {
+    "id": "imported-test-build",
+    "term": "Test Build",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/test bɪld/",
+    "zh": "测试构建版本",
+    "category": "构建",
+    "definition": "使用 Unreal Engine Test 配置生成的游戏版本，通常采用接近 Shipping 的优化，同时按项目设置保留部分控制台、统计或性能分析能力。",
+    "example": "Verify the packaged gameplay in a Test Build before release.",
+    "exampleZh": "发布前在 Test 构建版本中验证打包后的游戏玩法。",
+    "tags": "Test Build clientconfig Test UE 测试包 Shipping Development 性能验证",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Test Configuration Build"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Build Configuration",
+        "relation": "配置",
+        "explanation": "Test 是 Unreal Engine 的一种构建配置。"
+      },
+      {
+        "term": "Shipping Build",
+        "relation": "相邻配置",
+        "explanation": "Shipping 更面向最终发布，通常关闭更多调试能力。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Test Build 的具体控制台和统计能力可能受到项目 TargetRules 与宏配置影响。"
     ]
   },
   {
@@ -14181,6 +15410,55 @@
     "usageNotes": []
   },
   {
+    "id": "imported-tls",
+    "term": "TLS",
+    "abbreviation": "TLS",
+    "fullForm": "Transport Layer Security",
+    "ipa": "",
+    "zh": "传输层安全协议",
+    "category": "网络",
+    "definition": "为网络连接提供加密、完整性保护和端点认证的安全协议，是现代 HTTPS 与 wss 的基础。",
+    "example": "TLS protects the agent secret while it travels across the network.",
+    "exampleZh": "TLS 保护 Agent Secret 在网络传输过程中的安全。",
+    "tags": "TLS Transport Layer Security encryption certificate HTTPS wss 安全 加密",
+    "spokenForm": "T L S",
+    "threadCategory": "",
+    "source": "Network troubleshooting terminology",
+    "aliases": [
+      "SSL/TLS"
+    ],
+    "wordParts": [
+      {
+        "word": "Transport",
+        "zh": "传输"
+      },
+      {
+        "word": "Layer",
+        "zh": "层"
+      },
+      {
+        "word": "Security",
+        "zh": "安全"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "HTTPS",
+        "relation": "安全基础",
+        "explanation": "HTTPS 是通过 TLS 保护的 HTTP。"
+      },
+      {
+        "term": "Authentication",
+        "relation": "认证能力",
+        "explanation": "TLS 通常通过证书认证服务器身份。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "TLS 位于应用协议之下，但名称不表示它只能与某一种传输协议配合。"
+    ]
+  },
+  {
     "id": "imported-tonal-noise",
     "term": "Tonal Noise",
     "abbreviation": "",
@@ -14508,6 +15786,43 @@
     ]
   },
   {
+    "id": "imported-turnkey",
+    "term": "Turnkey",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈtɜːrnkiː/",
+    "zh": "平台 SDK 管理工具",
+    "category": "构建",
+    "definition": "Unreal Engine 用于验证、报告并在受支持情况下准备目标平台 SDK 和设备环境的自动化工具。",
+    "example": "Turnkey verified that the installed Win64 SDK was valid.",
+    "exampleZh": "Turnkey 验证了已安装的 Win64 SDK 有效。",
+    "tags": "Turnkey UE SDK VerifySdk platform setup Win64 平台工具链",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Unreal Turnkey"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Build Configuration",
+        "relation": "构建环境",
+        "explanation": "平台 SDK 有效是构建指定配置和平台的前提之一。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Turnkey -command=VerifySdk",
+        "explanation": "在构建前检查目标平台 SDK 是否满足引擎允许的版本范围。",
+        "experience": "先处理 Invalid SDK，再排查后续编译或打包错误。"
+      }
+    ],
+    "usageNotes": [
+      "通用英语 turnkey 表示交钥匙式方案；这里特指 Unreal Engine 的平台管理工具。"
+    ]
+  },
+  {
     "id": "imported-two-dimms-per-channel",
     "term": "Two DIMMs Per Channel",
     "abbreviation": "2DPC",
@@ -14660,6 +15975,98 @@
     ]
   },
   {
+    "id": "imported-unity-build",
+    "term": "Unity Build",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈjuːnəti bɪld/",
+    "zh": "合并编译",
+    "category": "构建",
+    "definition": "将多个 C++ 源文件合并成较大的编译单元，以减少头文件重复解析和编译器启动开销的构建技术。",
+    "example": "The Unity Build grouped several source files into one module file.",
+    "exampleZh": "合并编译把多个源文件组合进一个模块文件。",
+    "tags": "Unity Build unity file Module.cpp C++ compile Adaptive Unity non-unity",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Jumbo Build",
+      "Unity Compilation"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Precompiled Header",
+        "relation": "编译加速技术",
+        "explanation": "两者都用于减少大型 C++ 项目的重复编译开销。"
+      },
+      {
+        "term": "Unreal Build Accelerator",
+        "relation": "执行关系",
+        "explanation": "UBA 可以并行执行 Unity Build 产生的编译单元。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Unity 编译单元更大，单个 Action 可能占用更多内存；错误位置也可能显示为 Module.*.cpp。"
+    ]
+  },
+  {
+    "id": "imported-unreal-build-accelerator",
+    "term": "Unreal Build Accelerator",
+    "abbreviation": "UBA",
+    "fullForm": "Unreal Build Accelerator",
+    "ipa": "",
+    "zh": "虚幻构建加速器",
+    "category": "构建",
+    "definition": "Unreal Engine 用于并行执行、缓存并可分发 C++ 编译与链接 Action 的构建执行系统。",
+    "example": "Unreal Build Accelerator limited parallel actions to avoid exhausting memory.",
+    "exampleZh": "虚幻构建加速器限制并行 Action 数，以避免耗尽内存。",
+    "tags": "Unreal Build Accelerator UBA compile executor parallel actions cache memory",
+    "spokenForm": "U B A",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "UnrealBuildAccelerator"
+    ],
+    "wordParts": [
+      {
+        "word": "Unreal",
+        "zh": "虚幻引擎"
+      },
+      {
+        "word": "Build",
+        "zh": "构建"
+      },
+      {
+        "word": "Accelerator",
+        "zh": "加速器"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "UnrealBuildTool",
+        "relation": "调度关系",
+        "explanation": "UBT 生成 Action Graph，UBA 可以作为执行器运行其中的 Action。"
+      },
+      {
+        "term": "Unity Build",
+        "relation": "编译输入",
+        "explanation": "UBA 可能执行由 Unity Build 生成的大型合并编译单元。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Killed process - Low on memory",
+        "explanation": "UBA 在系统提交内存接近保护阈值时终止编译进程。",
+        "experience": "减少 MaxParallelActions，关闭高内存程序，并避免并行启动多个 UE 构建。"
+      }
+    ],
+    "usageNotes": [
+      "提高并行度不一定更快；内存不足导致的杀进程和重试会让构建更慢。"
+    ]
+  },
+  {
     "id": "imported-unreal-insights",
     "term": "Unreal Insights",
     "abbreviation": "",
@@ -14685,6 +16092,141 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-unreal-build-tool",
+    "term": "UnrealBuildTool",
+    "abbreviation": "UBT",
+    "fullForm": "Unreal Build Tool",
+    "ipa": "",
+    "zh": "虚幻构建工具",
+    "category": "构建",
+    "definition": "Unreal Engine 用于解析 Target 和 Module 规则、生成编译 Action Graph 并调用平台编译器与链接器的构建程序。",
+    "example": "UnrealBuildTool determined that the editor target was up to date.",
+    "exampleZh": "UnrealBuildTool 判定编辑器目标已经是最新状态。",
+    "tags": "UnrealBuildTool UBT Unreal Build Tool C++ Target Module Action Graph 增量编译",
+    "spokenForm": "Unreal Build Tool",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Unreal Build Tool"
+    ],
+    "wordParts": [
+      {
+        "word": "Unreal",
+        "zh": "虚幻引擎"
+      },
+      {
+        "word": "Build",
+        "zh": "构建"
+      },
+      {
+        "word": "Tool",
+        "zh": "工具"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Build Target",
+        "relation": "输入",
+        "explanation": "UBT 根据 TargetRules 构建指定目标。"
+      },
+      {
+        "term": "Unreal Build Accelerator",
+        "relation": "执行器",
+        "explanation": "UBT 可以使用 UBA 执行和缓存编译 Action。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UBT 负责编译目标；AutomationTool 负责组织更完整的打包流水线。"
+    ]
+  },
+  {
+    "id": "imported-unreal-header-tool",
+    "term": "UnrealHeaderTool",
+    "abbreviation": "UHT",
+    "fullForm": "Unreal Header Tool",
+    "ipa": "",
+    "zh": "虚幻头文件工具",
+    "category": "构建",
+    "definition": "解析 UCLASS、USTRUCT、UFUNCTION、UPROPERTY 等反射宏，并生成 .generated.h 与 .gen.cpp 代码的 Unreal Engine 工具。",
+    "example": "UnrealHeaderTool regenerated the reflection code after the header changed.",
+    "exampleZh": "头文件发生变化后，UnrealHeaderTool 重新生成了反射代码。",
+    "tags": "UnrealHeaderTool UHT Unreal Header Tool reflection generated.h gen.cpp GENERATED_BODY",
+    "spokenForm": "Unreal Header Tool",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "Unreal Header Tool"
+    ],
+    "wordParts": [
+      {
+        "word": "Unreal",
+        "zh": "虚幻引擎"
+      },
+      {
+        "word": "Header",
+        "zh": "头文件"
+      },
+      {
+        "word": "Tool",
+        "zh": "工具"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "UnrealBuildTool",
+        "relation": "构建阶段",
+        "explanation": "UBT 在需要时调用 UHT 更新反射生成代码。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "stale generated header",
+        "explanation": "源码行号与生成宏不一致时，可能出现 GENERATED_BODY 附近的级联编译错误。",
+        "experience": "优先清理受影响模块的 UHT 生成缓存，不要直接清理整个源码引擎的 Intermediate。"
+      }
+    ],
+    "usageNotes": [
+      "不要手工编辑 .generated.h 或 .gen.cpp，应修改原始头文件后让 UHT 重新生成。"
+    ]
+  },
+  {
+    "id": "imported-unreal-pak",
+    "term": "UnrealPak",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "虚幻资源容器工具",
+    "category": "构建",
+    "definition": "Unreal Engine 用于创建、检查和提取 Pak 文件，并参与生成 IoStore 容器的命令行工具。",
+    "example": "UnrealPak created the compressed resource containers for the package.",
+    "exampleZh": "UnrealPak 为游戏包创建了压缩资源容器。",
+    "tags": "UnrealPak Pak IoStore command line container compress encrypt sign",
+    "spokenForm": "Unreal pak",
+    "threadCategory": "",
+    "source": "Unreal Engine local packaging workflow",
+    "aliases": [
+      "UnrealPak.exe"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Pak File",
+        "relation": "处理格式",
+        "explanation": "Pak File 是 UnrealPak 处理的主要资源容器格式之一。"
+      },
+      {
+        "term": "IoStore",
+        "relation": "处理系统",
+        "explanation": "UnrealPak 也可在打包流程中创建 IoStore 容器。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "工具自身显示 Win64 Development，不代表最终游戏包使用 Development 配置。"
+    ]
   },
   {
     "id": "imported-uobjectbaseutility-createcluster",
@@ -15123,6 +16665,48 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-websocket",
+    "term": "WebSocket",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "WebSocket 双向通信协议",
+    "category": "网络",
+    "definition": "在一个长期保持的连接上提供客户端与服务器全双工通信的协议，通常先通过 HTTP Upgrade 建立连接；加密形式使用 wss。",
+    "example": "The Jenkins Agent maintains its connection over WebSocket.",
+    "exampleZh": "Jenkins Agent 通过 WebSocket 维持连接。",
+    "tags": "WebSocket ws wss full duplex HTTP Upgrade 长连接 双向通信 Jenkins Agent",
+    "spokenForm": "web socket",
+    "threadCategory": "",
+    "source": "Jenkins agent network troubleshooting workflow",
+    "aliases": [
+      "Web Socket"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "HTTP",
+        "relation": "握手基础",
+        "explanation": "WebSocket 连接通常从 HTTP Upgrade 请求开始。"
+      },
+      {
+        "term": "TLS",
+        "relation": "安全层",
+        "explanation": "wss 使用 TLS 保护 WebSocket 通信。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "WebSocket connection failed",
+        "explanation": "可能表示反向代理未转发 Upgrade 头、TLS 配置错误或连接被网络设备阻断。",
+        "experience": "同时检查客户端到服务端的 HTTP/HTTPS 可达性和反向代理 WebSocket 配置。"
+      }
+    ],
+    "usageNotes": [
+      "WebSocket 是应用层协议，不等于普通 TCP 长连接，但底层通常运行在 TCP 上。"
+    ]
   },
   {
     "id": "imported-winpumpmessages",
