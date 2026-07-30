@@ -504,6 +504,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-ai-zone",
+    "term": "AI Zone",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "AI 区域",
+    "category": "AI 与数据",
+    "definition": "组织特定空间内 AI 成员、阵营、威胁、增援、阶段与清理规则的项目级战斗区域概念。",
+    "example": "The AI Zone completes after every required enemy is removed.",
+    "exampleZh": "所有必需敌人被清除后，AI 区域会完成。",
+    "tags": "AI Zone AI区域 战斗区域 成员 增援 清理",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-aio-liquid-cooler",
     "term": "AIO Liquid Cooler",
     "abbreviation": "AIO",
@@ -760,6 +781,48 @@
     ]
   },
   {
+    "id": "imported-animation-notify",
+    "term": "Animation Notify",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动画通知",
+    "category": "动画与碰撞",
+    "definition": "在动画播放到指定时间点时触发事件的标记。",
+    "example": "The Animation Notify plays the magazine insertion sound.",
+    "exampleZh": "动画通知会播放插入弹匣的声音。",
+    "tags": "Animation Notify AnimNotify 动画通知 事件",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-animation-notify-state",
+    "term": "Animation Notify State",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动画通知状态",
+    "category": "动画与碰撞",
+    "definition": "覆盖一段持续时间、提供开始、持续和结束回调的动画通知类型。",
+    "example": "The Animation Notify State keeps the melee trace active for several frames.",
+    "exampleZh": "动画通知状态会让近战检测持续激活数帧。",
+    "tags": "Animation Notify State AnimNotifyState 动画通知状态",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-archive-build",
     "term": "Archive",
     "abbreviation": "",
@@ -813,6 +876,69 @@
     "aliases": [
       "Asset Audit Window"
     ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-asset-manager",
+    "term": "Asset Manager",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "资源管理器",
+    "category": "资源与渲染",
+    "definition": "基于 Primary Asset、扫描规则和 Bundle 管理资源身份、加载与 Cook 归属的 UE 系统。",
+    "example": "The Asset Manager loads the weapon definition asynchronously.",
+    "exampleZh": "资源管理器会异步加载武器定义。",
+    "tags": "Asset Manager UE Primary Asset Bundle Cook",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-asset-registry",
+    "term": "Asset Registry",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "资源注册表",
+    "category": "资源与渲染",
+    "definition": "记录项目资源路径、类型、标签和依赖关系，支持查询、Cook 和运行时资产发现的 UE 数据系统。",
+    "example": "The Asset Registry shows that the map depends on a test asset.",
+    "exampleZh": "资源注册表显示这张地图依赖了测试资源。",
+    "tags": "Asset Registry UE 资源注册表 依赖 Cook",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-asset-validator",
+    "term": "Asset Validator",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "资源验证器",
+    "category": "构建",
+    "definition": "实现具体资产检查规则并向 UE Data Validation 系统报告结果的验证器。",
+    "example": "The Asset Validator reports an invalid Gameplay Tag.",
+    "exampleZh": "资源验证器报告了一个无效的 Gameplay Tag。",
+    "tags": "Asset Validator UAssetValidator 资源验证器 Data Validation",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
@@ -878,6 +1004,27 @@
         "experience": "当 AsyncLoadingTime 持续偏高时，先确认其对应的工作内容（异步加载耗时统计）是否因工作量增长而变重；继续检查磁盘读取、解压、资源依赖以及游戏线程上的同步等待。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-atomic-update",
+    "term": "Atomic Update",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "原子更新",
+    "category": "构建与网络",
+    "definition": "只有在新版本完整写入并验证成功后才一次性切换生效，避免用户看到半更新状态。",
+    "example": "The launcher uses an Atomic Update to preserve the previous working version.",
+    "exampleZh": "启动器使用原子更新来保留上一个可用版本。",
+    "tags": "Atomic Update 原子更新 updater rollback 安装",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -954,6 +1101,48 @@
     "usageNotes": [
       "Authentication 回答是谁；Authorization 回答已认证身份可以做什么。"
     ]
+  },
+  {
+    "id": "imported-automation-spec",
+    "term": "Automation Spec",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "自动化规格测试",
+    "category": "游戏测试",
+    "definition": "使用 Spec 风格组织 Given、When、Then 或 Describe/It 测试结构的 UE 自动化测试。",
+    "example": "The Automation Spec describes the save migration behavior.",
+    "exampleZh": "这项自动化规格测试描述了存档迁移行为。",
+    "tags": "Automation Spec BEGIN_DEFINE_SPEC UE Spec BDD",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-automation-test",
+    "term": "Automation Test",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "自动化测试",
+    "category": "游戏测试",
+    "definition": "由 Unreal Automation Framework 注册和执行、能够自动给出通过或失败结果的测试。",
+    "example": "The Automation Test validates the damage calculation.",
+    "exampleZh": "这项自动化测试会验证伤害计算。",
+    "tags": "Automation Test Unreal Automation Framework UE 自动化",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-automation-tool",
@@ -1096,6 +1285,27 @@
     ]
   },
   {
+    "id": "imported-behavior-tree",
+    "term": "Behavior Tree",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "行为树",
+    "category": "AI 与数据",
+    "definition": "用层级节点表达 AI 条件、选择、顺序、任务和服务的决策结构。",
+    "example": "The Behavior Tree waits until the target becomes visible.",
+    "exampleZh": "行为树会等待目标进入可见状态。",
+    "tags": "Behavior Tree BT 行为树 AI decision",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-bics",
     "term": "BiCS FLASH",
     "abbreviation": "BiCS",
@@ -1153,6 +1363,40 @@
     "usageNotes": [
       "加密不能防止误删、勒索软件或文件损坏，也不能替代备份。"
     ]
+  },
+  {
+    "id": "imported-boundary-value-analysis",
+    "term": "Boundary Value Analysis",
+    "abbreviation": "BVA",
+    "fullForm": "Boundary Value Analysis",
+    "ipa": "",
+    "zh": "边界值分析",
+    "category": "游戏测试",
+    "definition": "重点测试最小值、最大值及其相邻值，因为缺陷常出现在边界附近。",
+    "example": "Boundary Value Analysis checks values just below and above the limit.",
+    "exampleZh": "边界值分析会检查刚好低于和高于限制的值。",
+    "tags": "BVA Boundary Value Analysis 边界值 测试设计",
+    "spokenForm": "B V A",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Boundary",
+        "zh": "边界"
+      },
+      {
+        "word": "Value",
+        "zh": "数值"
+      },
+      {
+        "word": "Analysis",
+        "zh": "分析"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-break-struct",
@@ -1219,6 +1463,40 @@
     "usageNotes": [
       "在英文调试语境中，hit a breakpoint 表示命中断点，不是发生碰撞。"
     ]
+  },
+  {
+    "id": "imported-build-acceptance-test",
+    "term": "Build Acceptance Test",
+    "abbreviation": "BAT",
+    "fullForm": "Build Acceptance Test",
+    "ipa": "",
+    "zh": "构建验收测试",
+    "category": "游戏测试",
+    "definition": "对新构建执行的快速关键流程检查，用于判断它是否值得进入后续大规模测试。",
+    "example": "The Build Acceptance Test rejected the build because the lobby would not load.",
+    "exampleZh": "由于大厅无法加载，构建验收测试拒绝了这个版本。",
+    "tags": "BAT Build Acceptance Test 构建验收 冒烟测试",
+    "spokenForm": "B A T",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Build",
+        "zh": "构建版本"
+      },
+      {
+        "word": "Acceptance",
+        "zh": "验收"
+      },
+      {
+        "word": "Test",
+        "zh": "测试"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-build-artifact",
@@ -1293,6 +1571,50 @@
     ]
   },
   {
+    "id": "imported-build-id",
+    "term": "Build ID",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "构建标识",
+    "category": "构建",
+    "definition": "唯一标识一个可测试或发布构建，并关联源码、引擎、配置、内容和制品的编号。",
+    "example": "Attach the Build ID to every crash report.",
+    "exampleZh": "每份崩溃报告都应附带构建标识。",
+    "tags": "Build ID BuildId 构建标识 版本 追溯",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "BuildId"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-build-provenance",
+    "term": "Build Provenance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "构建来源追溯",
+    "category": "构建",
+    "definition": "记录一个构建由哪些源码、引擎、插件、配置、内容和工具版本生成的证据链。",
+    "example": "Build Provenance identified the engine commit used by the client.",
+    "exampleZh": "构建来源追溯确定了客户端使用的引擎提交。",
+    "tags": "Build Provenance 构建来源 版本追溯 可复现构建",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-build-target",
     "term": "Build Target",
     "abbreviation": "",
@@ -1356,6 +1678,27 @@
     "usageNotes": [
       "BuildCookRun 名称中的 Run 不表示一定会自动启动游戏。"
     ]
+  },
+  {
+    "id": "imported-buildgraph",
+    "term": "BuildGraph",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "构建图",
+    "category": "构建",
+    "definition": "用 XML 图描述 Unreal 构建节点、依赖、代理、参数和制品的自动化系统。",
+    "example": "BuildGraph runs validation before cooking the client.",
+    "exampleZh": "构建图会在烘焙客户端前运行验证。",
+    "tags": "BuildGraph UE Build Automation 构建图 CI",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-burst-length",
@@ -2493,6 +2836,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-command-injection",
+    "term": "Command Injection",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "命令注入",
+    "category": "软件工程",
+    "definition": "未受信任输入被拼接进系统命令并改变原有执行语义的安全漏洞。",
+    "example": "Strict argument validation prevents Command Injection in the launcher.",
+    "exampleZh": "严格的参数验证可以防止启动器中的命令注入。",
+    "tags": "Command Injection 命令注入 安全 参数验证",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-command-rate",
     "term": "Command Rate",
     "abbreviation": "",
@@ -2523,6 +2887,69 @@
     "usageNotes": [
       "Command Rate 与 Intel Gear 2/Gear 4 不是同一个概念。"
     ]
+  },
+  {
+    "id": "imported-commandlet",
+    "term": "Commandlet",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "命令行批处理工具",
+    "category": "构建",
+    "definition": "在 UE 中以无人值守方式执行资产扫描、导入、验证或构建任务的轻量命令行程序。",
+    "example": "The Commandlet scans every shipping map for missing assets.",
+    "exampleZh": "这个命令行批处理工具会扫描所有发布地图中的缺失资源。",
+    "tags": "Commandlet UE 命令行 批处理 CI 资产",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-common-activatable-widget",
+    "term": "Common Activatable Widget",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "CommonUI 可激活控件",
+    "category": "UE 基础",
+    "definition": "CommonUI 中具有激活、停用、输入配置和返回行为生命周期的界面控件。",
+    "example": "The Common Activatable Widget restores focus when it becomes active.",
+    "exampleZh": "CommonUI 可激活控件激活时会恢复焦点。",
+    "tags": "Common Activatable Widget CommonActivatableWidget CommonUI UI",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-commonui",
+    "term": "CommonUI",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "CommonUI 界面框架",
+    "category": "UE 基础",
+    "definition": "Unreal Engine 面向跨平台菜单、输入路由和可激活页面栈的 UI 插件框架。",
+    "example": "CommonUI routes the back action to the active modal.",
+    "exampleZh": "CommonUI 会把返回操作路由到当前激活的模态窗口。",
+    "tags": "CommonUI UE UI 输入路由 页面栈",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-computelightgrid",
@@ -3050,6 +3477,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-core-redirect",
+    "term": "Core Redirect",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "核心重定向",
+    "category": "UE 基础",
+    "definition": "通过配置把旧类、结构、枚举、函数或属性名称映射到新名称的兼容机制。",
+    "example": "The Core Redirect migrates assets that use the old class name.",
+    "exampleZh": "核心重定向会迁移仍使用旧类名的资源。",
+    "tags": "Core Redirect CoreRedirects UE 类重命名 兼容",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-counter",
     "term": "Counter",
     "abbreviation": "",
@@ -3105,6 +3553,27 @@
     "usageNotes": [
       "双塔散热器还要检查内存、VRM 装甲、第一条 PCIe 插槽和侧板之间的关系。"
     ]
+  },
+  {
+    "id": "imported-crash-dump",
+    "term": "Crash Dump",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "崩溃转储",
+    "category": "故障与性能",
+    "definition": "进程崩溃时保存的内存、线程、寄存器和模块状态文件，用于离线定位调用栈。",
+    "example": "The Crash Dump was uploaded with the matching symbols.",
+    "exampleZh": "崩溃转储与匹配的符号一起上传了。",
+    "tags": "Crash Dump minidump dump 崩溃转储 调用栈",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-crash-reporter",
@@ -3736,6 +4205,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-data-validation",
+    "term": "Data Validation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "数据验证",
+    "category": "构建",
+    "definition": "使用项目规则批量检查资产、配置和数据是否满足命名、引用或质量要求的 UE 工作流。",
+    "example": "Data Validation blocks assets that reference the Developers folder.",
+    "exampleZh": "数据验证会阻止引用 Developers 目录的资源。",
+    "tags": "Data Validation UE 资产验证 UAssetValidator",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-dc-fan",
     "term": "DC Fan",
     "abbreviation": "DC",
@@ -3828,6 +4318,50 @@
     "usageNotes": [
       "两个 Subchannel 不等于主板的双通道模式。"
     ]
+  },
+  {
+    "id": "imported-decision-table-testing",
+    "term": "Decision Table Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "决策表测试",
+    "category": "游戏测试",
+    "definition": "把多项条件及其结果排列成表格，用于覆盖复杂规则组合。",
+    "example": "Decision Table Testing clarifies when the player may respawn.",
+    "exampleZh": "决策表测试可以明确玩家在什么条件下能够重生。",
+    "tags": "Decision Table Testing 决策表 条件组合",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-defect-triage",
+    "term": "Defect Triage",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "缺陷分诊",
+    "category": "游戏测试",
+    "definition": "团队共同确认缺陷有效性、影响、优先级、责任人、目标版本和所需证据的过程。",
+    "example": "Defect Triage assigned the soft lock to the mission team.",
+    "exampleZh": "缺陷分诊把这个软锁问题分配给了任务团队。",
+    "tags": "Defect Triage Bug Triage 缺陷分诊 缺陷管理",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "Bug Triage"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-delta-t",
@@ -3934,6 +4468,57 @@
     "usageNotes": [
       "DDC 可以重新生成，不属于项目源资源；删除后通常不会丢失内容，但会显著增加后续处理时间。"
     ]
+  },
+  {
+    "id": "imported-device-pool",
+    "term": "Device Pool",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "设备池",
+    "category": "游戏测试",
+    "definition": "由 CI 统一调度、监控健康状态并用于自动测试的一组 PC、主机或移动设备。",
+    "example": "The Device Pool quarantined a machine with a bad driver.",
+    "exampleZh": "设备池隔离了一台驱动异常的机器。",
+    "tags": "Device Pool 设备池 CI 测试设备 健康检查",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-device-removed-extended-data",
+    "term": "Device Removed Extended Data",
+    "abbreviation": "DRED",
+    "fullForm": "Device Removed Extended Data",
+    "ipa": "",
+    "zh": "设备移除扩展数据",
+    "category": "故障与性能",
+    "definition": "Direct3D 12 在 GPU 设备移除或重置后提供的诊断信息，用于分析 GPU 崩溃。",
+    "example": "Device Removed Extended Data showed the last GPU breadcrumb before the crash.",
+    "exampleZh": "设备移除扩展数据显示了崩溃前最后一个 GPU 面包屑。",
+    "tags": "DRED Device Removed Extended Data DX12 GPU Crash",
+    "spokenForm": "D R E D",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Device Removed",
+        "zh": "设备移除"
+      },
+      {
+        "word": "Extended Data",
+        "zh": "扩展数据"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-directory",
@@ -4529,6 +5114,48 @@
     ]
   },
   {
+    "id": "imported-encounter-zone",
+    "term": "Encounter Zone",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "遭遇区域",
+    "category": "AI 与数据",
+    "definition": "控制一次遭遇的激活、生成、战斗、完成和离开行为的空间或逻辑区域。",
+    "example": "Entering the Encounter Zone starts the reinforcement wave.",
+    "exampleZh": "进入遭遇区域会开始增援波次。",
+    "tags": "Encounter Zone 遭遇区域 Encounter AI Spawn",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-entry-criteria",
+    "term": "Entry Criteria",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "进入条件",
+    "category": "游戏测试",
+    "definition": "允许某轮测试或某个里程碑开始前必须满足的构建、环境和质量条件。",
+    "example": "Passing the smoke suite is an Entry Criterion for full regression.",
+    "exampleZh": "通过冒烟测试是进入完整回归的条件之一。",
+    "tags": "Entry Criteria 进入条件 测试门禁",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-entry-point",
     "term": "Entry Point",
     "abbreviation": "",
@@ -4558,6 +5185,61 @@
     "usageNotes": [
       "陌生项目不必从启动代码通读；选择与问题最接近的入口点通常更高效。"
     ]
+  },
+  {
+    "id": "imported-environment-query-system",
+    "term": "Environment Query System",
+    "abbreviation": "EQS",
+    "fullForm": "Environment Query System",
+    "ipa": "",
+    "zh": "环境查询系统",
+    "category": "AI 与数据",
+    "definition": "在候选位置或对象上执行生成、过滤和评分，为 AI 选择战术结果的 UE 系统。",
+    "example": "The Environment Query System selected the safest cover point.",
+    "exampleZh": "环境查询系统选择了最安全的掩体点。",
+    "tags": "EQS Environment Query System UE AI 环境查询",
+    "spokenForm": "E Q S",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Environment",
+        "zh": "环境"
+      },
+      {
+        "word": "Query",
+        "zh": "查询"
+      },
+      {
+        "word": "System",
+        "zh": "系统"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-equivalence-partitioning",
+    "term": "Equivalence Partitioning",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "等价类划分",
+    "category": "游戏测试",
+    "definition": "把预期行为相同的输入或状态划分为等价集合，并从每组选择代表值测试。",
+    "example": "Use Equivalence Partitioning for valid and invalid ammo counts.",
+    "exampleZh": "可以用等价类划分测试有效和无效的弹药数量。",
+    "tags": "Equivalence Partitioning 等价类 测试设计",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-event-beginplay",
@@ -4744,6 +5426,27 @@
     ]
   },
   {
+    "id": "imported-exit-criteria",
+    "term": "Exit Criteria",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "退出条件",
+    "category": "游戏测试",
+    "definition": "判定测试阶段可以结束或版本可以晋级时必须满足的结果与风险条件。",
+    "example": "Zero blocker defects is one Exit Criterion for the release candidate.",
+    "exampleZh": "阻断级缺陷为零是发布候选版本的一项退出条件。",
+    "tags": "Exit Criteria 退出条件 测试完成 门禁",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-expansion-slot",
     "term": "Expansion Slot",
     "abbreviation": "",
@@ -4765,6 +5468,27 @@
     "usageNotes": [
       "显卡标称占用槽数不能代替毫米厚度；还要结合主板 PCIe 插槽的位置。"
     ]
+  },
+  {
+    "id": "imported-exploratory-testing",
+    "term": "Exploratory Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "探索式测试",
+    "category": "游戏测试",
+    "definition": "测试人员在明确风险目标和时间盒内同步学习、设计和执行测试。",
+    "example": "Exploratory Testing found a soft lock after skipping the sequence.",
+    "exampleZh": "探索式测试发现跳过过场后会发生软锁。",
+    "tags": "Exploratory Testing 探索测试 时间盒 Charter",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-extended-profiles-for-overclocking",
@@ -4828,6 +5552,27 @@
     "usageNotes": [
       "XMP 属于超频配置，内存套装标称不代表任意 CPU 和主板组合都保证稳定。"
     ]
+  },
+  {
+    "id": "imported-failure-bucketing",
+    "term": "Failure Bucketing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "失败归桶",
+    "category": "游戏测试",
+    "definition": "按稳定特征把大量失败聚合成可追踪的问题组，减少重复分析。",
+    "example": "Failure Bucketing groups crashes by the first stable stack frame.",
+    "exampleZh": "失败归桶会根据第一个稳定调用栈帧聚合崩溃。",
+    "tags": "Failure Bucketing 失败聚类 crash bucket 结果分析",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-fan-curve",
@@ -5061,6 +5806,27 @@
         "zh": "32 位表项体系"
       }
     ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-fault-injection",
+    "term": "Fault Injection",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "故障注入",
+    "category": "游戏测试",
+    "definition": "主动制造超时、断网、服务失败或资源不足，验证系统的降级、恢复和告警能力。",
+    "example": "Fault Injection simulates a network loss during the update.",
+    "exampleZh": "故障注入会模拟更新过程中的网络中断。",
+    "tags": "Fault Injection 故障注入 混沌测试 失败恢复",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
@@ -5424,6 +6190,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-field-notify",
+    "term": "Field Notify",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "字段通知",
+    "category": "UE 基础",
+    "definition": "当可绑定字段变化时向 MVVM 或界面订阅者发送更新通知的机制。",
+    "example": "Field Notify updates the ammo text only when the value changes.",
+    "exampleZh": "字段通知只会在弹药数变化时更新文本。",
+    "tags": "Field Notify UE MVVM 字段通知 数据绑定",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-fileio",
     "term": "FileIO",
     "abbreviation": "",
@@ -5553,6 +6340,27 @@
     "usageNotes": [
       "本机防火墙、服务器防火墙和中间网络设备都可能独立过滤连接。"
     ]
+  },
+  {
+    "id": "imported-flaky-test",
+    "term": "Flaky Test",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "不稳定测试",
+    "category": "游戏测试",
+    "definition": "在被测代码没有相关变化时仍会间歇性通过或失败的测试。",
+    "example": "The Flaky Test failed only on one device and passed on retry.",
+    "exampleZh": "这项不稳定测试只在一台设备上失败，重试后通过。",
+    "tags": "Flaky Test 不稳定测试 偶发 自动化 重试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-floating-gate-nand",
@@ -6122,6 +6930,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-functional-test",
+    "term": "Functional Test",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "功能场景测试",
+    "category": "游戏测试",
+    "definition": "在真实 World 中放置并运行测试 Actor，用于验证多个游戏系统的协作。",
+    "example": "The Functional Test verifies that the encounter completes.",
+    "exampleZh": "功能场景测试会验证遭遇战能够完成。",
+    "tags": "Functional Test AFunctionalTest UE World 自动化",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-fxsystem",
     "term": "FXSystem",
     "abbreviation": "",
@@ -6197,6 +7026,27 @@
     "usageNotes": [
       "在 Unreal Engine 性能语境中优先使用 Game Thread，而不是笼统的 Main Thread。"
     ]
+  },
+  {
+    "id": "imported-gameplay-debugger",
+    "term": "Gameplay Debugger",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Gameplay 调试器",
+    "category": "游戏测试",
+    "definition": "在运行中的 UE 游戏内显示角色、AI、导航和项目自定义状态的调试界面。",
+    "example": "Gameplay Debugger showed that the AI had no target.",
+    "exampleZh": "Gameplay 调试器显示 AI 当前没有目标。",
+    "tags": "Gameplay Debugger UE 调试 AI NavMesh",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-gameplay-message",
@@ -6350,6 +7200,27 @@
     "usageNotes": [
       "标记-清除-销毁循环。"
     ]
+  },
+  {
+    "id": "imported-gauntlet",
+    "term": "Gauntlet",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Gauntlet 自动化框架",
+    "category": "游戏测试",
+    "definition": "Unreal Engine 用于启动构建、编排多进程或多设备场景并收集测试产物的自动化框架。",
+    "example": "Gauntlet launches two clients and one server for the scenario.",
+    "exampleZh": "Gauntlet 会为该场景启动两个客户端和一个服务器。",
+    "tags": "Gauntlet UE 自动化 多进程 设备",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-gc-dissolveunreachableclusters",
@@ -6730,6 +7601,27 @@
         "experience": "当 GPUSkinCache_UpdateSkinningBatches 持续偏高时，先确认其对应的工作内容（更新 GPU Skin Cache 的蒙皮批次和顶点缓冲区绑定）是否因工作量增长而变重；继续在 GPU 轨道按渲染 Pass、像素覆盖和资源带宽拆分。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-hard-reference",
+    "term": "Hard Reference",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "硬引用",
+    "category": "资源与渲染",
+    "definition": "让引用者在加载时直接要求目标对象或资源可用的强依赖关系。",
+    "example": "The Hard Reference pulled every character into the startup package.",
+    "exampleZh": "这个硬引用把所有角色都带进了启动包。",
+    "tags": "Hard Reference 硬引用 资源依赖 加载",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -7824,6 +8716,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-loading-phase",
+    "term": "Loading Phase",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "模块加载阶段",
+    "category": "UE 基础",
+    "definition": "模块在引擎启动流程中的装载时机，例如 Default、PreDefault 或 PostEngineInit。",
+    "example": "The editor module uses a later Loading Phase.",
+    "exampleZh": "这个编辑器模块使用了较晚的模块加载阶段。",
+    "tags": "Loading Phase Module UE PreDefault PostEngineInit",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-loadobject",
     "term": "LoadObject",
     "abbreviation": "",
@@ -8107,6 +9020,40 @@
         "experience": "当 Malloc_UpdateStats 持续偏高时，先确认其对应的工作内容（汇总内存分配器的分配量、峰值和池使用等统计信息）是否因工作量增长而变重；继续检查对象数量、引用关系、分配频率和垃圾回收阶段。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-master-test-plan",
+    "term": "Master Test Plan",
+    "abbreviation": "MTP",
+    "fullForm": "Master Test Plan",
+    "ipa": "",
+    "zh": "总体测试计划",
+    "category": "游戏测试",
+    "definition": "描述整个项目测试范围、环境、资源、风险、门禁、里程碑和交付物的总计划。",
+    "example": "The Master Test Plan defines the release test scope.",
+    "exampleZh": "总体测试计划定义了发布测试范围。",
+    "tags": "MTP Master Test Plan 总体测试计划 测试策略",
+    "spokenForm": "M T P",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Master",
+        "zh": "总体"
+      },
+      {
+        "word": "Test",
+        "zh": "测试"
+      },
+      {
+        "word": "Plan",
+        "zh": "计划"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -8699,6 +9646,61 @@
     ]
   },
   {
+    "id": "imported-model-based-testing",
+    "term": "Model-Based Testing",
+    "abbreviation": "MBT",
+    "fullForm": "Model-Based Testing",
+    "ipa": "",
+    "zh": "基于模型的测试",
+    "category": "游戏测试",
+    "definition": "根据状态机、规则图或其他行为模型生成或检查测试序列的方法。",
+    "example": "Model-Based Testing generates mission event sequences.",
+    "exampleZh": "基于模型的测试可以生成任务事件序列。",
+    "tags": "MBT Model-Based Testing 模型测试 状态机",
+    "spokenForm": "M B T",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-model-view-viewmodel",
+    "term": "Model-View-ViewModel",
+    "abbreviation": "MVVM",
+    "fullForm": "Model-View-ViewModel",
+    "ipa": "",
+    "zh": "模型-视图-视图模型",
+    "category": "软件工程",
+    "definition": "通过 ViewModel 在数据模型与界面之间提供可绑定状态的 UI 架构模式。",
+    "example": "Model-View-ViewModel keeps the widget separate from inventory logic.",
+    "exampleZh": "模型-视图-视图模型让控件与库存逻辑保持分离。",
+    "tags": "MVVM Model View ViewModel UI 架构 数据绑定",
+    "spokenForm": "M V V M",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Model",
+        "zh": "模型"
+      },
+      {
+        "word": "View",
+        "zh": "视图"
+      },
+      {
+        "word": "ViewModel",
+        "zh": "视图模型"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-module",
     "term": "Module",
     "abbreviation": "",
@@ -8804,6 +9806,27 @@
     ]
   },
   {
+    "id": "imported-montage-section",
+    "term": "Montage Section",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "蒙太奇片段",
+    "category": "动画与碰撞",
+    "definition": "Animation Montage 中可命名、跳转和串联的播放区段。",
+    "example": "The reload jumps to the final Montage Section after cancellation.",
+    "exampleZh": "取消换弹后，动画会跳到最后一个蒙太奇片段。",
+    "tags": "Montage Section Animation Montage 蒙太奇 片段",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-motherboard-standoff",
     "term": "Motherboard Standoff",
     "abbreviation": "",
@@ -8834,6 +9857,48 @@
     "usageNotes": [
       "多余铜柱可能接触主板背面焊点并造成短路。"
     ]
+  },
+  {
+    "id": "imported-motion-matching",
+    "term": "Motion Matching",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "运动匹配",
+    "category": "动画与碰撞",
+    "definition": "持续使用姿势搜索从动画数据库选择与当前运动意图最匹配片段的动画方案。",
+    "example": "Motion Matching switched smoothly from sprinting to a sharp turn.",
+    "exampleZh": "运动匹配让冲刺到急转的切换保持平滑。",
+    "tags": "Motion Matching 运动匹配 Pose Search locomotion",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-motion-warping",
+    "term": "Motion Warping",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "运动扭曲",
+    "category": "动画与碰撞",
+    "definition": "在播放根运动动画时动态调整轨迹，使角色与目标位置或方向对齐的 UE 系统。",
+    "example": "Motion Warping aligns the takedown animation with the target.",
+    "exampleZh": "运动扭曲会让处决动画与目标对齐。",
+    "tags": "Motion Warping UE Root Motion Warp Target",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-mount-point",
@@ -9209,6 +10274,69 @@
         "zh": "存储"
       }
     ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nav-link",
+    "term": "Nav Link",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "导航链接",
+    "category": "AI 与数据",
+    "definition": "连接两个原本不连续的导航区域，使 AI 能执行跳跃、翻越或跨越缝隙。",
+    "example": "The Nav Link lets the AI jump across the gap.",
+    "exampleZh": "导航链接让 AI 可以跳过缺口。",
+    "tags": "Nav Link Navigation Link 导航链接 跳跃 翻越",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-navigation-invoker",
+    "term": "Navigation Invoker",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "导航调用者",
+    "category": "AI 与数据",
+    "definition": "请求在自身周围动态生成或保留导航数据的 Actor 或组件。",
+    "example": "The Navigation Invoker moves with the player across the large world.",
+    "exampleZh": "导航调用者会随玩家在大世界中移动。",
+    "tags": "Navigation Invoker 导航调用者 动态导航 NavMesh",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-navigation-mesh",
+    "term": "Navigation Mesh",
+    "abbreviation": "NavMesh",
+    "fullForm": "Navigation Mesh",
+    "ipa": "",
+    "zh": "导航网格",
+    "category": "AI 与数据",
+    "definition": "把可行走空间离散成多边形区域，供 AI 查询可达性和路径。",
+    "example": "The Navigation Mesh does not cover the narrow doorway.",
+    "exampleZh": "导航网格没有覆盖这道窄门。",
+    "tags": "NavMesh Navigation Mesh 导航网格 AI 寻路",
+    "spokenForm": "Nav Mesh",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
@@ -9638,6 +10766,36 @@
     ]
   },
   {
+    "id": "imported-one-file-per-actor",
+    "term": "One File Per Actor",
+    "abbreviation": "OFPA",
+    "fullForm": "One File Per Actor",
+    "ipa": "",
+    "zh": "每个 Actor 一个文件",
+    "category": "资源与渲染",
+    "definition": "将关卡中的 Actor 分别保存在外部资源文件中，以减少大型地图的二进制冲突。",
+    "example": "One File Per Actor lets two artists edit different actors in the same map.",
+    "exampleZh": "每个 Actor 一个文件让两位美术可以编辑同一地图中的不同对象。",
+    "tags": "OFPA One File Per Actor External Actors World Partition",
+    "spokenForm": "O F P A",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "One File",
+        "zh": "一个文件"
+      },
+      {
+        "word": "Per Actor",
+        "zh": "对应一个 Actor"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-open-area-ratio",
     "term": "Open Area Ratio",
     "abbreviation": "",
@@ -9683,6 +10841,29 @@
     "contexts": [],
     "usageNotes": [
       "同一风扇安装在不同面板、滤网或冷排后会具有不同工作点。"
+    ]
+  },
+  {
+    "id": "imported-out-of-memory",
+    "term": "Out of Memory",
+    "abbreviation": "OOM",
+    "fullForm": "Out of Memory",
+    "ipa": "",
+    "zh": "内存不足",
+    "category": "故障与性能",
+    "definition": "进程或设备无法获得继续执行所需内存的失败状态，不等同于已经证明存在内存泄漏。",
+    "example": "The build terminated with an Out of Memory error during map loading.",
+    "exampleZh": "该构建在加载地图时因内存不足而终止。",
+    "tags": "OOM Out of Memory 内存不足 崩溃 峰值",
+    "spokenForm": "O O M",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "OOM 描述分配失败；内存泄漏、峰值过高、碎片化或预算过小都可能导致 OOM。"
     ]
   },
   {
@@ -9869,6 +11050,29 @@
     ]
   },
   {
+    "id": "imported-pairwise-testing",
+    "term": "Pairwise Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "成对组合测试",
+    "category": "游戏测试",
+    "definition": "在组合数量过大时，选择覆盖任意两项参数取值组合的测试集。",
+    "example": "Pairwise Testing reduces the weapon and attachment matrix.",
+    "exampleZh": "成对组合测试可以缩减武器与配件的组合矩阵。",
+    "tags": "Pairwise Testing all-pairs 成对测试 组合测试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "All-Pairs Testing"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-pak-file",
     "term": "Pak File",
     "abbreviation": "",
@@ -10018,6 +11222,27 @@
     ]
   },
   {
+    "id": "imported-partial-path",
+    "term": "Partial Path",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "部分路径",
+    "category": "AI 与数据",
+    "definition": "只能到达最接近目标的可达点、无法完整抵达目标的路径结果。",
+    "example": "MoveTo returned a Partial Path because the target was outside the NavMesh.",
+    "exampleZh": "由于目标位于导航网格外，MoveTo 返回了部分路径。",
+    "tags": "Partial Path 部分路径 NavMesh MoveTo AI",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-partition",
     "term": "Partition",
     "abbreviation": "",
@@ -10033,6 +11258,50 @@
     "threadCategory": "",
     "source": "存储知识体系.md",
     "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-path-following",
+    "term": "Path Following",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "路径跟随",
+    "category": "AI 与数据",
+    "definition": "AI 根据已生成路径移动、处理转向、阻挡、到达和重新规划的执行阶段。",
+    "example": "Path Following stopped when the smart link was occupied.",
+    "exampleZh": "智能链接被占用后，路径跟随停止了。",
+    "tags": "Path Following PathFollowingComponent 路径跟随 AI MoveTo",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-path-traversal",
+    "term": "Path Traversal",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "路径穿越",
+    "category": "软件工程",
+    "definition": "攻击者通过特殊路径片段让程序访问或写入预期目录之外位置的安全漏洞。",
+    "example": "The installer rejects an archive entry that attempts Path Traversal.",
+    "exampleZh": "安装器会拒绝试图进行路径穿越的压缩包条目。",
+    "tags": "Path Traversal directory traversal 路径穿越 安全",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "Directory Traversal"
+    ],
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
@@ -10329,6 +11598,40 @@
     ]
   },
   {
+    "id": "imported-pipeline-state-object",
+    "term": "Pipeline State Object",
+    "abbreviation": "PSO",
+    "fullForm": "Pipeline State Object",
+    "ipa": "",
+    "zh": "管线状态对象",
+    "category": "图形与渲染",
+    "definition": "把着色器和固定渲染状态组合成 GPU 可使用的图形或计算管线对象。",
+    "example": "The first encounter caused a hitch while creating a Pipeline State Object.",
+    "exampleZh": "首次遭遇时创建管线状态对象导致了一次卡顿。",
+    "tags": "PSO Pipeline State Object GPU Shader Cache",
+    "spokenForm": "P S O",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Pipeline",
+        "zh": "管线"
+      },
+      {
+        "word": "State",
+        "zh": "状态"
+      },
+      {
+        "word": "Object",
+        "zh": "对象"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-plp",
     "term": "PLP",
     "abbreviation": "PLP",
@@ -10410,6 +11713,27 @@
       ".uplugin",
       "uplugin File"
     ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-pose-search",
+    "term": "Pose Search",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "姿势搜索",
+    "category": "动画与碰撞",
+    "definition": "根据轨迹、状态和特征从动画数据库中搜索最佳姿势的 UE 系统。",
+    "example": "Pose Search selected a turn animation from the locomotion database.",
+    "exampleZh": "姿势搜索从移动数据库中选择了一段转向动画。",
+    "tags": "Pose Search UE Motion Matching 姿势搜索 动画数据库",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
@@ -10699,6 +12023,27 @@
     ]
   },
   {
+    "id": "imported-primary-asset",
+    "term": "Primary Asset",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "主资源",
+    "category": "资源与渲染",
+    "definition": "由 Asset Manager 分配稳定 Primary Asset ID、可独立发现和管理的资源入口。",
+    "example": "The mission is registered as a Primary Asset.",
+    "exampleZh": "这个任务被注册为主资源。",
+    "tags": "Primary Asset Primary Asset ID Asset Manager 主资源",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-print-string",
     "term": "Print String",
     "abbreviation": "",
@@ -10938,6 +12283,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-program-target",
+    "term": "Program Target",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "独立程序构建目标",
+    "category": "构建",
+    "definition": "使用 UE 基础设施构建但不作为普通游戏或编辑器运行的独立应用目标。",
+    "example": "The launcher is built as a Program Target.",
+    "exampleZh": "启动器以独立程序构建目标进行构建。",
+    "tags": "Program Target UnrealBuildTool Target UE 工具程序",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-program-erase-cycle",
     "term": "Program/Erase Cycle",
     "abbreviation": "P/E Cycle",
@@ -11046,6 +12412,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-pseudolocalization",
+    "term": "Pseudolocalization",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "伪本地化",
+    "category": "游戏测试",
+    "definition": "用自动扩展、替换或加标记的测试文本暴露截断、硬编码和字体问题的本地化测试方法。",
+    "example": "Pseudolocalization exposed a button that could not fit longer text.",
+    "exampleZh": "伪本地化暴露了按钮无法容纳较长文本的问题。",
+    "tags": "Pseudolocalization 伪本地化 LQA 文本膨胀",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-psoprecompilepool",
     "term": "PSOPrecompilePool",
     "abbreviation": "",
@@ -11138,6 +12525,36 @@
       {
         "word": "Cell",
         "zh": "存储单元"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-quality-assurance",
+    "term": "Quality Assurance",
+    "abbreviation": "QA",
+    "fullForm": "Quality Assurance",
+    "ipa": "",
+    "zh": "质量保证",
+    "category": "游戏测试",
+    "definition": "通过需求评审、风险分析、测试、自动化和质量门禁，持续降低产品缺陷与发布风险的工程活动。",
+    "example": "Quality Assurance reviews the feature before implementation starts.",
+    "exampleZh": "质量保证人员会在功能开始实现前参与评审。",
+    "tags": "QA Quality Assurance 质量保证 质量工程 游戏测试",
+    "spokenForm": "Q A",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Quality",
+        "zh": "质量"
+      },
+      {
+        "word": "Assurance",
+        "zh": "保证"
       }
     ],
     "relatedTerms": [],
@@ -11562,6 +12979,40 @@
     ]
   },
   {
+    "id": "imported-real-time-parameter-control",
+    "term": "Real-Time Parameter Control",
+    "abbreviation": "RTPC",
+    "fullForm": "Real-Time Parameter Control",
+    "ipa": "",
+    "zh": "实时参数控制",
+    "category": "资源与渲染",
+    "definition": "Wwise 中由游戏实时设置、用于连续控制音量、滤波或其他声音属性的参数。",
+    "example": "The Real-Time Parameter Control changes the engine pitch with speed.",
+    "exampleZh": "实时参数控制会根据速度改变引擎音高。",
+    "tags": "RTPC Real-Time Parameter Control Wwise 实时参数",
+    "spokenForm": "R T P C",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Real-Time",
+        "zh": "实时"
+      },
+      {
+        "word": "Parameter",
+        "zh": "参数"
+      },
+      {
+        "word": "Control",
+        "zh": "控制"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-reallocated-sector",
     "term": "Reallocated Sector",
     "abbreviation": "",
@@ -11579,6 +13030,48 @@
     "aliases": [
       "Remapped Sector"
     ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-recast-navmesh",
+    "term": "Recast NavMesh",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Recast 导航网格",
+    "category": "AI 与数据",
+    "definition": "Unreal Engine 基于 Recast 生成和查询的导航网格实现。",
+    "example": "Recast NavMesh rebuilt the dirty tiles around the obstacle.",
+    "exampleZh": "Recast 导航网格重建了障碍物周围的脏区块。",
+    "tags": "Recast NavMesh UE 导航 RecastNavigationMesh",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-redirector",
+    "term": "Redirector",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "资源重定向器",
+    "category": "资源与渲染",
+    "definition": "UE 在资源移动或重命名后暂时保留的路径转发对象，用来维持旧引用。",
+    "example": "Fix up the Redirector after moving the asset.",
+    "exampleZh": "移动资源后要修复资源重定向器。",
+    "tags": "Redirector UE 资源重定向 Fix Up Redirectors",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
@@ -11678,6 +13171,36 @@
     ]
   },
   {
+    "id": "imported-release-candidate",
+    "term": "Release Candidate",
+    "abbreviation": "RC",
+    "fullForm": "Release Candidate",
+    "ipa": "",
+    "zh": "发布候选版本",
+    "category": "游戏测试",
+    "definition": "功能和内容接近最终发布状态、等待完整验证与签字的候选构建。",
+    "example": "The Release Candidate must pass installation and rollback testing.",
+    "exampleZh": "发布候选版本必须通过安装和回滚测试。",
+    "tags": "RC Release Candidate 发布候选 版本签字",
+    "spokenForm": "R C",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Release",
+        "zh": "发布"
+      },
+      {
+        "word": "Candidate",
+        "zh": "候选"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-render-beginframe",
     "term": "Render_BeginFrame",
     "abbreviation": "",
@@ -11740,6 +13263,63 @@
     ]
   },
   {
+    "id": "imported-requirements-traceability-matrix",
+    "term": "Requirements Traceability Matrix",
+    "abbreviation": "RTM",
+    "fullForm": "Requirements Traceability Matrix",
+    "ipa": "",
+    "zh": "需求追踪矩阵",
+    "category": "游戏测试",
+    "definition": "将需求或功能规则与测试用例、平台、执行结果和缺口对应起来的矩阵。",
+    "example": "The Requirements Traceability Matrix shows which rules are not covered.",
+    "exampleZh": "需求追踪矩阵会显示哪些规则尚未覆盖。",
+    "tags": "RTM Requirements Traceability Matrix 需求追踪矩阵 覆盖矩阵",
+    "spokenForm": "R T M",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "Traceability Matrix"
+    ],
+    "wordParts": [
+      {
+        "word": "Requirements",
+        "zh": "需求"
+      },
+      {
+        "word": "Traceability",
+        "zh": "可追踪性"
+      },
+      {
+        "word": "Matrix",
+        "zh": "矩阵"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-residual-risk",
+    "term": "Residual Risk",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "残余风险",
+    "category": "游戏测试",
+    "definition": "完成计划内测试和修复后仍未消除、需要由责任人明确接受的风险。",
+    "example": "The sign-off lists the Residual Risk for the unsupported GPU.",
+    "exampleZh": "签字报告列出了未支持显卡带来的残余风险。",
+    "tags": "Residual Risk 残余风险 风险接受 发布签字",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-resonance",
     "term": "Resonance",
     "abbreviation": "",
@@ -11797,6 +13377,27 @@
     "usageNotes": [
       "反向代理代表服务端接收外部请求；正向代理代表客户端访问外部服务。"
     ]
+  },
+  {
+    "id": "imported-rewind-debugger",
+    "term": "Rewind Debugger",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "回溯调试器",
+    "category": "动画与碰撞",
+    "definition": "记录运行时对象和动画状态，并允许沿时间轴回看 Gameplay、Montage 或 Pose 变化的 UE 调试工具。",
+    "example": "Rewind Debugger revealed the montage interruption frame.",
+    "exampleZh": "回溯调试器显示了蒙太奇被中断的那一帧。",
+    "tags": "Rewind Debugger UE 动画 回放 调试",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-rhi-closechain",
@@ -12233,6 +13834,48 @@
         "explanation": "两者都可能增加角色运行时绑定计算成本。"
       }
     ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-risk-based-testing",
+    "term": "Risk-Based Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "基于风险的测试",
+    "category": "游戏测试",
+    "definition": "根据影响、发生概率、暴露范围和难以发现程度安排测试优先级的方法。",
+    "example": "Risk-Based Testing puts save corruption ahead of minor visual defects.",
+    "exampleZh": "基于风险的测试会把存档损坏排在轻微画面问题之前。",
+    "tags": "Risk-Based Testing RBT 风险测试 优先级",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-root-motion",
+    "term": "Root Motion",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "根运动",
+    "category": "动画与碰撞",
+    "definition": "由动画根骨位移和旋转驱动角色移动的机制。",
+    "example": "Root Motion moved the character beyond the collision capsule.",
+    "exampleZh": "根运动把角色移动到了碰撞胶囊之外。",
+    "tags": "Root Motion 根运动 动画 位移 网络",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
   },
@@ -14243,6 +15886,27 @@
     ]
   },
   {
+    "id": "imported-smart-object",
+    "term": "Smart Object",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "智能对象",
+    "category": "AI 与数据",
+    "definition": "通过可查询插槽和行为定义向 AI 提供可占用交互机会的 UE 系统。",
+    "example": "The AI reserved a slot on the Smart Object.",
+    "exampleZh": "AI 预留了智能对象上的一个插槽。",
+    "tags": "Smart Object UE AI 交互 插槽 占用",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-smr",
     "term": "SMR",
     "abbreviation": "SMR",
@@ -14300,6 +15964,99 @@
     "usageNotes": [
       "同设备、同账号或同故障域内的快照不是独立备份。"
     ]
+  },
+  {
+    "id": "imported-soak-testing",
+    "term": "Soak Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "浸泡测试",
+    "category": "游戏测试",
+    "definition": "让系统在接近真实负载下长时间运行，以发现泄漏、累积状态和稳定性问题。",
+    "example": "Soak Testing runs repeated battles for twelve hours.",
+    "exampleZh": "浸泡测试会连续运行十二小时的重复战斗。",
+    "tags": "Soak Testing 长稳测试 稳定性 内存泄漏",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-soft-reference",
+    "term": "Soft Reference",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "软引用",
+    "category": "资源与渲染",
+    "definition": "通过路径或软对象指针记录资源身份，不要求目标资源随引用者立即加载。",
+    "example": "Use a Soft Reference for an optional cinematic.",
+    "exampleZh": "可选过场动画应使用软引用。",
+    "tags": "Soft Reference TSoftObjectPtr 软引用 异步加载",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-software-development-engineer-in-test",
+    "term": "Software Development Engineer in Test",
+    "abbreviation": "SDET",
+    "fullForm": "Software Development Engineer in Test",
+    "ipa": "",
+    "zh": "测试开发工程师",
+    "category": "游戏测试",
+    "definition": "以软件工程方式建设测试框架、自动化、CI、设备池和质量工具的工程角色。",
+    "example": "The Software Development Engineer in Test added the map smoke suite to CI.",
+    "exampleZh": "测试开发工程师把地图冒烟测试接入了 CI。",
+    "tags": "SDET Software Development Engineer in Test 测试开发 自动化",
+    "spokenForm": "S D E T",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Software Development Engineer",
+        "zh": "软件开发工程师"
+      },
+      {
+        "word": "in Test",
+        "zh": "测试方向"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-soundbank",
+    "term": "SoundBank",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "声音库",
+    "category": "资源与渲染",
+    "definition": "Wwise 为特定平台或语言生成、包含事件和音频资源引用的运行时数据包。",
+    "example": "The SoundBank for the selected language was missing from the build.",
+    "exampleZh": "构建中缺少所选语言的声音库。",
+    "tags": "SoundBank Wwise 音频库 Bank Cook",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-source-code",
@@ -14593,6 +16350,48 @@
         "explanation": "动画蓝图的更新逻辑会计入该阶段。"
       }
     ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-state-transition-testing",
+    "term": "State Transition Testing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "状态迁移测试",
+    "category": "游戏测试",
+    "definition": "根据当前状态、事件、条件、新状态和副作用设计覆盖，验证合法与非法迁移。",
+    "example": "State Transition Testing covers every reload interruption point.",
+    "exampleZh": "状态迁移测试会覆盖换弹过程中的每个中断点。",
+    "tags": "State Transition Testing 状态迁移 状态机 测试设计",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-statetree",
+    "term": "StateTree",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "状态树",
+    "category": "AI 与数据",
+    "definition": "UE 将分层状态选择与任务执行结合的数据驱动逻辑系统。",
+    "example": "StateTree switched the NPC from patrol to combat.",
+    "exampleZh": "StateTree 把 NPC 从巡逻切换到了战斗。",
+    "tags": "StateTree UE AI 状态树 GameplayStateTree",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
   },
@@ -14952,6 +16751,50 @@
         "experience": "当 SWidget::Invalidate 持续偏高时，先确认其对应的工作内容（将 Slate 控件标记为布局、绘制或可见性状态失效，触发后续重新计算）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-symbolication",
+    "term": "Symbolication",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "符号化",
+    "category": "故障与性能",
+    "definition": "使用对应构建的调试符号把地址转换成函数名、源码文件和行号的过程。",
+    "example": "Symbolication resolved the crash address to the gameplay function.",
+    "exampleZh": "符号化把崩溃地址解析到了 Gameplay 函数。",
+    "tags": "Symbolication symbolization 符号化 PDB dSYM call stack",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "Symbolization"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sync-marker",
+    "term": "Sync Marker",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "同步标记",
+    "category": "动画与碰撞",
+    "definition": "放在动画序列中的命名时间标记，用于让相关动画按步态或动作节点保持同步。",
+    "example": "The Sync Marker keeps both footstep animations aligned.",
+    "exampleZh": "同步标记让两段脚步动画保持对齐。",
+    "tags": "Sync Marker 动画同步 步态 UE",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -15338,6 +17181,92 @@
     "usageNotes": [
       "Test Build 的具体控制台和统计能力可能受到项目 TargetRules 与宏配置影响。"
     ]
+  },
+  {
+    "id": "imported-test-charter",
+    "term": "Test Charter",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "测试章程",
+    "category": "游戏测试",
+    "definition": "为一轮探索式测试规定目标、风险假设、范围、方法、环境、证据和时间盒的简短任务书。",
+    "example": "The Test Charter focuses on reload cancellation during movement.",
+    "exampleZh": "这份测试章程聚焦移动中的换弹取消。",
+    "tags": "Test Charter Exploratory Charter 探索式测试 章程",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [
+      "Exploratory Charter"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-test-fixture",
+    "term": "Test Fixture",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "测试夹具",
+    "category": "游戏测试",
+    "definition": "为测试提供稳定前置对象、数据、地图或环境，并在结束后负责清理。",
+    "example": "The Test Fixture spawns one player and three enemies.",
+    "exampleZh": "测试夹具会生成一个玩家和三个敌人。",
+    "tags": "Test Fixture 测试夹具 前置数据 setup teardown",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-test-harness",
+    "term": "Test Harness",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "测试框架环境",
+    "category": "游戏测试",
+    "definition": "驱动被测系统、注入条件、收集结果并控制测试生命周期的工具或代码集合。",
+    "example": "The Test Harness launches the client and captures logs.",
+    "exampleZh": "测试框架环境会启动客户端并收集日志。",
+    "tags": "Test Harness 测试驱动 测试工具 自动化",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-test-oracle",
+    "term": "Test Oracle",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "测试判定依据",
+    "category": "游戏测试",
+    "definition": "用于判断测试结果正确或错误的规则、模型、基线或权威数据来源。",
+    "example": "The server state is the Test Oracle for ammo consumption.",
+    "exampleZh": "服务器状态是判定弹药消耗是否正确的依据。",
+    "tags": "Test Oracle 测试判定 预期结果 权威数据",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-tg-prephysics",
@@ -17432,6 +19361,48 @@
     "usageNotes": [
       "地形/贴花 VT。"
     ]
+  },
+  {
+    "id": "imported-visual-logger",
+    "term": "Visual Logger",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "可视化日志",
+    "category": "游戏测试",
+    "definition": "按时间记录 Actor 状态、空间图形、路径和事件，便于回看 AI 与 Gameplay 行为。",
+    "example": "Visual Logger captured the failed path and the blocking actor.",
+    "exampleZh": "可视化日志记录了失败路径和阻挡对象。",
+    "tags": "Visual Logger VisLog UE AI 路径 日志",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-voice-virtualization",
+    "term": "Voice Virtualization",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "声音虚拟化",
+    "category": "资源与渲染",
+    "definition": "在声音暂时听不见或优先级较低时停止真实播放开销，同时保留其逻辑时间状态的音频优化机制。",
+    "example": "Voice Virtualization prevents distant ambience from consuming active voices.",
+    "exampleZh": "声音虚拟化可避免远处环境声占用活动声部。",
+    "tags": "Voice Virtualization Wwise 音频 并发 优先级",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "用UE制作COD式FPS_QA测试与质量工程全流程.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-volume",
