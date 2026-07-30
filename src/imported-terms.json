@@ -1096,6 +1096,42 @@
     ]
   },
   {
+    "id": "imported-bics",
+    "term": "BiCS FLASH",
+    "abbreviation": "BiCS",
+    "fullForm": "Bit Cost Scalable Flash",
+    "ipa": "",
+    "zh": "铠侠 BiCS 三维闪存",
+    "category": "存储与数据",
+    "definition": "铠侠及其合作体系使用的 3D NAND 技术品牌，按 BiCS5、BiCS6、BiCS8 等代际区分不同设计。",
+    "example": "The SSD controller is paired with a recent generation of BiCS FLASH.",
+    "exampleZh": "该 SSD 主控搭配了一代较新的 BiCS FLASH。",
+    "tags": "BiCS FLASH Bit Cost Scalable Kioxia SanDisk 3D NAND 铠侠 闪迪 三维闪存",
+    "spokenForm": "Bics Flash",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Bit Cost",
+        "zh": "每比特成本"
+      },
+      {
+        "word": "Scalable",
+        "zh": "可扩展"
+      },
+      {
+        "word": "Flash",
+        "zh": "闪存"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "BiCS 是品牌和代际体系，比较时应说明具体 BiCS 版本和 Die 参数。"
+    ]
+  },
+  {
     "id": "imported-bitlocker",
     "term": "BitLocker",
     "abbreviation": "",
@@ -2105,6 +2141,91 @@
     ],
     "usageNotes": [
       "MoveComponent 在这里。"
+    ]
+  },
+  {
+    "id": "imported-charge-trap-flash",
+    "term": "Charge Trap Flash",
+    "abbreviation": "CTF",
+    "fullForm": "Charge Trap Flash",
+    "ipa": "",
+    "zh": "电荷俘获闪存",
+    "category": "存储与数据",
+    "definition": "把电荷保存在绝缘材料陷阱中的闪存单元技术，常用于现代 3D NAND。",
+    "example": "Many 3D NAND designs use charge trap flash cells.",
+    "exampleZh": "许多 3D NAND 设计使用电荷俘获闪存单元。",
+    "tags": "CTF charge trap flash 3D NAND 电荷俘获 闪存 单元结构",
+    "spokenForm": "Charge Trap Flash",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Charge Trap",
+        "zh": "电荷俘获"
+      },
+      {
+        "word": "Flash",
+        "zh": "闪存"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-chip-binning",
+    "term": "Chip Binning",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "芯片分档",
+    "category": "芯片与制造",
+    "definition": "根据测试得到的频率、电压、功耗、缺陷和可靠性等结果，把制造出的芯片划分到不同规格等级的过程。",
+    "example": "Chip binning separates faster memory dies from standard-speed parts.",
+    "exampleZh": "芯片分档会把速度更高的内存裸片与标准速度产品区分开。",
+    "tags": "chip binning speed bin quality grade 芯片分档 体质 筛选",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Binning",
+      "Speed Binning"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "分档结果与 Die 修订代号不是同一概念；A-Die 之类名称通常表示设计或工艺修订，不直接等于质量等级。"
+    ]
+  },
+  {
+    "id": "imported-chiplet",
+    "term": "Chiplet",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈtʃɪplət/",
+    "zh": "芯粒",
+    "category": "芯片与制造",
+    "definition": "在多芯片设计中承担特定功能、并通过封装互连与其他 Die 协同工作的较小裸片。",
+    "example": "The processor combines compute chiplets with a separate I/O die.",
+    "exampleZh": "该处理器把计算芯粒与独立 I/O 裸片组合在一起。",
+    "tags": "chiplet multi-die package 芯粒 小芯片 多裸片 先进封装",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Semiconductor Die",
+        "relation": "具体形式",
+        "explanation": "Chiplet 是为多 Die 系统设计的功能裸片。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "所有 Chiplet 都是 Die，但并非所有 Die 都称为 Chiplet。"
     ]
   },
   {
@@ -4027,6 +4148,118 @@
     "usageNotes": []
   },
   {
+    "id": "imported-dram-cell",
+    "term": "DRAM Cell",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "DRAM 存储单元",
+    "category": "内存与架构",
+    "definition": "DRAM 阵列中保存一个数据位的基本结构，典型实现由一个访问晶体管和一个微小电容组成。",
+    "example": "Each DRAM cell must be refreshed before its charge leaks away.",
+    "exampleZh": "每个 DRAM 单元都必须在电荷泄漏前完成刷新。",
+    "tags": "DRAM cell 1T1C capacitor transistor 存储单元 电容 晶体管 刷新",
+    "spokenForm": "D RAM Cell",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Dynamic Random-Access Memory",
+        "relation": "组成单元",
+        "explanation": "大量 DRAM Cell 组成 Bank、Rank 和内存模块中的存储阵列。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-dram-die",
+    "term": "DRAM Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "DRAM 裸片",
+    "category": "内存与架构",
+    "definition": "集成大量 DRAM 存储单元及其外围电路的裸片，一个内存芯片封装可包含一个或多个 DRAM Die。",
+    "example": "The memory package contains a high-density DRAM die.",
+    "exampleZh": "该内存芯片封装中包含一颗高密度 DRAM 裸片。",
+    "tags": "DRAM die memory IC 内存裸片 颗粒 芯片 密度",
+    "spokenForm": "D RAM Die",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "DRAM Die Revision",
+        "relation": "设计版本",
+        "explanation": "同一厂商会用不同修订代号区分 DRAM Die 设计。"
+      },
+      {
+        "term": "Integrated Circuit Package",
+        "relation": "封装关系",
+        "explanation": "DRAM Die 封装后才成为可焊接的内存芯片。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "DRAM Die、内存芯片封装、DIMM 和 Rank 是四个不同层级。"
+    ]
+  },
+  {
+    "id": "imported-dram-density",
+    "term": "DRAM Die Density",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "DRAM 单 Die 密度",
+    "category": "内存与架构",
+    "definition": "单个 DRAM Die 能保存的数据量，通常以 Gb 表示，会影响内存封装、模块容量和 Rank 组织。",
+    "example": "A 24Gb DRAM die can be used to build a 24GB memory module with fewer dies.",
+    "exampleZh": "24Gb DRAM 裸片可以用较少的 Die 组成 24GB 内存模块。",
+    "tags": "DRAM die density 16Gb 24Gb gigabit 内存密度 单Die容量",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "DRAM Density"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "小写 b 表示 bit，大写 B 表示 byte；24Gb Die 不等于 24GB 模块。"
+    ]
+  },
+  {
+    "id": "imported-dram-die-revision",
+    "term": "DRAM Die Revision",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "DRAM 裸片修订版",
+    "category": "内存与架构",
+    "definition": "厂商用于区分某一代 DRAM 裸片设计或工艺版本的标识，玩家常以 A-Die、M-Die 或 B-Die 等名称讨论。",
+    "example": "The die revision affects the memory kit's typical timing and frequency behavior.",
+    "exampleZh": "裸片修订版会影响内存套装常见的时序和频率表现。",
+    "tags": "DRAM die revision IC revision A-Die M-Die B-Die 裸片修订 颗粒版本",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Memory IC Revision",
+      "DRAM Revision"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "修订字母不是行业统一标准，也不是直接的质量等级；必须同时说明厂商、DDR 代际和单 Die 密度。"
+    ]
+  },
+  {
     "id": "imported-drive-cage",
     "term": "Drive Cage",
     "abbreviation": "",
@@ -4175,32 +4408,61 @@
   {
     "id": "imported-dram",
     "term": "Dynamic Random-Access Memory",
-    "abbreviation": "",
-    "fullForm": "",
+    "abbreviation": "DRAM",
+    "fullForm": "Dynamic Random-Access Memory",
     "ipa": "",
     "zh": "动态随机存取存储器",
     "category": "内存与架构",
-    "definition": "用电容保存数据位、需要周期性刷新的易失性存储器，是现代系统内存的主要实现。",
+    "definition": "通常用晶体管和微小电容保存数据位、需要周期性刷新的易失性存储器，是系统内存、GDDR 和 HBM 的基础技术。",
     "example": "DRAM must refresh its cells periodically to retain data.",
     "exampleZh": "DRAM 必须周期性刷新存储单元才能保持数据。",
-    "tags": "DRAM 动态随机存取存储器 系统内存 刷新",
-    "spokenForm": "Dynamic Random Access Memory",
+    "tags": "DRAM dynamic random-access memory 系统内存 动态随机存取存储器 电容 刷新",
+    "spokenForm": "D RAM",
     "threadCategory": "",
-    "source": "内存知识体系.md",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
     "aliases": [
       "DRAM"
     ],
-    "wordParts": [],
+    "wordParts": [
+      {
+        "word": "Dynamic",
+        "zh": "动态"
+      },
+      {
+        "word": "Random-Access",
+        "zh": "随机存取"
+      },
+      {
+        "word": "Memory",
+        "zh": "存储器"
+      }
+    ],
     "relatedTerms": [
       {
         "term": "Refresh Cycle Time",
         "relation": "刷新约束",
         "explanation": "DRAM 刷新操作会占用阵列，并受到 tRFC 约束。"
+      },
+      {
+        "term": "DRAM Cell",
+        "relation": "基本单元",
+        "explanation": "DRAM 由大量需要刷新的存储单元组成。"
+      },
+      {
+        "term": "GDDR",
+        "relation": "图形变体",
+        "explanation": "GDDR 是面向 GPU 带宽优化的 DRAM。"
+      },
+      {
+        "term": "HBM",
+        "relation": "高带宽变体",
+        "explanation": "HBM 通过堆叠和超宽接口获得高带宽。"
       }
     ],
     "contexts": [],
     "usageNotes": [
-      "日常所说的内存条是由 DRAM 颗粒、PCB、SPD Hub 和其他器件组成的模块。"
+      "日常所说的内存条是由 DRAM 颗粒、PCB、SPD Hub 和其他器件组成的模块。",
+      "日常所说的内存条是由 DRAM 封装、PCB、SPD 和电源管理器件组成的模块。"
     ]
   },
   {
@@ -5293,6 +5555,31 @@
     ]
   },
   {
+    "id": "imported-floating-gate-nand",
+    "term": "Floating-Gate NAND",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "浮栅 NAND",
+    "category": "存储与数据",
+    "definition": "把电荷存储在与外界绝缘的浮栅结构中，以改变晶体管阈值电压来保存数据的 NAND 技术。",
+    "example": "Floating-gate NAND stores charge in an electrically isolated gate.",
+    "exampleZh": "浮栅 NAND 把电荷保存在电气隔离的栅极中。",
+    "tags": "floating-gate NAND floating gate flash 浮栅 闪存 电荷 阈值电压",
+    "spokenForm": "Floating Gate NAND",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Floating-Gate Flash"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "现代 3D NAND 也广泛使用电荷俘获结构，两者是不同的存储单元实现。"
+    ]
+  },
+  {
     "id": "imported-flushasyncloading",
     "term": "FlushAsyncLoading",
     "abbreviation": "",
@@ -6146,6 +6433,44 @@
     "usageNotes": []
   },
   {
+    "id": "imported-gddr",
+    "term": "GDDR",
+    "abbreviation": "GDDR",
+    "fullForm": "Graphics Double Data Rate",
+    "ipa": "",
+    "zh": "图形双倍数据速率显存",
+    "category": "内存与架构",
+    "definition": "面向 GPU 高带宽访问优化的同步 DRAM 系列，常见代际包括 GDDR6、GDDR6X 和 GDDR7。",
+    "example": "The graphics card uses GDDR6 memory on a 256-bit bus.",
+    "exampleZh": "这张显卡在 256-bit 总线上使用 GDDR6 显存。",
+    "tags": "GDDR graphics double data rate GDDR6 GDDR7 GPU VRAM 显存 带宽",
+    "spokenForm": "G D D R",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Graphics",
+        "zh": "图形"
+      },
+      {
+        "word": "Double Data Rate",
+        "zh": "双倍数据速率"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Video Memory",
+        "relation": "常见实现",
+        "explanation": "消费级独立显卡通常使用 GDDR 作为显存。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "GDDR 与普通 DDR 都基于 DRAM，但接口、信号和优化目标不同，不能互换。"
+    ]
+  },
+  {
     "id": "imported-gear-down-mode",
     "term": "Gear Down Mode",
     "abbreviation": "",
@@ -6437,6 +6762,44 @@
     "contexts": [],
     "usageNotes": [
       "依赖链式随机访问通常难以被预取器有效预测。"
+    ]
+  },
+  {
+    "id": "imported-hbm",
+    "term": "HBM",
+    "abbreviation": "HBM",
+    "fullForm": "High Bandwidth Memory",
+    "ipa": "",
+    "zh": "高带宽存储器",
+    "category": "内存与架构",
+    "definition": "把多个 DRAM Die 垂直堆叠并通过超宽接口连接 GPU 或加速器的高带宽内存技术。",
+    "example": "The accelerator uses HBM to feed data to thousands of compute units.",
+    "exampleZh": "该加速器使用 HBM 向数千个计算单元提供数据。",
+    "tags": "HBM high bandwidth memory stacked DRAM GPU accelerator 高带宽内存 堆叠显存",
+    "spokenForm": "H B M",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "High Bandwidth",
+        "zh": "高带宽"
+      },
+      {
+        "word": "Memory",
+        "zh": "存储器"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Through-Silicon Via",
+        "relation": "堆叠互连",
+        "explanation": "HBM 堆叠常使用 TSV 在 Die 之间建立垂直连接。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "HBM 的主要优势来自超宽接口和先进封装，而不是单纯追求很高的引脚频率。"
     ]
   },
   {
@@ -6829,6 +7192,38 @@
     "contexts": [],
     "usageNotes": [
       "进风方向应结合风扇框体箭头或叶片结构确认，不能只看安装位置。"
+    ]
+  },
+  {
+    "id": "imported-integrated-circuit-package",
+    "term": "Integrated Circuit Package",
+    "abbreviation": "IC Package",
+    "fullForm": "Integrated Circuit Package",
+    "ipa": "",
+    "zh": "集成电路封装",
+    "category": "芯片与制造",
+    "definition": "保护一个或多个 Die、提供电气连接并帮助散热的外部结构；PCB 上看到的黑色芯片通常就是封装。",
+    "example": "The NAND package contains multiple stacked dies.",
+    "exampleZh": "这个 NAND 封装中包含多个堆叠裸片。",
+    "tags": "integrated circuit package IC package chip package 封装 芯片 颗粒 PCB",
+    "spokenForm": "Integrated Circuit Package",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Integrated Circuit",
+        "zh": "集成电路"
+      },
+      {
+        "word": "Package",
+        "zh": "封装"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "消费语境中的“颗粒”通常指封装，而不是封装内部的单个 Die。"
     ]
   },
   {
@@ -8510,6 +8905,117 @@
     "usageNotes": []
   },
   {
+    "id": "imported-nand-cell",
+    "term": "NAND Cell",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 存储单元",
+    "category": "存储与数据",
+    "definition": "NAND 闪存中通过保存并区分电荷或阈值电压状态来编码数据的基本存储结构。",
+    "example": "A TLC NAND cell distinguishes eight voltage states to store three bits.",
+    "exampleZh": "TLC NAND 单元通过区分八种电压状态来保存三比特数据。",
+    "tags": "NAND cell flash cell threshold voltage charge 存储单元 电荷 电压状态",
+    "spokenForm": "NAND Cell",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "NAND Flash",
+        "relation": "基本单元",
+        "explanation": "大量 NAND Cell 组成页、块、Die 和闪存封装。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nand-channel",
+    "term": "NAND Channel",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 通道",
+    "category": "存储与数据",
+    "definition": "SSD 主控与一组 NAND 器件之间相对独立的数据通路，多通道设计允许主控并行调度更多闪存操作。",
+    "example": "The controller distributes writes across four NAND channels.",
+    "exampleZh": "主控把写入分散到四条 NAND 通道上。",
+    "tags": "NAND channel SSD controller flash interface 通道 主控 并行",
+    "spokenForm": "NAND Channel",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "NAND Die Parallelism",
+        "relation": "并行基础",
+        "explanation": "通道数、每通道 Die 数量和调度能力共同决定并行度。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "NAND 通道不同于 CPU 的内存通道，也不同于 PCIe Lane。"
+    ]
+  },
+  {
+    "id": "imported-nand-die",
+    "term": "NAND Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 裸片",
+    "category": "存储与数据",
+    "definition": "集成 NAND 存储阵列、页、块及外围电路的闪存裸片，一个 NAND 封装中可以堆叠多个 Die。",
+    "example": "The SSD controller accesses several NAND dies in parallel.",
+    "exampleZh": "SSD 主控会并行访问多个 NAND 裸片。",
+    "tags": "NAND die flash die SSD 裸片 闪存颗粒 并行",
+    "spokenForm": "NAND Die",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "NAND Package",
+        "relation": "封装关系",
+        "explanation": "一个 NAND Package 可包含一个或多个 NAND Die。"
+      },
+      {
+        "term": "NAND Die Parallelism",
+        "relation": "性能关系",
+        "explanation": "更多可并行访问的 Die 通常能提高吞吐。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-nand-die-parallelism",
+    "term": "NAND Die Parallelism",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND Die 并行度",
+    "category": "存储与数据",
+    "definition": "SSD 主控同时向多个 NAND Die 调度读写和擦除操作的能力，会影响顺序吞吐、随机性能和持续写入表现。",
+    "example": "The higher-capacity SSD gains performance from greater NAND die parallelism.",
+    "exampleZh": "更大容量的 SSD 通过更高的 NAND Die 并行度获得性能提升。",
+    "tags": "NAND die parallelism SSD channels interleaving 并行度 容量 性能",
+    "spokenForm": "NAND Die Parallelism",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "更大容量不一定总是更快；单 Die 密度、通道数量、主控和固件都会改变可用并行度。"
+    ]
+  },
+  {
     "id": "imported-nand-flash",
     "term": "NAND Flash",
     "abbreviation": "",
@@ -8553,6 +9059,78 @@
     "contexts": [],
     "usageNotes": [
       "这是闪存管理过程，不是编程语言或 Unreal Engine 的对象垃圾回收。"
+    ]
+  },
+  {
+    "id": "imported-nand-generation",
+    "term": "NAND Generation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 工艺代际",
+    "category": "存储与数据",
+    "definition": "厂商对一代 NAND 架构、工艺、密度、接口和性能组合的划分，通常以品牌代号或内部设计编号标识。",
+    "example": "A newer NAND generation may improve density without guaranteeing a faster SSD.",
+    "exampleZh": "更新的 NAND 代际可能提高密度，但不保证整块 SSD 一定更快。",
+    "tags": "NAND generation flash generation V-NAND BiCS Xtacking 工艺代际 闪存代际",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "判断整盘性能仍需结合主控、Die 数量、接口速率、固件和缓存策略。"
+    ]
+  },
+  {
+    "id": "imported-nand-layer-count",
+    "term": "NAND Layer Count",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 堆叠层数",
+    "category": "存储与数据",
+    "definition": "3D NAND 在垂直方向构建的存储层数量，是描述结构代际和密度的指标之一。",
+    "example": "The SSD uses a newer NAND design with a higher layer count.",
+    "exampleZh": "该 SSD 使用层数更高的新一代 NAND 设计。",
+    "tags": "NAND layer count 3D NAND 128-layer 176-layer 232-layer 堆叠层数",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "层数更多不直接等于速度更快或耐久更高，不能脱离具体 Die 和整盘设计比较。"
+    ]
+  },
+  {
+    "id": "imported-nand-package",
+    "term": "NAND Package",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "NAND 封装颗粒",
+    "category": "存储与数据",
+    "definition": "把一个或多个 NAND Die 封装成可焊接到 SSD PCB 上的闪存芯片，消费市场常把它称为 NAND 颗粒。",
+    "example": "Each NAND package on the SSD contains multiple stacked dies.",
+    "exampleZh": "该 SSD 上每颗 NAND 封装都包含多个堆叠裸片。",
+    "tags": "NAND package NAND chip flash package 颗粒 封装 SSD PCB",
+    "spokenForm": "NAND Package",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "NAND Chip",
+      "NAND Flash Package"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "封装数量不等于 Die 数量；一个黑色封装内部可能堆叠多颗 Die。"
     ]
   },
   {
@@ -10360,6 +10938,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-program-erase-cycle",
+    "term": "Program/Erase Cycle",
+    "abbreviation": "P/E Cycle",
+    "fullForm": "Program/Erase Cycle",
+    "ipa": "",
+    "zh": "编程擦除周期",
+    "category": "存储与数据",
+    "definition": "NAND 块完成一次编程写入并随后擦除所形成的使用周期，是衡量闪存磨损和耐久的重要单位。",
+    "example": "Wear leveling spreads P/E cycles across the available NAND blocks.",
+    "exampleZh": "磨损均衡会把 P/E 周期分散到可用 NAND 块上。",
+    "tags": "P/E cycle program erase cycle NAND endurance 编程 擦除 周期 耐久",
+    "spokenForm": "Program Erase Cycle",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Program",
+        "zh": "编程写入"
+      },
+      {
+        "word": "Erase",
+        "zh": "擦除"
+      },
+      {
+        "word": "Cycle",
+        "zh": "周期"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "标称 P/E 次数描述介质耐久特征，不表示达到某个次数后所有单元会同时立即失效。"
+    ]
+  },
+  {
     "id": "imported-project-descriptor",
     "term": "Project Descriptor",
     "abbreviation": "",
@@ -12069,6 +12683,32 @@
     ]
   },
   {
+    "id": "imported-samsung-ddr4-b-die",
+    "term": "Samsung DDR4 B-Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "三星 DDR4 B-Die",
+    "category": "内存与架构",
+    "definition": "三星 DDR4 DRAM 的一种著名裸片设计，因能在较高频率下使用较紧时序而受到内存超频玩家重视。",
+    "example": "The Samsung DDR4 B-Die kit runs tight primary timings after careful tuning.",
+    "exampleZh": "经过仔细调校，这套三星 DDR4 B-Die 内存可以运行较紧的主时序。",
+    "tags": "Samsung DDR4 B-Die memory overclock timing 三星 B-die B颗粒 超频 时序",
+    "spokenForm": "Samsung D D R Four B Die",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Samsung B-Die",
+      "DDR4 B-Die"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "B-Die 是三星特定 DDR4 裸片的名称，不能与其他厂商或 DDR5 的字母代号直接比较。"
+    ]
+  },
+  {
     "id": "imported-sanitize-command",
     "term": "Sanitize Command",
     "abbreviation": "",
@@ -12329,6 +12969,68 @@
     "usageNotes": []
   },
   {
+    "id": "imported-semiconductor-die",
+    "term": "Semiconductor Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˌsemikənˈdʌktər daɪ/",
+    "zh": "半导体裸片",
+    "category": "芯片与制造",
+    "definition": "从晶圆上切割下来、尚未封装的独立半导体芯片，是处理器、DRAM 或 NAND 等器件的实际硅片主体。",
+    "example": "Several semiconductor dies can be integrated into one package.",
+    "exampleZh": "多个半导体裸片可以集成到同一个封装中。",
+    "tags": "semiconductor die bare die silicon die 裸片 晶粒 芯片 颗粒",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Die",
+      "Silicon Die",
+      "Bare Die"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Silicon Wafer",
+        "relation": "制造来源",
+        "explanation": "晶圆完成制造后会被切割成许多 Die。"
+      },
+      {
+        "term": "Integrated Circuit Package",
+        "relation": "封装关系",
+        "explanation": "Die 通常封装后才焊接到 PCB 上。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Die 的复数是 dies；它不是质量等级，也不等同于外部看到的黑色芯片封装。"
+    ]
+  },
+  {
+    "id": "imported-semiconductor-yield",
+    "term": "Semiconductor Yield",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "半导体良率",
+    "category": "芯片与制造",
+    "definition": "晶圆制造后满足规定功能和质量要求的可用 Die 所占比例，是决定芯片成本与量产能力的核心指标。",
+    "example": "Higher semiconductor yield reduces the cost of each usable die.",
+    "exampleZh": "更高的半导体良率会降低每颗可用裸片的成本。",
+    "tags": "semiconductor yield wafer die fab 良率 晶圆 可用裸片 成本",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Wafer Yield",
+      "Die Yield"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-sequential-io",
     "term": "Sequential I/O",
     "abbreviation": "",
@@ -12537,6 +13239,35 @@
     ]
   },
   {
+    "id": "imported-silicon-wafer",
+    "term": "Silicon Wafer",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈsɪlɪkən ˈweɪfər/",
+    "zh": "硅晶圆",
+    "category": "芯片与制造",
+    "definition": "用于批量制造集成电路的圆形硅片，经过沉积、光刻、刻蚀等工艺形成许多 Die 后再切割。",
+    "example": "The finished silicon wafer is cut into individual dies.",
+    "exampleZh": "完成制造的硅晶圆会被切割成独立裸片。",
+    "tags": "silicon wafer wafer fab 晶圆 晶圆厂 芯片制造",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Wafer"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Semiconductor Die",
+        "relation": "切割产物",
+        "explanation": "一片晶圆上通常包含许多相同或相关的 Die。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-single-variable-testing",
     "term": "Single-Variable Testing",
     "abbreviation": "",
@@ -12566,6 +13297,70 @@
     "contexts": [],
     "usageNotes": [
       "改变风扇位置时应保持功耗、风扇曲线、侧板状态和测试时长一致。"
+    ]
+  },
+  {
+    "id": "imported-sk-hynix-ddr5-a-die",
+    "term": "SK hynix DDR5 A-Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "SK 海力士 DDR5 A-Die",
+    "category": "内存与架构",
+    "definition": "SK 海力士 DDR5 DRAM 的一种裸片修订代号；玩家语境中通常指具有较好高频余量的 16Gb A-Die。",
+    "example": "The overclocker selected SK hynix DDR5 A-Die for a high-frequency memory profile.",
+    "exampleZh": "超频玩家选择 SK 海力士 DDR5 A-Die 来设置高频内存参数。",
+    "tags": "SK hynix DDR5 A-Die Hynix A-die 16Gb memory overclock 海力士 A颗粒 超频",
+    "spokenForm": "S K hynix D D R Five A Die",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Hynix DDR5 A-Die",
+      "Hynix A-Die"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "DRAM Die Revision",
+        "relation": "厂商修订",
+        "explanation": "A-Die 是特定厂商和代际下的修订名，不是通用质量等级。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "常见倾向是高频余量较好，但具体稳定频率还取决于密度、分档、CPU 内存控制器、主板和 DIMM 配置。"
+    ]
+  },
+  {
+    "id": "imported-sk-hynix-ddr5-m-die",
+    "term": "SK hynix DDR5 M-Die",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "SK 海力士 DDR5 M-Die",
+    "category": "内存与架构",
+    "definition": "SK 海力士 DDR5 DRAM 使用的裸片修订代号，既可指较早的 16Gb M-Die，也常用于较新的 24Gb 高密度 M-Die。",
+    "example": "Check the die density before comparing two SK hynix DDR5 M-Die memory kits.",
+    "exampleZh": "比较两套 SK 海力士 DDR5 M-Die 内存前，应先核对单 Die 密度。",
+    "tags": "SK hynix DDR5 M-Die Hynix M-die 16Gb 24Gb memory 海力士 M颗粒 24GB 48GB",
+    "spokenForm": "S K hynix D D R Five M Die",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Hynix DDR5 M-Die",
+      "Hynix M-Die"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "DRAM Die Density",
+        "relation": "必要限定",
+        "explanation": "16Gb M-Die 与 24Gb M-Die 不是同一密度设计，不能只按字母比较。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "16Gb M-Die 常见于较早 DDR5 套装；24Gb M-Die 常见于单条 24GB、48GB 等容量。字母相同不表示它们是同一代裸片。"
     ]
   },
   {
@@ -13619,6 +14414,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-sram",
+    "term": "SRAM",
+    "abbreviation": "SRAM",
+    "fullForm": "Static Random-Access Memory",
+    "ipa": "",
+    "zh": "静态随机存取存储器",
+    "category": "内存与架构",
+    "definition": "使用双稳态电路保存数据、在持续供电时不需要像 DRAM 那样周期刷新但断电仍会丢失数据的高速存储器，常用于 CPU 和 GPU 缓存。",
+    "example": "The processor uses SRAM for its on-chip caches.",
+    "exampleZh": "处理器使用 SRAM 实现片上缓存。",
+    "tags": "SRAM static random-access memory CPU cache GPU cache 静态随机存取 高速缓存",
+    "spokenForm": "S RAM",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Static",
+        "zh": "静态"
+      },
+      {
+        "word": "Random-Access",
+        "zh": "随机存取"
+      },
+      {
+        "word": "Memory",
+        "zh": "存储器"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "SRAM 速度快、面积和成本高，通常不用于大容量系统内存。"
+    ]
+  },
+  {
     "id": "imported-ssd",
     "term": "SSD",
     "abbreviation": "SSD",
@@ -14592,6 +15423,36 @@
     "usageNotes": [
       "比较机箱温度时应记录实际功耗，不能只使用相同的软件名称作为负载依据。"
     ]
+  },
+  {
+    "id": "imported-through-silicon-via",
+    "term": "Through-Silicon Via",
+    "abbreviation": "TSV",
+    "fullForm": "Through-Silicon Via",
+    "ipa": "",
+    "zh": "硅通孔",
+    "category": "芯片与制造",
+    "definition": "穿过硅片建立垂直电气连接的微型互连结构，用于 HBM 等多 Die 堆叠封装。",
+    "example": "TSVs connect the stacked HBM dies with short vertical paths.",
+    "exampleZh": "TSV 通过较短的垂直路径连接堆叠的 HBM 裸片。",
+    "tags": "TSV through-silicon via HBM 3D packaging 硅通孔 垂直互连 堆叠封装",
+    "spokenForm": "T S V",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Through-Silicon",
+        "zh": "穿过硅片"
+      },
+      {
+        "word": "Via",
+        "zh": "垂直互连孔"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-tick-animation",
@@ -16383,6 +17244,40 @@
     "usageNotes": []
   },
   {
+    "id": "imported-v-nand",
+    "term": "V-NAND",
+    "abbreviation": "",
+    "fullForm": "Vertical NAND",
+    "ipa": "",
+    "zh": "三星垂直 NAND 品牌技术",
+    "category": "存储与数据",
+    "definition": "三星用于其 3D NAND 产品体系的品牌名称，按不同代际继续演进层数、密度和接口性能。",
+    "example": "The drive uses a newer generation of Samsung V-NAND.",
+    "exampleZh": "该硬盘使用新一代三星 V-NAND。",
+    "tags": "Samsung V-NAND Vertical NAND 3D NAND 三星 垂直闪存",
+    "spokenForm": "V NAND",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Samsung V-NAND"
+    ],
+    "wordParts": [
+      {
+        "word": "Vertical",
+        "zh": "垂直"
+      },
+      {
+        "word": "NAND",
+        "zh": "NAND 闪存"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "V-NAND 是三星品牌名称，不是所有 3D NAND 的通用名称。"
+    ]
+  },
+  {
     "id": "imported-vibration-isolation",
     "term": "Vibration Isolation",
     "abbreviation": "",
@@ -16442,6 +17337,41 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-video-memory",
+    "term": "Video Memory",
+    "abbreviation": "VRAM",
+    "fullForm": "Video Random-Access Memory",
+    "ipa": "",
+    "zh": "显存",
+    "category": "内存与架构",
+    "definition": "供 GPU 保存纹理、几何数据、帧缓冲、渲染目标和计算数据的内存；现代独立显卡通常使用 GDDR 或 HBM。",
+    "example": "The game exceeded the available video memory at the highest texture setting.",
+    "exampleZh": "游戏在最高纹理设置下超过了可用显存容量。",
+    "tags": "VRAM video memory graphics memory GPU memory 显存 纹理 帧缓冲",
+    "spokenForm": "V RAM",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "Graphics Memory",
+      "GPU Memory"
+    ],
+    "wordParts": [
+      {
+        "word": "Video",
+        "zh": "视频或图形"
+      },
+      {
+        "word": "Random-Access Memory",
+        "zh": "随机存取存储器"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "现代用法中的 VRAM 是显存的泛称，不代表显卡仍使用早期专门名为 VRAM 的双端口存储器。核显通常共享系统内存。"
+    ]
   },
   {
     "id": "imported-virtualtexture",
@@ -24365,6 +25295,32 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-xtacking",
+    "term": "Xtacking",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "长江存储晶栈架构",
+    "category": "存储与数据",
+    "definition": "长江存储的 3D NAND 架构，通过分别制造存储阵列晶圆和外围电路晶圆，再进行晶圆级键合。",
+    "example": "Xtacking connects the memory array and peripheral circuits through wafer bonding.",
+    "exampleZh": "Xtacking 通过晶圆键合连接存储阵列与外围电路。",
+    "tags": "Xtacking YMTC 3D NAND wafer bonding 长江存储 晶栈 架构 晶圆键合",
+    "spokenForm": "X Tacking",
+    "threadCategory": "",
+    "source": "Conversation: memory, video memory, and semiconductor die terminology",
+    "aliases": [
+      "YMTC Xtacking",
+      "晶栈"
+    ],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "Xtacking 是长江存储的品牌架构名称，应结合具体代际和 NAND Die 规格理解。"
+    ]
   },
   {
     "id": "imported-zenaphoretrigger",
