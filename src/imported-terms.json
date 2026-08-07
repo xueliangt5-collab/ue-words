@@ -823,6 +823,41 @@
     "usageNotes": []
   },
   {
+    "id": "imported-animation-transition",
+    "term": "Animation Transition",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动画过渡",
+    "category": "动画与碰撞",
+    "definition": "角色从一个动画状态、片段或姿态平滑切换到另一个动画状态的过程。",
+    "example": "The Animation Transition blends from the slide loop into the landing pose.",
+    "exampleZh": "动画过渡会从滑坡循环平滑混合到落地姿态。",
+    "tags": "Animation Transition 动画过渡 blend state machine montage locomotion",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Animation Blend Transition"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Root Motion",
+        "relation": "位移连续性",
+        "explanation": "含根运动的动画过渡还需要保持位移和速度连续。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "entry, loop, and exit",
+        "explanation": "Traversal 常由进入、循环和退出三段动画构成。",
+        "experience": "检查混合时间、Montage Slot、状态机接管时机和一帧错误姿态。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-archive-build",
     "term": "Archive",
     "abbreviation": "",
@@ -1070,6 +1105,42 @@
     "usageNotes": [
       "机箱写明支持 ATX 只代表基础孔位和空间兼容，仍需检查冷排、线材与显卡冲突。"
     ]
+  },
+  {
+    "id": "imported-audio-visual-synchronization",
+    "term": "Audio-Visual Synchronization",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "音画同步",
+    "category": "游戏测试",
+    "definition": "声音、画面、动画、字幕和交互事件在共同时间基准上保持一致的状态。",
+    "example": "Audio-Visual Synchronization keeps the impact sound aligned with the explosion frame.",
+    "exampleZh": "音画同步会让撞击音效与爆炸画面帧保持对齐。",
+    "tags": "Audio-Visual Synchronization AV sync 音画同步 lip sync subtitle timing",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "AV Sync",
+      "A/V Sync"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Playback Rate",
+        "relation": "影响因素",
+        "explanation": "改变播放速率后仍需保持音频、动画和字幕同步。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "pause, hitch, and background recovery",
+        "explanation": "暂停、卡顿和切后台后可能出现持续音画漂移。",
+        "experience": "同时记录 Sequence 时间、音频时间和关键事件时间戳。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-authentication",
@@ -1932,6 +2003,41 @@
     "usageNotes": [
       "Callback 强调由另一个系统在未来某个时机调用，而不是当前执行线立即主动调用。"
     ]
+  },
+  {
+    "id": "imported-camera-cut-track",
+    "term": "Camera Cut Track",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "镜头切换轨道",
+    "category": "资源与渲染",
+    "definition": "Sequencer 中决定何时使用哪台 Cine Camera Actor 输出画面的专用轨道。",
+    "example": "The Camera Cut Track switches from the gameplay camera to the close-up camera.",
+    "exampleZh": "镜头切换轨道会从玩法镜头切换到特写镜头。",
+    "tags": "Camera Cut Track Sequencer Cine Camera 镜头切换轨道 camera cut",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Camera Cuts Track"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Level Sequence",
+        "relation": "所属资产",
+        "explanation": "Level Sequence 使用 Camera Cut Track 编排最终镜头输出。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "camera ownership and restoration",
+        "explanation": "Sequence 接管镜头后需要在正常结束、跳过和中断路径恢复正确玩法镜头。",
+        "experience": "多 Sequence 竞争镜头时检查优先级和恢复栈。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-canary-release",
@@ -2878,6 +2984,41 @@
     "usageNotes": []
   },
   {
+    "id": "imported-collision-seam",
+    "term": "Collision Seam",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "碰撞接缝",
+    "category": "动画与碰撞",
+    "definition": "两个地形、网格或碰撞体的边界连接处；法线、精度或形状不连续时可能造成阻挡、抖动或穿透。",
+    "example": "The capsule catches on a Collision Seam between the landscape and the static mesh.",
+    "exampleZh": "胶囊体卡在 Landscape 与静态网格之间的碰撞接缝上。",
+    "tags": "Collision Seam 碰撞接缝 Landscape Static Mesh capsule snag",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Collision Boundary Seam"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Penetration",
+        "relation": "可能问题",
+        "explanation": "接缝不连续可能导致碰撞体相互穿入或修正抖动。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "landscape and static mesh boundary",
+        "explanation": "滑坡、贴地移动和高速移动时应重点覆盖的地形交界。",
+        "experience": "从不同角度、速度和胶囊体位置重复通过接缝。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-command-injection",
     "term": "Command Injection",
     "abbreviation": "",
@@ -2990,6 +3131,40 @@
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-completion-mode",
+    "term": "Completion Mode",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "完成模式",
+    "category": "资源与渲染",
+    "definition": "Sequencer 区段或轨道结束求值后，决定受控属性恢复、保持或按项目策略处理的配置。",
+    "example": "The Completion Mode determines whether the camera property is restored after playback.",
+    "exampleZh": "完成模式决定播放结束后是否恢复相机属性。",
+    "tags": "Completion Mode Sequencer Restore State Keep State 完成模式",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "When Finished"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Restore State",
+        "relation": "可选策略",
+        "explanation": "Restore State 在结束后恢复预动画状态。"
+      },
+      {
+        "term": "Keep State",
+        "relation": "可选策略",
+        "explanation": "Keep State 在结束后保留最终求值结果。"
+      }
+    ],
     "contexts": [],
     "usageNotes": []
   },
@@ -4718,6 +4893,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-display-rate",
+    "term": "Display Rate",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "显示帧率",
+    "category": "资源与渲染",
+    "definition": "Sequencer 时间轴用于显示帧编号、编辑关键帧和解释时间码的帧率。",
+    "example": "The sequence uses a Display Rate of 30 frames per second.",
+    "exampleZh": "该序列使用每秒 30 帧的显示帧率。",
+    "tags": "Display Rate Sequencer frame rate timeline 显示帧率",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Sequence Display Rate"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Tick Resolution",
+        "relation": "对比时间单位",
+        "explanation": "Display Rate 用于编辑显示，Tick Resolution 用于内部求值精度。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Display Rate 不保证运行时实际 FPS 与之相同。"
+    ]
+  },
+  {
     "id": "imported-distortion",
     "term": "Distortion",
     "abbreviation": "",
@@ -5140,6 +5346,41 @@
     "usageNotes": []
   },
   {
+    "id": "imported-dynamic-binding",
+    "term": "Dynamic Binding",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动态绑定",
+    "category": "资源与渲染",
+    "definition": "在运行时根据上下文、标签、解析器或流程结果为 Sequence 的对象绑定选择实际目标的机制。",
+    "example": "Dynamic Binding resolves the correct NPC after the actor is spawned.",
+    "exampleZh": "动态绑定会在 Actor 生成后解析出正确的 NPC。",
+    "tags": "Dynamic Binding Sequencer runtime binding 动态绑定 actor resolver",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Runtime Sequence Binding"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Possessable",
+        "relation": "绑定目标",
+        "explanation": "动态绑定可以为 Possessable 解析运行时对象。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "late-spawned actor",
+        "explanation": "触发时对象尚未生成，可等待并在对象出现后重新解析绑定。",
+        "experience": "验证超时、重绑、同名对象和旧实例残留。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-dram",
     "term": "Dynamic Random-Access Memory",
     "abbreviation": "DRAM",
@@ -5448,6 +5689,41 @@
     "usageNotes": [
       "编辑蓝图类并不等于关卡里已经存在该蓝图的 Actor 实例。"
     ]
+  },
+  {
+    "id": "imported-event-track",
+    "term": "Event Track",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "事件轨道",
+    "category": "资源与渲染",
+    "definition": "Sequencer 中在指定时间点或区段触发蓝图、Gameplay 或自定义事件的轨道。",
+    "example": "The Event Track opens the QTE input window at the start of the animation.",
+    "exampleZh": "事件轨道会在动画开始时开启 QTE 输入窗口。",
+    "tags": "Event Track Sequencer MovieScene 事件轨道 QTE callback",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Sequencer Event Track"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Level Sequence",
+        "relation": "所属资产",
+        "explanation": "Event Track 是 Level Sequence 中可使用的轨道类型。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "events when jumping or seeking",
+        "explanation": "跳时、跳过和低帧率跨帧时需要验证事件是否补发或重复。",
+        "experience": "任务和奖励类事件应具备幂等保护。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-event-deferredpostload",
@@ -6786,6 +7062,46 @@
     ]
   },
   {
+    "id": "imported-forced-movement",
+    "term": "Forced Movement",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "强制位移",
+    "category": "动画与碰撞",
+    "definition": "由脚本、演出、技能或外部系统接管角色移动，而不是直接响应玩家常规移动输入的位移过程。",
+    "example": "The slide sequence uses Forced Movement while normal locomotion input is disabled.",
+    "exampleZh": "滑坡序列在禁用普通移动输入时使用强制位移。",
+    "tags": "Forced Movement 强制位移 Sequence traversal scripted movement",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Scripted Movement"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Root Motion",
+        "relation": "实现方式",
+        "explanation": "强制位移可以由动画根运动驱动。"
+      },
+      {
+        "term": "Motion Warping",
+        "relation": "对齐方式",
+        "explanation": "Motion Warping 可调整根运动以对齐目标位置。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "single movement authority",
+        "explanation": "强制位移期间应明确唯一的位置写入来源。",
+        "experience": "避免 Sequence Transform、Root Motion 和 Character Movement 同时竞争 Transform。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-foreachobjectofclass",
     "term": "ForEachObjectOfClass",
     "abbreviation": "",
@@ -7858,6 +8174,41 @@
     "usageNotes": []
   },
   {
+    "id": "imported-graceful-degradation",
+    "term": "Graceful Degradation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "平滑降级",
+    "category": "软件工程",
+    "definition": "部分依赖或功能失败时，系统降低能力或表现质量但仍保持核心流程可用的设计方式。",
+    "example": "Graceful Degradation skips the missing background actor but continues the main sequence.",
+    "exampleZh": "平滑降级会跳过缺失的背景演员，但继续播放主序列。",
+    "tags": "Graceful Degradation 平滑降级 fallback resilience failure handling",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Graceful Fallback"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Dynamic Binding",
+        "relation": "失败处理",
+        "explanation": "动态绑定失败时可根据对象关键性进入降级流程。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "critical and non-critical binding",
+        "explanation": "关键绑定可中止流程，非关键绑定可跳过局部 Track。",
+        "experience": "降级仍需记录明确日志并恢复输入、镜头和 UI。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-hard-reference",
     "term": "Hard Reference",
     "abbreviation": "",
@@ -8327,6 +8678,112 @@
     ]
   },
   {
+    "id": "imported-input-buffering",
+    "term": "Input Buffering",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "输入缓存",
+    "category": "游戏开发",
+    "definition": "暂存提前到达的玩家输入，并在后续允许执行的时间窗口中消费该输入的机制。",
+    "example": "Input buffering lets the combo continue when the player presses the next attack slightly early.",
+    "exampleZh": "输入缓存允许玩家稍微提前按下下一次攻击时继续连招。",
+    "tags": "Input Buffering Input Buffer 输入缓存 QTE combo input queue",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Input Buffer"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Input Window",
+        "relation": "消费时机",
+        "explanation": "缓存输入通常在有效输入窗口打开后被消费。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "pre-held input",
+        "explanation": "提前按住与提前点击是否进入缓存需要单独定义。",
+        "experience": "暂停、切后台和上一个 QTE 结束时应清理不再有效的缓存输入。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-input-mapping-context",
+    "term": "Input Mapping Context",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "输入映射上下文",
+    "category": "UE 基础",
+    "definition": "Unreal Engine Enhanced Input 中按优先级组织 Input Action 与设备输入映射的一组配置。",
+    "example": "The QTE adds a high-priority Input Mapping Context while normal gameplay input remains locked.",
+    "exampleZh": "QTE 会添加高优先级输入映射上下文，同时保持普通玩法输入锁定。",
+    "tags": "Input Mapping Context Enhanced Input IMC 输入映射上下文 QTE",
+    "spokenForm": "Input Mapping Context",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "QTE",
+        "relation": "输入配置",
+        "explanation": "QTE 可用独立 Input Mapping Context 接收限定输入。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "mapping context priority",
+        "explanation": "多个上下文同时生效时由优先级和消费规则决定输入归属。",
+        "experience": "Sequence 结束、中断或跳过后要验证上下文被正确移除。"
+      }
+    ],
+    "usageNotes": [
+      "在 UE Enhanced Input 语境中常简称 IMC，但该缩写也可指硬件领域的 Integrated Memory Controller。",
+      "不要把 Input Mapping Context 与单个 Input Action 混为一谈。"
+    ]
+  },
+  {
+    "id": "imported-input-window",
+    "term": "Input Window",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "输入窗口",
+    "category": "游戏开发",
+    "definition": "系统接受某项输入并将其判定为有效的时间区间，常用于 QTE、连招、格挡和交互判定。",
+    "example": "The input window closes on the last frame of the animation section.",
+    "exampleZh": "输入窗口在动画区段的最后一帧关闭。",
+    "tags": "Input Window 输入窗口 QTE timing frame boundary",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Input Timing Window"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "QTE",
+        "relation": "使用场景",
+        "explanation": "QTE 通过输入窗口限制有效输入时间。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "first-frame and last-frame input",
+        "explanation": "窗口边界需要明确首帧和末帧是否包含在有效范围内。",
+        "experience": "至少测试开启前一帧、首帧、中间、末帧和结束后一帧。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-instigator",
     "term": "Instigator",
     "abbreviation": "",
@@ -8743,6 +9200,35 @@
     ],
     "usageNotes": [
       "Jenkins Controller 负责任务调度；Jenkins Agent 负责在工作机上执行任务。"
+    ]
+  },
+  {
+    "id": "imported-keep-state",
+    "term": "Keep State",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "保持状态",
+    "category": "资源与渲染",
+    "definition": "Sequence 或区段结束后，保留最后一次求值结果而不恢复原始属性的完成策略。",
+    "example": "Keep State leaves the door open after the sequence finishes.",
+    "exampleZh": "保持状态会让门在序列结束后继续保持开启。",
+    "tags": "Keep State Sequencer completion mode final value 保持状态",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Completion Mode",
+        "relation": "所属配置",
+        "explanation": "Keep State 是一种 Completion Mode。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Keep State 不代表输入锁、临时对象和全局资源也应被保留。"
     ]
   },
   {
@@ -10900,6 +11386,42 @@
     "usageNotes": []
   },
   {
+    "id": "imported-object-binding-id",
+    "term": "Object Binding ID",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "对象绑定标识",
+    "category": "资源与渲染",
+    "definition": "用于在 MovieScene 或 Sequencer 运行时标识并解析某个对象绑定的标识信息。",
+    "example": "The error log includes the Object Binding ID of the missing actor.",
+    "exampleZh": "错误日志包含缺失 Actor 的对象绑定标识。",
+    "tags": "Object Binding ID Binding ID MovieScene Sequencer 对象绑定标识",
+    "spokenForm": "Object Binding I D",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Binding ID",
+      "MovieScene Object Binding ID"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Dynamic Binding",
+        "relation": "解析标识",
+        "explanation": "动态绑定使用绑定标识定位需要解析的目标槽位。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "binding failure diagnostics",
+        "explanation": "日志记录 Binding ID 能把运行时缺失对象定位回具体轨道。",
+        "experience": "同时记录 Sequence 资源名、实例、对象类型和结束原因。"
+      }
+    ],
+    "usageNotes": []
+  },
+  {
     "id": "imported-on-die-termination",
     "term": "ODT",
     "abbreviation": "ODT",
@@ -11754,6 +12276,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-penetration",
+    "term": "Penetration",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "碰撞穿入",
+    "category": "动画与碰撞",
+    "definition": "两个具有碰撞的几何体在物理或移动更新后占据重叠空间，需要通过穿透修正将其分离的状态。",
+    "example": "The character capsule starts in Penetration after the sequence teleports it into the slope.",
+    "exampleZh": "序列把角色传送进坡面后，角色胶囊体处于碰撞穿入状态。",
+    "tags": "Penetration collision penetration depenetration 碰撞穿入 overlap capsule",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Collision Penetration"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Tunneling",
+        "relation": "对比问题",
+        "explanation": "Tunneling 是漏检后穿过，Penetration 是碰撞体已经相互重叠。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不要把物理 Penetration 与视觉穿模 Clipping 混为同一问题。"
+    ]
+  },
+  {
     "id": "imported-percentile",
     "term": "Percentile",
     "abbreviation": "",
@@ -11949,6 +12502,35 @@
     "usageNotes": []
   },
   {
+    "id": "imported-playback-rate",
+    "term": "Playback Rate",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "播放速率",
+    "category": "游戏开发",
+    "definition": "媒体、动画或 Sequence 时间轴相对于正常速度进行播放的倍率。",
+    "example": "Changing the Playback Rate also changes the duration of the cinematic section.",
+    "exampleZh": "改变播放速率也会改变演出区段的持续时间。",
+    "tags": "Playback Rate 播放速率 Sequence animation speed multiplier",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Play Rate"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Time Dilation",
+        "relation": "对比概念",
+        "explanation": "Playback Rate 控制特定播放器，Time Dilation 影响世界或对象时间。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-plp",
     "term": "PLP",
     "abbreviation": "PLP",
@@ -12080,6 +12662,42 @@
     ]
   },
   {
+    "id": "imported-possessable",
+    "term": "Possessable",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "可占有对象",
+    "category": "资源与渲染",
+    "definition": "Sequencer 对关卡中已经存在的 Actor 或对象建立的绑定；对象生命周期通常不由序列创建和销毁。",
+    "example": "The player character is bound as a Possessable in the Level Sequence.",
+    "exampleZh": "玩家角色以 Possessable 形式绑定到关卡序列。",
+    "tags": "Possessable Sequencer Level Sequence 可占有对象 existing actor binding",
+    "spokenForm": "Possessable",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Sequencer Possessable"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Spawnable",
+        "relation": "对比概念",
+        "explanation": "Spawnable 由序列生成，而 Possessable 引用关卡中已存在的对象。"
+      },
+      {
+        "term": "Level Sequence",
+        "relation": "所属资产",
+        "explanation": "Possessable 是 Level Sequence 的对象绑定类型。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "此处的 Possessable 是 Sequencer 绑定术语，不是 Pawn 被 Controller Possess 的同一概念。"
+    ]
+  },
+  {
     "id": "imported-post-code",
     "term": "POST Code",
     "abbreviation": "POST",
@@ -12126,6 +12744,35 @@
       "C1、C5、55 等代码的含义由主板厂商和型号定义，不能跨品牌直接套用。",
       "POST 代码说明故障停留阶段，不一定直接等于最终损坏部件。"
     ]
+  },
+  {
+    "id": "imported-post-roll",
+    "term": "Post-roll",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "后滚动",
+    "category": "资源与渲染",
+    "definition": "正式播放区间结束后继续进行求值、收尾或状态过渡的时间范围。",
+    "example": "The Post-roll lets the camera effect fade out after the main section ends.",
+    "exampleZh": "后滚动允许镜头效果在主区段结束后淡出。",
+    "tags": "Post-roll Sequencer post evaluation 后滚动 cleanup",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Postroll"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Pre-roll",
+        "relation": "对应阶段",
+        "explanation": "Pre-roll 发生在正式播放区间之前。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-postprocessing",
@@ -12232,6 +12879,35 @@
     "usageNotes": [
       "模组接口外形相似不代表针脚定义相同，不要跨品牌或跨型号混用电源模组线。"
     ]
+  },
+  {
+    "id": "imported-pre-roll",
+    "term": "Pre-roll",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "预滚动",
+    "category": "资源与渲染",
+    "definition": "正式播放区间开始前用于预先求值、准备动画、粒子、音频或对象状态的时间范围。",
+    "example": "The Pre-roll prepares the particle system before the camera cut becomes visible.",
+    "exampleZh": "预滚动会在镜头切换可见前准备粒子系统。",
+    "tags": "Pre-roll Sequencer pre evaluation 预滚动 prepare",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Preroll"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Post-roll",
+        "relation": "对应阶段",
+        "explanation": "Post-roll 发生在正式播放区间之后。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-precompiled-header",
@@ -12847,6 +13523,61 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-qte",
+    "term": "QTE",
+    "abbreviation": "QTE",
+    "fullForm": "Quick Time Event",
+    "ipa": "",
+    "zh": "快速反应事件",
+    "category": "游戏开发",
+    "definition": "要求玩家在限定时间或指定顺序内完成输入，并根据成功、失败或超时结果推进演出或玩法分支的交互机制。",
+    "example": "The QTE accepts the button press only while the input window is open.",
+    "exampleZh": "QTE 只在输入窗口开启期间接受按键。",
+    "tags": "QTE Quick Time Event 快速反应事件 输入窗口 cutscene interaction",
+    "spokenForm": "Q T E",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Quick-Time Event"
+    ],
+    "wordParts": [
+      {
+        "word": "Quick",
+        "zh": "快速的"
+      },
+      {
+        "word": "Time",
+        "zh": "时间"
+      },
+      {
+        "word": "Event",
+        "zh": "事件"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Input Window",
+        "relation": "判定区间",
+        "explanation": "QTE 只在输入窗口内接受规定输入。"
+      },
+      {
+        "term": "Idempotency",
+        "relation": "结果约束",
+        "explanation": "QTE 的成功、失败、超时和取消结果应只结算一次。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Sequence-driven QTE",
+        "explanation": "由 Level Sequence 时间轴控制提示、输入窗口和结果分支的 QTE。",
+        "experience": "测试时分别覆盖窗口首帧、末帧、卡顿跨帧、提前按住和跳过演出。"
+      }
+    ],
+    "usageNotes": [
+      "QTE 是交互机制，不等同于普通按键提示。"
+    ]
   },
   {
     "id": "imported-quality-assurance",
@@ -13721,6 +14452,39 @@
     "usageNotes": [
       "改变紧固、接触点、减振材料或激励转速都可能避开共振。"
     ]
+  },
+  {
+    "id": "imported-restore-state",
+    "term": "Restore State",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "恢复状态",
+    "category": "资源与渲染",
+    "definition": "Sequence 或区段结束后，将受控属性恢复到开始求值前状态的完成策略。",
+    "example": "Restore State returns the character to the transform captured before the sequence started.",
+    "exampleZh": "恢复状态会让角色回到序列开始前记录的变换。",
+    "tags": "Restore State Sequencer completion mode pre-animated state 恢复状态",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Completion Mode",
+        "relation": "所属配置",
+        "explanation": "Restore State 是一种 Completion Mode。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "normal end, skip, or interruption",
+        "explanation": "不同结束路径都要验证镜头、输入、UI、碰撞和 AI 状态是否恢复。",
+        "experience": "不要只验证自然播放结束。"
+      }
+    ],
+    "usageNotes": []
   },
   {
     "id": "imported-reverse-proxy",
@@ -15015,6 +15779,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-scrubbing",
+    "term": "Scrubbing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "时间轴拖拽预览",
+    "category": "资源与渲染",
+    "definition": "在时间轴上前后拖动播放位置，以检查指定时间点的画面、属性和事件求值结果。",
+    "example": "Scrubbing reveals whether the camera cut evaluates correctly before playback.",
+    "exampleZh": "时间轴拖拽预览可以检查镜头切换在正式播放前是否正确求值。",
+    "tags": "Scrubbing scrub timeline Sequencer 时间轴拖拽预览",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Timeline Scrubbing"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Seek",
+        "relation": "相近操作",
+        "explanation": "Seek 跳到指定位置，Scrubbing 强调连续拖动和预览。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "编辑器 Scrubbing 的事件行为可能与运行时连续播放不同。"
+    ]
+  },
+  {
     "id": "imported-secure-erase",
     "term": "Secure Erase",
     "abbreviation": "",
@@ -15033,6 +15828,41 @@
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-seek",
+    "term": "Seek",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "跳转播放位置",
+    "category": "资源与渲染",
+    "definition": "将播放器或时间轴的位置直接移动到指定时间、帧或标记点的操作。",
+    "example": "The player seeks to the next section when the cinematic is skipped.",
+    "exampleZh": "跳过演出时，播放器会跳转到下一个区段。",
+    "tags": "Seek timeline Sequence playback position 跳时 跳转播放位置",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Seek Playback Position"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Scrubbing",
+        "relation": "相近操作",
+        "explanation": "Scrubbing 通常连续预览，Seek 通常直接定位。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "events while seeking",
+        "explanation": "Seek 跨过 Event Track 时是否触发事件取决于具体播放与事件策略。",
+        "experience": "验证必须事件不漏发、已结算事件不重复。"
+      }
+    ],
     "usageNotes": []
   },
   {
@@ -15116,6 +15946,41 @@
     "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sequence-instance",
+    "term": "Sequence Instance",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "序列实例",
+    "category": "资源与渲染",
+    "definition": "同一个 Sequence 资产在运行时一次独立播放所对应的状态、绑定、时间位置和回调上下文。",
+    "example": "The stale callback belongs to an old Sequence Instance and must be ignored.",
+    "exampleZh": "这个迟到回调属于旧的序列实例，必须被忽略。",
+    "tags": "Sequence Instance Level Sequence runtime instance 序列实例 callback",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Runtime Sequence Instance"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Level Sequence",
+        "relation": "运行时实例",
+        "explanation": "Level Sequence 资产可创建一个或多个运行时实例。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "stale callback",
+        "explanation": "旧实例结束后迟到的异步结果不应污染新实例。",
+        "experience": "日志应记录实例 ID 和唯一终态。"
+      }
+    ],
     "usageNotes": []
   },
   {
@@ -17235,6 +18100,43 @@
     "usageNotes": []
   },
   {
+    "id": "imported-stuck-detection",
+    "term": "Stuck Detection",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "卡住检测",
+    "category": "游戏测试",
+    "definition": "根据一段时间内的位置、路径进度、速度和目标距离判断角色或流程是否无法继续前进的检测机制。",
+    "example": "Stuck Detection triggers when the character makes no path progress during the slide.",
+    "exampleZh": "当角色在滑坡过程中没有路径进度时，卡住检测会被触发。",
+    "tags": "Stuck Detection 卡住检测 traversal AI path progress watchdog",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Stall Detection"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Traversal",
+        "relation": "使用场景",
+        "explanation": "Traversal 流程可用卡住检测触发安全兜底。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "no progress threshold",
+        "explanation": "常用条件是未到终点且规定时间内沿路径前进距离小于阈值。",
+        "experience": "日志同时记录位置、速度、Movement Mode、阻挡组件和剩余距离。"
+      }
+    ],
+    "usageNotes": [
+      "Stuck Detection 检测的是无进展，不等同于单帧低速度。"
+    ]
+  },
+  {
     "id": "imported-swidget-invalidate",
     "term": "SWidget::Invalidate",
     "abbreviation": "",
@@ -17999,6 +18901,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-tick-resolution",
+    "term": "Tick Resolution",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "时间刻度分辨率",
+    "category": "资源与渲染",
+    "definition": "MovieScene 内部表示和求值时间使用的每秒刻度数量，通常高于最终显示帧率。",
+    "example": "A high Tick Resolution preserves precise event timing between display frames.",
+    "exampleZh": "较高的时间刻度分辨率可以保留显示帧之间的精确事件时序。",
+    "tags": "Tick Resolution MovieScene Sequencer timebase 时间刻度分辨率",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "MovieScene Tick Resolution"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Display Rate",
+        "relation": "对比时间单位",
+        "explanation": "Display Rate 决定显示帧标尺，Tick Resolution 决定内部时间精度。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不要把 Tick Resolution 直接等同于游戏运行帧率。"
+    ]
+  },
+  {
     "id": "imported-tick-animation",
     "term": "Tick_Animation",
     "abbreviation": "",
@@ -18530,6 +19463,37 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-time-dilation",
+    "term": "Time Dilation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "时间膨胀",
+    "category": "游戏开发",
+    "definition": "通过缩放世界或对象的时间推进速度实现慢动作、加速或局部时间变化的机制。",
+    "example": "The QTE uses an unscaled timer so global Time Dilation does not shorten the input window.",
+    "exampleZh": "QTE 使用不受缩放的计时器，因此全局时间膨胀不会缩短输入窗口。",
+    "tags": "Time Dilation 时间膨胀 UE slow motion time scale QTE",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Time Scale"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Input Window",
+        "relation": "时间源影响",
+        "explanation": "输入窗口是否受 Time Dilation 影响需要明确设计。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "时间膨胀不等同于 Sequence 自身的 Playback Rate。"
+    ]
   },
   {
     "id": "imported-timer-event",
@@ -19166,6 +20130,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-traversal",
+    "term": "Traversal",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "移动穿越",
+    "category": "动画与碰撞",
+    "definition": "角色通过攀爬、翻越、滑坡、跳跃、摆荡等方式跨越环境结构的移动能力或流程。",
+    "example": "The Traversal system blends from running into the slide animation.",
+    "exampleZh": "移动穿越系统会从奔跑平滑过渡到滑坡动画。",
+    "tags": "Traversal 移动穿越 攀爬 翻越 滑坡 locomotion animation",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Character Traversal"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Forced Movement",
+        "relation": "控制方式",
+        "explanation": "部分 Traversal 过程会临时使用强制位移。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "此处指角色移动能力，不是安全领域的 Path Traversal 路径穿越漏洞。"
+    ]
+  },
+  {
     "id": "imported-trim",
     "term": "TRIM",
     "abbreviation": "",
@@ -19186,6 +20181,37 @@
     "contexts": [],
     "usageNotes": [
       "TRIM 不等于立即安全擦除每个已删除文件。"
+    ]
+  },
+  {
+    "id": "imported-tunneling",
+    "term": "Tunneling",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "碰撞隧穿",
+    "category": "动画与碰撞",
+    "definition": "高速物体在离散碰撞检测的相邻帧之间跨过薄碰撞体，导致碰撞未被检测的现象。",
+    "example": "A low frame rate caused the fast-moving capsule to tunnel through the thin floor.",
+    "exampleZh": "低帧率导致高速移动的胶囊体隧穿了薄地板。",
+    "tags": "Tunneling collision tunneling 碰撞隧穿 CCD high speed",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "Sequence通用测试用例_完整优化版_飞书脑图.md",
+    "aliases": [
+      "Collision Tunneling"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Collision Seam",
+        "relation": "高风险位置",
+        "explanation": "薄碰撞和接缝区域更容易暴露高速移动的漏碰撞。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Tunneling 是漏碰撞穿过，不是可见网格互相交叉的 Clipping。"
     ]
   },
   {
