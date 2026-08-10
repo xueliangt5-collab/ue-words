@@ -156,6 +156,29 @@
     ]
   },
   {
+    "id": "imported-a-pose",
+    "term": "A-Pose",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "A 字姿势",
+    "category": "动画与碰撞",
+    "definition": "角色双臂向下斜展的参考姿势，运行时异常出现通常说明动画、骨骼或绑定状态不完整。",
+    "example": "The character returned to an A-Pose during the transition between animations.",
+    "exampleZh": "动画过渡期间角色回到了 A 字姿势。",
+    "tags": "A-Pose A字姿势 Animation Transition 骨骼",
+    "spokenForm": "A Pose",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "重点检查动画过渡、异步加载和 Sequence 结束时的恢复状态。"
+    ]
+  },
+  {
     "id": "imported-ab-test",
     "term": "A/B Test",
     "abbreviation": "",
@@ -894,6 +917,27 @@
     ]
   },
   {
+    "id": "imported-aspect-ratio-axis-constraint",
+    "term": "Aspect Ratio Axis Constraint",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "宽高比轴约束",
+    "category": "图形与渲染",
+    "definition": "指定屏幕宽高比变化时优先保持哪个轴的视野或构图约束。",
+    "example": "The Aspect Ratio Axis Constraint kept the important actor visible at ultrawide ratios.",
+    "exampleZh": "超宽比例下，宽高比轴约束保证了关键演员仍在画面内。",
+    "tags": "Aspect Ratio Axis Constraint 宽高比轴约束 FOV 构图",
+    "spokenForm": "Aspect Ratio Axis Constraint",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-asset-audit",
     "term": "Asset Audit",
     "abbreviation": "",
@@ -1015,6 +1059,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-async-loading",
+    "term": "Async Loading",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "异步加载",
+    "category": "资源与渲染",
+    "definition": "在不阻塞当前主流程的情况下后台读取、解压或创建资源的加载方式。",
+    "example": "Async Loading kept the sequence responsive while the next level asset was prepared.",
+    "exampleZh": "准备下一个关卡资源时，异步加载保持了 Sequence 的响应性。",
+    "tags": "Async Loading 异步加载 Asset Streaming 资源加载",
+    "spokenForm": "Async Loading",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "应检查加载期间绑定、事件和流程状态是否保持一致，不能只看是否出现卡顿。"
+    ]
+  },
+  {
     "id": "imported-asyncloadingtime",
     "term": "AsyncLoadingTime",
     "abbreviation": "",
@@ -1105,6 +1172,27 @@
     "usageNotes": [
       "机箱写明支持 ATX 只代表基础孔位和空间兼容，仍需检查冷排、线材与显卡冲突。"
     ]
+  },
+  {
+    "id": "imported-audio-ducking",
+    "term": "Audio Ducking",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "音频闪避",
+    "category": "游戏开发",
+    "definition": "在语音、对白或关键提示播放时自动降低背景音乐或其他音轨音量的混音行为。",
+    "example": "Audio Ducking lowered the music while the dialogue line played.",
+    "exampleZh": "对白播放时，音频闪避降低了音乐音量。",
+    "tags": "Audio Ducking 音频闪避 Dialogue Music 混音",
+    "spokenForm": "Audio Ducking",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-audio-visual-synchronization",
@@ -2040,6 +2128,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-camera-shake",
+    "term": "Camera Shake",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "镜头抖动",
+    "category": "资源与渲染",
+    "definition": "通过叠加短时位置或旋转扰动表现冲击、爆炸、受击等效果的相机反馈。",
+    "example": "The Camera Shake matched the explosion impact without causing a permanent offset.",
+    "exampleZh": "镜头抖动与爆炸冲击同步，且没有留下永久偏移。",
+    "tags": "Camera Shake 镜头抖动 Camera Effect Explosion",
+    "spokenForm": "Camera Shake",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-canary-release",
     "term": "Canary Release",
     "abbreviation": "",
@@ -2054,6 +2163,27 @@
     "spokenForm": "",
     "threadCategory": "",
     "source": "游戏QA专项学习路线",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-capsule-component",
+    "term": "Capsule Component",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "胶囊体组件",
+    "category": "动画与碰撞",
+    "definition": "角色常用的胶囊形碰撞组件，用于表示角色占用空间并参与移动碰撞。",
+    "example": "The Capsule Component stayed aligned with the visual mesh during the slide.",
+    "exampleZh": "滑坡过程中胶囊体组件始终与视觉模型对齐。",
+    "tags": "Capsule Component 胶囊体组件 Character Collision 滑坡",
+    "spokenForm": "Capsule Component",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
     "aliases": [],
     "wordParts": [],
     "relatedTerms": [],
@@ -2604,6 +2734,33 @@
     "usageNotes": []
   },
   {
+    "id": "imported-character-movement-component",
+    "term": "Character Movement Component",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "角色移动组件",
+    "category": "动画与碰撞",
+    "definition": "Unreal Engine 中负责角色移动、重力、移动模式和碰撞移动计算的组件。",
+    "example": "The Character Movement Component resumed walking after the slide sequence ended.",
+    "exampleZh": "滑坡 Sequence 结束后，角色移动组件恢复了行走模式。",
+    "tags": "Character Movement Component 角色移动组件 CMC Movement",
+    "spokenForm": "Character Movement Component",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Movement Mode",
+        "relation": "状态配置",
+        "explanation": "角色移动组件通过 Movement Mode 选择行走、下落或自定义移动逻辑。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-charactermovement",
     "term": "CharacterMovement",
     "abbreviation": "",
@@ -2660,6 +2817,27 @@
         "zh": "闪存"
       }
     ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-checkpoint",
+    "term": "Checkpoint",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "检查点",
+    "category": "存储与数据",
+    "definition": "流程中可保存并恢复的进度位置及其关联游戏状态。",
+    "example": "The checkpoint restored the sequence stage without replaying the reward event.",
+    "exampleZh": "检查点恢复了 Sequence 阶段，但没有重复播放奖励事件。",
+    "tags": "Checkpoint 检查点 Progress SaveGame Sequence",
+    "spokenForm": "Checkpoint",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
@@ -2981,6 +3159,33 @@
         "experience": "当 CollectGarbageInternal.GatherUnreachableObjects 持续偏高时，先确认其对应的工作内容（汇总标记阶段发现的不可达对象，准备后续清理）是否因工作量增长而变重；继续检查对象数量、引用关系、分配频率和垃圾回收阶段。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-collision-response",
+    "term": "Collision Response",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "碰撞响应",
+    "category": "动画与碰撞",
+    "definition": "碰撞通道对重叠、阻挡、忽略或触发事件的处理规则。",
+    "example": "The Collision Response for the slope allowed sliding without blocking the capsule.",
+    "exampleZh": "滑坡的碰撞响应允许滑动，但不会卡住胶囊体。",
+    "tags": "Collision Response 碰撞响应 Block Overlap Ignore 滑坡",
+    "spokenForm": "Collision Response",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Capsule Component",
+        "relation": "碰撞对象",
+        "explanation": "角色胶囊组件的碰撞响应决定其能否通过地形并触发阻挡。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -3687,6 +3892,29 @@
     "contexts": [],
     "usageNotes": [
       "Context Switch 能解释线程调度状态，但不能单独证明某个函数就是根因；仍要回到事件耗时和等待关系。"
+    ]
+  },
+  {
+    "id": "imported-control-handoff",
+    "term": "Control Handoff",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "控制权交接",
+    "category": "游戏测试",
+    "definition": "相机、Pawn、输入和移动控制从 Sequence 或演出逻辑切回玩家玩法控制的过程。",
+    "example": "The Control Handoff kept the camera direction continuous when gameplay resumed.",
+    "exampleZh": "恢复玩法时，控制权交接保持了镜头方向连续。",
+    "tags": "Control Handoff 控制权交接 Camera Pawn Gameplay",
+    "spokenForm": "Control Handoff",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "检查交接帧的 View Target、Pawn、Movement Mode、朝向和输入状态，避免只验证 Sequence 播完。"
     ]
   },
   {
@@ -5438,6 +5666,29 @@
     "usageNotes": [
       "日常所说的内存条是由 DRAM 颗粒、PCB、SPD Hub 和其他器件组成的模块。",
       "日常所说的内存条是由 DRAM 封装、PCB、SPD 和电源管理器件组成的模块。"
+    ]
+  },
+  {
+    "id": "imported-dynamic-resolution",
+    "term": "Dynamic Resolution",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动态分辨率",
+    "category": "图形与渲染",
+    "definition": "根据实时性能目标自动调整内部渲染分辨率的技术。",
+    "example": "Dynamic Resolution reduced the internal resolution during the heavy explosion shot.",
+    "exampleZh": "爆炸镜头负载较高时，动态分辨率降低了内部渲染分辨率。",
+    "tags": "Dynamic Resolution 动态分辨率 Performance Sequence",
+    "spokenForm": "Dynamic Resolution",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "测试应覆盖分辨率变化时的构图、字幕安全区、镜头稳定性和恢复过程。"
     ]
   },
   {
@@ -8366,6 +8617,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-high-dynamic-range",
+    "term": "High Dynamic Range",
+    "abbreviation": "HDR",
+    "fullForm": "High Dynamic Range",
+    "ipa": "",
+    "zh": "高动态范围",
+    "category": "图形与渲染",
+    "definition": "提供更宽亮度和颜色范围的显示与渲染方式，使高光和暗部保留更多层次。",
+    "example": "The HDR pass preserved highlight detail in the bright cinematic effect.",
+    "exampleZh": "HDR 检查保留了明亮演出特效中的高光细节。",
+    "tags": "HDR High Dynamic Range 高动态范围 SDR 显示设备",
+    "spokenForm": "H D R",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "应分别验证开关、亮度、色彩、截图以及 SDR/HDR 切换后的结果。"
+    ]
+  },
+  {
     "id": "imported-hmb",
     "term": "HMB",
     "abbreviation": "HMB",
@@ -8710,6 +8984,56 @@
         "experience": "暂停、切后台和上一个 QTE 结束时应清理不再有效的缓存输入。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-input-dead-zone",
+    "term": "Input Dead Zone",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "输入死区",
+    "category": "游戏测试",
+    "definition": "模拟摇杆或轴输入中被视为无效的小幅度范围，用于避免漂移触发动作。",
+    "example": "The QTE ignored stick values inside the configured Input Dead Zone.",
+    "exampleZh": "QTE 忽略了配置死区以内的摇杆输入。",
+    "tags": "Input Dead Zone 死区 摇杆 轴输入 QTE",
+    "spokenForm": "Input Dead Zone",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "应分别验证死区边界内、边界值和边界外的判定。"
+    ]
+  },
+  {
+    "id": "imported-input-locking",
+    "term": "Input Locking",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "输入锁定",
+    "category": "游戏测试",
+    "definition": "在特定流程期间屏蔽部分或全部普通玩法输入，同时可保留明确允许的输入。",
+    "example": "Input Locking stayed active during the full-screen sequence and was cleared on every exit path.",
+    "exampleZh": "全屏 Sequence 播放期间保持输入锁定，并在所有退出路径清除。",
+    "tags": "Input Locking 输入锁定 Gameplay Input 全屏 Sequence",
+    "spokenForm": "Input Locking",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Control Handoff",
+        "relation": "流程交接",
+        "explanation": "输入锁定通常在控制权交接前后设置和清理。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -9232,6 +9556,29 @@
     ]
   },
   {
+    "id": "imported-late-binding",
+    "term": "Late Binding",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "延迟绑定",
+    "category": "资源与渲染",
+    "definition": "对象在序列开始或运行过程中才解析并绑定到轨道，而不是在编辑时固定引用。",
+    "example": "Late Binding resolved the actor after the streaming level became available.",
+    "exampleZh": "关卡流送完成后，延迟绑定才解析到目标演员。",
+    "tags": "Late Binding 延迟绑定 Sequence 运行时绑定",
+    "spokenForm": "Late Binding",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "绑定对象缺失时应区分关键绑定和非关键绑定，具体降级行为由项目策略决定。"
+    ]
+  },
+  {
     "id": "imported-latentaction",
     "term": "LatentAction",
     "abbreviation": "",
@@ -9320,6 +9667,27 @@
         "zh": "奇偶校验"
       }
     ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-letterboxing",
+    "term": "Letterboxing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "上下黑边",
+    "category": "图形与渲染",
+    "definition": "在宽屏画面中增加上下黑色区域，以保持较窄画幅构图比例的显示方式。",
+    "example": "Letterboxing preserved the intended cinematic aspect ratio on a wide monitor.",
+    "exampleZh": "宽屏显示器上通过上下黑边保持了预期的电影画幅比例。",
+    "tags": "Letterboxing 上下黑边 Cinematic Aspect Ratio",
+    "spokenForm": "Letterboxing",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
@@ -9432,6 +9800,27 @@
     "usageNotes": [
       "LoadStreamLevel/UnloadStreamLevel。"
     ]
+  },
+  {
+    "id": "imported-lip-sync",
+    "term": "Lip Sync",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "口型同步",
+    "category": "动画与碰撞",
+    "definition": "角色嘴部动画与语音或对白时间保持对应的同步效果。",
+    "example": "Lip Sync stayed aligned with the localized voice line after a frame hitch.",
+    "exampleZh": "出现帧卡顿后，口型同步仍与本地化语音保持一致。",
+    "tags": "Lip Sync 口型同步 Voice Dialogue Animation",
+    "spokenForm": "Lip Sync",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-listen-for-gameplay-messages",
@@ -9642,6 +10031,33 @@
         "experience": "当 LoadPackageNameMap 持续偏高时，先确认其对应的工作内容（读取并构建 Package 名称表，供后续导入表和导出对象解析）是否因工作量增长而变重；继续检查磁盘读取、解压、资源依赖以及游戏线程上的同步等待。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-localization",
+    "term": "Localization",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "本地化",
+    "category": "游戏测试",
+    "definition": "针对不同语言、地区和文化环境调整文本、语音、界面、格式及内容表现的过程。",
+    "example": "Localization testing verified subtitles, voice selection, and text layout for each supported language.",
+    "exampleZh": "本地化测试验证了每种支持语言的字幕、语音选择和文本布局。",
+    "tags": "Localization 本地化 LQA 字幕 语音 多语言",
+    "spokenForm": "Localization",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Pseudolocalization",
+        "relation": "测试方法",
+        "explanation": "伪本地化通过模拟文本膨胀等情况提前发现本地化布局问题。"
+      }
+    ],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -10641,6 +11057,27 @@
     ]
   },
   {
+    "id": "imported-motion-blur",
+    "term": "Motion Blur",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "运动模糊",
+    "category": "图形与渲染",
+    "definition": "根据画面运动速度对物体或镜头边缘进行模糊处理的后处理效果。",
+    "example": "Motion Blur remained within the cinematic target and did not hide animation defects.",
+    "exampleZh": "运动模糊符合演出目标，没有遮掩动画缺陷。",
+    "tags": "Motion Blur 运动模糊 Post Process Cinematic",
+    "spokenForm": "Motion Blur",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-motion-matching",
     "term": "Motion Matching",
     "abbreviation": "",
@@ -10702,6 +11139,29 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-movement-mode",
+    "term": "Movement Mode",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "移动模式",
+    "category": "动画与碰撞",
+    "definition": "角色移动组件使用的移动状态，如行走、下落、游泳、飞行或自定义模式。",
+    "example": "The Movement Mode changed to falling when the character left the slope.",
+    "exampleZh": "角色离开滑坡时，移动模式切换为下落。",
+    "tags": "Movement Mode 移动模式 Walking Falling Flying 滑坡",
+    "spokenForm": "Movement Mode",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "进入和退出强制位移后要检查移动模式、重力和速度是否恢复。"
+    ]
   },
   {
     "id": "imported-moviescene",
@@ -12253,6 +12713,29 @@
     ]
   },
   {
+    "id": "imported-pending-kill",
+    "term": "Pending Kill",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "待销毁对象",
+    "category": "UE 基础",
+    "definition": "Unreal Engine 中已标记为销毁、但在当前清理阶段尚未真正释放的对象状态。",
+    "example": "The sequence skipped the Pending Kill actor instead of evaluating its tracks.",
+    "exampleZh": "Sequence 跳过了待销毁演员，没有继续求值其轨道。",
+    "tags": "Pending Kill 待销毁对象 UObject Garbage Collection 生命周期",
+    "spokenForm": "Pending Kill",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "测试绑定失效和 GC 时，不应访问已进入 Pending Kill 状态的对象。"
+    ]
+  },
+  {
     "id": "imported-pending-sector",
     "term": "Pending Sector",
     "abbreviation": "",
@@ -12432,6 +12915,27 @@
     "usageNotes": []
   },
   {
+    "id": "imported-pillarboxing",
+    "term": "Pillarboxing",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "左右黑边",
+    "category": "图形与渲染",
+    "definition": "在较宽画幅内容显示于较窄屏幕时增加左右黑色区域，以保持原始比例。",
+    "example": "Pillarboxing prevented the cinematic frame from being stretched on a narrow display.",
+    "exampleZh": "左右黑边避免了电影画幅在窄屏上被拉伸。",
+    "tags": "Pillarboxing 左右黑边 Cinematic Display",
+    "spokenForm": "Pillarboxing",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-ping",
     "term": "Ping",
     "abbreviation": "",
@@ -12529,6 +13033,29 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-player-camera-manager",
+    "term": "Player Camera Manager",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "玩家相机管理器",
+    "category": "资源与渲染",
+    "definition": "Unreal Engine 中负责为玩家计算最终相机视图、混合、后处理和相机效果的管理对象。",
+    "example": "The Player Camera Manager blended from the cinematic camera to the gameplay camera.",
+    "exampleZh": "玩家相机管理器将过场相机平滑混合到玩法相机。",
+    "tags": "Player Camera Manager PCM 玩家相机管理器 相机交接",
+    "spokenForm": "Player Camera Manager",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "不要把它和单个 Camera Actor 混为一谈；它负责汇总并输出玩家最终视图。"
+    ]
   },
   {
     "id": "imported-plp",
@@ -12953,6 +13480,29 @@
     ],
     "usageNotes": [
       "PCH 失效可能让大量看似无关的源文件重新编译。"
+    ]
+  },
+  {
+    "id": "imported-preemption",
+    "term": "Preemption",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "抢占",
+    "category": "游戏测试",
+    "definition": "更高优先级流程中断、挂起或替代当前正在运行流程的行为。",
+    "example": "Preemption stopped the lower-priority sequence and restored its temporary state.",
+    "exampleZh": "抢占停止了低优先级 Sequence，并恢复了它的临时状态。",
+    "tags": "Preemption 抢占 Priority Sequence Interrupt",
+    "spokenForm": "Preemption",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "要同时检查被抢占方和抢占方的镜头、输入、UI、任务状态及回调顺序。"
     ]
   },
   {
@@ -15437,6 +15987,33 @@
     ]
   },
   {
+    "id": "imported-runtime-rebinding",
+    "term": "Runtime Rebinding",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "运行时重新绑定",
+    "category": "资源与渲染",
+    "definition": "序列播放期间将轨道重新指向另一个满足条件的运行时对象。",
+    "example": "Runtime Rebinding attached the camera track to the replacement pawn.",
+    "exampleZh": "运行时重新绑定把镜头轨道指向了替代 Pawn。",
+    "tags": "Runtime Rebinding Sequence Rebinding 运行时重新绑定",
+    "spokenForm": "Runtime Rebinding",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Late Binding",
+        "relation": "绑定时机",
+        "explanation": "延迟绑定解决首次解析时机，运行时重新绑定则允许播放中更换目标。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-runuat",
     "term": "RunUAT",
     "abbreviation": "",
@@ -15593,6 +16170,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-savegame",
+    "term": "SaveGame",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "存档数据",
+    "category": "存储与数据",
+    "definition": "用于持久化玩家进度、任务状态、资源和序列恢复信息的数据对象或存档文件。",
+    "example": "The SaveGame recorded the sequence stage and restored it after loading.",
+    "exampleZh": "存档数据记录了 Sequence 阶段，并在读档后恢复。",
+    "tags": "SaveGame 存档 Save Game Save Data 读档",
+    "spokenForm": "Save Game",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "播放中存档要验证阶段、Gameplay 状态、Camera 状态以及是否产生半完成或损坏存档。"
+    ]
+  },
+  {
     "id": "imported-sceneculling-post-updateinstances",
     "term": "SceneCulling_Post_UpdateInstances",
     "abbreviation": "",
@@ -15746,6 +16346,27 @@
         "experience": "当 SConstraintCanvas 持续偏高时，先确认其对应的工作内容（记录 Slate 约束画布计算子控件尺寸、锚点和屏幕位置的布局耗时）是否因工作量增长而变重；从游戏线程调用者向下展开，区分 Tick、同步加载、对象遍历和等待点。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-screen-percentage",
+    "term": "Screen Percentage",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "屏幕百分比",
+    "category": "图形与渲染",
+    "definition": "以内部渲染分辨率相对于输出分辨率的百分比表示的渲染尺度。",
+    "example": "The sequence remained readable when Screen Percentage was reduced under load.",
+    "exampleZh": "负载升高降低屏幕百分比后，Sequence 仍保持可辨识。",
+    "tags": "Screen Percentage 屏幕百分比 Render Resolution 画质",
+    "spokenForm": "Screen Percentage",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -15981,6 +16602,27 @@
         "experience": "日志应记录实例 ID 和唯一终态。"
       }
     ],
+    "usageNotes": []
+  },
+  {
+    "id": "imported-sequencer-section",
+    "term": "Sequencer Section",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Sequencer 片段",
+    "category": "资源与渲染",
+    "definition": "Sequencer 轨道中具有起止时间和求值范围的片段，可控制某段动画、事件或属性。",
+    "example": "The Sequencer Section ended one frame before the branch transition.",
+    "exampleZh": "Sequencer 片段在分支切换前一帧结束。",
+    "tags": "Sequencer Section 片段 Section 时间范围 Branch",
+    "spokenForm": "Sequencer Section",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
     "usageNotes": []
   },
   {
@@ -16240,6 +16882,29 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-single-writer-principle",
+    "term": "Single Writer Principle",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "单一写入者原则",
+    "category": "软件工程",
+    "definition": "同一运行时状态在一个明确的权威逻辑中写入，避免多个系统同时修改造成竞态和覆盖。",
+    "example": "The Single Writer Principle prevented the sequence and movement system from fighting over the capsule transform.",
+    "exampleZh": "单一写入者原则避免了 Sequence 和移动系统同时争夺胶囊体变换。",
+    "tags": "Single Writer Principle 单一写入者原则 State Ownership 状态所有权",
+    "spokenForm": "Single Writer Principle",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "滑坡、镜头接管和状态清理尤其需要明确谁负责写入位置、旋转和控制状态。"
+    ]
   },
   {
     "id": "imported-single-variable-testing",
@@ -17502,6 +18167,29 @@
     "usageNotes": []
   },
   {
+    "id": "imported-spline-component",
+    "term": "Spline Component",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "样条组件",
+    "category": "动画与碰撞",
+    "definition": "用样条曲线描述路径、方向或距离参数的 Unreal Engine 组件，常用于沿路径移动。",
+    "example": "The character followed the Spline Component without stopping at terrain seams.",
+    "exampleZh": "角色沿样条组件移动，并未在地形接缝处停住。",
+    "tags": "Spline Component 样条组件 Spline 路径 强制位移",
+    "spokenForm": "Spline Component",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "需要同时观察路径采样、切线方向和碰撞约束，避免只验证轨迹点。"
+    ]
+  },
+  {
     "id": "imported-sram",
     "term": "SRAM",
     "abbreviation": "SRAM",
@@ -17683,6 +18371,29 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-state-cleanup",
+    "term": "State Cleanup",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "状态清理",
+    "category": "游戏测试",
+    "definition": "流程结束、中断或失败后撤销临时标记、输入限制、镜头接管和其他运行时状态的过程。",
+    "example": "State Cleanup removed the cinematic flag after skip, failure, and timeout.",
+    "exampleZh": "跳过、失败和超时后，状态清理移除了过场标记。",
+    "tags": "State Cleanup 状态清理 Cleanup Sequence InputLocked",
+    "spokenForm": "State Cleanup",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "必须覆盖正常结束、跳过、失败、超时、取消和被抢占等全部退出路径。"
+    ]
   },
   {
     "id": "imported-state-snapshot",
@@ -18326,6 +19037,29 @@
     ]
   },
   {
+    "id": "imported-t-pose",
+    "term": "T-Pose",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "T 字姿势",
+    "category": "动画与碰撞",
+    "definition": "角色骨骼网格双臂水平展开的默认参考姿势，运行时短暂出现通常表示动画或绑定未正确生效。",
+    "example": "A brief T-Pose appeared when the animation binding was missing.",
+    "exampleZh": "动画绑定缺失时短暂出现了 T 字姿势。",
+    "tags": "T-Pose T字姿势 Animation Binding 骨骼",
+    "spokenForm": "T Pose",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "把一帧内闪现和持续停留分开记录；还要结合动画资产、绑定和加载时序定位原因。"
+    ]
+  },
+  {
     "id": "imported-t-topology",
     "term": "T-Topology",
     "abbreviation": "",
@@ -18575,6 +19309,29 @@
     "contexts": [],
     "usageNotes": [
       "迟滞可以通过不同温度阈值、时间延迟或两者结合实现。"
+    ]
+  },
+  {
+    "id": "imported-terminal-state",
+    "term": "Terminal State",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "终态",
+    "category": "游戏测试",
+    "definition": "一次流程只能进入一次的最终状态，例如成功、失败、超时或取消。",
+    "example": "The first valid result set the QTE Terminal State and later callbacks were ignored.",
+    "exampleZh": "第一个有效结果确定了 QTE 终态，后续回调被忽略。",
+    "tags": "Terminal State 终态 Success Failure Timeout Cancel QTE",
+    "spokenForm": "Terminal State",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "测试时要覆盖终态互斥、迟到输入和重复回调。"
     ]
   },
   {
@@ -20984,6 +21741,27 @@
     "usageNotes": [
       "现代用法中的 VRAM 是显存的泛称，不代表显卡仍使用早期专门名为 VRAM 的双端口存储器。核显通常共享系统内存。"
     ]
+  },
+  {
+    "id": "imported-view-target",
+    "term": "View Target",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "视图目标",
+    "category": "资源与渲染",
+    "definition": "玩家相机当前跟随或取其视角数据的目标对象，通常是 Pawn、Camera Actor 或过场相机。",
+    "example": "The sequence changed the View Target before handing control back to the player.",
+    "exampleZh": "Sequence 在把控制权交还玩家前切换了视图目标。",
+    "tags": "View Target 视图目标 相机 Pawn Camera",
+    "spokenForm": "View Target",
+    "threadCategory": "",
+    "source": "Sequence测试用例_轻量拆分版",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": []
   },
   {
     "id": "imported-virtualtexture",
