@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$Repo,
+    [string]$SkillsRoot,
     [switch]$SkipDependencies,
     [switch]$SkipSkillInstall
 )
@@ -52,17 +53,20 @@ if (-not $SkipDependencies) {
 }
 
 if (-not $SkipSkillInstall) {
-    $skillsRoot = Join-Path $HOME '.codex\skills'
-    New-Item -ItemType Directory -Path $skillsRoot -Force | Out-Null
+    if (-not $SkillsRoot) {
+        $codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+        $SkillsRoot = Join-Path $codexHome 'skills'
+    }
+    New-Item -ItemType Directory -Path $SkillsRoot -Force | Out-Null
 
     foreach ($skillName in @('collect-terms', 'prepare-term-submission')) {
         $source = Join-Path $repoPath "codex-skills\$skillName"
-        $target = Join-Path $skillsRoot $skillName
+        $target = Join-Path $SkillsRoot $skillName
         if (-not (Test-Path -LiteralPath (Join-Path $source 'SKILL.md'))) {
             throw "Skill source was not found: $source"
         }
 
-        $staging = Join-Path $skillsRoot "$skillName.installing"
+        $staging = Join-Path $SkillsRoot "$skillName.installing"
         if (Test-Path -LiteralPath $staging) {
             Remove-Item -LiteralPath $staging -Recurse -Force
         }

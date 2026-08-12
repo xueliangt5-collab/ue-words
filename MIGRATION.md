@@ -34,7 +34,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
 1. 验证当前目录确实是 UE Words 仓库。
 2. 使用锁文件安装前端依赖。
 3. 执行语法检查和生产构建。
-4. 将两个 Skill 安装到 `%USERPROFILE%\.codex\skills`。
+4. 将两个 Skill 安装到 `%CODEX_HOME%\skills`；未设置 `CODEX_HOME` 时使用 `%USERPROFILE%\.codex\skills`。
 
 完成后重启 Codex，并把克隆目录作为项目打开。
 
@@ -74,3 +74,16 @@ git status --short --branch
 GitHub Pages 部署所需的 Supabase URL 和 anon key 存放在 GitHub Actions Secrets 中，不需要复制到家里电脑。只有本地开发需要登录功能时，才把 `.env.example` 复制为 `.env.local` 并填写相同项目的公开配置。
 
 GitHub 凭据、Codex 权限批准和浏览器登录状态都必须在新电脑重新建立，不应放入迁移压缩包。
+
+## GitHub 暂时无法访问时
+
+可以使用另行生成的 `ue-words-repository-YYYY-MM-DD.bundle` 恢复完整 Git 历史：
+
+```powershell
+git clone "D:\迁移文件\ue-words-repository-YYYY-MM-DD.bundle" "$HOME\Documents\UE学习"
+Set-Location "$HOME\Documents\UE学习"
+git remote set-url origin https://github.com/xueliangt5-collab/ue-words.git
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
+```
+
+`.bundle` 只包含已提交的公开项目历史，不包含私人文档、环境变量或账号凭据。
