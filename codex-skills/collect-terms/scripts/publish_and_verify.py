@@ -23,7 +23,7 @@ def parse_args():
     parser.add_argument("--branch", default="main", help="Remote branch")
     parser.add_argument("--remote", default="origin", help="Git remote")
     parser.add_argument("--repository", help="GitHub owner/repository override")
-    parser.add_argument("--site-url", default="https://xueliangt5-collab.github.io/ue-words/", help="GitHub Pages base URL")
+    parser.add_argument("--site-url", help="GitHub Pages base URL; defaults to UE_WORDS_SITE_URL or a derived project URL")
     parser.add_argument("--git", help="Git executable path")
     parser.add_argument("--node", help="Node.js executable path")
     parser.add_argument("--jobs", type=int, default=8, help="Concurrent API blob uploads")
@@ -42,6 +42,13 @@ def resolve_node(value=None):
     if not candidate:
         raise RuntimeError("Node.js was not found; pass --node with its full path")
     return candidate
+
+
+def derive_site_url(repository):
+    owner, name = repository.split("/", 1)
+    if name.lower() == f"{owner.lower()}.github.io":
+        return f"https://{name}/"
+    return f"https://{owner}.github.io/{name}/"
 
 
 def expected_release_metadata(repo, node, target):
@@ -201,7 +208,7 @@ def main():
         publisher.run_git(repo, "remote", "get-url", args.remote)
     )
     expected = expected_release_metadata(repo, node, target)
-    site_url = args.site_url.rstrip("/") + "/"
+    site_url = (args.site_url or os.environ.get("UE_WORDS_SITE_URL") or derive_site_url(repository)).rstrip("/") + "/"
 
     if args.verify_only:
         branch_path = urllib.parse.quote(args.branch, safe="")

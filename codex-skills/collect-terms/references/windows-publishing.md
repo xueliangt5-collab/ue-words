@@ -12,9 +12,9 @@ Use this path for the glossary repository on Windows. Keep permission requests p
 
 ## Stable locations and runtime discovery
 
-- Repository: `C:\Users\tianxueliang\Documents\UE学习`
+- Repository: the path resolved by `UE_WORDS_REPO`, the current workspace, or `scripts\resolve_repo.py`
 - Skill source: `<repo>\codex-skills\collect-terms`
-- Installed Skill: `C:\Users\tianxueliang\.codex\skills\collect-terms`
+- Installed Skill: `%USERPROFILE%\.codex\skills\collect-terms`
 - Public glossary: `<repo>\src\imported-terms.json`
 - Public articles: `<repo>\src\imported-articles.json`
 - Public audio: `<repo>\public\audio` and `<repo>\src\speech-assets.json`
@@ -75,7 +75,7 @@ Do not request escalation for repository reads, merge scripts, diffs, syntax che
 Request one narrow escalation only when the action reaches one of these gates:
 
 - **Dependency gate**: install missing locked dependencies only after their deterministic check fails. Scope approval to the exact pnpm command or the pinned speech install targeting `<repo>\.tts-deps`. A missing task-local or temporary directory is not evidence that speech dependencies are missing.
-- **Skill install gate**: copy the validated Skill from the repository to `C:\Users\tianxueliang\.codex\skills\collect-terms`. Skip this gate for ordinary vocabulary batches.
+- **Skill install gate**: copy the validated Skill from the repository to `%USERPROFILE%\.codex\skills\collect-terms`. Skip this gate for ordinary vocabulary batches.
 - **Publication gate**: request one approval for the exact `publish_and_verify.py` command after the commit is ready. It owns the Git push, API fallback, Actions polling, Pages fingerprint check, and audio sampling. Do not split those operations into separate approvals.
 - **Concurrent-update gate**: fetch `origin/main` with a narrow Git command only when the remote moved during the task. If `.git` is read-only in the sandbox, request one exact local-metadata escalation for the verified fast-forward rather than broad filesystem access.
 
@@ -119,8 +119,10 @@ Update only the local branch ref and index so matching worktree files are recogn
 After the commit is ready, run exactly one network entry point:
 
 ```powershell
-python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo <repo> --target HEAD --branch main --site-url "https://xueliangt5-collab.github.io/ue-words/" --git <git> --node <node> --confirm-push
+python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo <repo> --target HEAD --branch main --git <git> --node <node> --confirm-push
 ```
+
+`--site-url` is optional. The publisher uses `UE_WORDS_SITE_URL` when set; otherwise it derives the conventional GitHub Pages URL from the repository remote (`https://<owner>.github.io/<repo>/`). Pass the option explicitly when the Pages project uses a custom domain or a different site name.
 
 Do not precede or follow it with separate `git ls-remote`, `Invoke-RestMethod`, branch API, Actions API, Pages, or app-bundle queries. The command attempts normal Git transport once. On transport failure it checks the remote parent and invokes the exact-commit API fallback internally.
 

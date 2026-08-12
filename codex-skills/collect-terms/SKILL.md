@@ -5,7 +5,7 @@ description: Normalize terms, profiler data, bilingual articles, or Markdown fil
 
 # Collect Terms and Articles
 
-Use the glossary repository at `C:\Users\tianxueliang\Documents\UE学习`. Locate it by its `src/imported-terms.json` file if the path changes.
+Use the UE Words repository that contains `src/imported-terms.json`. Resolve it in this order: `UE_WORDS_REPO`, the current workspace and its parents, then an explicit path supplied by the user. The bundled `scripts/resolve_repo.py` performs the same check for shell commands. Never assume a Windows username or a fixed Documents path.
 
 On Windows, read [references/windows-publishing.md](references/windows-publishing.md) before any published-mode mutation. Follow its preflight, runtime, permission, Git, and fallback paths. A skill cannot grant or bypass permissions; request only the narrow escalation required at the documented gate and reuse an existing approved prefix when available.
 
@@ -94,12 +94,12 @@ Proceed automatically when the source is unambiguous. Ask only when spelling, co
 
 ## Published mode
 
-1. Snapshot `git status --short --branch`, the current commit, and all pre-existing changes. Treat them as user-owned and stage only files created or intentionally updated by this batch.
+1. Resolve `<repo>` before mutation, then snapshot `git status --short --branch`, the current commit, and all pre-existing changes. Treat them as user-owned and stage only files created or intentionally updated by this batch.
 2. Create prepared JSON under the system temporary directory rather than the repository. For terms, run a dry merge first, inspect the counts, then run the real merge:
 
 ```powershell
-node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-json> --dry-run
-node <skill-dir>\scripts\merge_terms.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-json>
+node <skill-dir>\scripts\merge_terms.mjs --repo "<repo>" --input <temporary-json> --dry-run
+node <skill-dir>\scripts\merge_terms.mjs --repo "<repo>" --input <temporary-json>
 ```
 
 Resolve the bundled Node executable when `node` is not available on `PATH`.
@@ -107,8 +107,8 @@ Resolve the bundled Node executable when `node` is not available on `PATH`.
 For articles or Markdown, first prepare article JSON using `references/article-schema.md`, then validate links and merge it:
 
 ```powershell
-node <skill-dir>\scripts\merge_articles.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-article-json> --dry-run
-node <skill-dir>\scripts\merge_articles.mjs --repo "C:\Users\tianxueliang\Documents\UE学习" --input <temporary-article-json>
+node <skill-dir>\scripts\merge_articles.mjs --repo "<repo>" --input <temporary-article-json> --dry-run
+node <skill-dir>\scripts\merge_articles.mjs --repo "<repo>" --input <temporary-article-json>
 ```
 
 When one request adds both missing terms and an article, merge terms first and articles second so article link validation sees the final IDs.
@@ -143,7 +143,7 @@ Stage the generated `src/speech-assets.json` and `public/audio` files with the t
 6. After committing, request one remote-publication permission and run the single publish-and-verify entry point:
 
 ```powershell
-python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo "C:\Users\tianxueliang\Documents\UE学习" --target HEAD --branch main --site-url "https://xueliangt5-collab.github.io/ue-words/" --git <git-executable> --node <node-executable> --confirm-push
+python -X utf8 <skill-dir>\scripts\publish_and_verify.py --repo "<repo>" --target HEAD --branch main --git <git-executable> --node <node-executable> --confirm-push
 ```
 
 The command makes one normal Git push attempt, switches automatically to resumable concurrent GitHub API publication when transport fails, waits for the matching Actions run, compares the live `release.json` commit, counts, and data hashes, and samples changed audio. Do not run separate `ls-remote`, branch API, fallback publisher, Actions, Pages, or `app.js` verification commands. Read `windows-publishing.md` for resume-state and large-batch behavior.
@@ -158,7 +158,7 @@ Private import currently supports glossary terms only. For a private article or 
 For private terms:
 
 1. Create a temporary JSON file containing an array of prepared records.
-2. Write a user-visible package into the repository's `imports` folder:
+2. Write a user-visible package into the resolved repository's `imports` folder:
 
 ```powershell
 node <skill-dir>\scripts\merge_terms.mjs --input <temporary-json> --package-output <output-json>
