@@ -80,7 +80,7 @@ GitHub 凭据、Codex 权限批准和浏览器登录状态都必须在新电脑�
 可以使用另行生成的 `ue-words-repository-YYYY-MM-DD.bundle` 恢复完整 Git 历史：
 
 ```powershell
-git clone "D:\迁移文件\ue-words-repository-YYYY-MM-DD.bundle" "$HOME\Documents\UE学习"
+git clone -b main "D:\迁移文件\ue-words-repository-YYYY-MM-DD.bundle" "$HOME\Documents\UE学习"
 Set-Location "$HOME\Documents\UE学习"
 git remote set-url origin https://github.com/xueliangt5-collab/ue-words.git
 powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
