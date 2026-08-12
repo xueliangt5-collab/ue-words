@@ -6,8 +6,8 @@
 
 ## 已实现
 
-- 69 条 UE、蓝图、渲染、动画、游戏测试、性能与网络基础术语
-- 73 条 Unreal Insights 计时项，保留线程分类、读法、分析经验和关联术语
+- 持续扩充的 UE、蓝图、渲染、动画、游戏测试、硬件、性能与网络术语库
+- Unreal Insights 计时项保留线程分类、读法、分析经验和关联术语
 - 中英文全文搜索、分类筛选、收藏和个人词条
 - 系统英语语音、可调语速、术语与例句朗读
 - FSRS 间隔重复、英中/中英双向复习、每日新词数量
@@ -29,6 +29,12 @@ pnpm run dev
 ```powershell
 pnpm run build
 pnpm run preview
+```
+
+在另一台 Windows 电脑继续开发时，请按 [MIGRATION.md](./MIGRATION.md) 操作，或在克隆仓库后运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
 ```
 
 ## 云同步
