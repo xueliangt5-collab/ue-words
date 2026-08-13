@@ -804,6 +804,53 @@
     ]
   },
   {
+    "id": "imported-animation-budget-allocator",
+    "term": "Animation Budget Allocator",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "动画预算分配器",
+    "category": "动画与碰撞",
+    "definition": "Unreal Engine 用来在给定 CPU 动画预算内动态调整骨骼网格更新频率、插值和 Tick 行为的系统。",
+    "example": "The Animation Budget Allocator reduces update frequency for distant characters.",
+    "exampleZh": "动画预算分配器会降低远处角色的更新频率。",
+    "tags": "Animation Budget Allocator ABA 动画预算分配器 Skeletal Mesh CPU Tick",
+    "spokenForm": "Animation Budget Allocator",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Animation",
+        "zh": "动画"
+      },
+      {
+        "word": "Budget",
+        "zh": "预算"
+      },
+      {
+        "word": "Allocator",
+        "zh": "分配器"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Update Rate Optimization",
+        "relation": "相关优化",
+        "explanation": "两者都会减少非关键角色的动画更新成本，但控制方式和使用场景不同。"
+      },
+      {
+        "term": "Skeletal Mesh Component",
+        "relation": "管理对象",
+        "explanation": "预算系统根据重要性调度参与管理的骨骼网格组件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "启用预算分配不等于动画成本自动合格，仍需测量角色数量、更新质量和可见误差。"
+    ]
+  },
+  {
     "id": "imported-animation-notify",
     "term": "Animation Notify",
     "abbreviation": "",
@@ -1193,6 +1240,40 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-audio-modulation",
+    "term": "Audio Modulation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈɔːdioʊ ˌmɑːdʒəˈleɪʃən/",
+    "zh": "音频调制",
+    "category": "游戏开发",
+    "definition": "Unreal Engine 中使用 Control Bus、参数和 Mix 动态控制音量、音高、高通与低通等音频属性的系统。",
+    "example": "Audio Modulation lowers the music bus while dialogue is playing.",
+    "exampleZh": "对白播放时，音频调制会降低音乐总线的音量。",
+    "tags": "Audio Modulation 音频调制 Control Bus Control Bus Mix volume pitch filter",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Control Bus",
+        "relation": "控制通道",
+        "explanation": "Control Bus 承载可被混合和调制的音频参数。"
+      },
+      {
+        "term": "Submix",
+        "relation": "相邻系统",
+        "explanation": "Submix 负责音频路由与效果处理，Audio Modulation 负责驱动参数变化。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "它不是简单地在单个声音上设置固定音量，而是建立可组合的运行时参数控制。"
+    ]
   },
   {
     "id": "imported-audio-visual-synchronization",
@@ -1748,6 +1829,45 @@
     "contexts": [],
     "usageNotes": [
       "UnrealPak 使用 Development 配置并不意味着被打包的游戏也是 Development；应查看游戏 Target 的配置。"
+    ]
+  },
+  {
+    "id": "imported-build-farm",
+    "term": "Build Farm",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/bɪld fɑːrm/",
+    "zh": "构建农场",
+    "category": "软件工程",
+    "definition": "由多台机器或工作节点组成、集中执行编译、Cook、测试、打包和制品生成任务的构建基础设施。",
+    "example": "The build farm cooks all target platforms overnight.",
+    "exampleZh": "构建农场会在夜间为所有目标平台执行 Cook。",
+    "tags": "Build Farm 构建农场 CI Cook Package Horde Agent",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Continuous Integration",
+        "relation": "自动化流程",
+        "explanation": "持续集成会把提交触发的构建和测试任务分发给构建农场。"
+      },
+      {
+        "term": "Horde",
+        "relation": "UE 基础设施",
+        "explanation": "Horde 可用于协调 Unreal Engine 团队的构建、测试和计算任务。"
+      },
+      {
+        "term": "Derived Data Cache",
+        "relation": "共享缓存",
+        "explanation": "共享 DDC 能减少构建和内容处理节点的重复派生数据工作。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Build Farm 指执行基础设施，不等同于某一条 CI Pipeline 或单个构建脚本。"
     ]
   },
   {
@@ -3830,6 +3950,40 @@
     ]
   },
   {
+    "id": "imported-content-budget",
+    "term": "Content Budget",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈkɑːntent ˈbʌdʒɪt/",
+    "zh": "内容预算",
+    "category": "项目管理",
+    "definition": "为模型、纹理、材质、骨骼、动画、特效、音频和场景密度设定的可量化资源与运行成本上限。",
+    "example": "The content budget limits texture memory and active particle counts for each encounter.",
+    "exampleZh": "内容预算限制每场遭遇的纹理内存和活动粒子数量。",
+    "tags": "Content Budget 内容预算 资产预算 内存 显存 性能 制作成本",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Performance Budget",
+        "relation": "共同约束",
+        "explanation": "内容预算把项目级性能目标转化为资产和场景规则。"
+      },
+      {
+        "term": "Data Validation",
+        "relation": "自动检查",
+        "explanation": "部分资产预算可以通过数据验证在提交或构建阶段检查。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "内容预算不仅是文件大小，还包括运行时内存、显存、渲染、动画、音频和制作工时。"
+    ]
+  },
+  {
     "id": "imported-content-folder",
     "term": "Content Folder",
     "abbreviation": "",
@@ -3943,6 +4097,43 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-core-gameplay-loop",
+    "term": "Core Gameplay Loop",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/kɔːr ˈɡeɪmpleɪ luːp/",
+    "zh": "核心玩法循环",
+    "category": "游戏开发",
+    "definition": "玩家在游戏中反复执行的一组核心行动、反馈、决策和结果，它决定短周期游玩的主要体验。",
+    "example": "Combat, looting, and upgrading form the core gameplay loop.",
+    "exampleZh": "战斗、拾取和升级构成了核心玩法循环。",
+    "tags": "Core Gameplay Loop Gameplay Loop 核心玩法循环 游戏设计 玩家行为",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [
+      "Core Game Loop",
+      "Gameplay Loop"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Vertical Slice",
+        "relation": "验证载体",
+        "explanation": "垂直切片应让玩家完整经历至少一次核心玩法循环。"
+      },
+      {
+        "term": "Game Mechanic",
+        "relation": "组成元素",
+        "explanation": "多个机制通过目标、反馈和资源关系组合成循环。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "单个移动、射击或拾取动作是机制，不一定单独构成玩法循环。"
+    ]
   },
   {
     "id": "imported-core-redirect",
@@ -7501,6 +7692,48 @@
     "usageNotes": []
   },
   {
+    "id": "imported-frame-time-budget",
+    "term": "Frame Time Budget",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/freɪm taɪm ˈbʌdʒɪt/",
+    "zh": "帧时间预算",
+    "category": "故障与性能",
+    "definition": "为达到目标帧率而允许一帧消耗的最大时间，以及分配给 Game、Render、GPU 等系统的时间上限。",
+    "example": "A 60 FPS target gives the frame a budget of about 16.67 milliseconds.",
+    "exampleZh": "60 FPS 目标为每帧提供约 16.67 毫秒的预算。",
+    "tags": "Frame Time Budget 帧时间预算 frame budget FPS milliseconds 性能",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [
+      "Frame Budget"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Frame Time",
+        "relation": "测量对象",
+        "explanation": "实际帧时间需要与预算比较。"
+      },
+      {
+        "term": "Target Hardware",
+        "relation": "验证环境",
+        "explanation": "预算必须在目标硬件和代表性场景上验证。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "16.67 ms at 60 FPS",
+        "explanation": "帧率目标的理论时间可用 1000 除以 FPS 计算。",
+        "experience": "不要把多个并行线程耗时直接相加；先判断限制帧完成时间的关键路径。"
+      }
+    ],
+    "usageNotes": [
+      "平均帧时间不能替代 P95、P99 和卡顿分析。"
+    ]
+  },
+  {
     "id": "imported-frames-panel",
     "term": "Frames Panel",
     "abbreviation": "",
@@ -9799,6 +10032,42 @@
     ],
     "usageNotes": [
       "LoadStreamLevel/UnloadStreamLevel。"
+    ]
+  },
+  {
+    "id": "imported-linked-anim-layer",
+    "term": "Linked Anim Layer",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "链接动画层",
+    "category": "动画与碰撞",
+    "definition": "Unreal Engine 中通过动画层接口把一部分动画图逻辑链接到另一动画蓝图实现的机制，用于按角色、装备或模式替换局部动画行为。",
+    "example": "The weapon links an Anim Layer that overrides the upper-body pose.",
+    "exampleZh": "该武器链接一个动画层来覆盖上半身姿势。",
+    "tags": "Linked Anim Layer Linked Animation Layer Anim Layer Interface 链接动画层 动画蓝图",
+    "spokenForm": "Linked Animation Layer",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [
+      "Linked Animation Layer"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Animation Blueprint",
+        "relation": "实现载体",
+        "explanation": "链接层通常由 Animation Blueprint 实现并在运行时切换。"
+      },
+      {
+        "term": "Animation Layer Interface",
+        "relation": "接口契约",
+        "explanation": "接口定义可由不同动画蓝图实现的动画层函数。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "它用于模块化动画图，不等同于 Layered Blend per Bone 这种姿势混合节点。"
     ]
   },
   {
@@ -13587,6 +13856,45 @@
     "usageNotes": []
   },
   {
+    "id": "imported-primary-data-asset",
+    "term": "Primary Data Asset",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "主要数据资产",
+    "category": "资源与渲染",
+    "definition": "具有 Primary Asset ID 并可由 Asset Manager 发现、分类、加载和打包管理的数据资产。",
+    "example": "Each weapon definition is stored as a Primary Data Asset.",
+    "exampleZh": "每个武器定义都保存在一个主要数据资产中。",
+    "tags": "Primary Data Asset UPrimaryDataAsset Primary Asset ID 主要数据资产 Asset Manager",
+    "spokenForm": "Primary Data Asset",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Data Asset",
+        "relation": "类型基础",
+        "explanation": "Primary Data Asset 在普通数据资产能力上增加主要资产身份和管理入口。"
+      },
+      {
+        "term": "Asset Manager",
+        "relation": "管理系统",
+        "explanation": "Asset Manager 按 Primary Asset Type 和 ID 管理这类资产。"
+      },
+      {
+        "term": "Soft Reference",
+        "relation": "加载方式",
+        "explanation": "主要资产常结合软引用和异步加载控制内容生命周期。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "并非所有 Data Asset 都自动成为可由 Asset Manager 管理的 Primary Asset。"
+    ]
+  },
+  {
     "id": "imported-print-string",
     "term": "Print String",
     "abbreviation": "",
@@ -14558,6 +14866,53 @@
     "usageNotes": []
   },
   {
+    "id": "imported-render-dependency-graph",
+    "term": "RDG",
+    "abbreviation": "RDG",
+    "fullForm": "Render Dependency Graph",
+    "ipa": "",
+    "zh": "渲染依赖图",
+    "category": "图形与渲染",
+    "definition": "Unreal Engine 用图结构声明渲染 Pass、资源及其依赖关系，并据此安排资源生命周期、同步和执行的渲染框架。",
+    "example": "The renderer adds the custom pass to the RDG before execution.",
+    "exampleZh": "渲染器在执行前把自定义 Pass 添加到 RDG。",
+    "tags": "RDG Render Dependency Graph 渲染依赖图 Render Graph GPU Pass",
+    "spokenForm": "R D G",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [
+      {
+        "word": "Render",
+        "zh": "渲染"
+      },
+      {
+        "word": "Dependency",
+        "zh": "依赖"
+      },
+      {
+        "word": "Graph",
+        "zh": "图"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "RDG_Execute",
+        "relation": "执行计时",
+        "explanation": "RDG_Execute 是分析渲染依赖图执行阶段时常见的 Unreal Insights 计时项。"
+      },
+      {
+        "term": "Render Pass",
+        "relation": "图节点",
+        "explanation": "RDG 中的 Pass 声明自己读取和写入的资源。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "RDG 是渲染框架概念；RDG_Execute 是具体性能计时项，两者不应合并为同一词条。"
+    ]
+  },
+  {
     "id": "imported-rdg-execute",
     "term": "RDG_Execute",
     "abbreviation": "",
@@ -14921,6 +15276,40 @@
     ],
     "usageNotes": [
       "所有渲染 Pass 在这之下。"
+    ]
+  },
+  {
+    "id": "imported-replication-graph",
+    "term": "Replication Graph",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "复制图",
+    "category": "构建与网络",
+    "definition": "Unreal Engine 用于按空间、连接和自定义规则筛选每个客户端需要复制哪些 Actor 的可扩展网络复制系统。",
+    "example": "The Replication Graph keeps distant actors irrelevant to this connection.",
+    "exampleZh": "复制图会让远处 Actor 对当前连接保持不相关。",
+    "tags": "Replication Graph 复制图 网络同步 relevancy connection actor",
+    "spokenForm": "Replication Graph",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Replication",
+        "relation": "扩展机制",
+        "explanation": "复制图优化和组织 Actor 的网络相关性判断，不替代属性与 RPC 的复制语义。"
+      },
+      {
+        "term": "Network Relevancy",
+        "relation": "核心规则",
+        "explanation": "复制图根据相关性决定哪些 Actor 应进入某个连接的复制列表。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "小型联机项目不一定需要 Replication Graph；先以实际 Actor 数量、连接数和服务器分析数据证明需求。"
     ]
   },
   {
@@ -18315,6 +18704,40 @@
     ]
   },
   {
+    "id": "imported-standalone-game",
+    "term": "Standalone Game",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈstændəloʊn ɡeɪm/",
+    "zh": "独立运行游戏模式",
+    "category": "构建与网络",
+    "definition": "从 Unreal Editor 启动但在独立游戏进程或窗口中运行的测试模式，用于减少普通 PIE 编辑器环境对行为的影响。",
+    "example": "Retest the input issue in Standalone Game before packaging the project.",
+    "exampleZh": "打包项目前，先在 Standalone Game 中重新测试输入问题。",
+    "tags": "Standalone Game 独立运行 PIE 测试模式 Unreal Editor",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "PIE",
+        "relation": "运行模式对比",
+        "explanation": "PIE 在编辑器世界中运行，Standalone 更接近独立进程行为。"
+      },
+      {
+        "term": "Shipping Build",
+        "relation": "不可替代",
+        "explanation": "Standalone 仍由编辑器启动，不能替代 Cook 后的 Shipping 构建验证。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Standalone Game 不是已经打包的独立发行程序。"
+    ]
+  },
+  {
     "id": "imported-stat-refresh-bone-transforms",
     "term": "STAT_RefreshBoneTransforms",
     "abbreviation": "",
@@ -19111,6 +19534,40 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-target-hardware",
+    "term": "Target Hardware",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈtɑːrɡɪt ˈhɑːrdwer/",
+    "zh": "目标硬件",
+    "category": "项目管理",
+    "definition": "项目明确承诺支持并用于设定画质、帧率、内存和加载预算的设备或硬件档位。",
+    "example": "Profile the combat scene on the target hardware before approving the effect budget.",
+    "exampleZh": "批准特效预算前，应在目标硬件上分析战斗场景。",
+    "tags": "Target Hardware 目标硬件 性能预算 最低配置 推荐配置",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Frame Time Budget",
+        "relation": "约束来源",
+        "explanation": "目标硬件和目标帧率共同决定每帧可用时间。"
+      },
+      {
+        "term": "Scalability",
+        "relation": "适配方法",
+        "explanation": "质量分级用于让不同硬件档位达到各自目标。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "开发机通常不是目标硬件；仅在高配开发机上达到帧率不能证明最低配置达标。"
+    ]
   },
   {
     "id": "imported-task-graph-insights",
@@ -21647,6 +22104,48 @@
     "usageNotes": []
   },
   {
+    "id": "imported-vertical-slice",
+    "term": "Vertical Slice",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "/ˈvɜːrtɪkəl slaɪs/",
+    "zh": "垂直切片",
+    "category": "项目管理",
+    "definition": "用接近最终质量的少量内容贯通玩法、程序、美术、动画、音频、UI、性能和交付流程，用来验证产品体验与真实生产成本。",
+    "example": "The team built a vertical slice before expanding the content pipeline.",
+    "exampleZh": "团队在扩大内容生产管线前先制作了一个垂直切片。",
+    "tags": "Vertical Slice 垂直切片 里程碑 生产验证 游戏开发",
+    "spokenForm": "",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [
+      "Vertical Slice Demo"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Prototype",
+        "relation": "阶段区别",
+        "explanation": "原型主要验证机制是否成立；垂直切片还要验证接近最终品质时的跨专业生产成本。"
+      },
+      {
+        "term": "Core Gameplay Loop",
+        "relation": "体验核心",
+        "explanation": "垂直切片通常需要完整呈现项目的核心玩法循环。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "production-representative vertical slice",
+        "explanation": "切片应代表最终生产质量和流程，而不只是堆出一段可玩的内容。",
+        "experience": "验收时同时检查玩法完整性、目标画质、帧率预算、内容耗时和可重复构建。"
+      }
+    ],
+    "usageNotes": [
+      "垂直切片不是整款游戏的缩小版，也不等同于只验证玩法的快速原型。"
+    ]
+  },
+  {
     "id": "imported-vibration-isolation",
     "term": "Vibration Isolation",
     "abbreviation": "",
@@ -22152,6 +22651,40 @@
     ],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-world-partition-insights",
+    "term": "World Partition Insights",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "世界分区分析工具",
+    "category": "UE 基础",
+    "definition": "UE5.8 中用于观察和诊断 World Partition 流送状态、单元活动与相关事件的 Insights 分析能力。",
+    "example": "Use World Partition Insights to inspect why a cell remained loaded.",
+    "exampleZh": "使用 World Partition Insights 检查某个单元为何一直保持加载。",
+    "tags": "World Partition Insights 世界分区 流送 分析 单元 UE5.8",
+    "spokenForm": "World Partition Insights",
+    "threadCategory": "",
+    "source": "UE5.8.1系统学习路线与资源导航.md",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "World Partition",
+        "relation": "分析对象",
+        "explanation": "该工具面向 World Partition 的运行时流送行为。"
+      },
+      {
+        "term": "Unreal Insights",
+        "relation": "工具基础",
+        "explanation": "分析数据在 Unreal Insights 工作流中查看。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不要把它与通用性能概览混为一谈；它重点解释 World Partition 流送事件和状态。"
+    ]
   },
   {
     "id": "imported-worldtick",
