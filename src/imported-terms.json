@@ -1582,6 +1582,52 @@
     ]
   },
   {
+    "id": "imported-binary-plus-l",
+    "term": "binary+l",
+    "abbreviation": "",
+    "fullForm": "binary plus lock",
+    "ipa": "",
+    "zh": "二进制独占锁文件类型",
+    "category": "软件工程",
+    "definition": "Perforce 文件类型写法，表示文件按二进制保存，并带有 +l 独占锁修饰；常用于 UE 的 .uasset 和 .umap。",
+    "example": "Store Unreal assets as binary+l to prevent concurrent edits.",
+    "exampleZh": "把 Unreal 资产设为 binary+l，避免多人同时编辑。",
+    "tags": "binary+l Perforce filetype exclusive lock UE uasset umap 二进制 独占锁 文件类型",
+    "spokenForm": "binary plus l",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "binary +l",
+      "+l lock"
+    ],
+    "wordParts": [
+      {
+        "word": "binary",
+        "zh": "二进制"
+      },
+      {
+        "word": "+l",
+        "zh": "独占锁修饰符"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Check Out",
+        "relation": "签出锁定",
+        "explanation": "binary+l 文件被签出时会被当前用户独占锁定。"
+      },
+      {
+        "term": "Typemap",
+        "relation": "配置来源",
+        "explanation": "Typemap 可自动把指定扩展名的文件映射为 binary+l。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "binary+l 可以防止多人同时编辑同一个二进制资产，但不会让二进制文件变得可合并。"
+    ]
+  },
+  {
     "id": "imported-bitlocker",
     "term": "BitLocker",
     "abbreviation": "",
@@ -2408,6 +2454,48 @@
     ]
   },
   {
+    "id": "imported-changelist",
+    "term": "Changelist",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "变更列表",
+    "category": "软件工程",
+    "definition": "Perforce 中收纳一组新增、编辑、删除、移动等文件动作的变更容器，可以处于 pending 或 submitted 状态。",
+    "example": "Review the changelist before submitting it.",
+    "exampleZh": "提交前检查这个 changelist。",
+    "tags": "Changelist CL pending submitted Perforce submit 变更列表 待提交 已提交",
+    "spokenForm": "change list",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Change list",
+      "Pending changelist",
+      "Submitted changelist"
+    ],
+    "wordParts": [
+      {
+        "word": "Change",
+        "zh": "变更"
+      },
+      {
+        "word": "List",
+        "zh": "列表"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "Submit",
+        "relation": "提交动作",
+        "explanation": "Submit 会把 pending changelist 变成 submitted changelist。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "一次 changelist 应保持范围清晰，不要混入无关资产或生成目录。"
+    ]
+  },
+  {
     "id": "imported-channel",
     "term": "Channel",
     "abbreviation": "",
@@ -2940,6 +3028,39 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-check-out",
+    "term": "Check Out",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "签出",
+    "category": "软件工程",
+    "definition": "在 P4V 或 Unreal Editor 中把已有文件打开为待编辑状态的动作；对带独占锁的文件会同时申请锁。",
+    "example": "Check out the Blueprint before moving a node.",
+    "exampleZh": "移动节点前先签出这个蓝图。",
+    "tags": "Check Out Open for Edit Perforce checkout edit lock 签出 打开编辑 独占锁",
+    "spokenForm": "check out",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Open for Edit",
+      "Open for edit",
+      "Checkout"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "binary+l",
+        "relation": "锁定行为",
+        "explanation": "binary+l 文件在 Check Out 时会拿到独占锁。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Check Out 只是开始编辑，不等于已经提交到服务器。"
+    ]
   },
   {
     "id": "imported-checkpoint",
@@ -5148,6 +5269,37 @@
     ]
   },
   {
+    "id": "imported-depot",
+    "term": "Depot",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Depot 仓库",
+    "category": "软件工程",
+    "definition": "Perforce 服务端保存版本文件的顶层仓库容器，可以包含普通路径或基于 stream 的分支结构。",
+    "example": "The UE project lives in a depot named UE.",
+    "exampleZh": "这个 UE 项目保存在名为 UE 的 depot 中。",
+    "tags": "Depot Perforce repository server storage 仓库 版本文件",
+    "spokenForm": "depot",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "P4 depot"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Stream depot",
+        "relation": "类型",
+        "explanation": "Stream depot 是使用 stream 分支模型的 depot。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Depot 是服务端概念，不等于某台电脑上的本地文件夹。"
+    ]
+  },
+  {
     "id": "imported-derived-data-cache",
     "term": "Derived Data Cache",
     "abbreviation": "DDC",
@@ -5965,6 +6117,37 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-engineassociation",
+    "term": "EngineAssociation",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "引擎版本关联字段",
+    "category": "UE 基础",
+    "definition": ".uproject 文件中用于标记项目关联 Unreal Engine 版本或安装项的字段，影响双击项目时使用哪个引擎打开。",
+    "example": "Set EngineAssociation to the Unreal Engine version used by the project.",
+    "exampleZh": "把 EngineAssociation 设置为项目实际使用的 Unreal Engine 版本。",
+    "tags": "EngineAssociation uproject Unreal Engine version association 引擎版本 关联 项目文件",
+    "spokenForm": "Engine Association",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Engine Association"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Unreal Editor Source Control",
+        "relation": "项目打开流程",
+        "explanation": "正确的 EngineAssociation 有助于成员用一致的引擎版本打开 P4 工作区项目。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "在 P4 工作区中修改 .uproject 前应先签出文件，避免只读状态导致写入失败。"
+    ]
   },
   {
     "id": "imported-entry-criteria",
@@ -8848,6 +9031,38 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-helix-core",
+    "term": "Helix Core",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Helix Core 服务端",
+    "category": "软件工程",
+    "definition": "Perforce 的核心版本控制服务端，负责保存 depot、stream、版本历史、权限规则和文件锁状态。",
+    "example": "Helix Core rejects a second checkout when an exclusive lock is already held.",
+    "exampleZh": "当独占锁已经被占用时，Helix Core 会拒绝第二次签出。",
+    "tags": "Helix Core Perforce server depot stream lock 版本控制 服务端",
+    "spokenForm": "Helix Core",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "P4 Server",
+      "Perforce Server"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "P4V",
+        "relation": "客户端",
+        "explanation": "P4V 通过 Helix Core 服务端读取和提交项目文件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "服务端地址和管理员凭据属于环境配置，不应写入公开词条。"
+    ]
   },
   {
     "id": "imported-high-dynamic-range",
@@ -12534,6 +12749,166 @@
     ]
   },
   {
+    "id": "imported-p4-cli",
+    "term": "P4 CLI",
+    "abbreviation": "CLI",
+    "fullForm": "Command Line Interface",
+    "ipa": "",
+    "zh": "P4 命令行客户端",
+    "category": "软件工程",
+    "definition": "Perforce 的命令行客户端，适合快速检查连接、登录状态、opened 文件、同步和脚本化排查。",
+    "example": "Run p4 opened to list pending files in the current workspace.",
+    "exampleZh": "运行 p4 opened 查看当前工作区里的待提交文件。",
+    "tags": "P4 CLI p4 command line Perforce 命令行 opened sync submit",
+    "spokenForm": "P 4 C L I",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "p4 command",
+      "p4.exe"
+    ],
+    "wordParts": [
+      {
+        "word": "Command",
+        "zh": "命令"
+      },
+      {
+        "word": "Line",
+        "zh": "行"
+      },
+      {
+        "word": "Interface",
+        "zh": "接口"
+      }
+    ],
+    "relatedTerms": [],
+    "contexts": [],
+    "usageNotes": [
+      "P4 CLI 命令需要匹配当前 P4PORT、P4USER、P4CLIENT 和 P4CHARSET 环境。"
+    ]
+  },
+  {
+    "id": "imported-p4admin",
+    "term": "P4Admin",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "P4 管理客户端",
+    "category": "软件工程",
+    "definition": "Perforce 的图形化管理工具，用于处理用户、分组、权限、depot 和部分服务端管理任务。",
+    "example": "Use P4Admin to review group membership before onboarding a new user.",
+    "exampleZh": "新成员加入前，用 P4Admin 检查分组成员关系。",
+    "tags": "P4Admin Perforce admin user group protections depot 管理 用户 分组 权限",
+    "spokenForm": "P 4 Admin",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Protections",
+        "relation": "权限管理",
+        "explanation": "管理员可通过 protections 控制用户对 depot 路径的访问。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "普通成员日常使用 P4V，不需要 P4Admin 权限。"
+    ]
+  },
+  {
+    "id": "imported-p4ignore",
+    "term": "P4IGNORE",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "P4 忽略规则变量",
+    "category": "软件工程",
+    "definition": "Perforce 客户端环境变量，用来指定忽略规则文件名，使生成目录、临时文件和本地配置不被误加入仓库。",
+    "example": "Set P4IGNORE to .p4ignore before reconciling offline work.",
+    "exampleZh": "执行离线改动对账前，把 P4IGNORE 设置为 .p4ignore。",
+    "tags": "P4IGNORE .p4ignore Perforce ignore generated files Binaries Intermediate Saved 忽略规则 生成目录",
+    "spokenForm": "P 4 ignore",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      ".p4ignore",
+      "P4 ignore file"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Reconcile",
+        "relation": "扫描过滤",
+        "explanation": "P4IGNORE 可以减少 Reconcile 时把生成文件误加入 changelist 的风险。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "忽略规则不能替代提交前人工检查；提交前仍要确认 pending 文件列表。"
+    ]
+  },
+  {
+    "id": "imported-p4merge",
+    "term": "P4Merge",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "P4 合并工具",
+    "category": "软件工程",
+    "definition": "Perforce 的可视化差异比较和合并工具，主要用于文本文件冲突处理。",
+    "example": "Run P4Merge to resolve the conflicting config file.",
+    "exampleZh": "运行 P4Merge 来解决配置文件冲突。",
+    "tags": "P4Merge Perforce merge diff resolve conflict 合并 差异 冲突",
+    "spokenForm": "P 4 Merge",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Resolve",
+        "relation": "冲突处理",
+        "explanation": "P4Merge 常用于 Resolve 文本冲突。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UE 的 .uasset 和 .umap 通常不能像文本一样用 P4Merge 合并。"
+    ]
+  },
+  {
+    "id": "imported-p4v",
+    "term": "P4V",
+    "abbreviation": "P4V",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "P4V 图形客户端",
+    "category": "软件工程",
+    "definition": "Perforce 的图形化客户端，用来连接服务器、同步文件、签出资产、提交 changelist、还原修改和查看历史。",
+    "example": "Open P4V and sync the project before editing assets.",
+    "exampleZh": "打开 P4V 并在编辑资产前同步项目。",
+    "tags": "P4V Perforce GUI client Helix Visual Client 图形客户端 同步 签出 提交",
+    "spokenForm": "P 4 V",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Helix Visual Client"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Workspace",
+        "relation": "本地工作区",
+        "explanation": "P4V 必须通过 workspace 知道服务端文件同步到本机哪个目录。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "P4V 是 Perforce 客户端，不是 Git 客户端，不能直接管理 Forgejo/Gitea 仓库。"
+    ]
+  },
+  {
     "id": "imported-p95",
     "term": "P95",
     "abbreviation": "P95",
@@ -13078,6 +13453,43 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-perforce",
+    "term": "Perforce",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Perforce 版本控制平台",
+    "category": "软件工程",
+    "definition": "面向大型项目和二进制资产的集中式版本控制平台；在 UE 团队工作流中用于保存主工程、资产版本和文件锁。",
+    "example": "The team stores the Unreal project in Perforce.",
+    "exampleZh": "团队把 Unreal 项目放在 Perforce 中管理。",
+    "tags": "Perforce P4 version control centralized VCS 版本控制 集中式 UE 协作",
+    "spokenForm": "Perforce",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "P4"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Helix Core",
+        "relation": "服务端产品",
+        "explanation": "Helix Core 是Perforce 工作流中的服务端。"
+      }
+    ],
+    "contexts": [
+      {
+        "phrase": "Perforce/P4 Server + P4V + Unreal Editor Source Control",
+        "explanation": "UE 主工程使用 P4 作为主仓库，P4V 和 Unreal Editor 连接同一个服务端。",
+        "experience": "UE 项目初期避免把同一主工程拆成 Git 代码仓库和 P4 资产仓库，否则会增加同步和权限复杂度。"
+      }
+    ],
+    "usageNotes": [
+      "在这份文档中，P4 通常是 Perforce 工作流或命令行客户端的简称。"
+    ]
   },
   {
     "id": "imported-performreachabilityanalysisonobjectsinternal",
@@ -14263,6 +14675,38 @@
     "usageNotes": []
   },
   {
+    "id": "imported-protections",
+    "term": "Protections",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "权限规则表",
+    "category": "软件工程",
+    "definition": "Perforce 中控制用户或分组对 depot 路径拥有 read、write、admin 等访问级别的权限规则。",
+    "example": "Review protections before granting write access to a new group.",
+    "exampleZh": "给新分组写权限前先检查 protections。",
+    "tags": "Protections Perforce permission access control read write admin 权限 访问控制 分组",
+    "spokenForm": "protections",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Protection table",
+      "Protections table"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "P4Admin",
+        "relation": "管理工具",
+        "explanation": "P4Admin 可用于查看和维护 Perforce 权限相关配置。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "修改 protections 前应先备份现有规则，避免误伤整个仓库访问。"
+    ]
+  },
+  {
     "id": "imported-pseudolocalization",
     "term": "Pseudolocalization",
     "abbreviation": "",
@@ -15031,6 +15475,37 @@
     "usageNotes": []
   },
   {
+    "id": "imported-reconcile",
+    "term": "Reconcile",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "离线改动对账",
+    "category": "软件工程",
+    "definition": "扫描 workspace 中未被 P4 正常打开的本地新增、修改或删除，并把它们整理进 pending changelist 的动作。",
+    "example": "Run Reconcile Offline Work after copying files into the project folder.",
+    "exampleZh": "把文件复制进项目目录后，运行 Reconcile Offline Work。",
+    "tags": "Reconcile Offline Work Perforce local changes add edit delete 对账 离线修改 扫描",
+    "spokenForm": "reconcile",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Reconcile Offline Work"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "P4IGNORE",
+        "relation": "排除规则",
+        "explanation": "Reconcile 时应依赖 P4IGNORE 排除生成目录和临时文件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Reconcile 前要仔细排除 Binaries、Intermediate、Saved、DerivedDataCache 和 .vs 等生成目录。"
+    ]
+  },
+  {
     "id": "imported-recovery-point-objective",
     "term": "Recovery Point Objective",
     "abbreviation": "RPO",
@@ -15370,6 +15845,38 @@
     "usageNotes": []
   },
   {
+    "id": "imported-resolve-perforce",
+    "term": "Resolve",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "解决冲突",
+    "category": "软件工程",
+    "definition": "当本地修改和服务端新版本发生冲突时，选择保留本地、接受服务端或合并双方修改的处理动作。",
+    "example": "Resolve the config conflict before submitting the changelist.",
+    "exampleZh": "提交 changelist 前先解决配置文件冲突。",
+    "tags": "Resolve Perforce conflict merge yours theirs 冲突 合并 本地 服务端",
+    "spokenForm": "resolve",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Accept Yours",
+      "Accept Theirs"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "P4Merge",
+        "relation": "辅助工具",
+        "explanation": "文本冲突可以用 P4Merge 逐行处理。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UE 二进制资产通常不能像文本文件一样 Resolve 合并，应该依赖提前签出和独占锁避免冲突。"
+    ]
+  },
+  {
     "id": "imported-resonance",
     "term": "Resonance",
     "abbreviation": "",
@@ -15459,6 +15966,37 @@
     "contexts": [],
     "usageNotes": [
       "反向代理代表服务端接收外部请求；正向代理代表客户端访问外部服务。"
+    ]
+  },
+  {
+    "id": "imported-revert-perforce",
+    "term": "Revert",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "还原修改",
+    "category": "软件工程",
+    "definition": "放弃本地 pending 修改并恢复到服务端版本的动作；如果文件持有锁，revert 后会释放锁。",
+    "example": "Revert the test asset to release the lock.",
+    "exampleZh": "还原测试资产以释放锁。",
+    "tags": "Revert Perforce discard local changes release lock 还原 放弃修改 释放锁",
+    "spokenForm": "revert",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Revert changes"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Check Out",
+        "relation": "反向动作",
+        "explanation": "Revert 会撤销签出状态和本地 pending 修改。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "执行 Revert 前确认本地改动确实不需要保留。"
     ]
   },
   {
@@ -17210,6 +17748,38 @@
     ],
     "usageNotes": [
       "ShadowDepths/ShadowProjection 的总称。"
+    ]
+  },
+  {
+    "id": "imported-shelve",
+    "term": "Shelve",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "搁置变更",
+    "category": "软件工程",
+    "definition": "把 pending changelist 的文件临时上传到服务端但不正式提交的动作，便于评审、换机器或交接。",
+    "example": "Shelve the changelist before asking another developer to review it.",
+    "exampleZh": "请另一位开发者检查前，先搁置这个 changelist。",
+    "tags": "Shelve Unshelve Perforce pending changelist review 搁置 评审 临时上传",
+    "spokenForm": "shelve",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Shelved changelist",
+      "Unshelve"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Changelist",
+        "relation": "操作对象",
+        "explanation": "Shelve 通常作用于 pending changelist。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Shelve 不是正式提交，不应被当作项目主线版本。"
     ]
   },
   {
@@ -19119,6 +19689,66 @@
     ]
   },
   {
+    "id": "imported-stream",
+    "term": "Stream",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "分支流",
+    "category": "软件工程",
+    "definition": "Perforce Stream depot 中的一条项目分支线，用来描述主线、开发线或发布线之间的继承和集成关系。",
+    "example": "Bind the workspace to the main stream before syncing the project.",
+    "exampleZh": "同步项目前，把工作区绑定到 main stream。",
+    "tags": "Stream Perforce branch mainline stream depot 分支 主线 工作流",
+    "spokenForm": "stream",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "P4 Stream"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Workspace",
+        "relation": "绑定关系",
+        "explanation": "Stream workspace 会绑定到某个 stream，并按该 stream 的视图同步文件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "在 P4 语境中，Stream 指分支流；不要和 UE 里的关卡流送或资源流式加载混淆。"
+    ]
+  },
+  {
+    "id": "imported-stream-depot",
+    "term": "Stream depot",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "流式仓库",
+    "category": "软件工程",
+    "definition": "Perforce 中按 stream 分支模型组织的 depot 类型，适合用 main、development、release 等 stream 管理项目线。",
+    "example": "Create a stream depot before defining the main stream.",
+    "exampleZh": "先创建 stream depot，再定义主线 stream。",
+    "tags": "Stream depot Perforce depot stream main branch 流式仓库 分支 主线",
+    "spokenForm": "stream depot",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Stream Depot"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Stream",
+        "relation": "组成概念",
+        "explanation": "Stream depot 通过一个或多个 stream 来表达项目分支线。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": []
+  },
+  {
     "id": "imported-streamablemanager",
     "term": "StreamableManager",
     "abbreviation": "",
@@ -19271,6 +19901,37 @@
     ]
   },
   {
+    "id": "imported-submit-perforce",
+    "term": "Submit",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "提交变更",
+    "category": "软件工程",
+    "definition": "Perforce 中把 pending changelist 上传到服务端并生成新版本记录的动作。",
+    "example": "Submit the changelist after saving and testing the asset.",
+    "exampleZh": "保存并测试资产后提交这个 changelist。",
+    "tags": "Submit Perforce changelist commit 提交 变更 上传 版本",
+    "spokenForm": "submit",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Submit changelist"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Changelist",
+        "relation": "操作对象",
+        "explanation": "Submit 的对象通常是一个 pending changelist。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Submit 类似集中式版本控制中的正式提交；提交说明应写清楚修改目的和影响范围。"
+    ]
+  },
+  {
     "id": "imported-swidget-invalidate",
     "term": "SWidget::Invalidate",
     "abbreviation": "",
@@ -19319,6 +19980,38 @@
     "relatedTerms": [],
     "contexts": [],
     "usageNotes": []
+  },
+  {
+    "id": "imported-sync-perforce",
+    "term": "Sync",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "同步版本",
+    "category": "软件工程",
+    "definition": "把服务端指定修订或最新版本下载到本地 workspace 的动作。",
+    "example": "Sync to latest before starting daily work.",
+    "exampleZh": "每天开始工作前先同步到最新版本。",
+    "tags": "Sync Perforce get latest revision workspace 同步 最新版本 下载",
+    "spokenForm": "sync",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Get Latest Revision",
+      "Sync to Latest Revision"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Workspace",
+        "relation": "本地目标",
+        "explanation": "Sync 会更新当前 workspace 中的本地文件。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Sync 不会把本地修改上传到服务端；上传动作是 Submit。"
+    ]
   },
   {
     "id": "imported-sync-marker",
@@ -21533,6 +22226,47 @@
     ]
   },
   {
+    "id": "imported-typemap",
+    "term": "Typemap",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "文件类型映射",
+    "category": "软件工程",
+    "definition": "Perforce 服务端根据 depot 路径或文件扩展名指定文件类型和修饰符的规则，例如把 UE 资产映射为 binary+l。",
+    "example": "Configure the typemap before importing Unreal assets.",
+    "exampleZh": "导入 Unreal 资产前先配置 typemap。",
+    "tags": "Typemap Perforce file type binary+l UE asset mapping 文件类型 映射 锁定",
+    "spokenForm": "type map",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "Type map",
+      "P4 typemap"
+    ],
+    "wordParts": [
+      {
+        "word": "Type",
+        "zh": "类型"
+      },
+      {
+        "word": "Map",
+        "zh": "映射"
+      }
+    ],
+    "relatedTerms": [
+      {
+        "term": "binary+l",
+        "relation": "文件类型规则",
+        "explanation": "Typemap 可以把 .uasset 和 .umap 自动设为 binary+l。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "Typemap 应在首次导入真实 UE 项目前配置，否则后续返工成本更高。"
+    ]
+  },
+  {
     "id": "imported-uclk",
     "term": "UCLK",
     "abbreviation": "",
@@ -21730,6 +22464,38 @@
     ],
     "usageNotes": [
       "提高并行度不一定更快；内存不足导致的杀进程和重试会让构建更慢。"
+    ]
+  },
+  {
+    "id": "imported-unreal-editor-source-control",
+    "term": "Unreal Editor Source Control",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "Unreal 编辑器版本控制",
+    "category": "UE 基础",
+    "definition": "Unreal Editor 内置的版本控制连接能力，可直接连接 Perforce 并在编辑器中完成资产签出、保存状态检查和提交。",
+    "example": "Enable Unreal Editor Source Control before editing shared assets.",
+    "exampleZh": "编辑共享资产前先启用 Unreal 编辑器版本控制。",
+    "tags": "Unreal Editor Source Control Perforce UE asset checkout 版本控制 编辑器 签出 资产",
+    "spokenForm": "Unreal Editor Source Control",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "UE Source Control",
+      "Unreal Source Control"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Check Out",
+        "relation": "编辑器操作",
+        "explanation": "Unreal Editor Source Control 允许用户在内容浏览器中直接签出资产。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "UE provider 可能调整 workspace 选项，但服务端 binary+l 锁仍然有效。"
     ]
   },
   {
@@ -22595,6 +23361,38 @@
       }
     ],
     "usageNotes": []
+  },
+  {
+    "id": "imported-workspace",
+    "term": "Workspace",
+    "abbreviation": "",
+    "fullForm": "",
+    "ipa": "",
+    "zh": "工作区",
+    "category": "软件工程",
+    "definition": "Perforce 中把服务端 depot 或 stream 映射到本机目录的客户端配置；也决定当前机器从哪里同步和提交文件。",
+    "example": "Create a separate workspace for each user and computer.",
+    "exampleZh": "每个用户和每台电脑都创建独立工作区。",
+    "tags": "Workspace Client P4 client Perforce local root mapping 工作区 客户端 本地目录",
+    "spokenForm": "workspace",
+    "threadCategory": "",
+    "source": "Perforce and Unreal Engine workflow",
+    "aliases": [
+      "P4 Client",
+      "P4 Workspace"
+    ],
+    "wordParts": [],
+    "relatedTerms": [
+      {
+        "term": "Sync",
+        "relation": "本地同步",
+        "explanation": "Sync 会把服务端版本下载到 workspace 的本地目录。"
+      }
+    ],
+    "contexts": [],
+    "usageNotes": [
+      "不要让多人共用同一个 workspace；workspace 名称应能体现用户、机器和 stream。"
+    ]
   },
   {
     "id": "imported-world-outliner",
